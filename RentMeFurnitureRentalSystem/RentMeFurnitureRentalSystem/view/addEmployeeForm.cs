@@ -30,13 +30,11 @@ public partial class addEmployeeForm : Form
         var zipcode = this.zipcodeInput.Text;
         var role = this.roleComboBox.Text;
 
+        // TODO: Add Employee
     }
 
     private void cancelButton_Click(object sender, EventArgs e)
     {
-        this.Hide();
-        var mainWindowForm = new MainScreenForm();
-        mainWindowForm.ShowDialog();
         this.Close();
     }
 

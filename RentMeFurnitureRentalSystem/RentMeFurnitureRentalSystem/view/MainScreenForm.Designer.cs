@@ -29,36 +29,27 @@
         private void InitializeComponent()
         {
             this.addEmployeeButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.addCustomerButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // addEmployeeButton
             // 
-            this.addEmployeeButton.Location = new System.Drawing.Point(12, 107);
+            this.addEmployeeButton.Location = new System.Drawing.Point(14, 143);
+            this.addEmployeeButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addEmployeeButton.Name = "addEmployeeButton";
-            this.addEmployeeButton.Size = new System.Drawing.Size(134, 23);
+            this.addEmployeeButton.Size = new System.Drawing.Size(153, 31);
             this.addEmployeeButton.TabIndex = 0;
             this.addEmployeeButton.Text = "Add Employee ";
             this.addEmployeeButton.UseVisualStyleBackColor = true;
             this.addEmployeeButton.Click += new System.EventHandler(this.addEmployeeButton_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(247, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(301, 37);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Rental Furniture System ";
-            // 
             // addCustomerButton
             // 
-            this.addCustomerButton.Location = new System.Drawing.Point(12, 149);
+            this.addCustomerButton.Location = new System.Drawing.Point(14, 199);
+            this.addCustomerButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addCustomerButton.Name = "addCustomerButton";
-            this.addCustomerButton.Size = new System.Drawing.Size(134, 23);
+            this.addCustomerButton.Size = new System.Drawing.Size(153, 31);
             this.addCustomerButton.TabIndex = 2;
             this.addCustomerButton.Text = "Add Customer";
             this.addCustomerButton.UseVisualStyleBackColor = true;
@@ -66,9 +57,10 @@
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(692, 12);
+            this.logoutButton.Location = new System.Drawing.Point(816, 13);
+            this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(75, 23);
+            this.logoutButton.Size = new System.Drawing.Size(86, 31);
             this.logoutButton.TabIndex = 3;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
@@ -76,24 +68,22 @@
             // 
             // MainScreenForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 600);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.addCustomerButton);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.addEmployeeButton);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainScreenForm";
-            this.Text = "MainScreenForm";
+            this.Text = "Rent Me";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private Button addEmployeeButton;
-        private Label label1;
         private Button addCustomerButton;
         private Button logoutButton;
     }
