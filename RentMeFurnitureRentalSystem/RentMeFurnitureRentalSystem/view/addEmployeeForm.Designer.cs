@@ -145,7 +145,7 @@
             this.genderComboBox.FormattingEnabled = true;
             this.genderComboBox.Location = new System.Drawing.Point(77, 159);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(44, 23);
+            this.genderComboBox.Size = new System.Drawing.Size(66, 23);
             this.genderComboBox.TabIndex = 10;
             // 
             // label7
@@ -264,7 +264,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(49, 397);
+            this.cancelButton.Location = new System.Drawing.Point(16, 397);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(146, 23);
             this.cancelButton.TabIndex = 25;
@@ -274,7 +274,7 @@
             // 
             // addEmployeeButton
             // 
-            this.addEmployeeButton.Location = new System.Drawing.Point(238, 397);
+            this.addEmployeeButton.Location = new System.Drawing.Point(272, 397);
             this.addEmployeeButton.Name = "addEmployeeButton";
             this.addEmployeeButton.Size = new System.Drawing.Size(153, 23);
             this.addEmployeeButton.TabIndex = 26;
