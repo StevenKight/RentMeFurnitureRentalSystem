@@ -14,12 +14,13 @@ DROP TABLE IF EXISTS `local-project`.`category`;
 DROP TABLE IF EXISTS `local-project`.`employee`;
 DROP TABLE IF EXISTS `local-project`.`role`;
 DROP TABLE IF EXISTS `local-project`.`customer`;
+DROP TABLE IF EXISTS `local-project`.`login`;
 
 -- Create Tables
 -- FIXME: Should login store things that are in both employee and customer?
 CREATE TABLE `local-project`.`login`(
     username VARCHAR(45) PRIMARY KEY,
-    `password` VARCHAR(45) NOT NULL,
+    `password` VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE `local-project`.`customer`(
@@ -133,7 +134,7 @@ CREATE TABLE `local-project`.`return`(
     member_id INT NOT NULL,
     employee_num INT NOT NULL,
     `return_date` DATE NOT NULL,
-    FOREIGN KEY (rental_id)
+    FOREIGN KEY (member_id)
         REFERENCES `local-project`.`customer` (member_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
@@ -158,3 +159,62 @@ CREATE TABLE `local-project`.`return_item`(
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
+
+INSERT INTO `local-project`.`role` (`name`)
+VALUES ('administrator'),
+	('employee');
+
+INSERT INTO `local-project`.`category` (`name`)
+VALUES ('Living Room'),
+	('Bedroom'),
+	('Dining Room'),
+	('Kitchen'),
+	('Home Office'),
+	('Outdoor'),
+	('Children''s'),
+	('Home Entertainment'),
+	('Entryway and Hallway'),
+	('Bathroom'),
+	('Patio'),
+	('Bar and Wine'),
+	('Accent'),
+	('Storage and Organization'),
+	('Upholstered'),
+	('Antique and Vintage'),
+	('Contemporary'),
+	('Mid-Century Modern'),
+	('Rustic and Farmhouse'),
+	('Industrial'),
+	('Minimalist'),
+	('Scandinavian'),
+	('Art Deco'),
+	('Bohemian'),
+	('Traditional');
+
+INSERT INTO `local-project`.`style` (`name`)
+VALUES ('Modern'),
+	('Contemporary'),
+	('Traditional'),
+	('Mid-Century Modern'),
+	('Rustic'),
+	('Industrial'),
+	('Scandinavian'),
+	('Bohemian'),
+	('Art Deco'),
+	('Minimalist'),
+	('Farmhouse'),
+	('Coastal'),
+	('Victorian'),
+	('Shabby Chic'),
+	('Transitional'),
+	('Eclectic'),
+	('Asian'),
+	('Mediterranean'),
+	('Tropical'),
+	('Cottage'),
+	('Colonial'),
+	('Vintage'),
+	('Antique'),
+	('Gothic'),
+	('Rococo'),
+	('Baroque');
