@@ -1,19 +1,69 @@
-﻿using System.Diagnostics;
+﻿using RentMeFurnitureRentalSystem.Model;
+using System.Diagnostics;
 
 namespace RentMeFurnitureRentalSystem.view;
 
-public partial class addEmployeeForm : Form
+public partial class addUserForm : Form
 {
     #region Constructors
 
-    public addEmployeeForm()
+    public addUserForm(bool employee)
     {
         this.InitializeComponent();
         this.populateGenderComboBox();
         this.populateStateComboBox();
+
+        if (employee) this.displayEmployeeData();
+        else this.displayCustomerData();
     }
 
     #endregion
+
+    private void displayEmployeeData()
+    {
+        this.usernameLabel.Show();
+        this.usernameInput.Show();
+        this.passwordLabel.Show();
+        this.passwordInput.Show();
+        this.roleLabel.Show();
+        this.roleComboBox.Show();
+
+        this.addDialogHeading.Text = "Add Employee";
+        this.addButton.Click += this.addEmployeeButton_Click;
+        this.addButton.Text = "Add Employee";
+
+    }
+
+    private void displayCustomerData()
+    {
+        this.usernameLabel.Hide();
+        this.usernameInput.Hide();
+        this.passwordLabel.Hide();
+        this.passwordInput.Hide();
+        this.roleLabel.Hide();
+        this.roleComboBox.Hide();
+        
+        this.addDialogHeading.Text = "Add Customer";
+        this.addButton.Click += this.addCustomerButton_Click;
+        this.addButton.Text = "Add Customer";
+    }
+
+    private void addCustomerButton_Click(object sender, EventArgs e)
+    {
+        var customer = new Customer() {
+            FirstName = this.firstnameInput.Text,
+            LastName = this.lastnameInput.Text,
+            Gender = this.genderComboBox.Text,
+            Birthday = this.dobTimePicker.Value.Date,
+            Phone = this.phoneInput.Text,
+            StreetAddress = this.streetAdressInput.Text,
+            City = this.cityInput.Text,
+            State = this.stateComboBox.Text,
+            Zipcode = int.Parse(this.zipcodeInput.Text)
+        };
+
+        // TODO: Add Customer
+    }
 
     private void addEmployeeButton_Click(object sender, EventArgs e)
     {

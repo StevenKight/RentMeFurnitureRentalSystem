@@ -25,7 +25,7 @@ public partial class MainScreenForm : Form
 
     private void addEmployeeButton_Click(object sender, EventArgs e)
     {
-        var addEmployeeForm = new addEmployeeForm();
+        var addEmployeeForm = new addUserForm(true);
         addEmployeeForm.StartPosition = FormStartPosition.Manual;
         addEmployeeForm.Left = this.Left + (this.Width - addEmployeeForm.Width) / 2;
         addEmployeeForm.Top = this.Top + (this.Height - addEmployeeForm.Height) / 2;
@@ -35,6 +35,12 @@ public partial class MainScreenForm : Form
 
     private void addCustomerButton_Click(object sender, EventArgs e)
     {
+        var addCustomerForm = new addUserForm(false);
+        addCustomerForm.StartPosition = FormStartPosition.Manual;
+        addCustomerForm.Left = this.Left + (this.Width - addCustomerForm.Width) / 2;
+        addCustomerForm.Top = this.Top + (this.Height - addCustomerForm.Height) / 2;
+
+        addCustomerForm.ShowDialog();
     }
 
     private void logoutButton_Click(object sender, EventArgs e)

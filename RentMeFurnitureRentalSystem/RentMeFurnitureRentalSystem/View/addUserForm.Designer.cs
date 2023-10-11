@@ -1,6 +1,6 @@
 ﻿namespace RentMeFurnitureRentalSystem.view
 {
-    partial class addEmployeeForm
+    partial class addUserForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.addDialogHeading = new System.Windows.Forms.Label();
             this.usernameInput = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
             this.passwordInput = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.firstnameInput = new System.Windows.Forms.TextBox();
@@ -50,31 +50,31 @@
             this.streetAdressInput = new System.Windows.Forms.TextBox();
             this.zipcodeInput = new System.Windows.Forms.TextBox();
             this.stateComboBox = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.roleLabel = new System.Windows.Forms.Label();
             this.roleComboBox = new System.Windows.Forms.ComboBox();
             this.cancelButton = new System.Windows.Forms.Button();
-            this.addEmployeeButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // label1
+            // usernameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 83);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Username";
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Location = new System.Drawing.Point(15, 83);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(75, 20);
+            this.usernameLabel.TabIndex = 0;
+            this.usernameLabel.Text = "Username";
             // 
-            // label2
+            // addDialogHeading
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(146, 12);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(212, 41);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Add Employee";
+            this.addDialogHeading.AutoSize = true;
+            this.addDialogHeading.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addDialogHeading.Location = new System.Drawing.Point(146, 12);
+            this.addDialogHeading.Name = "addDialogHeading";
+            this.addDialogHeading.Size = new System.Drawing.Size(167, 41);
+            this.addDialogHeading.TabIndex = 1;
+            this.addDialogHeading.Text = "Add Dialog";
             // 
             // usernameInput
             // 
@@ -84,14 +84,14 @@
             this.usernameInput.Size = new System.Drawing.Size(145, 27);
             this.usernameInput.TabIndex = 2;
             // 
-            // label3
+            // passwordLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(260, 83);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Password";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(260, 83);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(70, 20);
+            this.passwordLabel.TabIndex = 3;
+            this.passwordLabel.Text = "Password";
             // 
             // passwordInput
             // 
@@ -247,14 +247,14 @@
             this.stateComboBox.Size = new System.Drawing.Size(145, 28);
             this.stateComboBox.TabIndex = 22;
             // 
-            // label13
+            // roleLabel
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(178, 427);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(39, 20);
-            this.label13.TabIndex = 23;
-            this.label13.Text = "Role";
+            this.roleLabel.AutoSize = true;
+            this.roleLabel.Location = new System.Drawing.Point(178, 427);
+            this.roleLabel.Name = "roleLabel";
+            this.roleLabel.Size = new System.Drawing.Size(39, 20);
+            this.roleLabel.TabIndex = 23;
+            this.roleLabel.Text = "Role";
             // 
             // roleComboBox
             // 
@@ -276,16 +276,15 @@
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
-            // addEmployeeButton
+            // addButton
             // 
-            this.addEmployeeButton.Location = new System.Drawing.Point(336, 472);
-            this.addEmployeeButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.addEmployeeButton.Name = "addEmployeeButton";
-            this.addEmployeeButton.Size = new System.Drawing.Size(145, 31);
-            this.addEmployeeButton.TabIndex = 26;
-            this.addEmployeeButton.Text = "Add Employee";
-            this.addEmployeeButton.UseVisualStyleBackColor = true;
-            this.addEmployeeButton.Click += new System.EventHandler(this.addEmployeeButton_Click);
+            this.addButton.Location = new System.Drawing.Point(336, 472);
+            this.addButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(145, 31);
+            this.addButton.TabIndex = 26;
+            this.addButton.Text = "Add Employee";
+            this.addButton.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -296,15 +295,15 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Firstname";
             // 
-            // addEmployeeForm
+            // addUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 509);
-            this.Controls.Add(this.addEmployeeButton);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.roleComboBox);
-            this.Controls.Add(this.label13);
+            this.Controls.Add(this.roleLabel);
             this.Controls.Add(this.stateComboBox);
             this.Controls.Add(this.zipcodeInput);
             this.Controls.Add(this.streetAdressInput);
@@ -324,12 +323,12 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.passwordInput);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.usernameInput);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.addDialogHeading);
+            this.Controls.Add(this.usernameLabel);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "addEmployeeForm";
+            this.Name = "addUserForm";
             this.Text = "addEmployeeForm";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -338,10 +337,10 @@
 
         #endregion
 
-        private Label label1;
-        private Label label2;
+        private Label usernameLabel;
+        private Label addDialogHeading;
         private TextBox usernameInput;
-        private Label label3;
+        private Label passwordLabel;
         private TextBox passwordInput;
         private Label label5;
         private TextBox firstnameInput;
@@ -360,10 +359,10 @@
         private TextBox streetAdressInput;
         private TextBox zipcodeInput;
         private ComboBox stateComboBox;
-        private Label label13;
+        private Label roleLabel;
         private ComboBox roleComboBox;
         private Button cancelButton;
-        private Button addEmployeeButton;
+        private Button addButton;
         private Label label4;
     }
 }
