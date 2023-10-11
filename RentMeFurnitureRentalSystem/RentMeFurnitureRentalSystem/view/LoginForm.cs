@@ -18,15 +18,21 @@ public partial class Form1 : Form
 
     private void loginButton_Click(object sender, EventArgs e)
     {
+        this.errorMessageLabel.Text = string.Empty;
         var username = this.usernameInput.Text;
         var password = this.passwordInput.Text;
         Debug.WriteLine(username);
         Debug.WriteLine(password);
-        var mainWindow = new MainScreenForm();
-        Hide();
-        mainWindow.ShowDialog();
-        
-        
+        if (!this.checkCredentials(username, password))
+        {
+            this.errorMessageLabel.Text = @"Username or Password is incorrect";
+        }
+        else
+        {
+            var mainWindow = new MainScreenForm();
+            Hide();
+            mainWindow.ShowDialog();
+        }
     }
 
     private bool checkCredentials(string username, string password)
