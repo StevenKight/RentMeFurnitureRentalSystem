@@ -25,6 +25,8 @@ public partial class MainScreenForm : Form
         Location = new Point(x, y);
         this.LoggedInEmployee = employee;
         this.employeeLabel.Text = employee.EmployeeNum + ": " + employee.Firstname;
+        this.checkIfAdmin();
+
     }
 
     #endregion
@@ -51,6 +53,15 @@ public partial class MainScreenForm : Form
         var loginForm = new Form1();
         loginForm.ShowDialog();
         Close();
+    }
+
+    private void checkIfAdmin()
+    {
+        if (!this.LoggedInEmployee.Role.Equals("administrator"))
+        {
+            this.addEmployeeButton.Enabled = false;
+            this.addEmployeeButton.Hide();
+        }
     }
 
     #endregion
