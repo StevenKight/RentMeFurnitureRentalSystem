@@ -1,15 +1,20 @@
-using System.Diagnostics;
-
 namespace RentMeFurnitureRentalSystem;
 
 public partial class Form1 : Form
 {
-
     #region Constructors
 
     public Form1()
     {
         this.InitializeComponent();
+
+        var screenWidth = Screen.PrimaryScreen.Bounds.Width;
+        var screenHeight = Screen.PrimaryScreen.Bounds.Height;
+
+        StartPosition = FormStartPosition.Manual;
+        var x = (screenWidth - Width) / 2;
+        var y = (screenHeight - Height) / 2;
+        Location = new Point(x, y);
     }
 
     #endregion
@@ -21,17 +26,34 @@ public partial class Form1 : Form
         this.errorMessageLabel.Text = string.Empty;
         var username = this.usernameInput.Text;
         var password = this.passwordInput.Text;
-        Debug.WriteLine(username);
-        Debug.WriteLine(password);
+
         if (!this.checkCredentials(username, password))
         {
             this.errorMessageLabel.Text = @"Username or Password is incorrect";
         }
         else
         {
-            var mainWindow = new MainScreenForm();
-            Hide();
-            mainWindow.ShowDialog();
+            this.displayDashboard();
+        }
+    }
+
+    private void displayDashboard()
+    {
+        var mainWindow = new MainScreenForm();
+
+        this.usernameInput.Text = "";
+        this.passwordInput.Text = "";
+        Hide();
+
+        var result = mainWindow.ShowDialog();
+
+        if (result == DialogResult.Continue)
+        {
+            Show();
+        }
+        else
+        {
+            Close();
         }
     }
 
@@ -44,7 +66,9 @@ public partial class Form1 : Form
         {
             return true;
         }
+
         return false;
     }
+
     #endregion
 }

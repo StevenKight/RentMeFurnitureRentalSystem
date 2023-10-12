@@ -9,6 +9,14 @@ public partial class MainScreenForm : Form
     public MainScreenForm()
     {
         this.InitializeComponent();
+
+        var screenWidth = Screen.PrimaryScreen.Bounds.Width;
+        var screenHeight = Screen.PrimaryScreen.Bounds.Height;
+
+        StartPosition = FormStartPosition.Manual;
+        var x = (screenWidth - Width) / 2;
+        var y = (screenHeight - Height) / 2;
+        Location = new Point(x, y);
     }
 
     #endregion
@@ -17,24 +25,25 @@ public partial class MainScreenForm : Form
 
     private void addEmployeeButton_Click(object sender, EventArgs e)
     {
-        this.Hide();
         var addEmployeeForm = new addEmployeeForm();
+        addEmployeeForm.StartPosition = FormStartPosition.Manual;
+        addEmployeeForm.Left = Left + (Width - addEmployeeForm.Width) / 2;
+        addEmployeeForm.Top = Top + (Height - addEmployeeForm.Height) / 2;
+
         addEmployeeForm.ShowDialog();
-        this.Close();
     }
 
     private void addCustomerButton_Click(object sender, EventArgs e)
     {
     }
+
     private void logoutButton_Click(object sender, EventArgs e)
     {
-        this.Hide();
+        Hide();
         var loginForm = new Form1();
         loginForm.ShowDialog();
-        this.Close();
+        Close();
     }
 
     #endregion
-
-
 }

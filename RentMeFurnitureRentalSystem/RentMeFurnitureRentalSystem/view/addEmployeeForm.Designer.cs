@@ -55,6 +55,8 @@
             this.roleComboBox = new System.Windows.Forms.ComboBox();
             this.cancelButton = new System.Windows.Forms.Button();
             this.addEmployeeButton = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.emailInput = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -259,7 +261,7 @@
             this.roleComboBox.FormattingEnabled = true;
             this.roleComboBox.Location = new System.Drawing.Point(58, 339);
             this.roleComboBox.Name = "roleComboBox";
-            this.roleComboBox.Size = new System.Drawing.Size(85, 23);
+            this.roleComboBox.Size = new System.Drawing.Size(126, 23);
             this.roleComboBox.TabIndex = 24;
             // 
             // cancelButton
@@ -282,11 +284,29 @@
             this.addEmployeeButton.UseVisualStyleBackColor = true;
             this.addEmployeeButton.Click += new System.EventHandler(this.addEmployeeButton_Click);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(222, 207);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 15);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Email:";
+            // 
+            // emailInput
+            // 
+            this.emailInput.Location = new System.Drawing.Point(267, 204);
+            this.emailInput.Name = "emailInput";
+            this.emailInput.Size = new System.Drawing.Size(147, 23);
+            this.emailInput.TabIndex = 28;
+            // 
             // addEmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(441, 450);
+            this.Controls.Add(this.emailInput);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.addEmployeeButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.roleComboBox);
@@ -350,5 +370,7 @@
         private ComboBox roleComboBox;
         private Button cancelButton;
         private Button addEmployeeButton;
+        private Label label14;
+        private TextBox emailInput;
     }
 }
