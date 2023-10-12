@@ -1,7 +1,6 @@
 -- TODO: Check data-types
 -- TODO: Check on delete and on update clauses
 -- TODO: Fix schema name
--- use cs3230f23d;
 -- CREATE SCHEMA `local-project`;
 
 -- Drop Tables
@@ -46,7 +45,6 @@ CREATE TABLE `local-project`.`role` (
 CREATE TABLE `local-project`.`employee` (
     employee_num INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(45) NOT NULL,
-    `password` VARCHAR(45) NOT NULL,
     fname VARCHAR(45) NOT NULL,
     lname VARCHAR(45) NOT NULL,
     gender VARCHAR(45) NOT NULL,
