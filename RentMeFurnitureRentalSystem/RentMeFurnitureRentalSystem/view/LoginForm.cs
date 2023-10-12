@@ -1,4 +1,5 @@
 using RentMeFurnitureRentalSystem.DAL;
+using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem;
 
@@ -28,6 +29,7 @@ public partial class Form1 : Form
 
     private void loginButton_Click(object sender, EventArgs e)
     {
+        var employeeDal = new EmployeeDAL();
         this.errorMessageLabel.Text = string.Empty;
         var username = this.usernameInput.Text;
         var password = this.passwordInput.Text;
@@ -38,14 +40,14 @@ public partial class Form1 : Form
         }
         else
         {
-
-            this.displayDashboard();
+            var loggedInEmployee = employeeDal.GetEmployeeFromUsername(username);
+            this.displayDashboard(loggedInEmployee);
         }
     }
 
-    private void displayDashboard()
+    private void displayDashboard(Employee employee)
     {
-        var mainWindow = new MainScreenForm();
+        var mainWindow = new MainScreenForm(employee);
 
         this.usernameInput.Text = "";
         this.passwordInput.Text = "";

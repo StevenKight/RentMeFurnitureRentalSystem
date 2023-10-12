@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.addCustomerButton = new System.Windows.Forms.Button();
             this.logoutButton = new System.Windows.Forms.Button();
+            this.employeeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // addEmployeeButton
@@ -74,11 +75,20 @@
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
+            // employeeLabel
+            // 
+            this.employeeLabel.AutoSize = true;
+            this.employeeLabel.Location = new System.Drawing.Point(37, 20);
+            this.employeeLabel.Name = "employeeLabel";
+            this.employeeLabel.Size = new System.Drawing.Size(0, 15);
+            this.employeeLabel.TabIndex = 4;
+            // 
             // MainScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.employeeLabel);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.addCustomerButton);
             this.Controls.Add(this.label1);
@@ -96,5 +106,6 @@
         private Label label1;
         private Button addCustomerButton;
         private Button logoutButton;
+        private Label employeeLabel;
     }
 }

@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Microsoft.VisualBasic.Logging;
+using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
@@ -41,10 +42,48 @@ public class EmployeeDAL
         return false;
     }
 
-    //public Employee GetEmployeeFromUsername(string username)
-    //{
+    public Employee GetEmployeeFromUsername(string username)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        var employee = new Employee();
+        connection.Open();
 
-    //}
+        var query =
+            "Select * from employee where username=@username";
+       
+        try
+        {
+            var command = new MySqlCommand(query, connection);
+            command.Parameters.Add("@username", MySqlDbType.VarChar).Value = username;
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    employee.EmployeeNum = reader.GetInt32(0);
+                    employee.Username = reader.GetString(1);
+                    employee.Password = reader.GetString(2);
+                    employee.Firstname = reader.GetString(3);
+                    employee.Lastname = reader.GetString(4);
+                    employee.Gender = reader.GetString(5);
+                    employee.Phone = reader.GetString(6);
+                    employee.email = reader.GetString(7);
+                    employee.Dob = reader.GetDateTime(8);
+                    employee.Address = reader.GetString(9);
+                    employee.City = reader.GetString(10);
+                    employee.State = reader.GetString(11);
+                    employee.Zipcode = reader.GetString(12);
+                    employee.Role = reader.GetString(13);
+
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Error: " + e.Message);
+        }
+
+        return employee;
+    }
 
     #endregion
 }

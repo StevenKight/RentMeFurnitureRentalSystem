@@ -1,12 +1,18 @@
-﻿using RentMeFurnitureRentalSystem.view;
+﻿using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.view;
 
 namespace RentMeFurnitureRentalSystem;
 
 public partial class MainScreenForm : Form
 {
+    #region properties
+    public Employee LoggedInEmployee { get; set; }
+    
+
+    #endregion
     #region Constructors
 
-    public MainScreenForm()
+    public MainScreenForm(Employee employee)
     {
         this.InitializeComponent();
 
@@ -17,6 +23,8 @@ public partial class MainScreenForm : Form
         var x = (screenWidth - Width) / 2;
         var y = (screenHeight - Height) / 2;
         Location = new Point(x, y);
+        this.LoggedInEmployee = employee;
+        this.employeeLabel.Text = employee.EmployeeNum + ": " + employee.Firstname;
     }
 
     #endregion
