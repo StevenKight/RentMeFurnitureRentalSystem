@@ -5,13 +5,16 @@ namespace RentMeFurnitureRentalSystem.DAL;
 
 public class EmployeeDAL
 {
+    #region Methods
+
     public bool CreateEmployee(Employee employee)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
         connection.Open();
 
-        var query = "insert into employee(username,password,fname,lname,gender,phone,email,dob,address,city,state,zip,role_name) values(@username,@password,@firstname,@lastname,@gender,@phone,@email,@dob,@address,@city,@state,@zipcode,@role)";
+        var query =
+            "insert into employee(username,password,fname,lname,gender,phone,email,dob,address,city,state,zip,role_name) values(@username,@password,@firstname,@lastname,@gender,@phone,@email,@dob,@address,@city,@state,@zipcode,@role)";
         var command = new MySqlCommand(query, connection);
 
         command.Parameters.Add("@username", MySqlDbType.VarChar).Value = employee.Username;
@@ -28,16 +31,20 @@ public class EmployeeDAL
         command.Parameters.Add("@zipcode", MySqlDbType.VarChar).Value = employee.Zipcode;
         command.Parameters.Add("@role", MySqlDbType.VarChar).Value = employee.Role;
 
-        int rowsAffected = command.ExecuteNonQuery();
+        var rowsAffected = command.ExecuteNonQuery();
 
         if (rowsAffected > 0)
         {
             return true;
         }
-        else
-        {
-            return false;
-        }
 
+        return false;
     }
+
+    //public Employee GetEmployeeFromUsername(string username)
+    //{
+
+    //}
+
+    #endregion
 }

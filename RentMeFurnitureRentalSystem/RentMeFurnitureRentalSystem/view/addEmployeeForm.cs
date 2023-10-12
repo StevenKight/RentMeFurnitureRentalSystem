@@ -1,20 +1,10 @@
-﻿using System.Diagnostics;
-using RentMeFurnitureRentalSystem.DAL;
+﻿using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.view;
 
 public partial class addEmployeeForm : Form
 {
-    #region props
-
-    public LoginDAL LoginDal;
-
-    public EmployeeDAL EmployeeDal;
-
-    public RolesDal RolesDal;
-
-    #endregion
     #region Constructors
 
     public addEmployeeForm()
@@ -34,8 +24,6 @@ public partial class addEmployeeForm : Form
 
     private void addEmployeeButton_Click(object sender, EventArgs e)
     {
-       
-
         var username = this.usernameInput.Text;
         var password = this.passwordInput.Text;
         var firstName = this.firstnameInput.Text;
@@ -49,7 +37,7 @@ public partial class addEmployeeForm : Form
         var state = this.stateComboBox.Text;
         var zipcode = this.zipcodeInput.Text;
         var role = this.roleComboBox.Text;
-        var login = new Login()
+        var login = new Login
         {
             Username = username,
             Password = password
@@ -59,7 +47,8 @@ public partial class addEmployeeForm : Form
             MessageBox.Show("Error Creating Login");
             return;
         }
-        var employee = new Employee()
+
+        var employee = new Employee
         {
             Username = login.Username,
             Password = login.Password,
@@ -74,7 +63,6 @@ public partial class addEmployeeForm : Form
             Gender = gender,
             Dob = dob,
             Role = role
-
         };
         if (!this.EmployeeDal.CreateEmployee(employee))
         {
@@ -83,14 +71,12 @@ public partial class addEmployeeForm : Form
         }
 
         MessageBox.Show("Employee created sucessfully");
-
-
     }
 
     private void cancelButton_Click(object sender, EventArgs e)
     {
-        this.Hide();
-        this.Close();
+        Hide();
+        Close();
     }
 
     private void populateGenderComboBox()
@@ -107,13 +93,12 @@ public partial class addEmployeeForm : Form
 
     private void populateRolesComboBox()
     {
-        
         this.roleComboBox.Items.Clear();
         var roles = this.RolesDal.GetRoles();
 
         this.roleComboBox.Items.AddRange(roles.ToArray());
-
     }
+
     private void populateStateComboBox()
     {
         this.stateComboBox.Items.Clear();
@@ -173,6 +158,16 @@ public partial class addEmployeeForm : Form
 
         this.stateComboBox.Items.AddRange(stateNames);
     }
+
+    #endregion
+
+    #region props
+
+    public LoginDAL LoginDal;
+
+    public EmployeeDAL EmployeeDal;
+
+    public RolesDal RolesDal;
 
     #endregion
 }

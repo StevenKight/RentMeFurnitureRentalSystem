@@ -1,34 +1,33 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace RentMeFurnitureRentalSystem.DAL
+namespace RentMeFurnitureRentalSystem.DAL;
+
+public class RolesDal
 {
-    public class RolesDal
+    #region Methods
+
+    public IList<string> GetRoles()
     {
-        public IList<string> GetRoles()
+        var roles = new List<string>();
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        connection.Open();
+
+        var query = "select * from role";
+        using (var command = new MySqlCommand(query, connection))
         {
-            var roles = new List<string>();
-            using var connection = new MySqlConnection(Connection.ConnectionString);
-
-            connection.Open();
-
-            var query = "select * from role";
-            using (var command = new MySqlCommand(query, connection))
+            using (var reader = command.ExecuteReader())
             {
-                using (var reader = command.ExecuteReader())
+                while (reader.Read())
                 {
-                    while (reader.Read())
-                    {
-                        var roleName = reader.GetString(0);
-                        roles.Add(roleName);
-                    }
+                    var roleName = reader.GetString(0);
+                    roles.Add(roleName);
                 }
             }
-            return roles;
         }
+
+        return roles;
     }
+
+    #endregion
 }

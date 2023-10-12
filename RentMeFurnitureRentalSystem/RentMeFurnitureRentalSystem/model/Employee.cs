@@ -1,6 +1,4 @@
-﻿
-
-namespace RentMeFurnitureRentalSystem.model;
+﻿namespace RentMeFurnitureRentalSystem.model;
 
 public class Employee
 {
@@ -23,10 +21,6 @@ public class Employee
     #endregion
 
     #region Constructors
-
-    public Employee()
-    {
-    }
 
     #endregion
 }
