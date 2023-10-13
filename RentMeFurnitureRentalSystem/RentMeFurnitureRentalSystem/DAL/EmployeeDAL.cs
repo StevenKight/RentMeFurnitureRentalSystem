@@ -4,11 +4,11 @@ using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
 
-public class EmployeeDAL
+public class EmployeeDal
 {
     #region Methods
 
-    public bool CreateEmployee(Employee employee)
+    public static bool CreateEmployee(Employee employee)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
@@ -24,7 +24,7 @@ public class EmployeeDAL
         command.Parameters.Add("@lastname", MySqlDbType.VarChar).Value = employee.Lastname;
         command.Parameters.Add("@gender", MySqlDbType.VarChar).Value = employee.Gender;
         command.Parameters.Add("@phone", MySqlDbType.VarChar).Value = employee.Phone;
-        command.Parameters.Add("@email", MySqlDbType.VarChar).Value = employee.email;
+        command.Parameters.Add("@email", MySqlDbType.VarChar).Value = employee.Email;
         command.Parameters.Add("@dob", MySqlDbType.VarChar).Value = employee.Dob.ToString("yyyy-MM-dd");
         command.Parameters.Add("@address", MySqlDbType.VarChar).Value = employee.Address;
         command.Parameters.Add("@city", MySqlDbType.VarChar).Value = employee.City;
@@ -42,7 +42,7 @@ public class EmployeeDAL
         return false;
     }
 
-    public Employee GetEmployeeFromUsername(string username)
+    public static Employee GetEmployeeFromUsername(string username)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         var employee = new Employee();
@@ -66,7 +66,7 @@ public class EmployeeDAL
                     employee.Lastname = reader.GetString(4);
                     employee.Gender = reader.GetString(5);
                     employee.Phone = reader.GetString(6);
-                    employee.email = reader.GetString(7);
+                    employee.Email = reader.GetString(7);
                     employee.Dob = reader.GetDateTime(8);
                     employee.Address = reader.GetString(9);
                     employee.City = reader.GetString(10);

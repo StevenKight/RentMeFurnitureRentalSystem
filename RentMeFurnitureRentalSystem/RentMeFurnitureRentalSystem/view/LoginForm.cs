@@ -6,8 +6,6 @@ namespace RentMeFurnitureRentalSystem;
 public partial class Form1 : Form
 {
 
-
-
     #region Constructors
 
     public Form1()
@@ -29,7 +27,6 @@ public partial class Form1 : Form
 
     private void loginButton_Click(object sender, EventArgs e)
     {
-        var employeeDal = new EmployeeDAL();
         this.errorMessageLabel.Text = string.Empty;
         var username = this.usernameInput.Text;
         var password = this.passwordInput.Text;
@@ -40,7 +37,7 @@ public partial class Form1 : Form
         }
         else
         {
-            var loggedInEmployee = employeeDal.GetEmployeeFromUsername(username);
+            var loggedInEmployee = EmployeeDal.GetEmployeeFromUsername(username);
             this.displayDashboard(loggedInEmployee);
         }
     }
@@ -67,8 +64,7 @@ public partial class Form1 : Form
 
     private bool checkCredentials(string username, string password)
     {
-        var loginDal = new LoginDAL();
-        var loginInfo = loginDal.CheckLogin(username);
+        var loginInfo = LoginDal.CheckLogin(username);
 
         if (username.Equals(loginInfo.Username) && password.Equals(loginInfo.Password))
         {

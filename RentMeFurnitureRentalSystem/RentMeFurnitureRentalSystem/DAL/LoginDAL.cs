@@ -3,11 +3,11 @@ using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
 
-public class LoginDAL
+public class LoginDal
 {
     #region Methods
 
-    public bool CreateLogin(Login login)
+    public static bool CreateLogin(Login login)
     {
         if (login.Username.Equals("") || login.Password.Equals(""))
         {
@@ -40,7 +40,7 @@ public class LoginDAL
         return false;
     }
 
-    public Login CheckLogin(string username)
+    public static Login CheckLogin(string username)
     {
         var login = new Login();
         using var connection = new MySqlConnection(Connection.ConnectionString);

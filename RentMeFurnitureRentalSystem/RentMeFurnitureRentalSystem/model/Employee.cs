@@ -15,7 +15,7 @@ public class Employee
     public string City { get; set; }
     public string State { get; set; }
     public string Zipcode { get; set; }
-    public string email { get; set; }
+    public string Email { get; set; }
     public string Role { get; set; }
 
     #endregion

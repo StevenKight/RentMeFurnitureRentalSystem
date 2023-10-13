@@ -5,11 +5,12 @@ namespace RentMeFurnitureRentalSystem;
 
 public partial class MainScreenForm : Form
 {
-    #region properties
+    #region Data Members
     public Employee LoggedInEmployee { get; set; }
     
 
     #endregion
+
     #region Constructors
 
     public MainScreenForm(Employee employee)
@@ -55,10 +56,9 @@ public partial class MainScreenForm : Form
 
     private void logoutButton_Click(object sender, EventArgs e)
     {
-        Hide();
-        var loginForm = new Form1();
-        loginForm.ShowDialog();
-        Close();
+        this.LoggedInEmployee = null;
+        this.DialogResult = DialogResult.Continue;
+        this.Close();
     }
 
     private void checkIfAdmin()

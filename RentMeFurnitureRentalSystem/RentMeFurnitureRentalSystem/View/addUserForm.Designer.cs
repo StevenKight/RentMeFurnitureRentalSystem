@@ -150,7 +150,7 @@
             this.genderComboBox.Location = new System.Drawing.Point(96, 251);
             this.genderComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(64, 28);
+            this.genderComboBox.Size = new System.Drawing.Size(145, 28);
             this.genderComboBox.TabIndex = 11;
             this.genderComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.genderComboBox_Validating);
             // 
@@ -174,16 +174,17 @@
             // 
             // dobTimePicker
             // 
-            this.dobTimePicker.Location = new System.Drawing.Point(236, 249);
+            this.dobTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dobTimePicker.Location = new System.Drawing.Point(336, 249);
             this.dobTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dobTimePicker.Name = "dobTimePicker";
-            this.dobTimePicker.Size = new System.Drawing.Size(245, 27);
+            this.dobTimePicker.Size = new System.Drawing.Size(145, 27);
             this.dobTimePicker.TabIndex = 13;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(166, 254);
+            this.label8.Location = new System.Drawing.Point(266, 254);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 20);
             this.label8.TabIndex = 14;
@@ -265,7 +266,7 @@
             // roleLabel
             // 
             this.roleLabel.AutoSize = true;
-            this.roleLabel.Location = new System.Drawing.Point(178, 427);
+            this.roleLabel.Location = new System.Drawing.Point(170, 427);
             this.roleLabel.Name = "roleLabel";
             this.roleLabel.Size = new System.Drawing.Size(39, 20);
             this.roleLabel.TabIndex = 23;
@@ -274,10 +275,10 @@
             // roleComboBox
             // 
             this.roleComboBox.FormattingEnabled = true;
-            this.roleComboBox.Location = new System.Drawing.Point(223, 424);
+            this.roleComboBox.Location = new System.Drawing.Point(215, 424);
             this.roleComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.roleComboBox.Name = "roleComboBox";
-            this.roleComboBox.Size = new System.Drawing.Size(110, 28);
+            this.roleComboBox.Size = new System.Drawing.Size(128, 28);
             this.roleComboBox.TabIndex = 24;
             this.roleComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.roleComboBox_Validating);
             // 
@@ -338,6 +339,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(504, 525);
+            this.Controls.Add(this.dobTimePicker);
             this.Controls.Add(this.emailInput);
             this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.addButton);
@@ -353,7 +355,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.dobTimePicker);
             this.Controls.Add(this.phoneInput);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.genderComboBox);

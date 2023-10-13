@@ -6,7 +6,7 @@ public class RolesDal
 {
     #region Methods
 
-    public IList<string> GetRoles()
+    public static IList<string> GetRoles()
     {
         var roles = new List<string>();
         using var connection = new MySqlConnection(Connection.ConnectionString);

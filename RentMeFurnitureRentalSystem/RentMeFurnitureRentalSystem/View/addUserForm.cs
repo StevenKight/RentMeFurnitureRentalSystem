@@ -1,4 +1,5 @@
 ﻿using RentMeFurnitureRentalSystem.DAL;
+using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
@@ -23,7 +24,7 @@ public partial class addUserForm : Form
             "Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
             "South Dakota","Tennessee","Texas","Utah","Vermont",
             "Virginia","Washington","West Virginia","Wisconsin","Wyoming"};
-    private static string[] genderOptions = { "M", "F", "O" };
+    private static string[] genderOptions = { "O", "M", "F" };
 
     // TODO: Make a request to db
     private static string[] roleOptions = { "admin", "employee" };
@@ -35,6 +36,7 @@ public partial class addUserForm : Form
     public addUserForm(bool employee)
     {
         this.InitializeComponent();
+        this.AutoValidate = AutoValidate.EnableAllowFocusChange;
         this.populateGenderComboBox();
         this.populateStateComboBox();
 
@@ -57,6 +59,8 @@ public partial class addUserForm : Form
         this.roleLabel.Show();
         this.roleComboBox.Show();
         this.roleComboBox.Validating += this.roleComboBox_Validating;
+        var roles = RolesDal.GetRoles();
+        this.roleComboBox.DataSource = roles;
 
         this.addDialogHeading.Text = "Add Employee";
         this.addButton.Click += this.addEmployeeButton_Click;
@@ -94,8 +98,8 @@ public partial class addUserForm : Form
         }
 
         var customer = new Customer() {
-            FirstName = this.firstnameInput.Text,
-            LastName = this.lastnameInput.Text,
+            Firstname = this.firstnameInput.Text,
+            Lastname = this.lastnameInput.Text,
             Gender = this.genderComboBox.Text,
             Email = this.emailInput.Text,
             Birthday = this.dobTimePicker.Value.Date,
@@ -133,39 +137,59 @@ public partial class addUserForm : Form
             return;
         }
 
-        var username = this.usernameInput.Text;
-        var password = this.passwordInput.Text;
-        var firstName = this.firstnameInput;
-        var lastName = this.lastnameInput;
-        var gender = this.genderComboBox.Text;
-        var email = this.emailInput.Text;
-        var dob = this.dobTimePicker.Text;
-        var phone = this.phoneInput.Text;
-        var streetAddress = this.streetAdressInput;
-        var city = this.cityInput;
-        var state = this.stateComboBox.Text;
-        var zipcode = this.zipcodeInput.Text;
-        var role = this.roleComboBox.Text;
+        var login = new Login
+        {
+            Username = this.usernameInput.Text,
+            Password = this.passwordInput.Text
+        };
+        if (!LoginDal.CreateLogin(login))
+        {
+            MessageBox.Show("Error Creating Login");
+            return;
+        }
 
-        // TODO: Add Employee
+        var employee = new Employee
+        {
+            Username = login.Username,
+            Password = login.Password,
+            Firstname = this.firstnameInput.Text,
+            Lastname = this.lastnameInput.Text,
+            Gender = this.genderComboBox.Text,
+            Email = this.emailInput.Text,
+            Dob = this.dobTimePicker.Value.Date,
+            Phone = this.phoneInput.Text,
+            Address = this.streetAdressInput.Text,
+            City = this.cityInput.Text,
+            State = this.stateComboBox.Text,
+            Zipcode = this.zipcodeInput.Text,
+            Role = this.roleComboBox.Text
+        };
+        if (!EmployeeDal.CreateEmployee(employee))
+        {
+            MessageBox.Show("Error Creating employee");
+            return;
+        }
+
+        MessageBox.Show("Employee created sucessfully");
     }
 
     private void cancelButton_Click(object sender, EventArgs e)
     {
+        this.AutoValidate = AutoValidate.Disable;
         this.Close();
     }
 
     private void populateGenderComboBox()
     {
         this.genderComboBox.Items.Clear();
-        this.genderComboBox.Items.AddRange(genderOptions);
+        this.genderComboBox.DataSource = genderOptions;
     }
 
     private void populateStateComboBox()
     {
 
         this.stateComboBox.Items.Clear();
-        this.stateComboBox.Items.AddRange(stateOptions);
+        this.stateComboBox.DataSource = stateOptions;
     }
 
     private void textInput_Validating(object sender, System.ComponentModel.CancelEventArgs e)

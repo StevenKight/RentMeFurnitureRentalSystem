@@ -9,8 +9,8 @@ namespace RentMeFurnitureRentalSystem.Model
 {
     public class Customer
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
         public DateTime Birthday { get; set; }
         public string Gender { get; set; }
         public string Email { get; set; }
@@ -27,8 +27,8 @@ namespace RentMeFurnitureRentalSystem.Model
         
         public void FillCommand(MySqlCommand query)
         {
-            query.Parameters.Add("@fname", MySqlDbType.VarChar).Value = this.FirstName;
-            query.Parameters.Add("@lname", MySqlDbType.VarChar).Value = this.LastName;
+            query.Parameters.Add("@fname", MySqlDbType.VarChar).Value = this.Firstname;
+            query.Parameters.Add("@lname", MySqlDbType.VarChar).Value = this.Lastname;
             query.Parameters.Add("@dob", MySqlDbType.DateTime).Value = this.Birthday;
             query.Parameters.Add("@gender", MySqlDbType.VarChar).Value = this.Gender;
             query.Parameters.Add("@email", MySqlDbType.VarChar).Value = this.Email;
