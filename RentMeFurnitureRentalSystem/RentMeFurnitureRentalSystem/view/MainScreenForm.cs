@@ -7,7 +7,6 @@ public partial class MainScreenForm : Form
 {
     #region Data Members
     public Employee LoggedInEmployee { get; set; }
-    
 
     #endregion
 
@@ -15,6 +14,7 @@ public partial class MainScreenForm : Form
 
     public MainScreenForm(Employee employee)
     {
+        
         this.InitializeComponent();
 
         var screenWidth = Screen.PrimaryScreen.Bounds.Width;
@@ -24,10 +24,10 @@ public partial class MainScreenForm : Form
         var x = (screenWidth - Width) / 2;
         var y = (screenHeight - Height) / 2;
         Location = new Point(x, y);
-        this.LoggedInEmployee = employee;
-        this.employeeLabel.Text = employee.EmployeeNum + ": " + employee.Firstname;
-        this.checkIfAdmin();
 
+        this.LoggedInEmployee = employee;
+        this.employeeDisplay.Text = employee.Firstname + " " + employee.Lastname;
+        this.checkIfAdmin();
     }
 
     #endregion
