@@ -1,11 +1,12 @@
-using System.Diagnostics;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using RentMeFurnitureRentalSystem.DAL;
+using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem;
 
 public partial class Form1 : Form
 {
+
+
 
     #region Constructors
 
@@ -13,13 +14,13 @@ public partial class Form1 : Form
     {
         this.InitializeComponent();
 
-        int screenWidth = Screen.PrimaryScreen.Bounds.Width;
-        int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+        var screenWidth = Screen.PrimaryScreen.Bounds.Width;
+        var screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
-        this.StartPosition = FormStartPosition.Manual;
-        int x = (screenWidth - this.Width) / 2;
-        int y = (screenHeight - this.Height) / 2;
-        this.Location = new Point(x, y);
+        StartPosition = FormStartPosition.Manual;
+        var x = (screenWidth - Width) / 2;
+        var y = (screenHeight - Height) / 2;
+        Location = new Point(x, y);
     }
 
     #endregion
@@ -28,39 +29,54 @@ public partial class Form1 : Form
 
     private void loginButton_Click(object sender, EventArgs e)
     {
+        var employeeDal = new EmployeeDAL();
+        this.errorMessageLabel.Text = string.Empty;
         var username = this.usernameInput.Text;
         var password = this.passwordInput.Text;
-        
-        if (this.checkCredentials(username, password))
+
+        if (!this.checkCredentials(username, password))
         {
-            this.displayDashboard();
+            this.errorMessageLabel.Text = @"Username or Password is incorrect";
         }
         else
         {
-            MessageBox.Show("Invalid Credentials");
+            var loggedInEmployee = employeeDal.GetEmployeeFromUsername(username);
+            this.displayDashboard(loggedInEmployee);
         }
     }
-    
-    private void displayDashboard()
+
+    private void displayDashboard(Employee employee)
     {
-        var mainWindow = new MainScreenForm();
+        var mainWindow = new MainScreenForm(employee);
 
         this.usernameInput.Text = "";
         this.passwordInput.Text = "";
-        this.Hide();
-        
-        DialogResult result = mainWindow.ShowDialog();
+        Hide();
 
-        if (result == DialogResult.Continue) this.Show();
-        else this.Close();
+        var result = mainWindow.ShowDialog();
+
+        if (result == DialogResult.Continue)
+        {
+            Show();
+        }
+        else
+        {
+            Close();
+        }
     }
 
     private bool checkCredentials(string username, string password)
     {
-        //TODO swap this with a check to the DB for a employee
-        var tempUsername = "username";
-        var tempPassword = "password";
-        return username.Equals(tempUsername) && password.Equals(tempPassword);
+        var loginDal = new LoginDAL();
+        var loginInfo = loginDal.CheckLogin(username);
+
+        if (username.Equals(loginInfo.Username) && password.Equals(loginInfo.Password))
+        {
+            return true;
+        }
+
+        return false;
     }
+
     #endregion
 }
