@@ -1,22 +1,32 @@
-﻿using RentMeFurnitureRentalSystem.view;
+﻿using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.view;
 
 namespace RentMeFurnitureRentalSystem;
 
 public partial class MainScreenForm : Form
 {
+    #region properties
+    public Employee LoggedInEmployee { get; set; }
+    
+
+    #endregion
     #region Constructors
 
-    public MainScreenForm()
+    public MainScreenForm(Employee employee)
     {
         this.InitializeComponent();
 
-        int screenWidth = Screen.PrimaryScreen.Bounds.Width;
-        int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+        var screenWidth = Screen.PrimaryScreen.Bounds.Width;
+        var screenHeight = Screen.PrimaryScreen.Bounds.Height;
 
-        this.StartPosition = FormStartPosition.Manual;
-        int x = (screenWidth - this.Width) / 2;
-        int y = (screenHeight - this.Height) / 2;
-        this.Location = new Point(x, y);
+        StartPosition = FormStartPosition.Manual;
+        var x = (screenWidth - Width) / 2;
+        var y = (screenHeight - Height) / 2;
+        Location = new Point(x, y);
+        this.LoggedInEmployee = employee;
+        this.employeeLabel.Text = employee.EmployeeNum + ": " + employee.Firstname;
+        this.checkIfAdmin();
+
     }
 
     #endregion
@@ -27,8 +37,8 @@ public partial class MainScreenForm : Form
     {
         var addEmployeeForm = new addEmployeeForm();
         addEmployeeForm.StartPosition = FormStartPosition.Manual;
-        addEmployeeForm.Left = this.Left + (this.Width - addEmployeeForm.Width) / 2;
-        addEmployeeForm.Top = this.Top + (this.Height - addEmployeeForm.Height) / 2;
+        addEmployeeForm.Left = Left + (Width - addEmployeeForm.Width) / 2;
+        addEmployeeForm.Top = Top + (Height - addEmployeeForm.Height) / 2;
 
         addEmployeeForm.ShowDialog();
     }
@@ -39,12 +49,20 @@ public partial class MainScreenForm : Form
 
     private void logoutButton_Click(object sender, EventArgs e)
     {
-        // TODO: Logout user
-        this.DialogResult = DialogResult.Continue;
-        this.Close();
+        Hide();
+        var loginForm = new Form1();
+        loginForm.ShowDialog();
+        Close();
+    }
+
+    private void checkIfAdmin()
+    {
+        if (!this.LoggedInEmployee.Role.Equals("administrator"))
+        {
+            this.addEmployeeButton.Enabled = false;
+            this.addEmployeeButton.Hide();
+        }
     }
 
     #endregion
-
-
 }
