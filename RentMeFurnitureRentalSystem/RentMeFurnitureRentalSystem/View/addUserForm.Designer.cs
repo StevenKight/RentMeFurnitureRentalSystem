@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.usernameLabel = new System.Windows.Forms.Label();
             this.addDialogHeading = new System.Windows.Forms.Label();
             this.usernameInput = new System.Windows.Forms.TextBox();
@@ -55,6 +56,10 @@
             this.cancelButton = new System.Windows.Forms.Button();
             this.addButton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.emailInput = new System.Windows.Forms.TextBox();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.addUserError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.addUserError)).BeginInit();
             this.SuspendLayout();
             // 
             // usernameLabel
@@ -83,6 +88,7 @@
             this.usernameInput.Name = "usernameInput";
             this.usernameInput.Size = new System.Drawing.Size(145, 27);
             this.usernameInput.TabIndex = 2;
+            this.usernameInput.Validating += new System.ComponentModel.CancelEventHandler(this.textInput_Validating);
             // 
             // passwordLabel
             // 
@@ -100,6 +106,7 @@
             this.passwordInput.Name = "passwordInput";
             this.passwordInput.Size = new System.Drawing.Size(145, 27);
             this.passwordInput.TabIndex = 4;
+            this.passwordInput.Validating += new System.ComponentModel.CancelEventHandler(this.textInput_Validating);
             // 
             // label5
             // 
@@ -117,6 +124,7 @@
             this.firstnameInput.Name = "firstnameInput";
             this.firstnameInput.Size = new System.Drawing.Size(145, 27);
             this.firstnameInput.TabIndex = 7;
+            this.firstnameInput.Validating += new System.ComponentModel.CancelEventHandler(this.textInput_Validating);
             // 
             // lastnameInput
             // 
@@ -125,11 +133,12 @@
             this.lastnameInput.Name = "lastnameInput";
             this.lastnameInput.Size = new System.Drawing.Size(145, 27);
             this.lastnameInput.TabIndex = 8;
+            this.lastnameInput.Validating += new System.ComponentModel.CancelEventHandler(this.textInput_Validating);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(33, 196);
+            this.label6.Location = new System.Drawing.Point(33, 254);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(57, 20);
             this.label6.TabIndex = 9;
@@ -138,11 +147,12 @@
             // genderComboBox
             // 
             this.genderComboBox.FormattingEnabled = true;
-            this.genderComboBox.Location = new System.Drawing.Point(122, 193);
+            this.genderComboBox.Location = new System.Drawing.Point(96, 251);
             this.genderComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(75, 28);
-            this.genderComboBox.TabIndex = 10;
+            this.genderComboBox.Size = new System.Drawing.Size(64, 28);
+            this.genderComboBox.TabIndex = 11;
+            this.genderComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.genderComboBox_Validating);
             // 
             // label7
             // 
@@ -159,11 +169,12 @@
             this.phoneInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.phoneInput.Name = "phoneInput";
             this.phoneInput.Size = new System.Drawing.Size(145, 27);
-            this.phoneInput.TabIndex = 12;
+            this.phoneInput.TabIndex = 10;
+            this.phoneInput.Validating += new System.ComponentModel.CancelEventHandler(this.phoneInput_Validating);
             // 
             // dobTimePicker
             // 
-            this.dobTimePicker.Location = new System.Drawing.Point(196, 249);
+            this.dobTimePicker.Location = new System.Drawing.Point(236, 249);
             this.dobTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dobTimePicker.Name = "dobTimePicker";
             this.dobTimePicker.Size = new System.Drawing.Size(245, 27);
@@ -172,11 +183,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(96, 254);
+            this.label8.Location = new System.Drawing.Point(166, 254);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(94, 20);
+            this.label8.Size = new System.Drawing.Size(64, 20);
             this.label8.TabIndex = 14;
-            this.label8.Text = "Date of Birth";
+            this.label8.Text = "Birthday";
             // 
             // label9
             // 
@@ -220,7 +231,8 @@
             this.cityInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cityInput.Name = "cityInput";
             this.cityInput.Size = new System.Drawing.Size(145, 27);
-            this.cityInput.TabIndex = 19;
+            this.cityInput.TabIndex = 20;
+            this.cityInput.Validating += new System.ComponentModel.CancelEventHandler(this.textInput_Validating);
             // 
             // streetAdressInput
             // 
@@ -228,7 +240,8 @@
             this.streetAdressInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.streetAdressInput.Name = "streetAdressInput";
             this.streetAdressInput.Size = new System.Drawing.Size(145, 27);
-            this.streetAdressInput.TabIndex = 20;
+            this.streetAdressInput.TabIndex = 19;
+            this.streetAdressInput.Validating += new System.ComponentModel.CancelEventHandler(this.textInput_Validating);
             // 
             // zipcodeInput
             // 
@@ -237,6 +250,7 @@
             this.zipcodeInput.Name = "zipcodeInput";
             this.zipcodeInput.Size = new System.Drawing.Size(145, 27);
             this.zipcodeInput.TabIndex = 21;
+            this.zipcodeInput.Validating += new System.ComponentModel.CancelEventHandler(this.textInput_Validating);
             // 
             // stateComboBox
             // 
@@ -246,6 +260,7 @@
             this.stateComboBox.Name = "stateComboBox";
             this.stateComboBox.Size = new System.Drawing.Size(145, 28);
             this.stateComboBox.TabIndex = 22;
+            this.stateComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.stateComboBox_Validating);
             // 
             // roleLabel
             // 
@@ -264,6 +279,7 @@
             this.roleComboBox.Name = "roleComboBox";
             this.roleComboBox.Size = new System.Drawing.Size(110, 28);
             this.roleComboBox.TabIndex = 24;
+            this.roleComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.roleComboBox_Validating);
             // 
             // cancelButton
             // 
@@ -271,7 +287,7 @@
             this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(137, 31);
-            this.cancelButton.TabIndex = 25;
+            this.cancelButton.TabIndex = 26;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -282,7 +298,7 @@
             this.addButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(145, 31);
-            this.addButton.TabIndex = 26;
+            this.addButton.TabIndex = 25;
             this.addButton.Text = "Add Employee";
             this.addButton.UseVisualStyleBackColor = true;
             // 
@@ -295,11 +311,35 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "Firstname";
             // 
+            // emailInput
+            // 
+            this.emailInput.Location = new System.Drawing.Point(96, 196);
+            this.emailInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.emailInput.Name = "emailInput";
+            this.emailInput.Size = new System.Drawing.Size(145, 27);
+            this.emailInput.TabIndex = 9;
+            this.emailInput.Validating += new System.ComponentModel.CancelEventHandler(this.emailInput_Validating);
+            // 
+            // emailLabel
+            // 
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Location = new System.Drawing.Point(40, 199);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(46, 20);
+            this.emailLabel.TabIndex = 27;
+            this.emailLabel.Text = "Email";
+            // 
+            // addUserError
+            // 
+            this.addUserError.ContainerControl = this;
+            // 
             // addUserForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(504, 509);
+            this.ClientSize = new System.Drawing.Size(504, 525);
+            this.Controls.Add(this.emailInput);
+            this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.addButton);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.roleComboBox);
@@ -329,7 +369,8 @@
             this.Controls.Add(this.usernameLabel);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "addUserForm";
-            this.Text = "addEmployeeForm";
+            this.Text = "Add User";
+            ((System.ComponentModel.ISupportInitialize)(this.addUserError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,5 +405,8 @@
         private Button cancelButton;
         private Button addButton;
         private Label label4;
+        private TextBox emailInput;
+        private Label emailLabel;
+        private ErrorProvider addUserError;
     }
 }
