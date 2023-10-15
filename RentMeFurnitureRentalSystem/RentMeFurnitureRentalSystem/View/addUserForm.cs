@@ -1,33 +1,17 @@
-﻿using RentMeFurnitureRentalSystem.DAL;
+﻿using System.ComponentModel;
+using System.Text.RegularExpressions;
+using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace RentMeFurnitureRentalSystem.view;
 
 public partial class addUserForm : Form
 {
+    #region Data members
+
     public const string EMAILREGEX = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
     public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
-
-    #region Data Members
-
-    private static string[] stateOptions = { "Alabama","Alaska","Arizona","Arkansas","California",
-            "Colorado","Connecticut","Delaware","Florida","Georgia",
-            "Hawaii","Idaho","Illinois","Indiana","Iowa",
-            "Kansas","Kentucky","Louisiana","Maine","Maryland",
-            "Massachusetts","Michigan","Minnesota","Mississippi","Missouri",
-            "Montana","Nebraska","Nevada","New Hampshire","New Jersey",
-            "New Mexico","New York","North Carolina","North Dakota","Ohio",
-            "Oklahoma","Oregon","Pennsylvania","Rhode Island","South Carolina",
-            "South Dakota","Tennessee","Texas","Utah","Vermont",
-            "Virginia","Washington","West Virginia","Wisconsin","Wyoming"};
-    private static string[] genderOptions = { "O", "M", "F" };
-
-    // TODO: Make a request to db
-    private static string[] roleOptions = { "admin", "employee" };
 
     #endregion
 
@@ -35,16 +19,90 @@ public partial class addUserForm : Form
 
     public addUserForm(bool employee)
     {
-        this.InitializeComponent();
-        this.AutoValidate = AutoValidate.EnableAllowFocusChange;
-        this.populateGenderComboBox();
-        this.populateStateComboBox();
+        this.initializeDisplay();
 
-        if (employee) this.displayEmployeeData();
-        else this.displayCustomerData();
+        if (employee)
+        {
+            this.displayEmployeeData();
+        }
+        else
+        {
+            this.displayCustomerData();
+        }
+    }
+
+    public addUserForm(Customer customer)
+    {
+        this.initializeDisplay();
+        this.displayCustomerData();
+
+        this.addButton.Enabled = false;
+        this.addButton.Hide();
+
+        this.fillDialog(customer);
+
+        this.cancelButton.Text = "Close";
+    }
+
+    public addUserForm(Employee employee)
+    {
+        this.initializeDisplay();
+        this.displayEmployeeData();
+
+        this.addButton.Enabled = false;
+        this.addButton.Hide();
+
+        this.fillDialog(employee);
+
+        this.cancelButton.Text = "Close";
     }
 
     #endregion
+
+    #region Methods
+
+    private void fillDialog(Customer customer)
+    {
+        this.firstnameInput.Text = customer.Firstname;
+        this.lastnameInput.Text = customer.Lastname;
+        this.emailInput.Text = customer.Email;
+        this.phoneInput.Text = customer.Phone;
+        this.genderComboBox.Text = customer.Gender;
+        this.dobTimePicker.Value = customer.Birthday;
+        this.streetAdressInput.Text = customer.StreetAddress;
+        this.zipcodeInput.Text = customer.Zipcode;
+        this.cityInput.Text = customer.City;
+        this.stateComboBox.Text = customer.State;
+    }
+
+    private void fillDialog(Employee employee)
+    {
+        this.usernameInput.Text = employee.Username;
+        this.passwordInput.Text = employee.Password;
+        this.firstnameInput.Text = employee.Firstname;
+        this.lastnameInput.Text = employee.Lastname;
+        this.emailInput.Text = employee.Email;
+        this.phoneInput.Text = employee.Phone;
+        this.genderComboBox.Text = employee.Gender;
+        this.dobTimePicker.Value = employee.Dob;
+        this.streetAdressInput.Text = employee.Address;
+        this.zipcodeInput.Text = employee.Zipcode;
+        this.cityInput.Text = employee.City;
+        this.stateComboBox.Text = employee.State;
+        this.roleComboBox.Text = employee.Role;
+    }
+    private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        this.passwordInput.UseSystemPasswordChar = !this.showPasswordCheckBox.Checked;
+    }
+
+    private void initializeDisplay()
+    {
+        this.InitializeComponent();
+        AutoValidate = AutoValidate.EnableAllowFocusChange;
+        this.populateGenderComboBox();
+        this.populateStateComboBox();
+    }
 
     private void displayEmployeeData()
     {
@@ -91,13 +149,14 @@ public partial class addUserForm : Form
 
     private void addCustomerButton_Click(object sender, EventArgs e)
     {
-        if (!this.ValidateChildren(ValidationConstraints.Enabled))
+        if (!ValidateChildren(ValidationConstraints.Enabled))
         {
             MessageBox.Show("Please fix errors before submitting");
             return;
         }
 
-        var customer = new Customer() {
+        var customer = new Customer
+        {
             Firstname = this.firstnameInput.Text,
             Lastname = this.lastnameInput.Text,
             Gender = this.genderComboBox.Text,
@@ -121,7 +180,7 @@ public partial class addUserForm : Form
             }
 
             MessageBox.Show("Customer Added");
-            this.Close();
+            Close();
         }
         catch
         {
@@ -131,7 +190,7 @@ public partial class addUserForm : Form
 
     private void addEmployeeButton_Click(object sender, EventArgs e)
     {
-        if (!this.ValidateChildren(ValidationConstraints.Enabled))
+        if (!ValidateChildren(ValidationConstraints.Enabled))
         {
             MessageBox.Show("Please fix errors before submitting");
             return;
@@ -175,8 +234,8 @@ public partial class addUserForm : Form
 
     private void cancelButton_Click(object sender, EventArgs e)
     {
-        this.AutoValidate = AutoValidate.Disable;
-        this.Close();
+        AutoValidate = AutoValidate.Disable;
+        Close();
     }
 
     private void populateGenderComboBox()
@@ -187,12 +246,11 @@ public partial class addUserForm : Form
 
     private void populateStateComboBox()
     {
-
         this.stateComboBox.Items.Clear();
         this.stateComboBox.DataSource = stateOptions;
     }
 
-    private void textInput_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+    private void textInput_Validating(object sender, CancelEventArgs e)
     {
         var inputBox = sender as TextBox;
 
@@ -208,7 +266,7 @@ public partial class addUserForm : Form
         }
     }
 
-    private void emailInput_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+    private void emailInput_Validating(object sender, CancelEventArgs e)
     {
         var value = this.emailInput.Text;
 
@@ -224,7 +282,7 @@ public partial class addUserForm : Form
         }
     }
 
-    private void phoneInput_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+    private void phoneInput_Validating(object sender, CancelEventArgs e)
     {
         var value = this.phoneInput.Text;
         value = value.Replace("-", "");
@@ -232,13 +290,13 @@ public partial class addUserForm : Form
         if (!Regex.IsMatch(value, PHONEREGEXNODASH))
         {
             e.Cancel = true;
-            this.addUserError.SetError(this.phoneInput, "Phone number should have 10 digits and no other characters other than '-'.");
+            this.addUserError.SetError(this.phoneInput,
+                "Phone number should have 10 digits and no other characters other than '-'.");
         }
         else
         {
             e.Cancel = false;
             this.addUserError.SetError(this.phoneInput, "");
-
 
             var areaCode = value.Substring(0, 3);
             var next = value.Substring(3, 3);
@@ -248,7 +306,7 @@ public partial class addUserForm : Form
         }
     }
 
-    private void genderComboBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+    private void genderComboBox_Validating(object sender, CancelEventArgs e)
     {
         if (!genderOptions.Contains(this.genderComboBox.Text))
         {
@@ -262,7 +320,7 @@ public partial class addUserForm : Form
         }
     }
 
-    private void stateComboBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+    private void stateComboBox_Validating(object sender, CancelEventArgs e)
     {
         if (!stateOptions.Contains(this.stateComboBox.Text))
         {
@@ -276,7 +334,7 @@ public partial class addUserForm : Form
         }
     }
 
-    private void roleComboBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+    private void roleComboBox_Validating(object sender, CancelEventArgs e)
     {
         if (!roleOptions.Contains(this.roleComboBox.Text))
         {
@@ -289,4 +347,29 @@ public partial class addUserForm : Form
             this.addUserError.SetError(this.roleComboBox, "");
         }
     }
+
+    #endregion
+
+    #region Data Members
+
+    private static readonly string[] stateOptions =
+    {
+        "Alabama", "Alaska", "Arizona", "Arkansas", "California",
+        "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
+        "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
+        "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+        "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri",
+        "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
+        "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+        "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
+        "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
+        "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+    };
+
+    private static readonly string[] genderOptions = { "O", "M", "F" };
+
+    // TODO: Make a request to db
+    private static readonly string[] roleOptions = { "admin", "employee" };
+
+    #endregion
 }

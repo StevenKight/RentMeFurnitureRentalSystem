@@ -5,7 +5,6 @@ namespace RentMeFurnitureRentalSystem;
 
 public partial class Form1 : Form
 {
-
     #region Constructors
 
     public Form1()
@@ -40,8 +39,9 @@ public partial class Form1 : Form
         {
             this.loginErrorProvider.Clear();
             this.errorTextBox.Hide();
-            
+
             var loggedInEmployee = EmployeeDal.GetEmployeeFromUsername(username);
+
             this.displayDashboard(loggedInEmployee);
         }
     }
@@ -88,4 +88,9 @@ public partial class Form1 : Form
     }
 
     #endregion
+
+    private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        this.passwordInput.UseSystemPasswordChar = !this.showPasswordCheckBox.Checked;
+    }
 }
