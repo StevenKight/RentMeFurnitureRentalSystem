@@ -47,19 +47,17 @@ public class LoginDal
 
         connection.Open();
 
-        var query = "select username,password from login where username=@username";
+        var query = "select * from login where username=@username";
         try
         {
             var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@username", MySqlDbType.VarChar).Value = username;
 
-            using (var reader = command.ExecuteReader())
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                while (reader.Read())
-                {
-                    login.Username = reader.GetString(0);
-                    login.Password = reader.GetString(1);
-                }
+                login.Username = reader.GetString(0);
+                login.Password = reader.GetString(1);
             }
         }
         catch (Exception e)

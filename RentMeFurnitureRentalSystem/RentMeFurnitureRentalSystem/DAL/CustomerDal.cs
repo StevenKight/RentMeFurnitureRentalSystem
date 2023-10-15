@@ -1,38 +1,59 @@
 ﻿using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
-namespace RentMeFurnitureRentalSystem.DAL
+namespace RentMeFurnitureRentalSystem.DAL;
+
+public class CustomerDal
 {
-    public class CustomerDal
+    #region Methods
+
+    public static List<Customer> GetAllCustomers()
     {
-        public static bool CreateCustomer(Customer newCustomer)
+        var customerList = new List<Customer>();
+
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var query = "SELECT * FROM customer";
+        connection.Open();
+
+        using var adapter = new MySqlDataAdapter(query, connection);
+
+        using var command = new MySqlCommand(query, connection);
+        using var reader = command.ExecuteReader();
+
+        while (reader.Read())
         {
-            using var connection = new MySqlConnection(Connection.ConnectionString);
+            var customer = new Customer();
+            customer.SelectCommand(reader);
+            customerList.Add(customer);
+        }
 
-            var query = "INSERT INTO `customer`(`fname`,`lname`,`dob`,`gender`,`email`,`phone`,`address`,`city`,`state`,`zip`)" +
-                           "VALUES (@fname, @lname, @dob, @gender, @email, @phone, @address, @city, @state, @zip);";
-            connection.Open();
+        return customerList;
+    }
 
-            using var command = new MySqlCommand(query, connection);
-            newCustomer.FillCommand(command);
+    public static bool CreateCustomer(Customer newCustomer)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
 
-            try
-            {
-                var affected = command.ExecuteNonQuery();
+        var query =
+            "INSERT INTO `customer`(`fname`,`lname`,`dob`,`gender`,`email`,`phone`,`address`,`city`,`state`,`zip`)" +
+            "VALUES (@fname, @lname, @dob, @gender, @email, @phone, @address, @city, @state, @zip);";
+        connection.Open();
 
-                return affected >= 1;
-            }
-            catch 
-            {
-                return false;
-            }
+        using var command = new MySqlCommand(query, connection);
+        newCustomer.FillCommand(command);
+
+        try
+        {
+            var affected = command.ExecuteNonQuery();
+
+            return affected >= 1;
+        }
+        catch
+        {
+            return false;
         }
     }
+
+    #endregion
 }
