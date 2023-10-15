@@ -173,7 +173,6 @@
             Controls.Add(label1);
             Name = "MainScreenForm";
             Text = "MainScreenForm";
-            Paint += MainScreenForm_Paint;
             ((System.ComponentModel.ISupportInitialize)customerGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)employeeGridView).EndInit();
             dashboardTabs.ResumeLayout(false);

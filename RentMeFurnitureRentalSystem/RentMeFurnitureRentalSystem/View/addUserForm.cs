@@ -12,6 +12,7 @@ public partial class addUserForm : Form
 
     public const string EMAILREGEX = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
     public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
+    public const string ZIPREGEX = @"^[0-9]{5}(?:-[0-9]{4})?$";
 
     #endregion
 
@@ -372,4 +373,15 @@ public partial class addUserForm : Form
     private static readonly string[] roleOptions = { "admin", "employee" };
 
     #endregion
+
+    private void zipcodeInput_Validating(object sender, CancelEventArgs e)
+    {
+        var zip = this.zipcodeInput.Text;
+
+        if (!Regex.IsMatch(zip, ZIPREGEX))
+        {
+            this.addUserError.SetError(this.zipcodeInput,
+                "Given zipcode is invalid.");
+        }
+    }
 }

@@ -93,10 +93,6 @@ public partial class MainScreenForm : Form
         }).ToList();
     }
 
-    private void MainScreenForm_Paint(object sender, PaintEventArgs e)
-    {
-    }
-
     private void addEmployeeButton_Click(object sender, EventArgs e)
     {
         var addEmployeeForm = new addUserForm(true);
@@ -135,8 +131,6 @@ public partial class MainScreenForm : Form
 
         this.dashboardTabs.TabPages.Remove(this.employeesTab);
     }
-
-    #endregion
 
     private void customerGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
     {
@@ -207,4 +201,7 @@ public partial class MainScreenForm : Form
 
         employeeDisplayForm.ShowDialog();
     }
+
+    #endregion
+
 }

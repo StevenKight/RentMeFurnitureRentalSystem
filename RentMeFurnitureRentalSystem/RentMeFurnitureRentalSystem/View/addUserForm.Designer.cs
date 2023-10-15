@@ -223,7 +223,7 @@
             // 
             // cityInput
             // 
-            cityInput.Location = new Point(294, 230);
+            cityInput.Location = new Point(84, 277);
             cityInput.Name = "cityInput";
             cityInput.Size = new Size(127, 23);
             cityInput.TabIndex = 20;
@@ -239,11 +239,11 @@
             // 
             // zipcodeInput
             // 
-            zipcodeInput.Location = new Point(84, 277);
+            zipcodeInput.Location = new Point(294, 230);
             zipcodeInput.Name = "zipcodeInput";
             zipcodeInput.Size = new Size(127, 23);
             zipcodeInput.TabIndex = 21;
-            zipcodeInput.Validating += textInput_Validating;
+            zipcodeInput.Validating += zipcodeInput_Validating;
             // 
             // stateComboBox
             // 
