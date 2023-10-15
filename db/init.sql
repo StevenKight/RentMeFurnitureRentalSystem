@@ -1,29 +1,23 @@
--- TODO: Check data-types
--- TODO: Check on delete and on update clauses
--- TODO: Fix schema name
--- CREATE SCHEMA `local-project`;
-
 -- Drop Tables
-DROP TABLE IF EXISTS `local-project`.`return_item`;
-DROP TABLE IF EXISTS `local-project`.`return`;
-DROP TABLE IF EXISTS `local-project`.`rental_item`;
-DROP TABLE IF EXISTS `local-project`.`rental`;
-DROP TABLE IF EXISTS `local-project`.`furniture`;
-DROP TABLE IF EXISTS `local-project`.`style`;
-DROP TABLE IF EXISTS `local-project`.`category`;
-DROP TABLE IF EXISTS `local-project`.`employee`;
-DROP TABLE IF EXISTS `local-project`.`role`;
-DROP TABLE IF EXISTS `local-project`.`customer`;
-DROP TABLE IF EXISTS `local-project`.`login`;
+DROP TABLE IF EXISTS `return_item`;
+DROP TABLE IF EXISTS `return`;
+DROP TABLE IF EXISTS `rental_item`;
+DROP TABLE IF EXISTS `rental`;
+DROP TABLE IF EXISTS `furniture`;
+DROP TABLE IF EXISTS `style`;
+DROP TABLE IF EXISTS `category`;
+DROP TABLE IF EXISTS `employee`;
+DROP TABLE IF EXISTS `role`;
+DROP TABLE IF EXISTS `customer`;
+DROP TABLE IF EXISTS `login`;
 
 -- Create Tables
--- FIXME: Should login store things that are in both employee and customer?
-CREATE TABLE `local-project`.`login`(
+CREATE TABLE `login`(
     username VARCHAR(45) PRIMARY KEY,
     `password` VARCHAR(45) NOT NULL
 );
 
-CREATE TABLE `local-project`.`customer`(
+CREATE TABLE `customer`(
     member_id INT AUTO_INCREMENT PRIMARY KEY,
     fname VARCHAR(45) NOT NULL,
     lname VARCHAR(45) NOT NULL,
@@ -35,14 +29,14 @@ CREATE TABLE `local-project`.`customer`(
     city VARCHAR(45) NOT NULL,
     `state` VARCHAR(45) NOT NULL,
     zip VARCHAR(45) NOT NULL,
-    register_date DATE NOT NULL
+    register_date DATETIME NOT NULL DEFAULT NOW()
 );
 
-CREATE TABLE `local-project`.`role` (
+CREATE TABLE `role` (
     `name` VARCHAR(45) PRIMARY KEY
 );
 
-CREATE TABLE `local-project`.`employee` (
+CREATE TABLE `employee` (
     employee_num INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(45) NOT NULL,
     fname VARCHAR(45) NOT NULL,
@@ -57,27 +51,27 @@ CREATE TABLE `local-project`.`employee` (
     zip VARCHAR(45) NOT NULL,
     role_name VARCHAR(45) NOT NULL,
     FOREIGN KEY (username)
-        REFERENCES `local-project`.`login` (username)
+        REFERENCES `login` (username)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (role_name)
-        REFERENCES `local-project`.`role` (`name`)
+        REFERENCES `role` (`name`)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-CREATE TABLE `local-project`.`category` (
+CREATE TABLE `category` (
     `name` VARCHAR(45) PRIMARY KEY
 );
 
-CREATE TABLE `local-project`.`style` (
+CREATE TABLE `style` (
     `name` VARCHAR(45) PRIMARY KEY
 );
 
 -- FIXME: Indexing on category_name and style_name?
     -- INDEX `fk_furniture_category_idx` (category_name ASC),
     -- INDEX `fk_furniture_style_idx` (style_name ASC),
-CREATE TABLE `local-project`.`furniture` (
+CREATE TABLE `furniture` (
     furniture_id INT AUTO_INCREMENT PRIMARY KEY,
     category_name VARCHAR(45) NOT NULL,
     style_name VARCHAR(45) NOT NULL,
@@ -88,83 +82,83 @@ CREATE TABLE `local-project`.`furniture` (
     quantity INT NOT NULL,
     CONSTRAINT `fk_furniture_category`
         FOREIGN KEY (category_name)
-        REFERENCES `local-project`.`category` (`name`)
+        REFERENCES `category` (`name`)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     CONSTRAINT `fk_furniture_style`
         FOREIGN KEY (style_name)
-        REFERENCES `local-project`.`style` (`name`)
+        REFERENCES `style` (`name`)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-CREATE TABLE `local-project`.`rental`(
+CREATE TABLE `rental`(
     rental_id INT AUTO_INCREMENT PRIMARY KEY,
     member_id INT NOT NULL,
     employee_num INT NOT NULL,
     `start_date` DATE NOT NULL,
     due_date DATE NOT NULL,
     FOREIGN KEY (member_id)
-        REFERENCES `local-project`.`customer` (member_id)
+        REFERENCES `customer` (member_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (employee_num)
-        REFERENCES `local-project`.`employee` (employee_num)
+        REFERENCES `employee` (employee_num)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-CREATE TABLE `local-project`.`rental_item`(
+CREATE TABLE `rental_item`(
     rental_id INT NOT NULL,
     furniture_id INT NOT NULL,
     quantity INT NOT NULL,
     PRIMARY KEY (rental_id, furniture_id),
     FOREIGN KEY (rental_id)
-        REFERENCES `local-project`.`rental` (rental_id)
+        REFERENCES `rental` (rental_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (furniture_id)
-        REFERENCES `local-project`.`furniture` (furniture_id)
+        REFERENCES `furniture` (furniture_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-CREATE TABLE `local-project`.`return`(
+CREATE TABLE `return`(
     return_id INT AUTO_INCREMENT PRIMARY KEY,
     member_id INT NOT NULL,
     employee_num INT NOT NULL,
     `return_date` DATE NOT NULL,
     FOREIGN KEY (member_id)
-        REFERENCES `local-project`.`customer` (member_id)
+        REFERENCES `customer` (member_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (employee_num)
-        REFERENCES `local-project`.`employee` (employee_num)
+        REFERENCES `employee` (employee_num)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-CREATE TABLE `local-project`.`return_item`(
+CREATE TABLE `return_item`(
     rental_id INT NOT NULL,
     furniture_id INT NOT NULL,
     return_id INT NOT NULL,
     quantity INT NOT NULL,
     PRIMARY KEY (return_id, furniture_id, rental_id),
     FOREIGN KEY (rental_id, furniture_id)
-        REFERENCES `local-project`.`rental_item` (rental_id, furniture_id)
+        REFERENCES `rental_item` (rental_id, furniture_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE,
     FOREIGN KEY (return_id)
-        REFERENCES `local-project`.`return` (return_id)
+        REFERENCES `return` (return_id)
         ON DELETE CASCADE
         ON UPDATE CASCADE
 );
 
-INSERT INTO `local-project`.`role` (`name`)
+INSERT INTO `role` (`name`)
 VALUES ('administrator'),
 	('employee');
 
-INSERT INTO `local-project`.`category` (`name`)
+INSERT INTO `category` (`name`)
 VALUES ('Living Room'),
 	('Bedroom'),
 	('Dining Room'),
@@ -191,7 +185,7 @@ VALUES ('Living Room'),
 	('Bohemian'),
 	('Traditional');
 
-INSERT INTO `local-project`.`style` (`name`)
+INSERT INTO `style` (`name`)
 VALUES ('Modern'),
 	('Contemporary'),
 	('Traditional'),
