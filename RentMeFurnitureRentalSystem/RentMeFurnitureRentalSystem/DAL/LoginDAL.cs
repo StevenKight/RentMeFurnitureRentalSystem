@@ -3,11 +3,11 @@ using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
 
-public class LoginDAL
+public class LoginDal
 {
     #region Methods
 
-    public bool CreateLogin(Login login)
+    public static bool CreateLogin(Login login)
     {
         if (login.Username.Equals("") || login.Password.Equals(""))
         {
@@ -40,26 +40,24 @@ public class LoginDAL
         return false;
     }
 
-    public Login CheckLogin(string username)
+    public static Login CheckLogin(string username)
     {
         var login = new Login();
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
         connection.Open();
 
-        var query = "select username,password from login where username=@username";
+        var query = "select * from login where username=@username";
         try
         {
             var command = new MySqlCommand(query, connection);
             command.Parameters.Add("@username", MySqlDbType.VarChar).Value = username;
 
-            using (var reader = command.ExecuteReader())
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
             {
-                while (reader.Read())
-                {
-                    login.Username = reader.GetString(0);
-                    login.Password = reader.GetString(1);
-                }
+                login.Username = reader.GetString(0);
+                login.Password = reader.GetString(1);
             }
         }
         catch (Exception e)

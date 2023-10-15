@@ -28,76 +28,158 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.addEmployeeButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.addCustomerButton = new System.Windows.Forms.Button();
-            this.logoutButton = new System.Windows.Forms.Button();
-            this.employeeLabel = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            addEmployeeButton = new Button();
+            label1 = new Label();
+            addCustomerButton = new Button();
+            logoutButton = new Button();
+            employeeDisplay = new TextBox();
+            customerGridView = new DataGridView();
+            employeeGridView = new DataGridView();
+            dashboardTabs = new TabControl();
+            customersTab = new TabPage();
+            employeesTab = new TabPage();
+            ((System.ComponentModel.ISupportInitialize)customerGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeGridView).BeginInit();
+            dashboardTabs.SuspendLayout();
+            customersTab.SuspendLayout();
+            employeesTab.SuspendLayout();
+            SuspendLayout();
             // 
             // addEmployeeButton
             // 
-            this.addEmployeeButton.Location = new System.Drawing.Point(12, 107);
-            this.addEmployeeButton.Name = "addEmployeeButton";
-            this.addEmployeeButton.Size = new System.Drawing.Size(134, 23);
-            this.addEmployeeButton.TabIndex = 0;
-            this.addEmployeeButton.Text = "Add Employee ";
-            this.addEmployeeButton.UseVisualStyleBackColor = true;
-            this.addEmployeeButton.Click += new System.EventHandler(this.addEmployeeButton_Click);
+            addEmployeeButton.Location = new Point(6, 6);
+            addEmployeeButton.Name = "addEmployeeButton";
+            addEmployeeButton.Size = new Size(134, 23);
+            addEmployeeButton.TabIndex = 0;
+            addEmployeeButton.Text = "Add Employee ";
+            addEmployeeButton.UseVisualStyleBackColor = true;
+            addEmployeeButton.Click += addEmployeeButton_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(247, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(301, 37);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Rental Furniture System ";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(248, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(301, 37);
+            label1.TabIndex = 1;
+            label1.Text = "Rental Furniture System ";
             // 
             // addCustomerButton
             // 
-            this.addCustomerButton.Location = new System.Drawing.Point(12, 149);
-            this.addCustomerButton.Name = "addCustomerButton";
-            this.addCustomerButton.Size = new System.Drawing.Size(134, 23);
-            this.addCustomerButton.TabIndex = 2;
-            this.addCustomerButton.Text = "Add Customer";
-            this.addCustomerButton.UseVisualStyleBackColor = true;
-            this.addCustomerButton.Click += new System.EventHandler(this.addCustomerButton_Click);
+            addCustomerButton.Location = new Point(6, 6);
+            addCustomerButton.Name = "addCustomerButton";
+            addCustomerButton.Size = new Size(134, 23);
+            addCustomerButton.TabIndex = 2;
+            addCustomerButton.Text = "Add Customer";
+            addCustomerButton.UseVisualStyleBackColor = true;
+            addCustomerButton.Click += addCustomerButton_Click;
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(692, 12);
-            this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(75, 23);
-            this.logoutButton.TabIndex = 3;
-            this.logoutButton.Text = "Logout";
-            this.logoutButton.UseVisualStyleBackColor = true;
-            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
+            logoutButton.Location = new Point(599, 28);
+            logoutButton.Name = "logoutButton";
+            logoutButton.Size = new Size(75, 23);
+            logoutButton.TabIndex = 3;
+            logoutButton.Text = "Logout";
+            logoutButton.UseVisualStyleBackColor = true;
+            logoutButton.Click += logoutButton_Click;
             // 
-            // employeeLabel
+            // employeeDisplay
             // 
-            this.employeeLabel.AutoSize = true;
-            this.employeeLabel.Location = new System.Drawing.Point(37, 20);
-            this.employeeLabel.Name = "employeeLabel";
-            this.employeeLabel.Size = new System.Drawing.Size(0, 15);
-            this.employeeLabel.TabIndex = 4;
+            employeeDisplay.BackColor = SystemColors.Control;
+            employeeDisplay.BorderStyle = BorderStyle.None;
+            employeeDisplay.Location = new Point(680, 32);
+            employeeDisplay.Margin = new Padding(3, 2, 3, 2);
+            employeeDisplay.Name = "employeeDisplay";
+            employeeDisplay.Size = new Size(109, 16);
+            employeeDisplay.TabIndex = 7;
+            employeeDisplay.Text = "USER";
+            employeeDisplay.TextAlign = HorizontalAlignment.Center;
+            // 
+            // customerGridView
+            // 
+            customerGridView.AllowUserToAddRows = false;
+            customerGridView.AllowUserToDeleteRows = false;
+            customerGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            customerGridView.Location = new Point(146, 6);
+            customerGridView.MultiSelect = false;
+            customerGridView.Name = "customerGridView";
+            customerGridView.ReadOnly = true;
+            customerGridView.RowHeadersVisible = false;
+            customerGridView.RowTemplate.Height = 25;
+            customerGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            customerGridView.Size = new Size(617, 341);
+            customerGridView.TabIndex = 10;
+            customerGridView.RowStateChanged += customerGridView_RowStateChanged;
+            customerGridView.MouseDoubleClick += customerGridView_MouseDoubleClick;
+            // 
+            // employeeGridView
+            // 
+            employeeGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            employeeGridView.Location = new Point(146, 6);
+            employeeGridView.Name = "employeeGridView";
+            employeeGridView.ReadOnly = true;
+            employeeGridView.RowHeadersVisible = false;
+            employeeGridView.RowTemplate.Height = 25;
+            employeeGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            employeeGridView.Size = new Size(617, 341);
+            employeeGridView.TabIndex = 11;
+            employeeGridView.RowStateChanged += employeeGridView_RowStateChanged;
+            employeeGridView.MouseDoubleClick += employeeGridView_MouseDoubleClick;
+            // 
+            // dashboardTabs
+            // 
+            dashboardTabs.Controls.Add(customersTab);
+            dashboardTabs.Controls.Add(employeesTab);
+            dashboardTabs.Location = new Point(12, 57);
+            dashboardTabs.Name = "dashboardTabs";
+            dashboardTabs.SelectedIndex = 0;
+            dashboardTabs.Size = new Size(777, 381);
+            dashboardTabs.TabIndex = 12;
+            // 
+            // customersTab
+            // 
+            customersTab.Controls.Add(addCustomerButton);
+            customersTab.Controls.Add(customerGridView);
+            customersTab.Location = new Point(4, 24);
+            customersTab.Name = "customersTab";
+            customersTab.Padding = new Padding(3);
+            customersTab.Size = new Size(769, 353);
+            customersTab.TabIndex = 0;
+            customersTab.Text = "Customers";
+            customersTab.UseVisualStyleBackColor = true;
+            // 
+            // employeesTab
+            // 
+            employeesTab.Controls.Add(employeeGridView);
+            employeesTab.Controls.Add(addEmployeeButton);
+            employeesTab.Location = new Point(4, 24);
+            employeesTab.Name = "employeesTab";
+            employeesTab.Padding = new Padding(3);
+            employeesTab.Size = new Size(769, 353);
+            employeesTab.TabIndex = 1;
+            employeesTab.Text = "Employees";
+            employeesTab.UseVisualStyleBackColor = true;
             // 
             // MainScreenForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.employeeLabel);
-            this.Controls.Add(this.logoutButton);
-            this.Controls.Add(this.addCustomerButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.addEmployeeButton);
-            this.Name = "MainScreenForm";
-            this.Text = "MainScreenForm";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dashboardTabs);
+            Controls.Add(employeeDisplay);
+            Controls.Add(logoutButton);
+            Controls.Add(label1);
+            Name = "MainScreenForm";
+            Text = "MainScreenForm";
+            ((System.ComponentModel.ISupportInitialize)customerGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeGridView).EndInit();
+            dashboardTabs.ResumeLayout(false);
+            customersTab.ResumeLayout(false);
+            employeesTab.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -106,6 +188,11 @@
         private Label label1;
         private Button addCustomerButton;
         private Button logoutButton;
-        private Label employeeLabel;
+        private TextBox employeeDisplay;
+        private DataGridView customerGridView;
+        private DataGridView employeeGridView;
+        private TabControl dashboardTabs;
+        private TabPage customersTab;
+        private TabPage employeesTab;
     }
 }

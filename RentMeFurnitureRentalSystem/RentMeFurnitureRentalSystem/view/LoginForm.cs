@@ -5,9 +5,6 @@ namespace RentMeFurnitureRentalSystem;
 
 public partial class Form1 : Form
 {
-
-
-
     #region Constructors
 
     public Form1()
@@ -21,6 +18,8 @@ public partial class Form1 : Form
         var x = (screenWidth - Width) / 2;
         var y = (screenHeight - Height) / 2;
         Location = new Point(x, y);
+
+        this.errorTextBox.Hide();
     }
 
     #endregion
@@ -29,18 +28,20 @@ public partial class Form1 : Form
 
     private void loginButton_Click(object sender, EventArgs e)
     {
-        var employeeDal = new EmployeeDAL();
-        this.errorMessageLabel.Text = string.Empty;
         var username = this.usernameInput.Text;
         var password = this.passwordInput.Text;
 
         if (!this.checkCredentials(username, password))
         {
-            this.errorMessageLabel.Text = @"Username or Password is incorrect";
+            this.errorTextBox.Show();
         }
         else
         {
-            var loggedInEmployee = employeeDal.GetEmployeeFromUsername(username);
+            this.loginErrorProvider.Clear();
+            this.errorTextBox.Hide();
+
+            var loggedInEmployee = EmployeeDal.GetEmployeeFromUsername(username);
+
             this.displayDashboard(loggedInEmployee);
         }
     }
@@ -67,16 +68,29 @@ public partial class Form1 : Form
 
     private bool checkCredentials(string username, string password)
     {
-        var loginDal = new LoginDAL();
-        var loginInfo = loginDal.CheckLogin(username);
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+        {
+            this.loginErrorProvider.SetError(this.usernameInput, "Username and Password cannot be empty");
+            this.loginErrorProvider.SetError(this.passwordInput, "Username and Password cannot be empty");
+            return false;
+        }
+
+        var loginInfo = LoginDal.CheckLogin(username);
 
         if (username.Equals(loginInfo.Username) && password.Equals(loginInfo.Password))
         {
             return true;
         }
 
+        this.loginErrorProvider.SetError(this.usernameInput, "Username and/or Password is incorrect.");
+        this.loginErrorProvider.SetError(this.passwordInput, "Username and/or Password is incorrect.");
         return false;
     }
 
     #endregion
+
+    private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
+    {
+        this.passwordInput.UseSystemPasswordChar = !this.showPasswordCheckBox.Checked;
+    }
 }
