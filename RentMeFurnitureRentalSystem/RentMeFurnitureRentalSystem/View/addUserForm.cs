@@ -137,6 +137,7 @@ public partial class addUserForm : Form
         this.passwordInput.Hide();
         this.passwordInput.Enabled = false;
         this.passwordInput.Validating -= this.textInput_Validating;
+        this.showPasswordCheckBox.Hide();
 
         this.roleLabel.Hide();
         this.roleComboBox.Hide();
@@ -170,23 +171,16 @@ public partial class addUserForm : Form
             Zipcode = this.zipcodeInput.Text
         };
 
-        // TODO: Add Customer
-        try
-        {
-            var added = CustomerDal.CreateCustomer(customer);
+        var added = CustomerDal.CreateCustomer(customer);
 
-            if (!added)
-            {
-                throw new Exception("User not added");
-            }
-
-            MessageBox.Show("Customer Added");
-            Close();
-        }
-        catch
+        if (!CustomerDal.CreateCustomer(customer))
         {
             MessageBox.Show("Error Adding Customer");
+            return;
         }
+
+        MessageBox.Show("Customer Added");
+        this.Close();
     }
 
     private void addEmployeeButton_Click(object sender, EventArgs e)
@@ -231,12 +225,13 @@ public partial class addUserForm : Form
         }
 
         MessageBox.Show("Employee created sucessfully");
+        this.Close();
     }
 
     private void cancelButton_Click(object sender, EventArgs e)
     {
         AutoValidate = AutoValidate.Disable;
-        Close();
+        this.Close();
     }
 
     private void populateGenderComboBox()
@@ -370,7 +365,7 @@ public partial class addUserForm : Form
     private static readonly string[] genderOptions = { "O", "M", "F" };
 
     // TODO: Make a request to db
-    private static readonly string[] roleOptions = { "admin", "employee" };
+    private static readonly string[] roleOptions = { "administrator", "employee" };
 
     #endregion
 
@@ -380,8 +375,14 @@ public partial class addUserForm : Form
 
         if (!Regex.IsMatch(zip, ZIPREGEX))
         {
+            e.Cancel = true;
             this.addUserError.SetError(this.zipcodeInput,
                 "Given zipcode is invalid.");
+        }
+        else
+        {
+            e.Cancel = false;
+            this.addUserError.SetError(this.zipcodeInput, "");
         }
     }
 }

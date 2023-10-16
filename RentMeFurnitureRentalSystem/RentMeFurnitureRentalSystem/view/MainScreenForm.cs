@@ -40,7 +40,8 @@ public partial class MainScreenForm : Form
         Location = new Point(x, y);
 
         this.LoggedInEmployee = employee;
-        this.employeeDisplay.Text = employee.Firstname + " " + employee.Lastname;
+        this.employeeDisplay.Text = employee.EmployeeNum + " " + employee.Username + @": " + 
+                                    employee.Firstname + " " + employee.Lastname;
         this.checkIfAdmin();
 
         this.getData();
