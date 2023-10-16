@@ -77,7 +77,7 @@
             // 
             // logoutButton
             // 
-            logoutButton.Location = new Point(599, 28);
+            logoutButton.Location = new Point(655, 28);
             logoutButton.Name = "logoutButton";
             logoutButton.Size = new Size(75, 23);
             logoutButton.TabIndex = 3;
@@ -89,10 +89,10 @@
             // 
             employeeDisplay.BackColor = SystemColors.Control;
             employeeDisplay.BorderStyle = BorderStyle.None;
-            employeeDisplay.Location = new Point(680, 32);
+            employeeDisplay.Location = new Point(599, 11);
             employeeDisplay.Margin = new Padding(3, 2, 3, 2);
             employeeDisplay.Name = "employeeDisplay";
-            employeeDisplay.Size = new Size(109, 16);
+            employeeDisplay.Size = new Size(186, 16);
             employeeDisplay.TabIndex = 7;
             employeeDisplay.Text = "USER";
             employeeDisplay.TextAlign = HorizontalAlignment.Center;

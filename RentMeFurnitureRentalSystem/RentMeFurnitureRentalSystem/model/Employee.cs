@@ -45,6 +45,7 @@ public class Employee
 
     public void SelectCommand(MySqlDataReader reader)
     {
+        var idOrdinal = reader.GetOrdinal("employee_num");
         var usernameOrdinal = reader.GetOrdinal("username");
         var nameOrdinal = reader.GetOrdinal("fname");
         var lnameOrdinal = reader.GetOrdinal("lname");
@@ -58,6 +59,7 @@ public class Employee
         var zipOrdinal = reader.GetOrdinal("zip");
         var roleOrdinal = reader.GetOrdinal("role_name");
 
+        this.EmployeeNum = reader.GetInt16(idOrdinal);
         this.Username = reader.GetString(usernameOrdinal);
         this.Firstname = reader.GetString(nameOrdinal);
         this.Lastname = reader.GetString(lnameOrdinal);

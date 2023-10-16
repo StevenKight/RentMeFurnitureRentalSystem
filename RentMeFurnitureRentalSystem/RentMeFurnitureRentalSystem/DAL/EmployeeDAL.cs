@@ -38,14 +38,21 @@ public class EmployeeDal
         connection.Open();
 
         var query =
-            "insert into employee(username,password,fname,lname,gender,phone,email,dob,address,city,state,zip,role_name) values(@username,@password,@firstname,@lastname,@gender,@phone,@email,@dob,@address,@city,@state,@zipcode,@role)";
+            "insert into employee(username,fname,lname,gender,phone,email,dob,address,city,state,zip,role_name) values(@username,@firstname,@lastname,@gender,@phone,@email,@dob,@address,@city,@state,@zipcode,@role_name)";
         var command = new MySqlCommand(query, connection);
 
         employee.FillCommand(command);
 
-        var rowsAffected = command.ExecuteNonQuery();
+        try
+        {
+            var rowsAffected = command.ExecuteNonQuery();
 
-        return rowsAffected > 0;
+            return rowsAffected > 0;
+        }
+        catch (Exception ex)
+        {
+            return false;
+        }
     }
 
     public static Employee GetEmployeeFromUsername(string username)
