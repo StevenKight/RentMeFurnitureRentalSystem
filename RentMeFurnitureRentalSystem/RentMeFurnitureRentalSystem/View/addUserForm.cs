@@ -14,6 +14,27 @@ public partial class addUserForm : Form
     public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
     public const string ZIPREGEX = @"^[0-9]{5}(?:-[0-9]{4})?$";
 
+    private static readonly string[] stateOptions =
+    {
+        "Alabama", "Alaska", "Arizona", "Arkansas", "California",
+        "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
+        "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
+        "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+        "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri",
+        "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
+        "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+        "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
+        "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
+        "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+    };
+
+    private static readonly string[] genderOptions = { "O", "M", "F" };
+
+    private string[]? roleOptions;
+
+    private bool isEmployee;
+    private bool isPrepopulated;
+
     #endregion
 
     #region Constructors
@@ -37,12 +58,7 @@ public partial class addUserForm : Form
         this.initializeDisplay();
         this.displayCustomerData();
 
-        this.addButton.Enabled = false;
-        this.addButton.Hide();
-
         this.fillDialog(customer);
-
-        this.cancelButton.Text = "Close";
     }
 
     public addUserForm(Employee employee)
@@ -50,12 +66,7 @@ public partial class addUserForm : Form
         this.initializeDisplay();
         this.displayEmployeeData();
 
-        this.addButton.Enabled = false;
-        this.addButton.Hide();
-
         this.fillDialog(employee);
-
-        this.cancelButton.Text = "Close";
     }
 
     #endregion
@@ -74,6 +85,8 @@ public partial class addUserForm : Form
         this.zipcodeInput.Text = customer.Zipcode;
         this.cityInput.Text = customer.City;
         this.stateComboBox.Text = customer.State;
+
+        this.fillDialog();
     }
 
     private void fillDialog(Employee employee)
@@ -91,7 +104,23 @@ public partial class addUserForm : Form
         this.cityInput.Text = employee.City;
         this.stateComboBox.Text = employee.State;
         this.roleComboBox.Text = employee.Role;
+
+        this.fillDialog();
     }
+
+    private void fillDialog()
+    {
+        this.isPrepopulated = true;
+
+        this.addButton.Enabled = false;
+        this.addButton.Hide();
+
+        var user = this.isEmployee ? "Employee" : "Customer";
+        this.addButton.Text = "Update " + user;
+
+        this.cancelButton.Text = "Close";
+    }
+
     private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
     {
         this.passwordInput.UseSystemPasswordChar = !this.showPasswordCheckBox.Checked;
@@ -107,6 +136,8 @@ public partial class addUserForm : Form
 
     private void displayEmployeeData()
     {
+        this.isEmployee = true;
+
         this.usernameLabel.Show();
         this.usernameInput.Show();
         this.usernameInput.Validating += this.textInput_Validating;
@@ -124,6 +155,8 @@ public partial class addUserForm : Form
         this.addDialogHeading.Text = "Add Employee";
         this.addButton.Click += this.addEmployeeButton_Click;
         this.addButton.Text = "Add Employee";
+
+        this.roleOptions = RolesDal.GetRoles().ToArray();
     }
 
     private void displayCustomerData()
@@ -149,7 +182,7 @@ public partial class addUserForm : Form
         this.addButton.Text = "Add Customer";
     }
 
-    private void addCustomerButton_Click(object sender, EventArgs e)
+    private void addCustomerButton_Click(object? sender, EventArgs e)
     {
         if (!ValidateChildren(ValidationConstraints.Enabled))
         {
@@ -171,7 +204,11 @@ public partial class addUserForm : Form
             Zipcode = this.zipcodeInput.Text
         };
 
-        var added = CustomerDal.CreateCustomer(customer);
+        if (this.isPrepopulated)
+        {
+            MessageBox.Show("UPDATE NOT IMPLEMENTED");
+            return;
+        }
 
         if (!CustomerDal.CreateCustomer(customer))
         {
@@ -180,10 +217,10 @@ public partial class addUserForm : Form
         }
 
         MessageBox.Show("Customer Added");
-        this.Close();
+        Close();
     }
 
-    private void addEmployeeButton_Click(object sender, EventArgs e)
+    private void addEmployeeButton_Click(object? sender, EventArgs e)
     {
         if (!ValidateChildren(ValidationConstraints.Enabled))
         {
@@ -196,11 +233,6 @@ public partial class addUserForm : Form
             Username = this.usernameInput.Text,
             Password = this.passwordInput.Text
         };
-        if (!LoginDal.CreateLogin(login))
-        {
-            MessageBox.Show("Error Creating Login");
-            return;
-        }
 
         var employee = new Employee
         {
@@ -218,6 +250,19 @@ public partial class addUserForm : Form
             Zipcode = this.zipcodeInput.Text,
             Role = this.roleComboBox.Text
         };
+
+        if (this.isPrepopulated)
+        {
+            MessageBox.Show("UPDATE NOT IMPLEMENTED");
+            return;
+        }
+
+        if (!LoginDal.CreateLogin(login))
+        {
+            MessageBox.Show("Error Creating Login");
+            return;
+        }
+
         if (!EmployeeDal.CreateEmployee(employee))
         {
             MessageBox.Show("Error Creating employee");
@@ -225,13 +270,13 @@ public partial class addUserForm : Form
         }
 
         MessageBox.Show("Employee created sucessfully");
-        this.Close();
+        Close();
     }
 
     private void cancelButton_Click(object sender, EventArgs e)
     {
         AutoValidate = AutoValidate.Disable;
-        this.Close();
+        Close();
     }
 
     private void populateGenderComboBox()
@@ -246,11 +291,11 @@ public partial class addUserForm : Form
         this.stateComboBox.DataSource = stateOptions;
     }
 
-    private void textInput_Validating(object sender, CancelEventArgs e)
+    private void textInput_Validating(object? sender, CancelEventArgs e)
     {
         var inputBox = sender as TextBox;
 
-        if (string.IsNullOrEmpty(inputBox.Text))
+        if (string.IsNullOrEmpty(inputBox?.Text))
         {
             e.Cancel = true;
             this.addUserError.SetError(inputBox, "Field should not be left blank!");
@@ -330,9 +375,10 @@ public partial class addUserForm : Form
         }
     }
 
-    private void roleComboBox_Validating(object sender, CancelEventArgs e)
+    private void roleComboBox_Validating(object? sender, CancelEventArgs e)
     {
-        if (!roleOptions.Contains(this.roleComboBox.Text))
+        var options = this.roleOptions;
+        if (options != null && !options.Contains(this.roleComboBox.Text))
         {
             e.Cancel = true;
             this.addUserError.SetError(this.roleComboBox, "Role must match one of the given options.");
@@ -343,31 +389,6 @@ public partial class addUserForm : Form
             this.addUserError.SetError(this.roleComboBox, "");
         }
     }
-
-    #endregion
-
-    #region Data Members
-
-    private static readonly string[] stateOptions =
-    {
-        "Alabama", "Alaska", "Arizona", "Arkansas", "California",
-        "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
-        "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
-        "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
-        "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri",
-        "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
-        "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
-        "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
-        "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
-        "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
-    };
-
-    private static readonly string[] genderOptions = { "O", "M", "F" };
-
-    // TODO: Make a request to db
-    private static readonly string[] roleOptions = { "administrator", "employee" };
-
-    #endregion
 
     private void zipcodeInput_Validating(object sender, CancelEventArgs e)
     {
@@ -385,4 +406,15 @@ public partial class addUserForm : Form
             this.addUserError.SetError(this.zipcodeInput, "");
         }
     }
+
+    private void input_TextChanged(object sender, EventArgs e)
+    {
+        if (this.isPrepopulated)
+        {
+            this.addButton.Enabled = true;
+            this.addButton.Show();
+        }
+    }
+
+    #endregion
 }

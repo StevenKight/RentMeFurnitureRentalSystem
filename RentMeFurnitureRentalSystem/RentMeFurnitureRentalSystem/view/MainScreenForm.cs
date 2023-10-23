@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using RentMeFurnitureRentalSystem.DAL;
+﻿using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 using RentMeFurnitureRentalSystem.view;
@@ -8,27 +7,10 @@ namespace RentMeFurnitureRentalSystem;
 
 public partial class MainScreenForm : Form
 {
-    #region Properties
-
-    #region Data Members
-
-    public Employee LoggedInEmployee { get; set; }
-
-    public List<Employee> Employees { get; set; }
-    public List<Customer> Customers { get; set; }
-
-    public Employee SelectedEmployee { get; set; }
-    public Customer SelectedCustomer { get; set; }
-
-    #endregion
-
-    #endregion
-
     #region Constructors
 
     public MainScreenForm(Employee employee)
     {
-
         this.InitializeComponent();
 
         var screenWidth = Screen.PrimaryScreen.Bounds.Width;
@@ -40,7 +22,7 @@ public partial class MainScreenForm : Form
         Location = new Point(x, y);
 
         this.LoggedInEmployee = employee;
-        this.employeeDisplay.Text = employee.EmployeeNum + " " + employee.Username + @": " + 
+        this.employeeDisplay.Text = employee.EmployeeNum + " " + employee.Username + @": " +
                                     employee.Firstname + " " + employee.Lastname;
         this.checkIfAdmin();
 
@@ -59,6 +41,9 @@ public partial class MainScreenForm : Form
         this.Customers = CustomerDal.GetAllCustomers();
 
         this.populateGridViews();
+
+        this.employeeGridView.ClearSelection();
+        this.customerGridView.ClearSelection();
     }
 
     private void setupGridViews()
@@ -105,6 +90,28 @@ public partial class MainScreenForm : Form
         this.getData();
     }
 
+    private void deleteEmployeeButton_Click(object sender, EventArgs e)
+    {
+        if (this.SelectedEmployee == null)
+        {
+            MessageBox.Show(@"Please select a employee to delete");
+            return;
+        }
+
+        var employeeName = this.SelectedEmployee.Firstname + " " + this.SelectedEmployee.Lastname;
+        var result = MessageBox.Show($"Are you sure you want to delete {employeeName}?", @"Delete employee",
+            MessageBoxButtons.YesNo);
+
+        if (result == DialogResult.Yes)
+        {
+            MessageBox.Show("DELETING NOT IMPLEMENTED YET");
+            //MessageBox.Show(EmployeeDAL.Delete(this.SelectedEmployee)
+            //    ? @"Employee deleted"
+            //    : @"Employee could not be deleted");
+            this.getData();
+        }
+    }
+
     private void addCustomerButton_Click(object sender, EventArgs e)
     {
         var addCustomerForm = new addUserForm(false);
@@ -114,6 +121,28 @@ public partial class MainScreenForm : Form
 
         addCustomerForm.ShowDialog();
         this.getData();
+    }
+
+    private void deleteCustomerButton_Click(object sender, EventArgs e)
+    {
+        if (this.SelectedCustomer == null)
+        {
+            MessageBox.Show(@"Please select a customer to delete");
+            return;
+        }
+
+        var customerName = this.SelectedCustomer.Firstname + " " + this.SelectedCustomer.Lastname;
+        var result = MessageBox.Show($"Are you sure you want to delete {customerName}?", @"Delete Customer",
+            MessageBoxButtons.YesNo);
+
+        if (result == DialogResult.Yes)
+        {
+            MessageBox.Show("DELETING NOT IMPLEMENTED YET");
+            //MessageBox.Show(CustomerDal.Delete(this.SelectedCustomer)
+            //    ? @"Customer deleted"
+            //    : @"Customer could not be deleted");
+            this.getData();
+        }
     }
 
     private void logoutButton_Click(object sender, EventArgs e)
@@ -135,7 +164,13 @@ public partial class MainScreenForm : Form
 
     private void customerGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
     {
-        if (e.StateChanged != DataGridViewElementStates.Selected) return;
+        if (e.StateChanged != DataGridViewElementStates.Selected)
+        {
+            this.deleteCustomerButton.Enabled = false;
+            return;
+        }
+
+        this.deleteCustomerButton.Enabled = true;
 
         var selectedRows = this.customerGridView.SelectedRows;
         if (selectedRows.Count > 0)
@@ -160,7 +195,13 @@ public partial class MainScreenForm : Form
 
     private void employeeGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
     {
-        if (e.StateChanged != DataGridViewElementStates.Selected) return;
+        if (e.StateChanged != DataGridViewElementStates.Selected)
+        {
+            this.deleteEmployeeButton.Enabled = false;
+            return;
+        }
+
+        this.deleteEmployeeButton.Enabled = true;
 
         var selectedRows = this.employeeGridView.SelectedRows;
         if (selectedRows.Count > 0)
@@ -203,6 +244,31 @@ public partial class MainScreenForm : Form
         employeeDisplayForm.ShowDialog();
     }
 
+    private void dashboardTabs_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        var selectedTab = this.dashboardTabs.SelectedTab;
+
+        if (selectedTab == this.employeesTab)
+        {
+            this.customerGridView.ClearSelection();
+        }
+        else
+        {
+            this.employeeGridView.ClearSelection();
+        }
+    }
+
     #endregion
 
+    #region Data Members
+
+    public Employee LoggedInEmployee { get; set; }
+
+    public List<Employee> Employees { get; set; }
+    public List<Customer> Customers { get; set; }
+
+    public Employee SelectedEmployee { get; set; }
+    public Customer SelectedCustomer { get; set; }
+
+    #endregion
 }
