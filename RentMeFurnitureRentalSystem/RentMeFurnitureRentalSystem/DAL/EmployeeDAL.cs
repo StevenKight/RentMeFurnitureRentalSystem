@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Dapper;
+using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
@@ -13,44 +14,40 @@ public class EmployeeDal
 
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
-        var query = "SELECT * FROM employee";
-        connection.Open();
+        var result = connection.Query<Employee>(QueryStrings.GetEmployees);
 
-        using var adapter = new MySqlDataAdapter(query, connection);
-
-        using var command = new MySqlCommand(query, connection);
-        using var reader = command.ExecuteReader();
-
-        while (reader.Read())
+        foreach (var employee in result)
         {
-            var employee = new Employee();
-            employee.SelectCommand(reader);
             employees.Add(employee);
         }
-
         return employees;
     }
 
     public static bool CreateEmployee(Employee employee)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
-
-        connection.Open();
-
-        var query =
-            "insert into employee(username,fname,lname,gender,phone,email,dob,address,city,state,zip,role_name) values(@username,@firstname,@lastname,@gender,@phone,@email,@dob,@address,@city,@state,@zipcode,@role_name)";
-        var command = new MySqlCommand(query, connection);
-
-        employee.FillCommand(command);
-
         try
         {
-            var rowsAffected = command.ExecuteNonQuery();
-
-            return rowsAffected > 0;
+            connection.Execute(QueryStrings.CreateEmployee, new
+            {
+                Username = employee.Username,
+                Firstname = employee.Fname,
+                Lastname = employee.Lname,
+                Gender = employee.Gender,
+                Phone = employee.Phone,
+                Email = employee.Email,
+                Dob = employee.Dob,
+                Address = employee.Address,
+                City = employee.City,
+                State = employee.State,
+                Zipcode = employee.Zip,
+                Role = employee.Role_name
+            });
+            return true;
         }
-        catch (Exception ex)
+        catch (Exception exception)
         {
+            MessageBox.Show(exception.Message);
             return false;
         }
     }
@@ -58,28 +55,9 @@ public class EmployeeDal
     public static Employee GetEmployeeFromUsername(string username)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
-        var employee = new Employee();
-        connection.Open();
 
-        var query =
-            "Select * from employee where username=@username";
-
-        try
-        {
-            var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@username", MySqlDbType.VarChar).Value = username;
-            using var reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                employee.SelectCommand(reader);
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Error: " + e.Message);
-        }
-
+        var result = connection.Query<Employee>(QueryStrings.GetByEmployeeUsername, new { username = username });
+        Employee employee = result.First();
         return employee;
     }
 

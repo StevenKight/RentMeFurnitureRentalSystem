@@ -80,17 +80,17 @@ public partial class addUserForm : Form
     {
         this.usernameInput.Text = employee.Username;
         this.passwordInput.Text = employee.Password;
-        this.firstnameInput.Text = employee.Firstname;
-        this.lastnameInput.Text = employee.Lastname;
+        this.firstnameInput.Text = employee.Fname;
+        this.lastnameInput.Text = employee.Lname;
         this.emailInput.Text = employee.Email;
         this.phoneInput.Text = employee.Phone;
         this.genderComboBox.Text = employee.Gender;
         this.dobTimePicker.Value = employee.Dob;
         this.streetAdressInput.Text = employee.Address;
-        this.zipcodeInput.Text = employee.Zipcode;
+        this.zipcodeInput.Text = employee.Zip;
         this.cityInput.Text = employee.City;
         this.stateComboBox.Text = employee.State;
-        this.roleComboBox.Text = employee.Role;
+        this.roleComboBox.Text = employee.Role_name;
     }
     private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
     {
@@ -206,8 +206,8 @@ public partial class addUserForm : Form
         {
             Username = login.Username,
             Password = login.Password,
-            Firstname = this.firstnameInput.Text,
-            Lastname = this.lastnameInput.Text,
+            Fname = this.firstnameInput.Text,
+            Lname = this.lastnameInput.Text,
             Gender = this.genderComboBox.Text,
             Email = this.emailInput.Text,
             Dob = this.dobTimePicker.Value.Date,
@@ -215,8 +215,8 @@ public partial class addUserForm : Form
             Address = this.streetAdressInput.Text,
             City = this.cityInput.Text,
             State = this.stateComboBox.Text,
-            Zipcode = this.zipcodeInput.Text,
-            Role = this.roleComboBox.Text
+            Zip = this.zipcodeInput.Text,
+            Role_name = this.roleComboBox.Text
         };
         if (!EmployeeDal.CreateEmployee(employee))
         {
@@ -335,7 +335,7 @@ public partial class addUserForm : Form
         if (!roleOptions.Contains(this.roleComboBox.Text))
         {
             e.Cancel = true;
-            this.addUserError.SetError(this.roleComboBox, "Role must match one of the given options.");
+            this.addUserError.SetError(this.roleComboBox, "Role_name must match one of the given options.");
         }
         else
         {

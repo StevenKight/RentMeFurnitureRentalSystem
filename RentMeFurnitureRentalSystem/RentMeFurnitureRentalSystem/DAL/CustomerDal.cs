@@ -9,26 +9,13 @@ public class CustomerDal
 
     public static List<Customer> GetAllCustomers()
     {
-        var customerList = new List<Customer>();
+        var customers = new List<Customer>();
 
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
-        var query = "SELECT * FROM customer";
-        connection.Open();
+        
 
-        using var adapter = new MySqlDataAdapter(query, connection);
-
-        using var command = new MySqlCommand(query, connection);
-        using var reader = command.ExecuteReader();
-
-        while (reader.Read())
-        {
-            var customer = new Customer();
-            customer.SelectCommand(reader);
-            customerList.Add(customer);
-        }
-
-        return customerList;
+        return customers;
     }
 
     public static bool CreateCustomer(Customer newCustomer)

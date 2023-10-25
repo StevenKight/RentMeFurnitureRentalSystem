@@ -1,4 +1,6 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Dapper;
+using MySql.Data.MySqlClient;
+using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
 
@@ -9,21 +11,13 @@ public class RolesDal
     public static IList<string> GetRoles()
     {
         var roles = new List<string>();
+
         using var connection = new MySqlConnection(Connection.ConnectionString);
+        var roleResult = connection.Query<Role>(QueryStrings.GetRoles);
 
-        connection.Open();
-
-        var query = "select * from role";
-        using (var command = new MySqlCommand(query, connection))
+        foreach (var role in roleResult)
         {
-            using (var reader = command.ExecuteReader())
-            {
-                while (reader.Read())
-                {
-                    var roleName = reader.GetString(0);
-                    roles.Add(roleName);
-                }
-            }
+            roles.Add(role.Name);
         }
 
         return roles;

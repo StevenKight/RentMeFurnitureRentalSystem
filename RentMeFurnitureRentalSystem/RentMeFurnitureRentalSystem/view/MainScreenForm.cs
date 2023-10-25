@@ -41,7 +41,7 @@ public partial class MainScreenForm : Form
 
         this.LoggedInEmployee = employee;
         this.employeeDisplay.Text = employee.EmployeeNum + " " + employee.Username + @": " + 
-                                    employee.Firstname + " " + employee.Lastname;
+                                    employee.Fname + " " + employee.Lname;
         this.checkIfAdmin();
 
         this.getData();
@@ -89,7 +89,7 @@ public partial class MainScreenForm : Form
 
         this.employeeGridView.DataSource = this.Employees.Select(employee =>
         {
-            var FullName = employee.Firstname + " " + employee.Lastname;
+            var FullName = employee.Fname + " " + employee.Lname;
             return new { FullName, employee.Phone, employee.Email };
         }).ToList();
     }
@@ -125,7 +125,7 @@ public partial class MainScreenForm : Form
 
     private void checkIfAdmin()
     {
-        if (this.LoggedInEmployee.Role.Equals("administrator"))
+        if (this.LoggedInEmployee.Role_name.Equals("administrator"))
         {
             return;
         }
@@ -175,7 +175,7 @@ public partial class MainScreenForm : Form
 
             var employee = this.Employees.Find(x =>
             {
-                var fullname = x.Firstname + " " + x.Lastname;
+                var fullname = x.Fname + " " + x.Lname;
                 return fullname.Equals(fullName) && x.Phone.Equals(phone) && x.Email.Equals(email);
             });
 
