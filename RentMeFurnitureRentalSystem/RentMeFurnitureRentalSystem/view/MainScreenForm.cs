@@ -89,35 +89,6 @@ public partial class MainScreenForm : Form
         }).ToList();
     }
 
-    private void addEmployeeButton_Click(object sender, EventArgs e)
-    {
-        var addEmployeeForm = new addUserForm(true);
-        addEmployeeForm.StartPosition = FormStartPosition.Manual;
-        addEmployeeForm.Left = Left + (Width - addEmployeeForm.Width) / 2;
-        addEmployeeForm.Top = Top + (Height - addEmployeeForm.Height) / 2;
-
-        addEmployeeForm.ShowDialog();
-        getData();
-    }
-
-    private void addCustomerButton_Click(object sender, EventArgs e)
-    {
-        var addCustomerForm = new addUserForm(false);
-        addCustomerForm.StartPosition = FormStartPosition.Manual;
-        addCustomerForm.Left = Left + (Width - addCustomerForm.Width) / 2;
-        addCustomerForm.Top = Top + (Height - addCustomerForm.Height) / 2;
-
-        addCustomerForm.ShowDialog();
-        getData();
-    }
-
-    private void logoutButton_Click(object sender, EventArgs e)
-    {
-        LoggedInEmployee = null;
-        DialogResult = DialogResult.Continue;
-        Close();
-    }
-
     private void checkIfAdmin()
     {
         if (LoggedInEmployee.Role_name.Equals("administrator")) return;
@@ -196,4 +167,43 @@ public partial class MainScreenForm : Form
     }
 
     #endregion
+
+    private void addCustomerButton_Click_1(object sender, EventArgs e)
+    {
+        var addCustomerForm = new addUserForm(false);
+        addCustomerForm.StartPosition = FormStartPosition.Manual;
+        addCustomerForm.Left = Left + (Width - addCustomerForm.Width) / 2;
+        addCustomerForm.Top = Top + (Height - addCustomerForm.Height) / 2;
+
+        addCustomerForm.ShowDialog();
+        getData();
+    }
+
+    private void logoutButton_Click_1(object sender, EventArgs e)
+    {
+        LoggedInEmployee = null;
+        DialogResult = DialogResult.Continue;
+        Close();
+    }
+
+    private void addEmployeeButton_Click_1(object sender, EventArgs e)
+    {
+        var addEmployeeForm = new addUserForm(true);
+        addEmployeeForm.StartPosition = FormStartPosition.Manual;
+        addEmployeeForm.Left = Left + (Width - addEmployeeForm.Width) / 2;
+        addEmployeeForm.Top = Top + (Height - addEmployeeForm.Height) / 2;
+
+        addEmployeeForm.ShowDialog();
+        getData();
+    }
+
+    private void addFurnitureButton_Click(object sender, EventArgs e)
+    {
+        var addFurnitureForm = new addFurnitureForm();
+        addFurnitureForm.Left = Left + (Width - addFurnitureForm.Width) / 2;
+        addFurnitureForm.Top = Top + (Height - addFurnitureForm.Height) / 2;
+
+        addFurnitureForm.ShowDialog();
+
+    }
 }
