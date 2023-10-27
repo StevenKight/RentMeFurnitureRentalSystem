@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace RentMeFurnitureRentalSystem.Model;
 
-namespace RentMeFurnitureRentalSystem.Model
+public class Role
 {
-    public class Role
-    {
-        public string Name { get; set; }
-    }
+    public string Name { get; set; }
 }

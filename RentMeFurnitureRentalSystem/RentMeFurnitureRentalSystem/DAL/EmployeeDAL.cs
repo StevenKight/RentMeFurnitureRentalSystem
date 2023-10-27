@@ -16,10 +16,7 @@ public class EmployeeDal
 
         var result = connection.Query<Employee>(QueryStrings.GetEmployees);
 
-        foreach (var employee in result)
-        {
-            employees.Add(employee);
-        }
+        foreach (var employee in result) employees.Add(employee);
         return employees;
     }
 
@@ -30,16 +27,16 @@ public class EmployeeDal
         {
             connection.Execute(QueryStrings.CreateEmployee, new
             {
-                Username = employee.Username,
+                employee.Username,
                 Firstname = employee.Fname,
                 Lastname = employee.Lname,
-                Gender = employee.Gender,
-                Phone = employee.Phone,
-                Email = employee.Email,
-                Dob = employee.Dob,
-                Address = employee.Address,
-                City = employee.City,
-                State = employee.State,
+                employee.Gender,
+                employee.Phone,
+                employee.Email,
+                employee.Dob,
+                employee.Address,
+                employee.City,
+                employee.State,
                 Zipcode = employee.Zip,
                 Role = employee.Role_name
             });
@@ -56,8 +53,8 @@ public class EmployeeDal
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
-        var result = connection.Query<Employee>(QueryStrings.GetByEmployeeUsername, new { username = username });
-        Employee employee = result.First();
+        var result = connection.Query<Employee>(QueryStrings.GetByEmployeeUsername, new { username });
+        var employee = result.First();
         return employee;
     }
 

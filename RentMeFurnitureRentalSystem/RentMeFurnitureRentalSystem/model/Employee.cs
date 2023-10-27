@@ -28,19 +28,19 @@ public class Employee
 
     public void FillCommand(MySqlCommand query)
     {
-        query.Parameters.Add("@username", MySqlDbType.VarChar).Value = this.Username;
-        query.Parameters.Add("@password", MySqlDbType.VarChar).Value = this.Password;
-        query.Parameters.Add("@firstname", MySqlDbType.VarChar).Value = this.Fname;
-        query.Parameters.Add("@lastname", MySqlDbType.VarChar).Value = this.Lname;
-        query.Parameters.Add("@gender", MySqlDbType.VarChar).Value = this.Gender;
-        query.Parameters.Add("@phone", MySqlDbType.VarChar).Value = this.Phone;
-        query.Parameters.Add("@email", MySqlDbType.VarChar).Value = this.Email;
-        query.Parameters.Add("@dob", MySqlDbType.VarChar).Value = this.Dob.ToString("yyyy-MM-dd");
-        query.Parameters.Add("@address", MySqlDbType.VarChar).Value = this.Address;
-        query.Parameters.Add("@city", MySqlDbType.VarChar).Value = this.City;
-        query.Parameters.Add("@state", MySqlDbType.VarChar).Value = this.State;
-        query.Parameters.Add("@zipcode", MySqlDbType.VarChar).Value = this.Zip;
-        query.Parameters.Add("@role_name", MySqlDbType.VarChar).Value = this.Role_name;
+        query.Parameters.Add("@username", MySqlDbType.VarChar).Value = Username;
+        query.Parameters.Add("@password", MySqlDbType.VarChar).Value = Password;
+        query.Parameters.Add("@firstname", MySqlDbType.VarChar).Value = Fname;
+        query.Parameters.Add("@lastname", MySqlDbType.VarChar).Value = Lname;
+        query.Parameters.Add("@gender", MySqlDbType.VarChar).Value = Gender;
+        query.Parameters.Add("@phone", MySqlDbType.VarChar).Value = Phone;
+        query.Parameters.Add("@email", MySqlDbType.VarChar).Value = Email;
+        query.Parameters.Add("@dob", MySqlDbType.VarChar).Value = Dob.ToString("yyyy-MM-dd");
+        query.Parameters.Add("@address", MySqlDbType.VarChar).Value = Address;
+        query.Parameters.Add("@city", MySqlDbType.VarChar).Value = City;
+        query.Parameters.Add("@state", MySqlDbType.VarChar).Value = State;
+        query.Parameters.Add("@zipcode", MySqlDbType.VarChar).Value = Zip;
+        query.Parameters.Add("@role_name", MySqlDbType.VarChar).Value = Role_name;
     }
 
     public void SelectCommand(MySqlDataReader reader)
@@ -59,22 +59,22 @@ public class Employee
         var zipOrdinal = reader.GetOrdinal("zip");
         var roleOrdinal = reader.GetOrdinal("role_name");
 
-        this.EmployeeNum = reader.GetInt16(idOrdinal);
-        this.Username = reader.GetString(usernameOrdinal);
-        this.Fname = reader.GetString(nameOrdinal);
-        this.Lname = reader.GetString(lnameOrdinal);
-        this.Gender = reader.GetString(genderOrdinal);
-        this.Email = reader.GetString(emailOrdinal);
-        this.Phone = reader.GetString(phoneOrdinal);
-        this.Address = reader.GetString(addressOrdinal);
-        this.City = reader.GetString(cityOrdinal);
-        this.State = reader.GetString(stateOrdinal);
-        this.Zip = reader.GetString(zipOrdinal);
-        this.Role_name = reader.GetString(roleOrdinal);
-        this.Dob = reader.GetDateTime(dobOrdinal);
+        EmployeeNum = reader.GetInt16(idOrdinal);
+        Username = reader.GetString(usernameOrdinal);
+        Fname = reader.GetString(nameOrdinal);
+        Lname = reader.GetString(lnameOrdinal);
+        Gender = reader.GetString(genderOrdinal);
+        Email = reader.GetString(emailOrdinal);
+        Phone = reader.GetString(phoneOrdinal);
+        Address = reader.GetString(addressOrdinal);
+        City = reader.GetString(cityOrdinal);
+        State = reader.GetString(stateOrdinal);
+        Zip = reader.GetString(zipOrdinal);
+        Role_name = reader.GetString(roleOrdinal);
+        Dob = reader.GetDateTime(dobOrdinal);
 
-        var login = LoginDal.CheckLogin(this.Username);
-        this.Password = login.Password;
+        var login = LoginDal.CheckLogin(Username);
+        Password = login.Password;
     }
 
     #endregion

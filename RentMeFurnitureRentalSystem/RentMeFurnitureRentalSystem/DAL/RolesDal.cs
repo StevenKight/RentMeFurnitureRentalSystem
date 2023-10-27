@@ -15,10 +15,7 @@ public class RolesDal
         using var connection = new MySqlConnection(Connection.ConnectionString);
         var roleResult = connection.Query<Role>(QueryStrings.GetRoles);
 
-        foreach (var role in roleResult)
-        {
-            roles.Add(role.Name);
-        }
+        foreach (var role in roleResult) roles.Add(role.Name);
 
         return roles;
     }
