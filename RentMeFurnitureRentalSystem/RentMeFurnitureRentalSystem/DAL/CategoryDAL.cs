@@ -9,26 +9,20 @@ using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.DAL
 {
-    public class StyleDAL
+    public class CategoryDAL
     {
-        #region methods
-
-        public static IList<Style> GetStyles()
+        public static IList<Category> GetCategories()
         {
-            var styles = new List<Style>();
-
+            var list = new List<Category>();
             using var connection = new MySqlConnection(Connection.ConnectionString);
 
-            var result = connection.Query<Style>(QueryStrings.GetStyles);
+            var results = connection.Query<Category>(QueryStrings.GetCategories);
 
-            foreach (Style style in result)
+            foreach (var item in results)
             {
-                styles.Add(style);
+                list.Add(item);
             }
-
-            return styles;
+            return list;
         }
-
-        #endregion
     }
 }

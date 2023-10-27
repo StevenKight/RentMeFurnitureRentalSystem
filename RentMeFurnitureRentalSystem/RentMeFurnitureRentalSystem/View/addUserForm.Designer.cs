@@ -28,350 +28,337 @@
         /// </summary>
         private void InitializeComponent()
         {
-            components = new System.ComponentModel.Container();
-            usernameLabel = new Label();
-            addDialogHeading = new Label();
-            usernameInput = new TextBox();
-            passwordLabel = new Label();
-            passwordInput = new TextBox();
-            label5 = new Label();
-            firstnameInput = new TextBox();
-            lastnameInput = new TextBox();
-            label6 = new Label();
-            genderComboBox = new ComboBox();
-            label7 = new Label();
-            phoneInput = new TextBox();
-            dobTimePicker = new DateTimePicker();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            label11 = new Label();
-            label12 = new Label();
-            cityInput = new TextBox();
-            streetAdressInput = new TextBox();
-            zipcodeInput = new TextBox();
-            stateComboBox = new ComboBox();
-            roleLabel = new Label();
-            roleComboBox = new ComboBox();
-            cancelButton = new Button();
-            addButton = new Button();
-            label4 = new Label();
-            emailInput = new TextBox();
-            emailLabel = new Label();
-            addUserError = new ErrorProvider(components);
-            showPasswordCheckBox = new CheckBox();
-            ((System.ComponentModel.ISupportInitialize)addUserError).BeginInit();
-            SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.addDialogHeading = new System.Windows.Forms.Label();
+            this.usernameInput = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.passwordInput = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.firstnameInput = new System.Windows.Forms.TextBox();
+            this.lastnameInput = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.genderComboBox = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.phoneInput = new System.Windows.Forms.TextBox();
+            this.dobTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cityInput = new System.Windows.Forms.TextBox();
+            this.streetAdressInput = new System.Windows.Forms.TextBox();
+            this.zipcodeInput = new System.Windows.Forms.TextBox();
+            this.stateComboBox = new System.Windows.Forms.ComboBox();
+            this.roleLabel = new System.Windows.Forms.Label();
+            this.roleComboBox = new System.Windows.Forms.ComboBox();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.emailInput = new System.Windows.Forms.TextBox();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.addUserError = new System.Windows.Forms.ErrorProvider(this.components);
+            this.showPasswordCheckBox = new System.Windows.Forms.CheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.addUserError)).BeginInit();
+            this.SuspendLayout();
             // 
             // usernameLabel
             // 
-            usernameLabel.AutoSize = true;
-            usernameLabel.Location = new Point(13, 62);
-            usernameLabel.Name = "usernameLabel";
-            usernameLabel.Size = new Size(60, 15);
-            usernameLabel.TabIndex = 0;
-            usernameLabel.Text = "Username";
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Location = new System.Drawing.Point(13, 62);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(60, 15);
+            this.usernameLabel.TabIndex = 0;
+            this.usernameLabel.Text = "Username";
             // 
             // addDialogHeading
             // 
-            addDialogHeading.AutoSize = true;
-            addDialogHeading.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            addDialogHeading.Location = new Point(128, 9);
-            addDialogHeading.Name = "addDialogHeading";
-            addDialogHeading.Size = new Size(133, 32);
-            addDialogHeading.TabIndex = 1;
-            addDialogHeading.Text = "Add Dialog";
+            this.addDialogHeading.AutoSize = true;
+            this.addDialogHeading.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.addDialogHeading.Location = new System.Drawing.Point(128, 9);
+            this.addDialogHeading.Name = "addDialogHeading";
+            this.addDialogHeading.Size = new System.Drawing.Size(133, 32);
+            this.addDialogHeading.TabIndex = 1;
+            this.addDialogHeading.Text = "Add Dialog";
             // 
             // usernameInput
             // 
-            usernameInput.Location = new Point(84, 59);
-            usernameInput.Name = "usernameInput";
-            usernameInput.Size = new Size(127, 23);
-            usernameInput.TabIndex = 2;
-            usernameInput.Validating += textInput_Validating;
+            this.usernameInput.Location = new System.Drawing.Point(84, 59);
+            this.usernameInput.Name = "usernameInput";
+            this.usernameInput.Size = new System.Drawing.Size(127, 23);
+            this.usernameInput.TabIndex = 2;
             // 
             // passwordLabel
             // 
-            passwordLabel.AutoSize = true;
-            passwordLabel.Location = new Point(228, 62);
-            passwordLabel.Name = "passwordLabel";
-            passwordLabel.Size = new Size(57, 15);
-            passwordLabel.TabIndex = 3;
-            passwordLabel.Text = "Password";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Location = new System.Drawing.Point(228, 62);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(57, 15);
+            this.passwordLabel.TabIndex = 3;
+            this.passwordLabel.Text = "Password";
             // 
             // passwordInput
             // 
-            passwordInput.Location = new Point(294, 59);
-            passwordInput.Name = "passwordInput";
-            passwordInput.Size = new Size(127, 23);
-            passwordInput.TabIndex = 4;
-            passwordInput.UseSystemPasswordChar = true;
-            passwordInput.Validating += textInput_Validating;
+            this.passwordInput.Location = new System.Drawing.Point(294, 59);
+            this.passwordInput.Name = "passwordInput";
+            this.passwordInput.Size = new System.Drawing.Size(127, 23);
+            this.passwordInput.TabIndex = 4;
+            this.passwordInput.UseSystemPasswordChar = true;
             // 
             // label5
             // 
-            label5.AutoSize = true;
-            label5.Location = new Point(226, 111);
-            label5.Name = "label5";
-            label5.Size = new Size(58, 15);
-            label5.TabIndex = 6;
-            label5.Text = "Lname";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(226, 111);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(43, 15);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Lname";
             // 
             // firstnameInput
             // 
-            firstnameInput.Location = new Point(84, 109);
-            firstnameInput.Name = "firstnameInput";
-            firstnameInput.Size = new Size(127, 23);
-            firstnameInput.TabIndex = 7;
-            firstnameInput.Validating += textInput_Validating;
+            this.firstnameInput.Location = new System.Drawing.Point(84, 109);
+            this.firstnameInput.Name = "firstnameInput";
+            this.firstnameInput.Size = new System.Drawing.Size(127, 23);
+            this.firstnameInput.TabIndex = 7;
             // 
             // lastnameInput
             // 
-            lastnameInput.Location = new Point(294, 109);
-            lastnameInput.Name = "lastnameInput";
-            lastnameInput.Size = new Size(127, 23);
-            lastnameInput.TabIndex = 8;
-            lastnameInput.Validating += textInput_Validating;
+            this.lastnameInput.Location = new System.Drawing.Point(294, 109);
+            this.lastnameInput.Name = "lastnameInput";
+            this.lastnameInput.Size = new System.Drawing.Size(127, 23);
+            this.lastnameInput.TabIndex = 8;
             // 
             // label6
             // 
-            label6.AutoSize = true;
-            label6.Location = new Point(29, 190);
-            label6.Name = "label6";
-            label6.Size = new Size(45, 15);
-            label6.TabIndex = 9;
-            label6.Text = "Gender";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(29, 190);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 15);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Gender";
             // 
             // genderComboBox
             // 
-            genderComboBox.FormattingEnabled = true;
-            genderComboBox.Location = new Point(84, 188);
-            genderComboBox.Name = "genderComboBox";
-            genderComboBox.Size = new Size(127, 23);
-            genderComboBox.TabIndex = 11;
-            genderComboBox.Validating += genderComboBox_Validating;
+            this.genderComboBox.FormattingEnabled = true;
+            this.genderComboBox.Location = new System.Drawing.Point(84, 188);
+            this.genderComboBox.Name = "genderComboBox";
+            this.genderComboBox.Size = new System.Drawing.Size(127, 23);
+            this.genderComboBox.TabIndex = 11;
             // 
             // label7
             // 
-            label7.AutoSize = true;
-            label7.Location = new Point(245, 147);
-            label7.Name = "label7";
-            label7.Size = new Size(41, 15);
-            label7.TabIndex = 11;
-            label7.Text = "Phone";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(245, 147);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(41, 15);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "Phone";
             // 
             // phoneInput
             // 
-            phoneInput.Location = new Point(294, 145);
-            phoneInput.Name = "phoneInput";
-            phoneInput.Size = new Size(127, 23);
-            phoneInput.TabIndex = 10;
-            phoneInput.Validating += phoneInput_Validating;
+            this.phoneInput.Location = new System.Drawing.Point(294, 145);
+            this.phoneInput.Name = "phoneInput";
+            this.phoneInput.Size = new System.Drawing.Size(127, 23);
+            this.phoneInput.TabIndex = 10;
             // 
             // dobTimePicker
             // 
-            dobTimePicker.Format = DateTimePickerFormat.Short;
-            dobTimePicker.Location = new Point(294, 187);
-            dobTimePicker.Name = "dobTimePicker";
-            dobTimePicker.Size = new Size(127, 23);
-            dobTimePicker.TabIndex = 13;
+            this.dobTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dobTimePicker.Location = new System.Drawing.Point(294, 187);
+            this.dobTimePicker.Name = "dobTimePicker";
+            this.dobTimePicker.Size = new System.Drawing.Size(127, 23);
+            this.dobTimePicker.TabIndex = 13;
             // 
             // label8
             // 
-            label8.AutoSize = true;
-            label8.Location = new Point(233, 190);
-            label8.Name = "label8";
-            label8.Size = new Size(51, 15);
-            label8.TabIndex = 14;
-            label8.Text = "Birthday";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(233, 190);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 15);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "Birthday";
             // 
             // label9
             // 
-            label9.AutoSize = true;
-            label9.Location = new Point(37, 232);
-            label9.Name = "label9";
-            label9.Size = new Size(37, 15);
-            label9.TabIndex = 15;
-            label9.Text = "Street";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(37, 232);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 15);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Street";
             // 
             // label10
             // 
-            label10.AutoSize = true;
-            label10.Location = new Point(251, 279);
-            label10.Name = "label10";
-            label10.Size = new Size(33, 15);
-            label10.TabIndex = 16;
-            label10.Text = "State";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(251, 279);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(33, 15);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "State";
             // 
             // label11
             // 
-            label11.AutoSize = true;
-            label11.Location = new Point(49, 279);
-            label11.Name = "label11";
-            label11.Size = new Size(28, 15);
-            label11.TabIndex = 17;
-            label11.Text = "City";
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(49, 279);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(28, 15);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "City";
             // 
             // label12
             // 
-            label12.AutoSize = true;
-            label12.Location = new Point(233, 232);
-            label12.Name = "label12";
-            label12.Size = new Size(50, 15);
-            label12.TabIndex = 18;
-            label12.Text = "Zip";
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(233, 232);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(24, 15);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "Zip";
             // 
             // cityInput
             // 
-            cityInput.Location = new Point(84, 277);
-            cityInput.Name = "cityInput";
-            cityInput.Size = new Size(127, 23);
-            cityInput.TabIndex = 20;
-            cityInput.Validating += textInput_Validating;
+            this.cityInput.Location = new System.Drawing.Point(84, 277);
+            this.cityInput.Name = "cityInput";
+            this.cityInput.Size = new System.Drawing.Size(127, 23);
+            this.cityInput.TabIndex = 20;
             // 
             // streetAdressInput
             // 
-            streetAdressInput.Location = new Point(84, 230);
-            streetAdressInput.Name = "streetAdressInput";
-            streetAdressInput.Size = new Size(127, 23);
-            streetAdressInput.TabIndex = 19;
-            streetAdressInput.Validating += textInput_Validating;
+            this.streetAdressInput.Location = new System.Drawing.Point(84, 230);
+            this.streetAdressInput.Name = "streetAdressInput";
+            this.streetAdressInput.Size = new System.Drawing.Size(127, 23);
+            this.streetAdressInput.TabIndex = 19;
             // 
             // zipcodeInput
             // 
-            zipcodeInput.Location = new Point(294, 230);
-            zipcodeInput.Name = "zipcodeInput";
-            zipcodeInput.Size = new Size(127, 23);
-            zipcodeInput.TabIndex = 21;
-            zipcodeInput.Validating += zipcodeInput_Validating;
+            this.zipcodeInput.Location = new System.Drawing.Point(294, 230);
+            this.zipcodeInput.Name = "zipcodeInput";
+            this.zipcodeInput.Size = new System.Drawing.Size(127, 23);
+            this.zipcodeInput.TabIndex = 21;
             // 
             // stateComboBox
             // 
-            stateComboBox.FormattingEnabled = true;
-            stateComboBox.Location = new Point(294, 277);
-            stateComboBox.Name = "stateComboBox";
-            stateComboBox.Size = new Size(127, 23);
-            stateComboBox.TabIndex = 22;
-            stateComboBox.Validating += stateComboBox_Validating;
+            this.stateComboBox.FormattingEnabled = true;
+            this.stateComboBox.Location = new System.Drawing.Point(294, 277);
+            this.stateComboBox.Name = "stateComboBox";
+            this.stateComboBox.Size = new System.Drawing.Size(127, 23);
+            this.stateComboBox.TabIndex = 22;
             // 
             // roleLabel
             // 
-            roleLabel.AutoSize = true;
-            roleLabel.Location = new Point(149, 320);
-            roleLabel.Name = "roleLabel";
-            roleLabel.Size = new Size(30, 15);
-            roleLabel.TabIndex = 23;
-            roleLabel.Text = "Role_name";
+            this.roleLabel.AutoSize = true;
+            this.roleLabel.Location = new System.Drawing.Point(149, 321);
+            this.roleLabel.Name = "roleLabel";
+            this.roleLabel.Size = new System.Drawing.Size(33, 15);
+            this.roleLabel.TabIndex = 23;
+            this.roleLabel.Text = "Role:";
             // 
             // roleComboBox
             // 
-            roleComboBox.FormattingEnabled = true;
-            roleComboBox.Location = new Point(188, 318);
-            roleComboBox.Name = "roleComboBox";
-            roleComboBox.Size = new Size(112, 23);
-            roleComboBox.TabIndex = 24;
-            roleComboBox.Validating += roleComboBox_Validating;
+            this.roleComboBox.FormattingEnabled = true;
+            this.roleComboBox.Location = new System.Drawing.Point(188, 318);
+            this.roleComboBox.Name = "roleComboBox";
+            this.roleComboBox.Size = new System.Drawing.Size(112, 23);
+            this.roleComboBox.TabIndex = 24;
             // 
             // cancelButton
             // 
-            cancelButton.Location = new Point(38, 354);
-            cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(120, 23);
-            cancelButton.TabIndex = 26;
-            cancelButton.Text = "Cancel";
-            cancelButton.UseVisualStyleBackColor = true;
-            cancelButton.Click += cancelButton_Click;
+            this.cancelButton.Location = new System.Drawing.Point(38, 354);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(120, 23);
+            this.cancelButton.TabIndex = 26;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
             // addButton
             // 
-            addButton.Location = new Point(294, 354);
-            addButton.Name = "addButton";
-            addButton.Size = new Size(127, 23);
-            addButton.TabIndex = 25;
-            addButton.Text = "Add Employee";
-            addButton.UseVisualStyleBackColor = true;
+            this.addButton.Location = new System.Drawing.Point(294, 354);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(127, 23);
+            this.addButton.TabIndex = 25;
+            this.addButton.Text = "Add Employee";
+            this.addButton.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(15, 111);
-            label4.Name = "label4";
-            label4.Size = new Size(59, 15);
-            label4.TabIndex = 5;
-            label4.Text = "Fname";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(43, 15);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Fname";
             // 
             // emailInput
             // 
-            emailInput.Location = new Point(84, 147);
-            emailInput.Name = "emailInput";
-            emailInput.Size = new Size(127, 23);
-            emailInput.TabIndex = 9;
-            emailInput.Validating += emailInput_Validating;
+            this.emailInput.Location = new System.Drawing.Point(84, 147);
+            this.emailInput.Name = "emailInput";
+            this.emailInput.Size = new System.Drawing.Size(127, 23);
+            this.emailInput.TabIndex = 9;
             // 
             // emailLabel
             // 
-            emailLabel.AutoSize = true;
-            emailLabel.Location = new Point(35, 149);
-            emailLabel.Name = "emailLabel";
-            emailLabel.Size = new Size(36, 15);
-            emailLabel.TabIndex = 27;
-            emailLabel.Text = "Email";
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Location = new System.Drawing.Point(35, 149);
+            this.emailLabel.Name = "emailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(36, 15);
+            this.emailLabel.TabIndex = 27;
+            this.emailLabel.Text = "Email";
             // 
             // addUserError
             // 
-            addUserError.ContainerControl = this;
+            this.addUserError.ContainerControl = this;
             // 
             // showPasswordCheckBox
             // 
-            showPasswordCheckBox.AutoSize = true;
-            showPasswordCheckBox.Location = new Point(294, 84);
-            showPasswordCheckBox.Name = "showPasswordCheckBox";
-            showPasswordCheckBox.Size = new Size(108, 19);
-            showPasswordCheckBox.TabIndex = 28;
-            showPasswordCheckBox.Text = "Show Password";
-            showPasswordCheckBox.UseVisualStyleBackColor = true;
-            showPasswordCheckBox.CheckedChanged += showPasswordCheckBox_CheckedChanged;
+            this.showPasswordCheckBox.AutoSize = true;
+            this.showPasswordCheckBox.Location = new System.Drawing.Point(294, 84);
+            this.showPasswordCheckBox.Name = "showPasswordCheckBox";
+            this.showPasswordCheckBox.Size = new System.Drawing.Size(108, 19);
+            this.showPasswordCheckBox.TabIndex = 28;
+            this.showPasswordCheckBox.Text = "Show Password";
+            this.showPasswordCheckBox.UseVisualStyleBackColor = true;
             // 
             // addUserForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(441, 394);
-            Controls.Add(showPasswordCheckBox);
-            Controls.Add(dobTimePicker);
-            Controls.Add(emailInput);
-            Controls.Add(emailLabel);
-            Controls.Add(addButton);
-            Controls.Add(cancelButton);
-            Controls.Add(roleComboBox);
-            Controls.Add(roleLabel);
-            Controls.Add(stateComboBox);
-            Controls.Add(zipcodeInput);
-            Controls.Add(streetAdressInput);
-            Controls.Add(cityInput);
-            Controls.Add(label12);
-            Controls.Add(label11);
-            Controls.Add(label10);
-            Controls.Add(label9);
-            Controls.Add(label8);
-            Controls.Add(phoneInput);
-            Controls.Add(label7);
-            Controls.Add(genderComboBox);
-            Controls.Add(label6);
-            Controls.Add(lastnameInput);
-            Controls.Add(firstnameInput);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(passwordInput);
-            Controls.Add(passwordLabel);
-            Controls.Add(usernameInput);
-            Controls.Add(addDialogHeading);
-            Controls.Add(usernameLabel);
-            Name = "addUserForm";
-            Text = "Add User";
-            ((System.ComponentModel.ISupportInitialize)addUserError).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(441, 394);
+            this.Controls.Add(this.showPasswordCheckBox);
+            this.Controls.Add(this.dobTimePicker);
+            this.Controls.Add(this.emailInput);
+            this.Controls.Add(this.emailLabel);
+            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.roleComboBox);
+            this.Controls.Add(this.roleLabel);
+            this.Controls.Add(this.stateComboBox);
+            this.Controls.Add(this.zipcodeInput);
+            this.Controls.Add(this.streetAdressInput);
+            this.Controls.Add(this.cityInput);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.phoneInput);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.genderComboBox);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lastnameInput);
+            this.Controls.Add(this.firstnameInput);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.passwordInput);
+            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.usernameInput);
+            this.Controls.Add(this.addDialogHeading);
+            this.Controls.Add(this.usernameLabel);
+            this.Name = "addUserForm";
+            this.Text = "Add User";
+            ((System.ComponentModel.ISupportInitialize)(this.addUserError)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion

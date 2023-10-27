@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.fineRateTextBox = new System.Windows.Forms.TextBox();
             this.rentalRateTextBox = new System.Windows.Forms.TextBox();
@@ -40,6 +41,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
+            this.addFurnitureError = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.addFurnitureError)).BeginInit();
             this.SuspendLayout();
             // 
             // nameTextBox
@@ -65,7 +70,7 @@
             // 
             // descriptionTextArea
             // 
-            this.descriptionTextArea.Location = new System.Drawing.Point(55, 323);
+            this.descriptionTextArea.Location = new System.Drawing.Point(55, 303);
             this.descriptionTextArea.Multiline = true;
             this.descriptionTextArea.Name = "descriptionTextArea";
             this.descriptionTextArea.Size = new System.Drawing.Size(326, 95);
@@ -137,17 +142,43 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 296);
+            this.label5.Location = new System.Drawing.Point(55, 285);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 15);
             this.label5.TabIndex = 11;
             this.label5.Text = "Description:";
+            // 
+            // cancelButton
+            // 
+            this.cancelButton.Location = new System.Drawing.Point(55, 415);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 12;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            // 
+            // addButton
+            // 
+            this.addButton.Location = new System.Drawing.Point(283, 415);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(75, 23);
+            this.addButton.TabIndex = 13;
+            this.addButton.Text = "Add";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            // 
+            // addFurnitureError
+            // 
+            this.addFurnitureError.ContainerControl = this;
             // 
             // addFurnitureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(429, 450);
+            this.Controls.Add(this.addButton);
+            this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -162,6 +193,7 @@
             this.Controls.Add(this.nameTextBox);
             this.Name = "addFurnitureForm";
             this.Text = "addFurnitureForm";
+            ((System.ComponentModel.ISupportInitialize)(this.addFurnitureError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +213,8 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Button cancelButton;
+        private Button addButton;
+        private ErrorProvider addFurnitureError;
     }
 }

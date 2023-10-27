@@ -40,4 +40,10 @@ public static class QueryStrings
     public const string GetStyles = "select * from style";
 
     #endregion
+
+    #region Category
+
+    public const string GetCategories = "select * from category";
+
+    #endregion
 }
