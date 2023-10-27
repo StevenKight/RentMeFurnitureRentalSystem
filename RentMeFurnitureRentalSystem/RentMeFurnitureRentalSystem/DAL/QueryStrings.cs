@@ -34,4 +34,10 @@ public static class QueryStrings
     public const string GetByEmployeeUsername = "select * from employee where username=@username";
 
     #endregion
+
+    #region Style
+
+    public const string GetStyles = "select * from style";
+
+    #endregion
 }

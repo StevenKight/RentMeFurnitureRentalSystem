@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RentMeFurnitureRentalSystem.DAL;
 
 namespace RentMeFurnitureRentalSystem.view
 {
@@ -15,6 +16,15 @@ namespace RentMeFurnitureRentalSystem.view
         public addFurnitureForm()
         {
             InitializeComponent();
+            this.populateStyleComboBox();
+        }
+
+        private void populateStyleComboBox()
+        {
+            this.styleComboBox.Items.Clear();
+            var styleDal = new StyleDAL();
+            var styleList = styleDal.GetStyles();
+            this.styleComboBox.DataSource = styleList;
         }
     }
 }
