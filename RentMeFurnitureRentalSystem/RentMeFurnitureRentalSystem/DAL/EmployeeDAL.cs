@@ -16,7 +16,11 @@ public class EmployeeDal
 
         var result = connection.Query<Employee>(QueryStrings.GetEmployees);
 
-        foreach (var employee in result) employees.Add(employee);
+        foreach (var employee in result)
+        {
+            employees.Add(employee);
+        }
+
         return employees;
     }
 
@@ -25,21 +29,7 @@ public class EmployeeDal
         using var connection = new MySqlConnection(Connection.ConnectionString);
         try
         {
-            connection.Execute(QueryStrings.CreateEmployee, new
-            {
-                employee.Username,
-                Firstname = employee.Fname,
-                Lastname = employee.Lname,
-                employee.Gender,
-                employee.Phone,
-                employee.Email,
-                employee.Dob,
-                employee.Address,
-                employee.City,
-                employee.State,
-                Zipcode = employee.Zip,
-                Role = employee.Role_name
-            });
+            connection.Execute(QueryStrings.CreateEmployee, employee);
             return true;
         }
         catch (Exception exception)
@@ -47,6 +37,16 @@ public class EmployeeDal
             MessageBox.Show(exception.Message);
             return false;
         }
+    }
+
+    public static bool DeleteEmployee(Employee employee)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var affected = connection.Execute(QueryStrings.DeleteEmployee, employee);
+
+        return affected > 0;
     }
 
     public static Employee GetEmployeeFromUsername(string username)
