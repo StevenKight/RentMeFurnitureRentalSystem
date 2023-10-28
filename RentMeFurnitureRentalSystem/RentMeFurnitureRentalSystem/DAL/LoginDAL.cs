@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Dapper;
+using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
@@ -9,63 +10,28 @@ public class LoginDal
 
     public static bool CreateLogin(Login login)
     {
-        if (login.Username.Equals("") || login.Password.Equals(""))
-        {
-            return false;
-        }
+        if (string.IsNullOrWhiteSpace(login.Username) || string.IsNullOrWhiteSpace(login.Password)) return false;
 
         using var connection = new MySqlConnection(Connection.ConnectionString);
-
-        connection.Open();
-
-        var query = "insert into login(username,password) values(@username,@password)";
         try
         {
-            var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@username", MySqlDbType.VarChar).Value = login.Username;
-            command.Parameters.Add("@password", MySqlDbType.VarChar).Value = login.Password;
-
-            var rowsAffected = command.ExecuteNonQuery();
-
-            if (rowsAffected > 0)
-            {
-                return true;
-            }
+            connection.Execute(QueryStrings.CreateLogin, new { username = login.Username, password = login.Password });
+            return true;
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
             return false;
         }
-
-        return false;
     }
 
     public static Login CheckLogin(string username)
     {
-        var login = new Login();
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
-        connection.Open();
+        var loginResult = connection.Query<Login>(QueryStrings.GetLoginByName, new { username });
 
-        var query = "select * from login where username=@username";
-        try
-        {
-            var command = new MySqlCommand(query, connection);
-            command.Parameters.Add("@username", MySqlDbType.VarChar).Value = username;
 
-            using var reader = command.ExecuteReader();
-            while (reader.Read())
-            {
-                login.Username = reader.GetString(0);
-                login.Password = reader.GetString(1);
-            }
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine("Error: " + e.Message);
-        }
-
-        return login;
+        return loginResult.ElementAt(0);
     }
 
     #endregion

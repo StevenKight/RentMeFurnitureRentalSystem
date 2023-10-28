@@ -115,7 +115,7 @@
             label5.Name = "label5";
             label5.Size = new Size(58, 15);
             label5.TabIndex = 6;
-            label5.Text = "Lastname";
+            label5.Text = "Lname";
             // 
             // firstnameInput
             // 
@@ -219,7 +219,7 @@
             label12.Name = "label12";
             label12.Size = new Size(50, 15);
             label12.TabIndex = 18;
-            label12.Text = "Zipcode";
+            label12.Text = "Zip";
             // 
             // cityInput
             // 
@@ -261,7 +261,7 @@
             roleLabel.Name = "roleLabel";
             roleLabel.Size = new Size(30, 15);
             roleLabel.TabIndex = 23;
-            roleLabel.Text = "Role";
+            roleLabel.Text = "Role_name";
             // 
             // roleComboBox
             // 
@@ -298,7 +298,7 @@
             label4.Name = "label4";
             label4.Size = new Size(59, 15);
             label4.TabIndex = 5;
-            label4.Text = "Firstname";
+            label4.Text = "Fname";
             // 
             // emailInput
             // 
