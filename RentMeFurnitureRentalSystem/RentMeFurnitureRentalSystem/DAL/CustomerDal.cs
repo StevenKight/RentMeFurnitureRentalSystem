@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Dapper;
+using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
@@ -9,24 +10,29 @@ public class CustomerDal
 
     public static List<Customer> GetAllCustomers()
     {
-        var customerList = new List<Customer>();
-
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
-        var query = "SELECT * FROM customer";
-        connection.Open();
+        var results = connection.Query<Customer>(QueryStrings.GetCustomers);
 
-        using var adapter = new MySqlDataAdapter(query, connection);
 
         using var command = new MySqlCommand(query, connection);
         using var reader = command.ExecuteReader();
 
         while (reader.Read())
         {
-            var customer = SelectCommand(reader);
+            var customer = new Customer();
+            customer.SelectCommand(reader);
             customerList.Add(customer);
         }
 
+        return customerList;
+        return customerList;
+        return customerList;
+        return customerList;
+        return customerList;
+        return customerList;
+        return customerList;
+        return customerList;
         return customerList;
     }
 
@@ -40,16 +46,29 @@ public class CustomerDal
         connection.Open();
 
         using var command = new MySqlCommand(query, connection);
-        FillCommand(command, newCustomer);
+        newCustomer.FillCommand(command);
 
         try
         {
-            var affected = command.ExecuteNonQuery();
-
-            return affected >= 1;
+            connection.Execute(QueryStrings.CreateCustomer, new
+            {
+               fname = newCustomer.Fname,
+               lname = newCustomer.Lname,
+                gender = newCustomer.Gender,
+               email = newCustomer.Email,
+               phone = newCustomer.Phone,
+                dob = newCustomer.Dob,
+               address = newCustomer.Address,
+               city = newCustomer.City,
+               state = newCustomer.State,
+                zip = newCustomer.Zip,
+                
+            });
+            return true;
         }
-        catch
+        catch (Exception exception)
         {
+            MessageBox.Show(exception.Message);
             return false;
         }
     }
