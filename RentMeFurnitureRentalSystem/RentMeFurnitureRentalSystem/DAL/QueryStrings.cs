@@ -8,12 +8,26 @@ public static class QueryStrings
 
     #endregion
 
+    #region Style
+
+    public const string GetStyles = "select * from style";
+
+    #endregion
+
+    #region Category
+
+    public const string GetCategories = "select * from category";
+
+    #endregion
+
     #region Customer
 
     public const string GetCustomers = "select * from customer";
 
-    public const string CreateCustomer = "INSERT INTO `customer`(`fname`,`lname`,`dob`,`gender`,`email`,`phone`,`address`,`city`,`state`,`zip`)" +
-                                         "VALUES (@fname, @lname, @dob, @gender, @email, @phone, @address, @city, @state, @zip);";
+    public const string CreateCustomer =
+        "INSERT INTO `customer`(`fname`,`lname`,`dob`,`gender`,`email`,`phone`,`address`,`city`,`state`,`zip`)" +
+        "VALUES (@fname, @lname, @dob, @gender, @email, @phone, @address, @city, @state, @zip);";
+
     #endregion
 
     #region Login
@@ -35,15 +49,12 @@ public static class QueryStrings
 
     #endregion
 
-    #region Style
+    #region Furniture
 
-    public const string GetStyles = "select * from style";
+    public const string GetFurniture = "select * from furniture";
 
-    #endregion
-
-    #region Category
-
-    public const string GetCategories = "select * from category";
+    public const string CreateFurniture =
+        "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category,@Style,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
 
     #endregion
 }

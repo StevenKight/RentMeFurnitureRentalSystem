@@ -26,17 +26,16 @@ public class CustomerDal
         {
             connection.Execute(QueryStrings.CreateCustomer, new
             {
-               fname = newCustomer.Fname,
-               lname = newCustomer.Lname,
+                fname = newCustomer.Fname,
+                lname = newCustomer.Lname,
                 gender = newCustomer.Gender,
-               email = newCustomer.Email,
-               phone = newCustomer.Phone,
+                email = newCustomer.Email,
+                phone = newCustomer.Phone,
                 dob = newCustomer.Dob,
-               address = newCustomer.Address,
-               city = newCustomer.City,
-               state = newCustomer.State,
-                zip = newCustomer.Zip,
-                
+                address = newCustomer.Address,
+                city = newCustomer.City,
+                state = newCustomer.State,
+                zip = newCustomer.Zip
             });
             return true;
         }

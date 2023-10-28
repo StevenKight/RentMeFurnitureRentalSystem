@@ -185,7 +185,6 @@ public partial class addUserForm : Form
             Zip = zipcodeInput.Text
         };
 
-        
 
         if (!CustomerDal.CreateCustomer(customer))
         {

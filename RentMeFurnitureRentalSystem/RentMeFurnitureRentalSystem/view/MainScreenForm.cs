@@ -33,6 +33,45 @@ public partial class MainScreenForm : Form
 
     #endregion
 
+    private void addCustomerButton_Click_1(object sender, EventArgs e)
+    {
+        var addCustomerForm = new addUserForm(false);
+        addCustomerForm.StartPosition = FormStartPosition.Manual;
+        addCustomerForm.Left = Left + (Width - addCustomerForm.Width) / 2;
+        addCustomerForm.Top = Top + (Height - addCustomerForm.Height) / 2;
+
+        addCustomerForm.ShowDialog();
+        getData();
+    }
+
+    private void logoutButton_Click_1(object sender, EventArgs e)
+    {
+        LoggedInEmployee = null;
+        DialogResult = DialogResult.Continue;
+        Close();
+    }
+
+    private void addEmployeeButton_Click_1(object sender, EventArgs e)
+    {
+        var addEmployeeForm = new addUserForm(true);
+        addEmployeeForm.StartPosition = FormStartPosition.Manual;
+        addEmployeeForm.Left = Left + (Width - addEmployeeForm.Width) / 2;
+        addEmployeeForm.Top = Top + (Height - addEmployeeForm.Height) / 2;
+
+        addEmployeeForm.ShowDialog();
+        getData();
+    }
+
+    private void addFurnitureButton_Click(object sender, EventArgs e)
+    {
+        var addFurnitureForm = new addFurnitureForm();
+        addFurnitureForm.Left = Left + (Width - addFurnitureForm.Width) / 2;
+        addFurnitureForm.Top = Top + (Height - addFurnitureForm.Height) / 2;
+
+        addFurnitureForm.ShowDialog();
+        getData();
+    }
+
     #region Properties
 
     #region Data Members
@@ -42,8 +81,12 @@ public partial class MainScreenForm : Form
     public List<Employee> Employees { get; set; }
     public List<Customer> Customers { get; set; }
 
+    public List<Furniture> Furniture { get; set; }
+
     public Employee SelectedEmployee { get; set; }
     public Customer SelectedCustomer { get; set; }
+
+    public Furniture SelectedFurniture { get; set; }
 
     #endregion
 
@@ -55,6 +98,7 @@ public partial class MainScreenForm : Form
     {
         Employees = EmployeeDal.GetAllEmployees();
         Customers = CustomerDal.GetAllCustomers();
+        Furniture = FurnitureDAL.GetFurniture().ToList();
 
         populateGridViews();
     }
@@ -72,6 +116,15 @@ public partial class MainScreenForm : Form
         employeeGridView.Columns[0].HeaderText = "Name";
         employeeGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         employeeGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+        furnitureGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[0].HeaderText = "ID";
+        furnitureGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[1].HeaderText = "Name";
+        furnitureGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[2].HeaderText = "Description";
+        furnitureGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[3].HeaderText = "Quantity";
     }
 
     private void populateGridViews()
@@ -87,6 +140,8 @@ public partial class MainScreenForm : Form
             var FullName = employee.Fname + " " + employee.Lname;
             return new { FullName, employee.Phone, employee.Email };
         }).ToList();
+        furnitureGridView.DataSource = Furniture.Select(furniture => new
+            { Id = furniture.Furniture_id, furniture.Name, furniture.Description, furniture.Quantity }).ToList();
     }
 
     private void checkIfAdmin()
@@ -120,6 +175,29 @@ public partial class MainScreenForm : Form
             SelectedCustomer = customer;
         }
     }
+
+    private void furnitureGridView_RowStateChanged(Object sender, DataGridViewRowStateChangedEventArgs e)
+    {
+        if(e.StateChanged != DataGridViewElementStates.Selected) return;
+
+        var selectedRows = this.furnitureGridView.SelectedRows;
+        if (selectedRows.Count > 0)
+        {
+            var selectedObject = selectedRows[0].DataBoundItem;
+            var idProperty = selectedObject.GetType().GetProperty("ID");
+            var id = (string)idProperty?.GetValue(selectedObject, null);
+            var nameProperty = selectedObject.GetType().GetProperty("Name");
+            var name = (string)nameProperty?.GetValue(selectedObject, null);
+            var descriptionProperty = selectedObject.GetType().GetProperty("Description");
+            var description = (string)descriptionProperty?.GetValue(selectedObject, null);
+            var quantityProperty = selectedObject.GetType().GetProperty("Quanity");
+            var quantity = (string)quantityProperty?.GetValue(selectedObject, null);
+
+            var furniture = Furniture.Find(x => id.Equals(x.Furniture_id));
+            SelectedFurniture = furniture;
+        }
+    }
+
 
     private void employeeGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
     {
@@ -167,43 +245,4 @@ public partial class MainScreenForm : Form
     }
 
     #endregion
-
-    private void addCustomerButton_Click_1(object sender, EventArgs e)
-    {
-        var addCustomerForm = new addUserForm(false);
-        addCustomerForm.StartPosition = FormStartPosition.Manual;
-        addCustomerForm.Left = Left + (Width - addCustomerForm.Width) / 2;
-        addCustomerForm.Top = Top + (Height - addCustomerForm.Height) / 2;
-
-        addCustomerForm.ShowDialog();
-        getData();
-    }
-
-    private void logoutButton_Click_1(object sender, EventArgs e)
-    {
-        LoggedInEmployee = null;
-        DialogResult = DialogResult.Continue;
-        Close();
-    }
-
-    private void addEmployeeButton_Click_1(object sender, EventArgs e)
-    {
-        var addEmployeeForm = new addUserForm(true);
-        addEmployeeForm.StartPosition = FormStartPosition.Manual;
-        addEmployeeForm.Left = Left + (Width - addEmployeeForm.Width) / 2;
-        addEmployeeForm.Top = Top + (Height - addEmployeeForm.Height) / 2;
-
-        addEmployeeForm.ShowDialog();
-        getData();
-    }
-
-    private void addFurnitureButton_Click(object sender, EventArgs e)
-    {
-        var addFurnitureForm = new addFurnitureForm();
-        addFurnitureForm.Left = Left + (Width - addFurnitureForm.Width) / 2;
-        addFurnitureForm.Top = Top + (Height - addFurnitureForm.Height) / 2;
-
-        addFurnitureForm.ShowDialog();
-
-    }
 }

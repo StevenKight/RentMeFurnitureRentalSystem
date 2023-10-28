@@ -1,34 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Dapper;
+﻿using Dapper;
 using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.model;
 
-namespace RentMeFurnitureRentalSystem.DAL
+namespace RentMeFurnitureRentalSystem.DAL;
+
+public class StyleDAL
 {
-    public class StyleDAL
+    #region methods
+
+    public static IList<Style> GetStyles()
     {
-        #region methods
+        var styles = new List<Style>();
 
-        public static IList<Style> GetStyles()
-        {
-            var styles = new List<Style>();
+        using var connection = new MySqlConnection(Connection.ConnectionString);
 
-            using var connection = new MySqlConnection(Connection.ConnectionString);
+        var result = connection.Query<Style>(QueryStrings.GetStyles);
 
-            var result = connection.Query<Style>(QueryStrings.GetStyles);
+        foreach (var style in result) styles.Add(style);
 
-            foreach (Style style in result)
-            {
-                styles.Add(style);
-            }
-
-            return styles;
-        }
-
-        #endregion
+        return styles;
     }
+
+    #endregion
 }
