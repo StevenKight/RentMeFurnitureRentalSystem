@@ -108,22 +108,11 @@ public partial class MainScreenForm : Form
 
         if (result == DialogResult.Yes)
         {
-            MessageBox.Show(this.deleteEmployee()
+            MessageBox.Show(EmployeeDal.DeleteEmployee(this.SelectedEmployee)
                 ? @"Employee deleted"
                 : @"Employee could not be deleted");
             this.getData();
         }
-    }
-
-    private bool deleteEmployee()
-    {
-        var employeeLogin = new Login()
-        {
-            Username = this.SelectedEmployee.Username,
-            Password = this.SelectedEmployee.Password
-        };
-
-        return EmployeeDal.DeleteEmployee(this.SelectedEmployee) && LoginDal.DeleteLogin(employeeLogin);
     }
 
     private void addCustomerButton_Click(object sender, EventArgs e)

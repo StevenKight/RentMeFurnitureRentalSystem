@@ -26,6 +26,17 @@ public class EmployeeDal
 
     public static bool CreateEmployee(Employee employee)
     {
+        var login = new Login
+        {
+            Username = employee.Username,
+            Password = employee.Password
+        };
+
+        if (!LoginDal.CreateLogin(login)) // TODO: Make procedure/function for creating employee and login
+        {
+            return false;
+        }
+
         using var connection = new MySqlConnection(Connection.ConnectionString);
         try
         {
@@ -34,7 +45,7 @@ public class EmployeeDal
         }
         catch (Exception exception)
         {
-            MessageBox.Show(exception.Message);
+            LoginDal.DeleteLogin(login);
             return false;
         }
     }
@@ -46,6 +57,19 @@ public class EmployeeDal
 
         var affected = connection.Execute(QueryStrings.DeleteEmployee, employee);
 
+        connection.Close();
+
+        var login = new Login
+        {
+            Username = employee.Username,
+            Password = employee.Password
+        };
+
+        if (!LoginDal.DeleteLogin(login)) // TODO: Make procedure/function for deleting employee and login
+        {
+            return false;
+        }
+
         return affected > 0;
     }
 
@@ -56,6 +80,16 @@ public class EmployeeDal
         var result = connection.Query<Employee>(QueryStrings.GetByEmployeeUsername, new { username });
         var employee = result.First();
         return employee;
+    }
+
+    public static bool UpdateEmployee(Employee employee)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var affected = connection.Execute(QueryStrings.UpdateEmployee, employee);
+
+        return affected > 0;
     }
 
     #endregion

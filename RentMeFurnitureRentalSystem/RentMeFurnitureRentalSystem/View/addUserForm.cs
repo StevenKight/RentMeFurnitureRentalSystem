@@ -62,7 +62,6 @@ public partial class addUserForm : Form
         this.displayCustomerData();
 
         this.addButton.Enabled = false;
-        this.addButton.Hide();
 
         this.fillDialog(customer);
 
@@ -75,7 +74,6 @@ public partial class addUserForm : Form
         this.displayEmployeeData();
 
         this.addButton.Enabled = false;
-        this.addButton.Hide();
 
         this.fillDialog(employee);
 
@@ -130,7 +128,6 @@ public partial class addUserForm : Form
         this.isPrepopulated = true;
 
         this.addButton.Enabled = false;
-        this.addButton.Hide();
 
         var user = this.isEmployee ? "Employee" : "Customer";
         this.addButton.Text = "Update " + user;
@@ -261,16 +258,10 @@ public partial class addUserForm : Form
             return;
         }
 
-        var login = new Login
-        {
-            Username = this.usernameInput.Text,
-            Password = this.passwordInput.Text
-        };
-
         var employee = new Employee
         {
-            Username = login.Username,
-            Password = login.Password,
+            Username = this.usernameInput.Text,
+            Password = this.passwordInput.Text,
             Fname = this.firstnameInput.Text,
             Lname = this.lastnameInput.Text,
             Gender = this.genderComboBox.Text,
@@ -287,13 +278,14 @@ public partial class addUserForm : Form
         if (this.isPrepopulated)
         {
             employee.Employee_num = this.GivenEmployee.Employee_num;
-            MessageBox.Show("UPDATE NOT IMPLEMENTED");
-            return;
-        }
+            if (!EmployeeDal.UpdateEmployee(employee))
+            {
+                MessageBox.Show("Error Updating Employee");
+                return;
+            }
 
-        if (!LoginDal.CreateLogin(login))
-        {
-            MessageBox.Show("Error Creating Login");
+            MessageBox.Show("Employee Updated");
+            Close();
             return;
         }
 
@@ -446,7 +438,6 @@ public partial class addUserForm : Form
         if (this.isPrepopulated)
         {
             this.addButton.Enabled = true;
-            this.addButton.Show();
         }
     }
 

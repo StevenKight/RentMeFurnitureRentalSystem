@@ -69,7 +69,7 @@ public static class QueryStrings
                                          "`address` = @Address," +
                                          "`city` = @City," +
                                          "`state` = @State," +
-                                         "`zip` = @Zip " +
+                                         "`zip` = @Zip," +
                                          "`role_name` = @Role_name " +
                                          "WHERE `employee_num` = @Employee_num;";
 
