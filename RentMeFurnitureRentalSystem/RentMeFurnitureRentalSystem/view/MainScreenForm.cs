@@ -127,6 +127,10 @@ public partial class MainScreenForm : Form
         furnitureGridView.Columns[2].HeaderText = "Description";
         furnitureGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         furnitureGridView.Columns[3].HeaderText = "Quantity";
+        furnitureGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[4].HeaderText = "Style";
+        furnitureGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        furnitureGridView.Columns[5].HeaderText = "Category";
     }
 
     private void populateGridViews()
@@ -143,7 +147,7 @@ public partial class MainScreenForm : Form
             return new { FullName, employee.Phone, employee.Email };
         }).ToList();
         furnitureGridView.DataSource = Furniture.Select(furniture => new
-            { Id = furniture.Furniture_id, furniture.Name, furniture.Description, furniture.Quantity }).ToList();
+            { Id = furniture.Furniture_id, furniture.Name, furniture.Description, furniture.Quantity, furniture.Style_name, furniture.Category_name }).ToList();
     }
 
     private void checkIfAdmin()
@@ -261,17 +265,29 @@ public partial class MainScreenForm : Form
     {
         if (this.IdRadioButton.Checked)
         {
-            var id = int.Parse(this.furnitureSearchTextBox.Text);
+            try
+            {
+                var id = int.Parse(this.furnitureSearchTextBox.Text);
+                var furniture = FurnitureDAL.GetFurnitureById(id);
 
-            var furniture = FurnitureDAL.GetFurnitureById(id);
+                this.Furniture.Clear();
 
-            this.Furniture.Clear();
-
-            this.Furniture = furniture.ToList();
-            this.populateGridViews();
+                this.Furniture = furniture.ToList();
+                this.populateGridViews();
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show("Please enter a postive number");
+            }
+            
         } 
         else if (this.categoryRadioButton.Checked)
         {
+            var category = this.categoryComboBox.Text;
+            var furniture = FurnitureDAL.GetFurnitureByCategory(category);
+            this.Furniture.Clear();
+            this.Furniture = furniture.ToList();
+            this.populateGridViews();
 
         }
         else
