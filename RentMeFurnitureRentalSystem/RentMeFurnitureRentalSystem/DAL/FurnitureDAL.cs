@@ -46,6 +46,22 @@ public class FurnitureDAL
         }
         return list;
     }
+
+    public static IList<Furniture> GetFurnitureByStyle(string style)
+    {
+        var list = new List<Furniture>();
+
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var result = connection.Query<Furniture>(QueryStrings.GetFurnitureByStyle, new { style });
+
+        foreach (var furniture in result)
+        {
+            list.Add(furniture);
+        }
+
+        return list;
+    }
     public static bool CreateFurniture(Furniture furniture)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);

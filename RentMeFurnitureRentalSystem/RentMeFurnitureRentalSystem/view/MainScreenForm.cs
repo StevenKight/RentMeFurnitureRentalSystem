@@ -292,7 +292,11 @@ public partial class MainScreenForm : Form
         }
         else
         {
-
+            var style = this.styleComboBox.Text;
+            var furniture = FurnitureDAL.GetFurnitureByStyle(style);
+            this.Furniture.Clear();
+            this.Furniture = furniture.ToList();
+            this.populateGridViews();
         }
     }
     private void resetButton_Click(object sender, EventArgs e)
