@@ -2,9 +2,13 @@
 
 public static class QueryStrings
 {
+    #region Data members
+
     #region Roles
 
     public const string GetRoles = "select * from role";
+
+    #endregion
 
     #endregion
 
@@ -12,15 +16,34 @@ public static class QueryStrings
 
     public const string GetCustomers = "select * from customer";
 
-    public const string CreateCustomer = "INSERT INTO `customer`(`fname`,`lname`,`dob`,`gender`,`email`,`phone`,`address`,`city`,`state`,`zip`)" +
-                                         "VALUES (@fname, @lname, @dob, @gender, @email, @phone, @address, @city, @state, @zip);";
+    public const string CreateCustomer =
+        "INSERT INTO `customer`(`fname`,`lname`,`dob`,`gender`,`email`,`phone`,`address`,`city`,`state`,`zip`)" +
+        "VALUES (@Fname, @Lname, @Dob, @Gender, @Email, @Phone, @Address, @City, @State, @Zip);";
+
+    public const string DeleteCustomer = "DELETE FROM `customer` WHERE member_id=@Member_id;";
+
+    public const string UpdateCustomer = "UPDATE `customer`" +
+                                         "SET `fname` = @Fname," +
+                                         "`lname` = @Lname," +
+                                         "`dob` = @Dob," +
+                                         "`gender` = @Gender," +
+                                         "`email` = @Email," +
+                                         "`phone` = @Phone," +
+                                         "`address` = @Address," +
+                                         "`city` = @City," +
+                                         "`state` = @State," +
+                                         "`zip` = @Zip " +
+                                         "WHERE `member_id` = @Member_id;";
+
     #endregion
 
     #region Login
 
-    public const string GetLoginByName = "select * from login where username=@username";
+    public const string GetLoginByName = "select * from login where username=@Username";
 
-    public const string CreateLogin = "insert into login(username,password) values(@username,@password)";
+    public const string CreateLogin = "insert into login(username,password) values(@Username,@Password)";
+
+    public const string DeleteLogin = "DELETE FROM login WHERE username=@Username;";
 
     #endregion
 
@@ -29,9 +52,26 @@ public static class QueryStrings
     public const string GetEmployees = "Select * from employee";
 
     public const string CreateEmployee =
-        "insert into employee(username,fname,lname,gender,phone,email,dob,address,city,state,zip,role_name) values(@Username,@Fname,@Lname,@Gender,@Phone,@Email,@Dob,@Address,@City,@State,@Zip,@Role_name)";
+        "insert into employee(username,fname,lname,gender,phone,email,dob,address,city,state,zip,role_name) " +
+        "values(@Username,@Fname,@Lname,@Gender,@Phone,@Email,@Dob,@Address,@City,@State,@Zip,@Role_name)";
 
-    public const string GetByEmployeeUsername = "select * from employee where username=@username";
+    public const string GetByEmployeeUsername = "select * from employee where username=@Username";
+
+    public const string DeleteEmployee = "DELETE FROM employee WHERE employee_num=@Employee_num;";
+
+    public const string UpdateEmployee = "UPDATE `employee`" +
+                                         "SET `fname` = @Fname," +
+                                         "`lname` = @Lname," +
+                                         "`dob` = @Dob," +
+                                         "`gender` = @Gender," +
+                                         "`email` = @Email," +
+                                         "`phone` = @Phone," +
+                                         "`address` = @Address," +
+                                         "`city` = @City," +
+                                         "`state` = @State," +
+                                         "`zip` = @Zip," +
+                                         "`role_name` = @Role_name " +
+                                         "WHERE `employee_num` = @Employee_num;";
 
     #endregion
 }

@@ -1,6 +1,8 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.model;
+using System.Data.Common;
+using System.Transactions;
 
 namespace RentMeFurnitureRentalSystem.DAL;
 
@@ -16,37 +18,53 @@ public class EmployeeDal
 
         var result = connection.Query<Employee>(QueryStrings.GetEmployees);
 
-        foreach (var employee in result) employees.Add(employee);
+        foreach (var employee in result)
+        {
+            employees.Add(employee);
+        }
+
         return employees;
     }
 
     public static bool CreateEmployee(Employee employee)
     {
+        var login = new Login
+        {
+            Username = employee.Username,
+            Password = employee.Password
+        };
+
         using var connection = new MySqlConnection(Connection.ConnectionString);
-        try
+        connection.Open();
+
+        if (!LoginDal.CreateLogin(login, connection))
         {
-            connection.Execute(QueryStrings.CreateEmployee, new
-            {
-                employee.Username,
-                Firstname = employee.Fname,
-                Lastname = employee.Lname,
-                employee.Gender,
-                employee.Phone,
-                employee.Email,
-                employee.Dob,
-                employee.Address,
-                employee.City,
-                employee.State,
-                Zipcode = employee.Zip,
-                Role = employee.Role_name
-            });
-            return true;
-        }
-        catch (Exception exception)
-        {
-            MessageBox.Show(exception.Message);
             return false;
         }
+
+        var affected = connection.Execute(QueryStrings.CreateEmployee, employee);
+
+        return affected > 0;
+    }
+
+    public static bool DeleteEmployee(Employee employee)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+            
+        var affected = connection.Execute(QueryStrings.DeleteEmployee, employee);
+
+        var login = new Login
+        {
+            Username = employee.Username,
+            Password = employee.Password
+        };
+
+        if (!LoginDal.DeleteLogin(login))
+        {
+            return false;
+        }
+        return affected > 0;
     }
 
     public static Employee GetEmployeeFromUsername(string username)
@@ -56,6 +74,16 @@ public class EmployeeDal
         var result = connection.Query<Employee>(QueryStrings.GetByEmployeeUsername, new { username });
         var employee = result.First();
         return employee;
+    }
+
+    public static bool UpdateEmployee(Employee employee)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var affected = connection.Execute(QueryStrings.UpdateEmployee, employee);
+
+        return affected > 0;
     }
 
     #endregion

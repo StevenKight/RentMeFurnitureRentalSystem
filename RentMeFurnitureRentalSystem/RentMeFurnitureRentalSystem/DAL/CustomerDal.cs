@@ -14,7 +14,6 @@ public class CustomerDal
 
         var results = connection.Query<Customer>(QueryStrings.GetCustomers);
 
-
         return results.ToList();
     }
 
@@ -22,22 +21,11 @@ public class CustomerDal
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
+        connection.Open();
+
         try
         {
-            connection.Execute(QueryStrings.CreateCustomer, new
-            {
-               fname = newCustomer.Fname,
-               lname = newCustomer.Lname,
-                gender = newCustomer.Gender,
-               email = newCustomer.Email,
-               phone = newCustomer.Phone,
-                dob = newCustomer.Dob,
-               address = newCustomer.Address,
-               city = newCustomer.City,
-               state = newCustomer.State,
-                zip = newCustomer.Zip,
-                
-            });
+            connection.Execute(QueryStrings.CreateCustomer, newCustomer);
             return true;
         }
         catch (Exception exception)
@@ -45,6 +33,26 @@ public class CustomerDal
             MessageBox.Show(exception.Message);
             return false;
         }
+    }
+
+    public static bool DeleteCustomer(Customer customer)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var affected = connection.Execute(QueryStrings.DeleteCustomer, customer);
+
+        return affected > 0;
+    }
+
+    public static bool UpdateCustomer(Customer customer)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var affected = connection.Execute(QueryStrings.UpdateCustomer, customer);
+
+        return affected > 0;
     }
 
     #endregion
