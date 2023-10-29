@@ -62,14 +62,14 @@
             this.fineRateTextBox.Location = new System.Drawing.Point(283, 152);
             this.fineRateTextBox.Name = "fineRateTextBox";
             this.fineRateTextBox.Size = new System.Drawing.Size(121, 23);
-            this.fineRateTextBox.TabIndex = 1;
+            this.fineRateTextBox.TabIndex = 4;
             // 
             // rentalRateTextBox
             // 
             this.rentalRateTextBox.Location = new System.Drawing.Point(84, 152);
             this.rentalRateTextBox.Name = "rentalRateTextBox";
             this.rentalRateTextBox.Size = new System.Drawing.Size(100, 23);
-            this.rentalRateTextBox.TabIndex = 2;
+            this.rentalRateTextBox.TabIndex = 3;
             // 
             // descriptionTextArea
             // 
@@ -77,7 +77,7 @@
             this.descriptionTextArea.Multiline = true;
             this.descriptionTextArea.Name = "descriptionTextArea";
             this.descriptionTextArea.Size = new System.Drawing.Size(326, 95);
-            this.descriptionTextArea.TabIndex = 3;
+            this.descriptionTextArea.TabIndex = 6;
             // 
             // styleComboBox
             // 
@@ -86,7 +86,7 @@
             this.styleComboBox.Location = new System.Drawing.Point(55, 81);
             this.styleComboBox.Name = "styleComboBox";
             this.styleComboBox.Size = new System.Drawing.Size(121, 23);
-            this.styleComboBox.TabIndex = 4;
+            this.styleComboBox.TabIndex = 1;
             // 
             // categoryComboBox
             // 
@@ -95,7 +95,7 @@
             this.categoryComboBox.Location = new System.Drawing.Point(283, 81);
             this.categoryComboBox.Name = "categoryComboBox";
             this.categoryComboBox.Size = new System.Drawing.Size(121, 23);
-            this.categoryComboBox.TabIndex = 5;
+            this.categoryComboBox.TabIndex = 2;
             // 
             // name
             // 
@@ -156,7 +156,7 @@
             this.cancelButton.Location = new System.Drawing.Point(55, 415);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 12;
+            this.cancelButton.TabIndex = 8;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
@@ -166,7 +166,7 @@
             this.addButton.Location = new System.Drawing.Point(283, 415);
             this.addButton.Name = "addButton";
             this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 13;
+            this.addButton.TabIndex = 7;
             this.addButton.Text = "Add";
             this.addButton.UseVisualStyleBackColor = true;
             this.addButton.Click += new System.EventHandler(this.addButton_Click);
@@ -185,7 +185,7 @@
             0});
             this.quantiyNumber.Name = "quantiyNumber";
             this.quantiyNumber.Size = new System.Drawing.Size(120, 23);
-            this.quantiyNumber.TabIndex = 14;
+            this.quantiyNumber.TabIndex = 5;
             // 
             // label6
             // 
