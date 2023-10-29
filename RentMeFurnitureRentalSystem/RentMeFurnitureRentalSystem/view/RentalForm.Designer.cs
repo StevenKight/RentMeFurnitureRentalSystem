@@ -306,12 +306,12 @@
             // 
             textBox2.BackColor = SystemColors.Control;
             textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Location = new Point(382, 83);
+            textBox2.Location = new Point(350, 83);
             textBox2.Name = "textBox2";
             textBox2.ReadOnly = true;
-            textBox2.Size = new Size(217, 16);
+            textBox2.Size = new Size(286, 16);
             textBox2.TabIndex = 30;
-            textBox2.Text = "Please Select Furniture and Qty to Rent";
+            textBox2.Text = "Please Enter a Quantity of Each Furniture to be Rented";
             textBox2.TextAlign = HorizontalAlignment.Center;
             // 
             // errorProvider
