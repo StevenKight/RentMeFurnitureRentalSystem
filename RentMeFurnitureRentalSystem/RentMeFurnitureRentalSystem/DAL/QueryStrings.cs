@@ -2,13 +2,22 @@
 
 public static class QueryStrings
 {
-    #region Data members
 
     #region Roles
 
     public const string GetRoles = "select * from role";
 
     #endregion
+
+    #region Style
+
+    public const string GetStyles = "select * from style";
+
+    #endregion
+
+    #region Category
+
+    public const string GetCategories = "select * from category";
 
     #endregion
 
@@ -72,6 +81,21 @@ public static class QueryStrings
                                          "`zip` = @Zip," +
                                          "`role_name` = @Role_name " +
                                          "WHERE `employee_num` = @Employee_num;";
+
+    #endregion
+
+    #region Furniture
+
+    public const string GetFurniture = "select * from furniture";
+
+    public const string GetFurnitureById = "select * from furniture where furniture_id=@id";
+
+    public const string GetFurnitureByCategory = "select * from furniture where category_name=@category";
+
+    public const string GetFurnitureByStyle = "select * from furniture where style_name=@style";
+
+    public const string CreateFurniture =
+        "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category,@Style,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
 
     #endregion
 }

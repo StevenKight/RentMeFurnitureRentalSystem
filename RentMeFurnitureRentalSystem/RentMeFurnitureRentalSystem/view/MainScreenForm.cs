@@ -7,6 +7,23 @@ namespace RentMeFurnitureRentalSystem;
 
 public partial class MainScreenForm : Form
 {
+
+    #region Data Members
+
+    public Employee LoggedInEmployee { get; set; }
+
+    public List<Employee> Employees { get; set; }
+    public List<Customer> Customers { get; set; }
+
+    public List<Furniture> Furniture { get; set; }
+
+    public Employee SelectedEmployee { get; set; }
+    public Customer SelectedCustomer { get; set; }
+
+    public Furniture SelectedFurniture { get; set; }
+
+    #endregion
+
     #region Constructors
 
     public MainScreenForm(Employee employee)
@@ -37,13 +54,11 @@ public partial class MainScreenForm : Form
 
     private void getData()
     {
-        this.Employees = EmployeeDal.GetAllEmployees();
-        this.Customers = CustomerDal.GetAllCustomers();
+        Employees = EmployeeDal.GetAllEmployees();
+        Customers = CustomerDal.GetAllCustomers();
+        Furniture = FurnitureDAL.GetFurniture().ToList();
 
-        this.populateGridViews();
-
-        this.employeeGridView.ClearSelection();
-        this.customerGridView.ClearSelection();
+        populateGridViews();
     }
 
     private void setupGridViews()
@@ -66,22 +81,60 @@ public partial class MainScreenForm : Form
         this.employeeGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         this.employeeGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         this.employeeGridView.Columns[3].HeaderText = "Role";
+
+        furnitureGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[0].HeaderText = "ID";
+        furnitureGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[1].HeaderText = "Name";
+        furnitureGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[2].HeaderText = "Description";
+        furnitureGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[3].HeaderText = "Quantity";
+        furnitureGridView.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+        furnitureGridView.Columns[4].HeaderText = "Style";
+        furnitureGridView.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        furnitureGridView.Columns[5].HeaderText = "Category";
     }
 
     private void populateGridViews()
     {
-        this.customerGridView.DataSource = this.Customers.Select(customer =>
+        customerGridView.DataSource = Customers.Select(customer =>
         {
             var FullName = customer.Fname + " " + customer.Lname;
             return new { FullName, customer.Phone, customer.Email, customer.Register_date };
         }).ToList();
 
-        this.employeeGridView.DataSource = this.Employees.Select(employee =>
+        employeeGridView.DataSource = Employees.Select(employee =>
         {
             var FullName = employee.Fname + " " + employee.Lname;
             return new { FullName, employee.Phone, employee.Email, employee.Role_name };
         }).ToList();
+        furnitureGridView.DataSource = Furniture.Select(furniture => new
+        { Id = furniture.Furniture_id, furniture.Name, furniture.Description, furniture.Quantity, furniture.Style_name, furniture.Category_name }).ToList();
     }
+
+    private void checkIfAdmin()
+    {
+        if (this.LoggedInEmployee.Role_name.Equals("administrator"))
+        {
+            return;
+        }
+
+        this.dashboardTabs.TabPages.Remove(this.employeesTab);
+    }
+
+    private void populateStyleAndCategoryComboBoxes()
+    {
+        this.categoryComboBox.Items.Clear();
+        this.styleComboBox.Items.Clear();
+
+        var categories = CategoryDAL.GetCategories();
+        var styles = StyleDAL.GetStyles();
+
+        this.categoryComboBox.DataSource = categories.ToList();
+        this.styleComboBox.DataSource = styles.ToList();
+    }
+
 
     private void addEmployeeButton_Click(object sender, EventArgs e)
     {
@@ -148,21 +201,21 @@ public partial class MainScreenForm : Form
         }
     }
 
+    private void addFurnitureButton_Click(object sender, EventArgs e)
+    {
+        var addFurnitureForm = new addFurnitureForm();
+        addFurnitureForm.Left = Left + (Width - addFurnitureForm.Width) / 2;
+        addFurnitureForm.Top = Top + (Height - addFurnitureForm.Height) / 2;
+
+        addFurnitureForm.ShowDialog();
+        getData();
+    }
+
     private void logoutButton_Click(object sender, EventArgs e)
     {
         this.LoggedInEmployee = null;
         DialogResult = DialogResult.Continue;
         Close();
-    }
-
-    private void checkIfAdmin()
-    {
-        if (this.LoggedInEmployee.Role_name.Equals("administrator"))
-        {
-            return;
-        }
-
-        this.dashboardTabs.TabPages.Remove(this.employeesTab);
     }
 
     private void customerGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
@@ -249,6 +302,75 @@ public partial class MainScreenForm : Form
         this.getData();
     }
 
+
+    private void furnitureGridView_RowStateChanged(Object sender, DataGridViewRowStateChangedEventArgs e)
+    {
+        if (e.StateChanged != DataGridViewElementStates.Selected) return;
+
+        var selectedRows = this.furnitureGridView.SelectedRows;
+        if (selectedRows.Count > 0)
+        {
+            var selectedObject = selectedRows[0].DataBoundItem;
+            var idProperty = selectedObject.GetType().GetProperty("ID");
+            var id = (string)idProperty?.GetValue(selectedObject, null);
+            var nameProperty = selectedObject.GetType().GetProperty("Name");
+            var name = (string)nameProperty?.GetValue(selectedObject, null);
+            var descriptionProperty = selectedObject.GetType().GetProperty("Description");
+            var description = (string)descriptionProperty?.GetValue(selectedObject, null);
+            var quantityProperty = selectedObject.GetType().GetProperty("Quanity");
+            var quantity = (string)quantityProperty?.GetValue(selectedObject, null);
+
+            var furniture = Furniture.Find(x => id.Equals(x.Furniture_id));
+            SelectedFurniture = furniture;
+        }
+    }
+
+    private void furnitureSearchButton_Click(object sender, EventArgs e)
+    {
+        if (this.IdRadioButton.Checked)
+        {
+            try
+            {
+                var id = int.Parse(this.furnitureSearchTextBox.Text);
+                var furniture = FurnitureDAL.GetFurnitureById(id);
+
+                this.Furniture.Clear();
+
+                this.Furniture = furniture.ToList();
+                this.populateGridViews();
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Please enter a postive number");
+            }
+
+        }
+        else if (this.categoryRadioButton.Checked)
+        {
+            var category = this.categoryComboBox.Text;
+            var furniture = FurnitureDAL.GetFurnitureByCategory(category);
+            this.Furniture.Clear();
+            this.Furniture = furniture.ToList();
+            this.populateGridViews();
+
+        }
+        else
+        {
+            var style = this.styleComboBox.Text;
+            var furniture = FurnitureDAL.GetFurnitureByStyle(style);
+            this.Furniture.Clear();
+            this.Furniture = furniture.ToList();
+            this.populateGridViews();
+        }
+    }
+
+    private void resetButton_Click(object sender, EventArgs e)
+    {
+        this.Furniture.Clear();
+        this.Furniture = FurnitureDAL.GetFurniture().ToList();
+        this.populateGridViews();
+    }
+
     private void dashboardTabs_SelectedIndexChanged(object sender, EventArgs e)
     {
         var selectedTab = this.dashboardTabs.SelectedTab;
@@ -262,18 +384,6 @@ public partial class MainScreenForm : Form
             this.employeeGridView.ClearSelection();
         }
     }
-
-    #endregion
-
-    #region Data Members
-
-    public Employee LoggedInEmployee { get; set; }
-
-    public List<Employee> Employees { get; set; }
-    public List<Customer> Customers { get; set; }
-
-    public Employee SelectedEmployee { get; set; }
-    public Customer SelectedCustomer { get; set; }
 
     #endregion
 }
