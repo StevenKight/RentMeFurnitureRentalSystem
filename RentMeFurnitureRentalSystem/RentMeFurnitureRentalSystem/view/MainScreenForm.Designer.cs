@@ -37,14 +37,12 @@
             customerGridView = new DataGridView();
             customerBindingSource = new BindingSource(components);
             employeeGridView = new DataGridView();
-            employeeBindingSource3 = new BindingSource(components);
-            employeeBindingSource2 = new BindingSource(components);
-            employeeBindingSource1 = new BindingSource(components);
+            employeeBindingSource = new BindingSource(components);
             dashboardTabs = new TabControl();
             customersTab = new TabPage();
+            deleteCustomerButton = new Button();
             employeesTab = new TabPage();
             rentButton = new Button();
-            employeeBindingSource = new BindingSource(components);
             fullnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             lnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -72,16 +70,27 @@
             zipDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             emailDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             rolenameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            deleteEmployeeButton = new Button();
+            furnitureTabpage = new TabPage();
+            resetButton = new Button();
+            categoryRadioButton = new RadioButton();
+            StyleRadioButton = new RadioButton();
+            categoryComboBox = new ComboBox();
+            styleComboBox = new ComboBox();
+            IdRadioButton = new RadioButton();
+            furnitureSearchTextBox = new TextBox();
+            furnitureSearchButton = new Button();
+            addFurnitureButton = new Button();
+            furnitureGridView = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)customerGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeGridView).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)employeeBindingSource3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)employeeBindingSource2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             dashboardTabs.SuspendLayout();
             customersTab.SuspendLayout();
             employeesTab.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
+            furnitureTabpage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)furnitureGridView).BeginInit();
             SuspendLayout();
             // 
             // addEmployeeButton
@@ -98,7 +107,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(248, 16);
+            label1.Location = new Point(283, 21);
             label1.Name = "label1";
             label1.Size = new Size(301, 37);
             label1.TabIndex = 1;
@@ -149,9 +158,10 @@
             customerGridView.Name = "customerGridView";
             customerGridView.ReadOnly = true;
             customerGridView.RowHeadersVisible = false;
+            customerGridView.RowHeadersWidth = 51;
             customerGridView.RowTemplate.Height = 25;
             customerGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            customerGridView.Size = new Size(617, 341);
+            customerGridView.Size = new Size(614, 320);
             customerGridView.TabIndex = 10;
             customerGridView.RowStateChanged += customerGridView_RowStateChanged;
             customerGridView.MouseDoubleClick += customerGridView_MouseDoubleClick;
@@ -165,60 +175,73 @@
             employeeGridView.AutoGenerateColumns = false;
             employeeGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             employeeGridView.Columns.AddRange(new DataGridViewColumn[] { fullnameDataGridViewTextBoxColumn1, employeeNumDataGridViewTextBoxColumn, usernameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, fnameDataGridViewTextBoxColumn1, lnameDataGridViewTextBoxColumn1, dobDataGridViewTextBoxColumn1, genderDataGridViewTextBoxColumn1, phoneDataGridViewTextBoxColumn1, addressDataGridViewTextBoxColumn1, cityDataGridViewTextBoxColumn1, stateDataGridViewTextBoxColumn1, zipDataGridViewTextBoxColumn1, emailDataGridViewTextBoxColumn1, rolenameDataGridViewTextBoxColumn });
-            employeeGridView.DataSource = employeeBindingSource3;
+            employeeGridView.DataSource = employeeBindingSource;
             employeeGridView.Location = new Point(146, 6);
+            employeeGridView.Margin = new Padding(3, 4, 3, 4);
+            employeeGridView.MultiSelect = false;
             employeeGridView.Name = "employeeGridView";
             employeeGridView.ReadOnly = true;
             employeeGridView.RowHeadersVisible = false;
+            employeeGridView.RowHeadersWidth = 51;
             employeeGridView.RowTemplate.Height = 25;
             employeeGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            employeeGridView.Size = new Size(617, 341);
+            employeeGridView.Size = new Size(614, 320);
             employeeGridView.TabIndex = 11;
             employeeGridView.RowStateChanged += employeeGridView_RowStateChanged;
             employeeGridView.MouseDoubleClick += employeeGridView_MouseDoubleClick;
             // 
-            // employeeBindingSource3
+            // employeeBindingSource
             // 
-            employeeBindingSource3.DataSource = typeof(model.Employee);
-            // 
-            // employeeBindingSource2
-            // 
-            employeeBindingSource2.DataSource = typeof(model.Employee);
-            // 
-            // employeeBindingSource1
-            // 
-            employeeBindingSource1.DataSource = typeof(model.Employee);
+            employeeBindingSource.DataSource = typeof(model.Employee);
             // 
             // dashboardTabs
             // 
             dashboardTabs.Controls.Add(customersTab);
             dashboardTabs.Controls.Add(employeesTab);
-            dashboardTabs.Location = new Point(12, 57);
+            dashboardTabs.Controls.Add(furnitureTabpage);
+            dashboardTabs.Location = new Point(14, 76);
+            dashboardTabs.Margin = new Padding(3, 4, 3, 4);
             dashboardTabs.Name = "dashboardTabs";
             dashboardTabs.SelectedIndex = 0;
-            dashboardTabs.Size = new Size(777, 381);
+            dashboardTabs.Size = new Size(774, 361);
             dashboardTabs.TabIndex = 12;
+            dashboardTabs.SelectedIndexChanged += dashboardTabs_SelectedIndexChanged;
             // 
             // customersTab
             // 
+            customersTab.Controls.Add(deleteCustomerButton);
             customersTab.Controls.Add(addCustomerButton);
             customersTab.Controls.Add(customerGridView);
             customersTab.Location = new Point(4, 24);
+            customersTab.Margin = new Padding(3, 4, 3, 4);
             customersTab.Name = "customersTab";
-            customersTab.Padding = new Padding(3);
-            customersTab.Size = new Size(769, 353);
+            customersTab.Padding = new Padding(3, 4, 3, 4);
+            customersTab.Size = new Size(766, 333);
             customersTab.TabIndex = 0;
             customersTab.Text = "Customers";
             customersTab.UseVisualStyleBackColor = true;
             // 
+            // deleteCustomerButton
+            // 
+            deleteCustomerButton.Location = new Point(6, 36);
+            deleteCustomerButton.Margin = new Padding(3, 4, 3, 4);
+            deleteCustomerButton.Name = "deleteCustomerButton";
+            deleteCustomerButton.Size = new Size(134, 23);
+            deleteCustomerButton.TabIndex = 11;
+            deleteCustomerButton.Text = "Delete Customer";
+            deleteCustomerButton.UseVisualStyleBackColor = true;
+            deleteCustomerButton.Click += deleteCustomerButton_Click;
+            // 
             // employeesTab
             // 
+            employeesTab.Controls.Add(deleteEmployeeButton);
             employeesTab.Controls.Add(employeeGridView);
             employeesTab.Controls.Add(addEmployeeButton);
             employeesTab.Location = new Point(4, 24);
+            employeesTab.Margin = new Padding(3, 4, 3, 4);
             employeesTab.Name = "employeesTab";
             employeesTab.Padding = new Padding(3);
-            employeesTab.Size = new Size(769, 353);
+            employeesTab.Size = new Size(766, 333);
             employeesTab.TabIndex = 1;
             employeesTab.Text = "Employees";
             employeesTab.UseVisualStyleBackColor = true;
@@ -232,10 +255,6 @@
             rentButton.Text = "Rent Out Furniture";
             rentButton.UseVisualStyleBackColor = true;
             rentButton.Click += rentButton_Click;
-            // 
-            // employeeBindingSource
-            // 
-            employeeBindingSource.DataSource = typeof(model.Employee);
             // 
             // fullnameDataGridViewTextBoxColumn
             // 
@@ -462,6 +481,134 @@
             rolenameDataGridViewTextBoxColumn.HeaderText = "Role_name";
             rolenameDataGridViewTextBoxColumn.Name = "rolenameDataGridViewTextBoxColumn";
             rolenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // deleteEmployeeButton
+            // 
+            deleteEmployeeButton.Location = new Point(6, 36);
+            deleteEmployeeButton.Margin = new Padding(3, 4, 3, 4);
+            deleteEmployeeButton.Name = "deleteEmployeeButton";
+            deleteEmployeeButton.Size = new Size(134, 23);
+            deleteEmployeeButton.TabIndex = 12;
+            deleteEmployeeButton.Text = "Delete Employee ";
+            deleteEmployeeButton.UseVisualStyleBackColor = true;
+            deleteEmployeeButton.Click += deleteEmployeeButton_Click;
+            // 
+            // furnitureTabpage
+            // 
+            furnitureTabpage.Controls.Add(resetButton);
+            furnitureTabpage.Controls.Add(categoryRadioButton);
+            furnitureTabpage.Controls.Add(StyleRadioButton);
+            furnitureTabpage.Controls.Add(categoryComboBox);
+            furnitureTabpage.Controls.Add(styleComboBox);
+            furnitureTabpage.Controls.Add(IdRadioButton);
+            furnitureTabpage.Controls.Add(furnitureSearchTextBox);
+            furnitureTabpage.Controls.Add(furnitureSearchButton);
+            furnitureTabpage.Controls.Add(addFurnitureButton);
+            furnitureTabpage.Controls.Add(furnitureGridView);
+            furnitureTabpage.Location = new Point(4, 24);
+            furnitureTabpage.Name = "furnitureTabpage";
+            furnitureTabpage.Size = new Size(766, 333);
+            furnitureTabpage.TabIndex = 2;
+            furnitureTabpage.Text = "Furniture";
+            furnitureTabpage.UseVisualStyleBackColor = true;
+            // 
+            // resetButton
+            // 
+            resetButton.Location = new Point(710, 6);
+            resetButton.Name = "resetButton";
+            resetButton.Size = new Size(49, 23);
+            resetButton.TabIndex = 9;
+            resetButton.Text = "Reset";
+            resetButton.UseVisualStyleBackColor = true;
+            resetButton.Click += resetButton_Click;
+            // 
+            // categoryRadioButton
+            // 
+            categoryRadioButton.AutoSize = true;
+            categoryRadioButton.Location = new Point(464, 8);
+            categoryRadioButton.Name = "categoryRadioButton";
+            categoryRadioButton.Size = new Size(73, 19);
+            categoryRadioButton.TabIndex = 8;
+            categoryRadioButton.Text = "Category";
+            categoryRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // StyleRadioButton
+            // 
+            StyleRadioButton.AutoSize = true;
+            StyleRadioButton.Location = new Point(308, 8);
+            StyleRadioButton.Name = "StyleRadioButton";
+            StyleRadioButton.Size = new Size(50, 19);
+            StyleRadioButton.TabIndex = 7;
+            StyleRadioButton.Text = "Style";
+            StyleRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // categoryComboBox
+            // 
+            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            categoryComboBox.FormattingEnabled = true;
+            categoryComboBox.Location = new Point(542, 7);
+            categoryComboBox.Name = "categoryComboBox";
+            categoryComboBox.Size = new Size(106, 23);
+            categoryComboBox.TabIndex = 6;
+            // 
+            // styleComboBox
+            // 
+            styleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            styleComboBox.FormattingEnabled = true;
+            styleComboBox.Location = new Point(363, 7);
+            styleComboBox.Name = "styleComboBox";
+            styleComboBox.Size = new Size(95, 23);
+            styleComboBox.TabIndex = 5;
+            // 
+            // IdRadioButton
+            // 
+            IdRadioButton.AutoSize = true;
+            IdRadioButton.Checked = true;
+            IdRadioButton.Location = new Point(145, 8);
+            IdRadioButton.Name = "IdRadioButton";
+            IdRadioButton.Size = new Size(86, 19);
+            IdRadioButton.TabIndex = 4;
+            IdRadioButton.TabStop = true;
+            IdRadioButton.Text = "Furniture Id";
+            IdRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // furnitureSearchTextBox
+            // 
+            furnitureSearchTextBox.Location = new Point(236, 7);
+            furnitureSearchTextBox.Name = "furnitureSearchTextBox";
+            furnitureSearchTextBox.Size = new Size(66, 23);
+            furnitureSearchTextBox.TabIndex = 3;
+            // 
+            // furnitureSearchButton
+            // 
+            furnitureSearchButton.Location = new Point(653, 6);
+            furnitureSearchButton.Name = "furnitureSearchButton";
+            furnitureSearchButton.Size = new Size(57, 23);
+            furnitureSearchButton.TabIndex = 2;
+            furnitureSearchButton.Text = "Search";
+            furnitureSearchButton.UseVisualStyleBackColor = true;
+            furnitureSearchButton.Click += furnitureSearchButton_Click;
+            // 
+            // addFurnitureButton
+            // 
+            addFurnitureButton.Location = new Point(6, 6);
+            addFurnitureButton.Name = "addFurnitureButton";
+            addFurnitureButton.Size = new Size(134, 23);
+            addFurnitureButton.TabIndex = 1;
+            addFurnitureButton.Text = "Add Furniture";
+            addFurnitureButton.UseVisualStyleBackColor = true;
+            addFurnitureButton.Click += addFurnitureButton_Click;
+            // 
+            // furnitureGridView
+            // 
+            furnitureGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            furnitureGridView.Location = new Point(146, 37);
+            furnitureGridView.MultiSelect = false;
+            furnitureGridView.Name = "furnitureGridView";
+            furnitureGridView.ReadOnly = true;
+            furnitureGridView.RowTemplate.Height = 25;
+            furnitureGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            furnitureGridView.Size = new Size(614, 289);
+            furnitureGridView.TabIndex = 0;
             // 
             // MainScreenForm
             // 
@@ -473,18 +620,19 @@
             Controls.Add(employeeDisplay);
             Controls.Add(logoutButton);
             Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "MainScreenForm";
             Text = "MainScreenForm";
             ((System.ComponentModel.ISupportInitialize)customerGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)customerBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)employeeGridView).EndInit();
-            ((System.ComponentModel.ISupportInitialize)employeeBindingSource3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)employeeBindingSource2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)employeeBindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
             dashboardTabs.ResumeLayout(false);
             customersTab.ResumeLayout(false);
             employeesTab.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
+            furnitureTabpage.ResumeLayout(false);
+            furnitureTabpage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)furnitureGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -504,9 +652,6 @@
         private Button rentButton;
         private BindingSource customerBindingSource;
         private BindingSource employeeBindingSource;
-        private BindingSource employeeBindingSource1;
-        private BindingSource employeeBindingSource2;
-        private BindingSource employeeBindingSource3;
         private DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fnameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn lnameDataGridViewTextBoxColumn;
@@ -534,5 +679,18 @@
         private DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn rolenameDataGridViewTextBoxColumn;
+        private Button deleteCustomerButton;
+        private Button deleteEmployeeButton;
+        private TabPage furnitureTabpage;
+        private DataGridView furnitureGridView;
+        private Button addFurnitureButton;
+        private RadioButton IdRadioButton;
+        private TextBox furnitureSearchTextBox;
+        private Button furnitureSearchButton;
+        private RadioButton categoryRadioButton;
+        private RadioButton StyleRadioButton;
+        private ComboBox categoryComboBox;
+        private ComboBox styleComboBox;
+        private Button resetButton;
     }
 }

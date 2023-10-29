@@ -1,14 +1,11 @@
-﻿using MySql.Data.MySqlClient;
-using RentMeFurnitureRentalSystem.DAL;
-
-namespace RentMeFurnitureRentalSystem.model;
+﻿namespace RentMeFurnitureRentalSystem.model;
 
 public class Employee
 {
     #region Properties
 
     public string Fullname => this.Fname + " " + this.Lname;
-    public int EmployeeNum { get; set; }
+    public int Employee_num { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
     public string Fname { get; set; }

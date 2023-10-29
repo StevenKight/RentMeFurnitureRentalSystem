@@ -29,7 +29,7 @@ public partial class RentalForm : Form
 
         this.userDataGridView.DataSource = this.Customers;
 
-        this.Furniture = FurnitureDAL.GetAllFurniture().Where(piece => piece.Quantity > 0).ToList();
+        this.Furniture = FurnitureDAL.GetFurniture().Where(piece => piece.Quantity > 0).ToList();
         this.Furniture.ForEach(x => x.Quantity = 0);
 
         this.furnitureGridView.DataSource = this.Furniture; ;
