@@ -37,7 +37,19 @@
             this.employeeGridView = new System.Windows.Forms.DataGridView();
             this.dashboardTabs = new System.Windows.Forms.TabControl();
             this.customersTab = new System.Windows.Forms.TabPage();
+            this.resetCustomerButton = new System.Windows.Forms.Button();
+            this.customerSearchButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lastNameSearchTextBox = new System.Windows.Forms.TextBox();
+            this.nameRadioButton = new System.Windows.Forms.RadioButton();
+            this.firstNameSearchTextBox = new System.Windows.Forms.TextBox();
+            this.phoneNumberRadioButton = new System.Windows.Forms.RadioButton();
+            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
+            this.memberIdTextBox = new System.Windows.Forms.TextBox();
+            this.memberIDRadioButton = new System.Windows.Forms.RadioButton();
             this.furnitureTabpage = new System.Windows.Forms.TabPage();
+            this.resetButton = new System.Windows.Forms.Button();
             this.categoryRadioButton = new System.Windows.Forms.RadioButton();
             this.StyleRadioButton = new System.Windows.Forms.RadioButton();
             this.categoryComboBox = new System.Windows.Forms.ComboBox();
@@ -48,7 +60,6 @@
             this.addFurnitureButton = new System.Windows.Forms.Button();
             this.furnitureGridView = new System.Windows.Forms.DataGridView();
             this.employeesTab = new System.Windows.Forms.TabPage();
-            this.resetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.customerGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).BeginInit();
             this.dashboardTabs.SuspendLayout();
@@ -115,14 +126,14 @@
             this.customerGridView.AllowUserToAddRows = false;
             this.customerGridView.AllowUserToDeleteRows = false;
             this.customerGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customerGridView.Location = new System.Drawing.Point(146, 6);
+            this.customerGridView.Location = new System.Drawing.Point(146, 64);
             this.customerGridView.MultiSelect = false;
             this.customerGridView.Name = "customerGridView";
             this.customerGridView.ReadOnly = true;
             this.customerGridView.RowHeadersVisible = false;
             this.customerGridView.RowTemplate.Height = 25;
             this.customerGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.customerGridView.Size = new System.Drawing.Size(617, 341);
+            this.customerGridView.Size = new System.Drawing.Size(617, 283);
             this.customerGridView.TabIndex = 10;
             // 
             // employeeGridView
@@ -150,6 +161,17 @@
             // 
             // customersTab
             // 
+            this.customersTab.Controls.Add(this.resetCustomerButton);
+            this.customersTab.Controls.Add(this.customerSearchButton);
+            this.customersTab.Controls.Add(this.label3);
+            this.customersTab.Controls.Add(this.label2);
+            this.customersTab.Controls.Add(this.lastNameSearchTextBox);
+            this.customersTab.Controls.Add(this.nameRadioButton);
+            this.customersTab.Controls.Add(this.firstNameSearchTextBox);
+            this.customersTab.Controls.Add(this.phoneNumberRadioButton);
+            this.customersTab.Controls.Add(this.phoneNumberTextBox);
+            this.customersTab.Controls.Add(this.memberIdTextBox);
+            this.customersTab.Controls.Add(this.memberIDRadioButton);
             this.customersTab.Controls.Add(this.addCustomerButton);
             this.customersTab.Controls.Add(this.customerGridView);
             this.customersTab.Location = new System.Drawing.Point(4, 24);
@@ -159,6 +181,104 @@
             this.customersTab.TabIndex = 0;
             this.customersTab.Text = "Customers";
             this.customersTab.UseVisualStyleBackColor = true;
+            // 
+            // resetCustomerButton
+            // 
+            this.resetCustomerButton.Location = new System.Drawing.Point(668, 8);
+            this.resetCustomerButton.Name = "resetCustomerButton";
+            this.resetCustomerButton.Size = new System.Drawing.Size(75, 23);
+            this.resetCustomerButton.TabIndex = 21;
+            this.resetCustomerButton.Text = "Reset";
+            this.resetCustomerButton.UseVisualStyleBackColor = true;
+            this.resetCustomerButton.Click += new System.EventHandler(this.resetCustomerButton_Click);
+            // 
+            // customerSearchButton
+            // 
+            this.customerSearchButton.Location = new System.Drawing.Point(587, 8);
+            this.customerSearchButton.Name = "customerSearchButton";
+            this.customerSearchButton.Size = new System.Drawing.Size(75, 23);
+            this.customerSearchButton.TabIndex = 20;
+            this.customerSearchButton.Text = "Search";
+            this.customerSearchButton.UseVisualStyleBackColor = true;
+            this.customerSearchButton.Click += new System.EventHandler(this.customerSearchButton_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(444, 41);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 15);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Last Name:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(209, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "First Name:";
+            // 
+            // lastNameSearchTextBox
+            // 
+            this.lastNameSearchTextBox.Location = new System.Drawing.Point(516, 38);
+            this.lastNameSearchTextBox.Name = "lastNameSearchTextBox";
+            this.lastNameSearchTextBox.Size = new System.Drawing.Size(159, 23);
+            this.lastNameSearchTextBox.TabIndex = 17;
+            // 
+            // nameRadioButton
+            // 
+            this.nameRadioButton.AutoSize = true;
+            this.nameRadioButton.Location = new System.Drawing.Point(146, 39);
+            this.nameRadioButton.Name = "nameRadioButton";
+            this.nameRadioButton.Size = new System.Drawing.Size(57, 19);
+            this.nameRadioButton.TabIndex = 16;
+            this.nameRadioButton.Text = "Name";
+            this.nameRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // firstNameSearchTextBox
+            // 
+            this.firstNameSearchTextBox.Location = new System.Drawing.Point(282, 38);
+            this.firstNameSearchTextBox.Name = "firstNameSearchTextBox";
+            this.firstNameSearchTextBox.Size = new System.Drawing.Size(156, 23);
+            this.firstNameSearchTextBox.TabIndex = 15;
+            // 
+            // phoneNumberRadioButton
+            // 
+            this.phoneNumberRadioButton.AutoSize = true;
+            this.phoneNumberRadioButton.Location = new System.Drawing.Point(329, 10);
+            this.phoneNumberRadioButton.Name = "phoneNumberRadioButton";
+            this.phoneNumberRadioButton.Size = new System.Drawing.Size(109, 19);
+            this.phoneNumberRadioButton.TabIndex = 14;
+            this.phoneNumberRadioButton.Text = "Phone Number:";
+            this.phoneNumberRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // phoneNumberTextBox
+            // 
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(444, 8);
+            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(137, 23);
+            this.phoneNumberTextBox.TabIndex = 13;
+            // 
+            // memberIdTextBox
+            // 
+            this.memberIdTextBox.Location = new System.Drawing.Point(239, 8);
+            this.memberIdTextBox.Name = "memberIdTextBox";
+            this.memberIdTextBox.Size = new System.Drawing.Size(84, 23);
+            this.memberIdTextBox.TabIndex = 12;
+            // 
+            // memberIDRadioButton
+            // 
+            this.memberIDRadioButton.AutoSize = true;
+            this.memberIDRadioButton.Checked = true;
+            this.memberIDRadioButton.Location = new System.Drawing.Point(146, 10);
+            this.memberIDRadioButton.Name = "memberIDRadioButton";
+            this.memberIDRadioButton.Size = new System.Drawing.Size(86, 19);
+            this.memberIDRadioButton.TabIndex = 11;
+            this.memberIDRadioButton.TabStop = true;
+            this.memberIDRadioButton.Text = "Member Id:";
+            this.memberIDRadioButton.UseVisualStyleBackColor = true;
             // 
             // furnitureTabpage
             // 
@@ -178,6 +298,16 @@
             this.furnitureTabpage.TabIndex = 2;
             this.furnitureTabpage.Text = "Furniture";
             this.furnitureTabpage.UseVisualStyleBackColor = true;
+            // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(715, 7);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(48, 23);
+            this.resetButton.TabIndex = 9;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // categoryRadioButton
             // 
@@ -277,16 +407,6 @@
             this.employeesTab.Text = "Employees";
             this.employeesTab.UseVisualStyleBackColor = true;
             // 
-            // resetButton
-            // 
-            this.resetButton.Location = new System.Drawing.Point(715, 7);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(48, 23);
-            this.resetButton.TabIndex = 9;
-            this.resetButton.Text = "Reset";
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
-            // 
             // MainScreenForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -302,6 +422,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).EndInit();
             this.dashboardTabs.ResumeLayout(false);
             this.customersTab.ResumeLayout(false);
+            this.customersTab.PerformLayout();
             this.furnitureTabpage.ResumeLayout(false);
             this.furnitureTabpage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).EndInit();
@@ -334,5 +455,16 @@
         private ComboBox categoryComboBox;
         private ComboBox styleComboBox;
         private Button resetButton;
+        private Label label2;
+        private TextBox lastNameSearchTextBox;
+        private RadioButton nameRadioButton;
+        private TextBox firstNameSearchTextBox;
+        private RadioButton phoneNumberRadioButton;
+        private TextBox phoneNumberTextBox;
+        private TextBox memberIdTextBox;
+        private RadioButton memberIDRadioButton;
+        private Label label3;
+        private Button resetCustomerButton;
+        private Button customerSearchButton;
     }
 }

@@ -305,6 +305,39 @@ public partial class MainScreenForm : Form
         this.Furniture = FurnitureDAL.GetFurniture().ToList();
         this.populateGridViews();
     }
+
+    private void customerSearchButton_Click(object sender, EventArgs e)
+    {
+        if (this.memberIDRadioButton.Checked)
+        {
+            try
+            {
+                var memberId = int.Parse(this.memberIdTextBox.Text);
+                var customers = CustomerDal.GetCustomerByMemberID(memberId);
+                this.Customers.Clear();
+                this.Customers = customers.ToList();
+                this.populateGridViews();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Enter a postive number");
+            }
+
+        } else if (this.phoneNumberRadioButton.Checked)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+    private void resetCustomerButton_Click(object sender, EventArgs e)
+    {
+        this.Customers.Clear();
+        this.Customers = CustomerDal.GetAllCustomers();
+        this.populateGridViews();
+    }
     #endregion
 
 

@@ -28,6 +28,8 @@ public static class QueryStrings
         "INSERT INTO `customer`(`fname`,`lname`,`dob`,`gender`,`email`,`phone`,`address`,`city`,`state`,`zip`)" +
         "VALUES (@fname, @lname, @dob, @gender, @email, @phone, @address, @city, @state, @zip);";
 
+    public const string GetCustomerByMemberId = "select * from customer where member_id=@id";
+
     #endregion
 
     #region Login

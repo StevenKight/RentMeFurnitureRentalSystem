@@ -18,6 +18,14 @@ public class CustomerDal
         return results.ToList();
     }
 
+    public static IList<Customer> GetCustomerByMemberID(int id)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var results = connection.Query<Customer>(QueryStrings.GetCustomerByMemberId,new {id = id});
+
+        return results.ToList();
+    }
     public static bool CreateCustomer(Customer newCustomer)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -45,6 +53,6 @@ public class CustomerDal
             return false;
         }
     }
-
+    
     #endregion
 }
