@@ -32,20 +32,25 @@ public class EmployeeDal
             Password = employee.Password
         };
 
-        if (!LoginDal.CreateLogin(login)) // TODO: Make procedure/function for creating employee and login
-        {
-            return false;
-        }
-
         using var connection = new MySqlConnection(Connection.ConnectionString);
+        using var transaction = connection.BeginTransaction();
+
         try
         {
-            connection.Execute(QueryStrings.CreateEmployee, employee);
+            if (!LoginDal.CreateLogin(login, transaction)) // Create the login in the context of the transaction
+            {
+                transaction.Rollback();
+                return false;
+            }
+
+            connection.Execute(QueryStrings.CreateEmployee, employee, transaction: transaction);
+
+            transaction.Commit();
             return true;
         }
         catch (Exception exception)
         {
-            LoginDal.DeleteLogin(login);
+            transaction.Rollback();
             return false;
         }
     }
@@ -55,22 +60,36 @@ public class EmployeeDal
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
 
-        var affected = connection.Execute(QueryStrings.DeleteEmployee, employee);
+        using var transaction = connection.BeginTransaction();
 
-        connection.Close();
-
-        var login = new Login
+        try
         {
-            Username = employee.Username,
-            Password = employee.Password
-        };
+            var affected = connection.Execute(QueryStrings.DeleteEmployee, employee, transaction: transaction);
 
-        if (!LoginDal.DeleteLogin(login)) // TODO: Make procedure/function for deleting employee and login
+            var login = new Login
+            {
+                Username = employee.Username,
+                Password = employee.Password
+            };
+
+            if (!LoginDal.DeleteLogin(login, transaction))
+            {
+                transaction.Rollback(); // Rollback the transaction if deleting the login fails
+                return false;
+            }
+
+            // Commit the transaction if all operations are successful
+            transaction.Commit();
+
+            return affected > 0;
+        }
+        catch (Exception ex)
         {
+            // Handle exceptions or errors here
+            Console.WriteLine("An error occurred: " + ex.Message);
+            transaction.Rollback(); // Rollback the transaction on exception
             return false;
         }
-
-        return affected > 0;
     }
 
     public static Employee GetEmployeeFromUsername(string username)
