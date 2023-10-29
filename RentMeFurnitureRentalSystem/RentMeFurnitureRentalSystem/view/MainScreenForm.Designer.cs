@@ -35,14 +35,6 @@
             logoutButton = new Button();
             employeeDisplay = new TextBox();
             customerGridView = new DataGridView();
-            customerBindingSource = new BindingSource(components);
-            employeeGridView = new DataGridView();
-            employeeBindingSource = new BindingSource(components);
-            dashboardTabs = new TabControl();
-            customersTab = new TabPage();
-            deleteCustomerButton = new Button();
-            employeesTab = new TabPage();
-            rentButton = new Button();
             fullnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             lnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
@@ -55,8 +47,9 @@
             stateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             zipDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             registerdateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            customerBindingSource = new BindingSource(components);
+            employeeGridView = new DataGridView();
             fullnameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            employeeNumDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             usernameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             fnameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
@@ -70,7 +63,10 @@
             zipDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             emailDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             rolenameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            deleteEmployeeButton = new Button();
+            employeeBindingSource = new BindingSource(components);
+            dashboardTabs = new TabControl();
+            customersTab = new TabPage();
+            deleteCustomerButton = new Button();
             furnitureTabpage = new TabPage();
             resetButton = new Button();
             categoryRadioButton = new RadioButton();
@@ -82,15 +78,28 @@
             furnitureSearchButton = new Button();
             addFurnitureButton = new Button();
             furnitureGridView = new DataGridView();
+            furnitureidDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            categorynameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            stylenameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            rentalrateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            finerateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            quantityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            furnitureBindingSource = new BindingSource(components);
+            employeesTab = new TabPage();
+            deleteEmployeeButton = new Button();
+            rentButton = new Button();
             ((System.ComponentModel.ISupportInitialize)customerGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
             dashboardTabs.SuspendLayout();
             customersTab.SuspendLayout();
-            employeesTab.SuspendLayout();
             furnitureTabpage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)furnitureGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)furnitureBindingSource).BeginInit();
+            employeesTab.SuspendLayout();
             SuspendLayout();
             // 
             // addEmployeeButton
@@ -165,96 +174,6 @@
             customerGridView.TabIndex = 10;
             customerGridView.RowStateChanged += customerGridView_RowStateChanged;
             customerGridView.MouseDoubleClick += customerGridView_MouseDoubleClick;
-            // 
-            // customerBindingSource
-            // 
-            customerBindingSource.DataSource = typeof(Model.Customer);
-            // 
-            // employeeGridView
-            // 
-            employeeGridView.AutoGenerateColumns = false;
-            employeeGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            employeeGridView.Columns.AddRange(new DataGridViewColumn[] { fullnameDataGridViewTextBoxColumn1, employeeNumDataGridViewTextBoxColumn, usernameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, fnameDataGridViewTextBoxColumn1, lnameDataGridViewTextBoxColumn1, dobDataGridViewTextBoxColumn1, genderDataGridViewTextBoxColumn1, phoneDataGridViewTextBoxColumn1, addressDataGridViewTextBoxColumn1, cityDataGridViewTextBoxColumn1, stateDataGridViewTextBoxColumn1, zipDataGridViewTextBoxColumn1, emailDataGridViewTextBoxColumn1, rolenameDataGridViewTextBoxColumn });
-            employeeGridView.DataSource = employeeBindingSource;
-            employeeGridView.Location = new Point(146, 6);
-            employeeGridView.Margin = new Padding(3, 4, 3, 4);
-            employeeGridView.MultiSelect = false;
-            employeeGridView.Name = "employeeGridView";
-            employeeGridView.ReadOnly = true;
-            employeeGridView.RowHeadersVisible = false;
-            employeeGridView.RowHeadersWidth = 51;
-            employeeGridView.RowTemplate.Height = 25;
-            employeeGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            employeeGridView.Size = new Size(614, 320);
-            employeeGridView.TabIndex = 11;
-            employeeGridView.RowStateChanged += employeeGridView_RowStateChanged;
-            employeeGridView.MouseDoubleClick += employeeGridView_MouseDoubleClick;
-            // 
-            // employeeBindingSource
-            // 
-            employeeBindingSource.DataSource = typeof(model.Employee);
-            // 
-            // dashboardTabs
-            // 
-            dashboardTabs.Controls.Add(customersTab);
-            dashboardTabs.Controls.Add(employeesTab);
-            dashboardTabs.Controls.Add(furnitureTabpage);
-            dashboardTabs.Location = new Point(14, 76);
-            dashboardTabs.Margin = new Padding(3, 4, 3, 4);
-            dashboardTabs.Name = "dashboardTabs";
-            dashboardTabs.SelectedIndex = 0;
-            dashboardTabs.Size = new Size(774, 361);
-            dashboardTabs.TabIndex = 12;
-            dashboardTabs.SelectedIndexChanged += dashboardTabs_SelectedIndexChanged;
-            // 
-            // customersTab
-            // 
-            customersTab.Controls.Add(deleteCustomerButton);
-            customersTab.Controls.Add(addCustomerButton);
-            customersTab.Controls.Add(customerGridView);
-            customersTab.Location = new Point(4, 24);
-            customersTab.Margin = new Padding(3, 4, 3, 4);
-            customersTab.Name = "customersTab";
-            customersTab.Padding = new Padding(3, 4, 3, 4);
-            customersTab.Size = new Size(766, 333);
-            customersTab.TabIndex = 0;
-            customersTab.Text = "Customers";
-            customersTab.UseVisualStyleBackColor = true;
-            // 
-            // deleteCustomerButton
-            // 
-            deleteCustomerButton.Location = new Point(6, 36);
-            deleteCustomerButton.Margin = new Padding(3, 4, 3, 4);
-            deleteCustomerButton.Name = "deleteCustomerButton";
-            deleteCustomerButton.Size = new Size(134, 23);
-            deleteCustomerButton.TabIndex = 11;
-            deleteCustomerButton.Text = "Delete Customer";
-            deleteCustomerButton.UseVisualStyleBackColor = true;
-            deleteCustomerButton.Click += deleteCustomerButton_Click;
-            // 
-            // employeesTab
-            // 
-            employeesTab.Controls.Add(deleteEmployeeButton);
-            employeesTab.Controls.Add(employeeGridView);
-            employeesTab.Controls.Add(addEmployeeButton);
-            employeesTab.Location = new Point(4, 24);
-            employeesTab.Margin = new Padding(3, 4, 3, 4);
-            employeesTab.Name = "employeesTab";
-            employeesTab.Padding = new Padding(3);
-            employeesTab.Size = new Size(766, 333);
-            employeesTab.TabIndex = 1;
-            employeesTab.Text = "Employees";
-            employeesTab.UseVisualStyleBackColor = true;
-            // 
-            // rentButton
-            // 
-            rentButton.Location = new Point(22, 28);
-            rentButton.Name = "rentButton";
-            rentButton.Size = new Size(134, 23);
-            rentButton.TabIndex = 13;
-            rentButton.Text = "Rent Out Furniture";
-            rentButton.UseVisualStyleBackColor = true;
-            rentButton.Click += rentButton_Click;
             // 
             // fullnameDataGridViewTextBoxColumn
             // 
@@ -357,6 +276,30 @@
             registerdateDataGridViewTextBoxColumn.Name = "registerdateDataGridViewTextBoxColumn";
             registerdateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // customerBindingSource
+            // 
+            customerBindingSource.DataSource = typeof(Model.Customer);
+            // 
+            // employeeGridView
+            // 
+            employeeGridView.AutoGenerateColumns = false;
+            employeeGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            employeeGridView.Columns.AddRange(new DataGridViewColumn[] { fullnameDataGridViewTextBoxColumn1, usernameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, fnameDataGridViewTextBoxColumn1, lnameDataGridViewTextBoxColumn1, dobDataGridViewTextBoxColumn1, genderDataGridViewTextBoxColumn1, phoneDataGridViewTextBoxColumn1, addressDataGridViewTextBoxColumn1, cityDataGridViewTextBoxColumn1, stateDataGridViewTextBoxColumn1, zipDataGridViewTextBoxColumn1, emailDataGridViewTextBoxColumn1, rolenameDataGridViewTextBoxColumn });
+            employeeGridView.DataSource = employeeBindingSource;
+            employeeGridView.Location = new Point(146, 6);
+            employeeGridView.Margin = new Padding(3, 4, 3, 4);
+            employeeGridView.MultiSelect = false;
+            employeeGridView.Name = "employeeGridView";
+            employeeGridView.ReadOnly = true;
+            employeeGridView.RowHeadersVisible = false;
+            employeeGridView.RowHeadersWidth = 51;
+            employeeGridView.RowTemplate.Height = 25;
+            employeeGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            employeeGridView.Size = new Size(614, 320);
+            employeeGridView.TabIndex = 11;
+            employeeGridView.RowStateChanged += employeeGridView_RowStateChanged;
+            employeeGridView.MouseDoubleClick += employeeGridView_MouseDoubleClick;
+            // 
             // fullnameDataGridViewTextBoxColumn1
             // 
             fullnameDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -365,14 +308,6 @@
             fullnameDataGridViewTextBoxColumn1.Name = "fullnameDataGridViewTextBoxColumn1";
             fullnameDataGridViewTextBoxColumn1.ReadOnly = true;
             fullnameDataGridViewTextBoxColumn1.Width = 81;
-            // 
-            // employeeNumDataGridViewTextBoxColumn
-            // 
-            employeeNumDataGridViewTextBoxColumn.DataPropertyName = "EmployeeNum";
-            employeeNumDataGridViewTextBoxColumn.HeaderText = "EmployeeNum";
-            employeeNumDataGridViewTextBoxColumn.Name = "employeeNumDataGridViewTextBoxColumn";
-            employeeNumDataGridViewTextBoxColumn.ReadOnly = true;
-            employeeNumDataGridViewTextBoxColumn.Visible = false;
             // 
             // usernameDataGridViewTextBoxColumn
             // 
@@ -481,16 +416,49 @@
             rolenameDataGridViewTextBoxColumn.HeaderText = "Role_name";
             rolenameDataGridViewTextBoxColumn.Name = "rolenameDataGridViewTextBoxColumn";
             rolenameDataGridViewTextBoxColumn.ReadOnly = true;
-            // deleteEmployeeButton
             // 
-            deleteEmployeeButton.Location = new Point(6, 36);
-            deleteEmployeeButton.Margin = new Padding(3, 4, 3, 4);
-            deleteEmployeeButton.Name = "deleteEmployeeButton";
-            deleteEmployeeButton.Size = new Size(134, 23);
-            deleteEmployeeButton.TabIndex = 12;
-            deleteEmployeeButton.Text = "Delete Employee ";
-            deleteEmployeeButton.UseVisualStyleBackColor = true;
-            deleteEmployeeButton.Click += deleteEmployeeButton_Click;
+            // employeeBindingSource
+            // 
+            employeeBindingSource.DataSource = typeof(model.Employee);
+            // 
+            // dashboardTabs
+            // 
+            dashboardTabs.Controls.Add(customersTab);
+            dashboardTabs.Controls.Add(furnitureTabpage);
+            dashboardTabs.Controls.Add(employeesTab);
+            dashboardTabs.Location = new Point(14, 76);
+            dashboardTabs.Margin = new Padding(3, 4, 3, 4);
+            dashboardTabs.Name = "dashboardTabs";
+            dashboardTabs.SelectedIndex = 0;
+            dashboardTabs.Size = new Size(774, 361);
+            dashboardTabs.TabIndex = 12;
+            dashboardTabs.SelectedIndexChanged += dashboardTabs_SelectedIndexChanged;
+            // 
+            // customersTab
+            // 
+            customersTab.Controls.Add(rentButton);
+            customersTab.Controls.Add(deleteCustomerButton);
+            customersTab.Controls.Add(addCustomerButton);
+            customersTab.Controls.Add(customerGridView);
+            customersTab.Location = new Point(4, 24);
+            customersTab.Margin = new Padding(3, 4, 3, 4);
+            customersTab.Name = "customersTab";
+            customersTab.Padding = new Padding(3, 4, 3, 4);
+            customersTab.Size = new Size(766, 333);
+            customersTab.TabIndex = 0;
+            customersTab.Text = "Customers";
+            customersTab.UseVisualStyleBackColor = true;
+            // 
+            // deleteCustomerButton
+            // 
+            deleteCustomerButton.Location = new Point(6, 36);
+            deleteCustomerButton.Margin = new Padding(3, 4, 3, 4);
+            deleteCustomerButton.Name = "deleteCustomerButton";
+            deleteCustomerButton.Size = new Size(134, 23);
+            deleteCustomerButton.TabIndex = 11;
+            deleteCustomerButton.Text = "Delete Customer";
+            deleteCustomerButton.UseVisualStyleBackColor = true;
+            deleteCustomerButton.Click += deleteCustomerButton_Click;
             // 
             // furnitureTabpage
             // 
@@ -600,22 +568,135 @@
             // 
             // furnitureGridView
             // 
+            furnitureGridView.AutoGenerateColumns = false;
             furnitureGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            furnitureGridView.Columns.AddRange(new DataGridViewColumn[] { furnitureidDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, categorynameDataGridViewTextBoxColumn, stylenameDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, rentalrateDataGridViewTextBoxColumn, finerateDataGridViewTextBoxColumn, quantityDataGridViewTextBoxColumn });
+            furnitureGridView.DataSource = furnitureBindingSource;
             furnitureGridView.Location = new Point(146, 37);
             furnitureGridView.MultiSelect = false;
             furnitureGridView.Name = "furnitureGridView";
             furnitureGridView.ReadOnly = true;
+            furnitureGridView.RowHeadersVisible = false;
             furnitureGridView.RowTemplate.Height = 25;
             furnitureGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             furnitureGridView.Size = new Size(614, 289);
             furnitureGridView.TabIndex = 0;
+            // 
+            // furnitureidDataGridViewTextBoxColumn
+            // 
+            furnitureidDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            furnitureidDataGridViewTextBoxColumn.DataPropertyName = "Furniture_id";
+            furnitureidDataGridViewTextBoxColumn.HeaderText = "Furniture_id";
+            furnitureidDataGridViewTextBoxColumn.Name = "furnitureidDataGridViewTextBoxColumn";
+            furnitureidDataGridViewTextBoxColumn.ReadOnly = true;
+            furnitureidDataGridViewTextBoxColumn.Width = 95;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.ReadOnly = true;
+            nameDataGridViewTextBoxColumn.Width = 64;
+            // 
+            // categorynameDataGridViewTextBoxColumn
+            // 
+            categorynameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            categorynameDataGridViewTextBoxColumn.DataPropertyName = "Category_name";
+            categorynameDataGridViewTextBoxColumn.HeaderText = "Category";
+            categorynameDataGridViewTextBoxColumn.Name = "categorynameDataGridViewTextBoxColumn";
+            categorynameDataGridViewTextBoxColumn.ReadOnly = true;
+            categorynameDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // stylenameDataGridViewTextBoxColumn
+            // 
+            stylenameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            stylenameDataGridViewTextBoxColumn.DataPropertyName = "Style_name";
+            stylenameDataGridViewTextBoxColumn.HeaderText = "Style";
+            stylenameDataGridViewTextBoxColumn.Name = "stylenameDataGridViewTextBoxColumn";
+            stylenameDataGridViewTextBoxColumn.ReadOnly = true;
+            stylenameDataGridViewTextBoxColumn.Width = 57;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // rentalrateDataGridViewTextBoxColumn
+            // 
+            rentalrateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            rentalrateDataGridViewTextBoxColumn.DataPropertyName = "Rental_rate";
+            rentalrateDataGridViewTextBoxColumn.HeaderText = "Rental_rate";
+            rentalrateDataGridViewTextBoxColumn.Name = "rentalrateDataGridViewTextBoxColumn";
+            rentalrateDataGridViewTextBoxColumn.ReadOnly = true;
+            rentalrateDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // finerateDataGridViewTextBoxColumn
+            // 
+            finerateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            finerateDataGridViewTextBoxColumn.DataPropertyName = "Fine_rate";
+            finerateDataGridViewTextBoxColumn.HeaderText = "Fine_rate";
+            finerateDataGridViewTextBoxColumn.Name = "finerateDataGridViewTextBoxColumn";
+            finerateDataGridViewTextBoxColumn.ReadOnly = true;
+            finerateDataGridViewTextBoxColumn.Width = 79;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            quantityDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // furnitureBindingSource
+            // 
+            furnitureBindingSource.DataSource = typeof(model.Furniture);
+            // 
+            // employeesTab
+            // 
+            employeesTab.Controls.Add(deleteEmployeeButton);
+            employeesTab.Controls.Add(employeeGridView);
+            employeesTab.Controls.Add(addEmployeeButton);
+            employeesTab.Location = new Point(4, 24);
+            employeesTab.Margin = new Padding(3, 4, 3, 4);
+            employeesTab.Name = "employeesTab";
+            employeesTab.Padding = new Padding(3);
+            employeesTab.Size = new Size(766, 333);
+            employeesTab.TabIndex = 1;
+            employeesTab.Text = "Employees";
+            employeesTab.UseVisualStyleBackColor = true;
+            // 
+            // deleteEmployeeButton
+            // 
+            deleteEmployeeButton.Location = new Point(6, 36);
+            deleteEmployeeButton.Margin = new Padding(3, 4, 3, 4);
+            deleteEmployeeButton.Name = "deleteEmployeeButton";
+            deleteEmployeeButton.Size = new Size(134, 23);
+            deleteEmployeeButton.TabIndex = 12;
+            deleteEmployeeButton.Text = "Delete Employee ";
+            deleteEmployeeButton.UseVisualStyleBackColor = true;
+            deleteEmployeeButton.Click += deleteEmployeeButton_Click;
+            // 
+            // rentButton
+            // 
+            rentButton.Location = new Point(6, 66);
+            rentButton.Name = "rentButton";
+            rentButton.Size = new Size(134, 23);
+            rentButton.TabIndex = 13;
+            rentButton.Text = "Rent Furniture";
+            rentButton.UseVisualStyleBackColor = true;
+            rentButton.Click += rentButton_Click;
             // 
             // MainScreenForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(rentButton);
             Controls.Add(dashboardTabs);
             Controls.Add(employeeDisplay);
             Controls.Add(logoutButton);
@@ -629,10 +710,11 @@
             ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
             dashboardTabs.ResumeLayout(false);
             customersTab.ResumeLayout(false);
-            employeesTab.ResumeLayout(false);
             furnitureTabpage.ResumeLayout(false);
             furnitureTabpage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)furnitureGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)furnitureBindingSource).EndInit();
+            employeesTab.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -692,5 +774,14 @@
         private ComboBox categoryComboBox;
         private ComboBox styleComboBox;
         private Button resetButton;
+        private BindingSource furnitureBindingSource;
+        private DataGridViewTextBoxColumn furnitureidDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn categorynameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn stylenameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn rentalrateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn finerateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
     }
 }

@@ -57,12 +57,14 @@ public partial class MainScreenForm : Form
         Furniture = FurnitureDAL.GetFurniture().ToList();
 
         populateGridViews();
+        this.populateStyleAndCategoryComboBoxes();
     }
 
     private void populateGridViews()
     {
         customerGridView.DataSource = this.Customers;
         employeeGridView.DataSource = this.Employees;
+        this.furnitureGridView.DataSource = this.Furniture;
     }
 
     private void checkIfAdmin()
@@ -77,9 +79,6 @@ public partial class MainScreenForm : Form
 
     private void populateStyleAndCategoryComboBoxes()
     {
-        this.categoryComboBox.Items.Clear();
-        this.styleComboBox.Items.Clear();
-
         var categories = CategoryDAL.GetCategories();
         var styles = StyleDAL.GetStyles();
 
@@ -156,6 +155,7 @@ public partial class MainScreenForm : Form
     private void addFurnitureButton_Click(object sender, EventArgs e)
     {
         var addFurnitureForm = new addFurnitureForm();
+        addFurnitureForm.StartPosition = FormStartPosition.Manual;
         addFurnitureForm.Left = Left + (Width - addFurnitureForm.Width) / 2;
         addFurnitureForm.Top = Top + (Height - addFurnitureForm.Height) / 2;
 
@@ -175,10 +175,12 @@ public partial class MainScreenForm : Form
         if (e.StateChanged != DataGridViewElementStates.Selected)
         {
             this.deleteCustomerButton.Enabled = false;
+            this.rentButton.Enabled = false;
             return;
         }
 
         this.deleteCustomerButton.Enabled = true;
+        this.rentButton.Enabled = true;
 
         var selectedRows = this.customerGridView.SelectedRows;
         if (selectedRows.Count > 0)
@@ -224,29 +226,6 @@ public partial class MainScreenForm : Form
 
         employeeDisplayForm.ShowDialog();
         this.getData();
-    }
-
-
-    private void furnitureGridView_RowStateChanged(Object sender, DataGridViewRowStateChangedEventArgs e)
-    {
-        if (e.StateChanged != DataGridViewElementStates.Selected) return;
-
-        var selectedRows = this.furnitureGridView.SelectedRows;
-        if (selectedRows.Count > 0)
-        {
-            var selectedObject = selectedRows[0].DataBoundItem;
-            var idProperty = selectedObject.GetType().GetProperty("ID");
-            var id = (string)idProperty?.GetValue(selectedObject, null);
-            var nameProperty = selectedObject.GetType().GetProperty("Name");
-            var name = (string)nameProperty?.GetValue(selectedObject, null);
-            var descriptionProperty = selectedObject.GetType().GetProperty("Description");
-            var description = (string)descriptionProperty?.GetValue(selectedObject, null);
-            var quantityProperty = selectedObject.GetType().GetProperty("Quanity");
-            var quantity = (string)quantityProperty?.GetValue(selectedObject, null);
-
-            var furniture = Furniture.Find(x => id.Equals(x.Furniture_id));
-            SelectedFurniture = furniture;
-        }
     }
 
     private void furnitureSearchButton_Click(object sender, EventArgs e)
@@ -311,7 +290,7 @@ public partial class MainScreenForm : Form
 
     private void rentButton_Click(object sender, EventArgs e)
     {
-        var rentalForm = new RentalForm(this.LoggedInEmployee);
+        var rentalForm = new RentalRecieptForm(this.LoggedInEmployee, this.SelectedCustomer);
         rentalForm.StartPosition = FormStartPosition.Manual;
         rentalForm.Left = Left + (Width - rentalForm.Width) / 2;
         rentalForm.Top = Top + (Height - rentalForm.Height) / 2;

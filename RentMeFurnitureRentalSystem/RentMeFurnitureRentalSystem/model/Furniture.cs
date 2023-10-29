@@ -14,4 +14,18 @@ public class Furniture
     public int Quantity { get; set; }
 
     #endregion
+
+    public override bool Equals(object? obj)
+    {
+        if (obj == null)
+        {
+            return false;
+        }
+        if (obj.GetType() != typeof(Furniture))
+        {
+            return false;
+        }
+
+        return this.Furniture_id == ((Furniture)obj).Furniture_id;
+    }
 }
