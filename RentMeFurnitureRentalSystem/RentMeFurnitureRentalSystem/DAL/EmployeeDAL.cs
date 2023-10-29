@@ -1,6 +1,8 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.model;
+using System.Data.Common;
+using System.Transactions;
 
 namespace RentMeFurnitureRentalSystem.DAL;
 
@@ -33,63 +35,36 @@ public class EmployeeDal
         };
 
         using var connection = new MySqlConnection(Connection.ConnectionString);
-        using var transaction = connection.BeginTransaction();
+        connection.Open();
 
-        try
+        if (!LoginDal.CreateLogin(login, connection))
         {
-            if (!LoginDal.CreateLogin(login, transaction)) // Create the login in the context of the transaction
-            {
-                transaction.Rollback();
-                return false;
-            }
-
-            connection.Execute(QueryStrings.CreateEmployee, employee, transaction: transaction);
-
-            transaction.Commit();
-            return true;
-        }
-        catch (Exception exception)
-        {
-            transaction.Rollback();
             return false;
         }
+
+        var affected = connection.Execute(QueryStrings.CreateEmployee, employee);
+
+        return affected > 0;
     }
 
     public static bool DeleteEmployee(Employee employee)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
+            
+        var affected = connection.Execute(QueryStrings.DeleteEmployee, employee);
 
-        using var transaction = connection.BeginTransaction();
-
-        try
+        var login = new Login
         {
-            var affected = connection.Execute(QueryStrings.DeleteEmployee, employee, transaction: transaction);
+            Username = employee.Username,
+            Password = employee.Password
+        };
 
-            var login = new Login
-            {
-                Username = employee.Username,
-                Password = employee.Password
-            };
-
-            if (!LoginDal.DeleteLogin(login, transaction))
-            {
-                transaction.Rollback(); // Rollback the transaction if deleting the login fails
-                return false;
-            }
-
-            // Commit the transaction if all operations are successful
-            transaction.Commit();
-
-            return affected > 0;
-        }
-        catch (Exception ex)
+        if (!LoginDal.DeleteLogin(login))
         {
-            // Handle exceptions or errors here
-            Console.WriteLine("An error occurred: " + ex.Message);
-            transaction.Rollback(); // Rollback the transaction on exception
             return false;
         }
+        return affected > 0;
     }
 
     public static Employee GetEmployeeFromUsername(string username)

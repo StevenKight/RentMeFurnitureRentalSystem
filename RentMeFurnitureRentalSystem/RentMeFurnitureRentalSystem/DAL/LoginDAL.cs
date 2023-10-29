@@ -10,14 +10,14 @@ public class LoginDal
 {
     #region Methods
 
-    public static bool CreateLogin(Login login, MySqlTransaction transaction)
+    public static bool CreateLogin(Login login, MySqlConnection? transaction = null)
     {
         if (string.IsNullOrWhiteSpace(login.Username) || string.IsNullOrWhiteSpace(login.Password))
         {
             return false;
         }
 
-        using var connection = transaction?.Connection ?? new MySqlConnection(Connection.ConnectionString);
+        using var connection = transaction ?? new MySqlConnection(Connection.ConnectionString);
         if (transaction == null)
         {
             connection.Open();
@@ -25,7 +25,7 @@ public class LoginDal
 
         try
         {
-            connection.Execute(QueryStrings.CreateLogin, new { username = login.Username, password = login.Password }, transaction);
+            connection.Execute(QueryStrings.CreateLogin, new { username = login.Username, password = login.Password });
             return true;
         }
         catch (Exception ex)
@@ -34,16 +34,16 @@ public class LoginDal
         }
     }
 
-    public static bool DeleteLogin(Login login, MySqlTransaction transaction = null)
+    public static bool DeleteLogin(Login login, MySqlConnection? transaction = null)
     {
-        using var connection = transaction?.Connection ?? new MySqlConnection(Connection.ConnectionString);
+        using var connection = transaction ?? new MySqlConnection(Connection.ConnectionString);
 
         if (transaction == null)
         {
             connection.Open();
         }
 
-        var affected = connection.Execute(QueryStrings.DeleteLogin, login, transaction);
+        var affected = connection.Execute(QueryStrings.DeleteLogin, login);
 
         return affected > 0;
     }
