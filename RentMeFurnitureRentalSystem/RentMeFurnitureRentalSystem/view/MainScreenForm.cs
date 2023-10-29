@@ -27,8 +27,6 @@ public partial class MainScreenForm : Form
         checkIfAdmin();
 
         getData();
-
-        setupGridViews();
     }
 
     #endregion
@@ -59,34 +57,10 @@ public partial class MainScreenForm : Form
         populateGridViews();
     }
 
-    private void setupGridViews()
-    {
-        customerGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        customerGridView.Columns[0].HeaderText = "Name";
-        customerGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        customerGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-        if (employeeGridView.Columns.Count <= 0) return;
-
-        employeeGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        employeeGridView.Columns[0].HeaderText = "Name";
-        employeeGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-        employeeGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-    }
-
     private void populateGridViews()
     {
-        customerGridView.DataSource = Customers.Select(customer =>
-        {
-            var FullName = customer.Fname + " " + customer.Lname;
-            return new { FullName, customer.Phone, customer.Email };
-        }).ToList();
-
-        employeeGridView.DataSource = Employees.Select(employee =>
-        {
-            var FullName = employee.Fname + " " + employee.Lname;
-            return new { FullName, employee.Phone, employee.Email };
-        }).ToList();
+        customerGridView.DataSource = this.Customers;
+        employeeGridView.DataSource = this.Employees;
     }
 
     private void addEmployeeButton_Click(object sender, EventArgs e)
@@ -132,21 +106,7 @@ public partial class MainScreenForm : Form
         var selectedRows = customerGridView.SelectedRows;
         if (selectedRows.Count > 0)
         {
-            var selectedObject = selectedRows[0].DataBoundItem;
-            var nameProperty = selectedObject.GetType().GetProperty("FullName");
-            var fullName = (string)nameProperty?.GetValue(selectedObject, null);
-            var phoneProperty = selectedObject.GetType().GetProperty("Phone");
-            var phone = (string)phoneProperty?.GetValue(selectedObject, null);
-            var emailProperty = selectedObject?.GetType().GetProperty("Email");
-            var email = (string)emailProperty?.GetValue(selectedObject, null);
-
-            var customer = Customers.Find(x =>
-            {
-                var fullname = x.Fname + " " + x.Lname;
-                return fullname.Equals(fullName) && x.Phone.Equals(phone) && x.Email.Equals(email);
-            });
-
-            SelectedCustomer = customer;
+            this.SelectedCustomer = selectedRows[0].DataBoundItem as Customer;
         }
     }
 
@@ -157,21 +117,7 @@ public partial class MainScreenForm : Form
         var selectedRows = employeeGridView.SelectedRows;
         if (selectedRows.Count > 0)
         {
-            var selectedObject = selectedRows[0].DataBoundItem;
-            var nameProperty = selectedObject.GetType().GetProperty("FullName");
-            var fullName = (string)nameProperty?.GetValue(selectedObject, null);
-            var phoneProperty = selectedObject.GetType().GetProperty("Phone");
-            var phone = (string)phoneProperty?.GetValue(selectedObject, null);
-            var emailProperty = selectedObject?.GetType().GetProperty("Email");
-            var email = (string)emailProperty?.GetValue(selectedObject, null);
-
-            var employee = Employees.Find(x =>
-            {
-                var fullname = x.Fname + " " + x.Lname;
-                return fullname.Equals(fullName) && x.Phone.Equals(phone) && x.Email.Equals(email);
-            });
-
-            SelectedEmployee = employee;
+            this.SelectedEmployee = selectedRows[0].DataBoundItem as Employee;
         }
     }
 
@@ -193,6 +139,15 @@ public partial class MainScreenForm : Form
         employeeDisplayForm.Top = Top + (Height - employeeDisplayForm.Height) / 2;
 
         employeeDisplayForm.ShowDialog();
+    }
+
+    private void rentButton_Click(object sender, EventArgs e)
+    {
+        var rentalForm = new RentalForm(this.LoggedInEmployee);
+        rentalForm.StartPosition = FormStartPosition.Manual;
+        rentalForm.Left = Left + (Width - rentalForm.Width) / 2;
+        rentalForm.Top = Top + (Height - rentalForm.Height) / 2;
+        rentalForm.ShowDialog();
     }
 
     #endregion

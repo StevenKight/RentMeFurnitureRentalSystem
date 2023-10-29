@@ -6,6 +6,8 @@ public class Customer
 {
     #region Properties
 
+    public string Fullname => this.Fname + " " + this.Lname;
+
     public string Fname { get; set; }
     public string Lname { get; set; }
     public DateTime Dob { get; set; }
