@@ -26,6 +26,15 @@ public class CustomerDal
 
         return results.ToList();
     }
+
+    public static IList<Customer> GetCustomerByPhone(string phone)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var results = connection.Query<Customer>(QueryStrings.GetCustomerByPhone, new { phone = phone });
+
+        return results.ToList();
+    }
     public static bool CreateCustomer(Customer newCustomer)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);

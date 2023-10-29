@@ -1,4 +1,6 @@
-﻿using RentMeFurnitureRentalSystem.DAL;
+﻿using System.Text.RegularExpressions;
+using Google.Protobuf.WellKnownTypes;
+using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 using RentMeFurnitureRentalSystem.view;
@@ -89,6 +91,8 @@ public partial class MainScreenForm : Form
     public Customer SelectedCustomer { get; set; }
 
     public Furniture SelectedFurniture { get; set; }
+
+    public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
 
     #endregion
 
@@ -325,7 +329,23 @@ public partial class MainScreenForm : Form
 
         } else if (this.phoneNumberRadioButton.Checked)
         {
-
+            var phoneValue = this.phoneNumberTextBox.Text;
+           var value = phoneValue.Replace("-", "");
+           try
+           {
+               var areaCode = value.Substring(0, 3);
+               var next = value.Substring(3, 3);
+               var last = value.Substring(6, 4);
+               var validPhone = areaCode + "-" + next + "-" + last;
+               var customer = CustomerDal.GetCustomerByPhone(validPhone);
+               this.Customers.Clear();
+               this.Customers = customer.ToList();
+               this.populateGridViews();
+            }
+            catch (Exception ex)
+            {
+               MessageBox.Show("Enter a valid number without - ");
+            }
         }
         else
         {
