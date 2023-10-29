@@ -38,9 +38,17 @@
             this.dashboardTabs = new System.Windows.Forms.TabControl();
             this.customersTab = new System.Windows.Forms.TabPage();
             this.furnitureTabpage = new System.Windows.Forms.TabPage();
+            this.categoryRadioButton = new System.Windows.Forms.RadioButton();
+            this.StyleRadioButton = new System.Windows.Forms.RadioButton();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
+            this.styleComboBox = new System.Windows.Forms.ComboBox();
+            this.IdRadioButton = new System.Windows.Forms.RadioButton();
+            this.furnitureSearchTextBox = new System.Windows.Forms.TextBox();
+            this.furnitureSearchButton = new System.Windows.Forms.Button();
             this.addFurnitureButton = new System.Windows.Forms.Button();
             this.furnitureGridView = new System.Windows.Forms.DataGridView();
             this.employeesTab = new System.Windows.Forms.TabPage();
+            this.resetButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.customerGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).BeginInit();
             this.dashboardTabs.SuspendLayout();
@@ -154,6 +162,14 @@
             // 
             // furnitureTabpage
             // 
+            this.furnitureTabpage.Controls.Add(this.resetButton);
+            this.furnitureTabpage.Controls.Add(this.categoryRadioButton);
+            this.furnitureTabpage.Controls.Add(this.StyleRadioButton);
+            this.furnitureTabpage.Controls.Add(this.categoryComboBox);
+            this.furnitureTabpage.Controls.Add(this.styleComboBox);
+            this.furnitureTabpage.Controls.Add(this.IdRadioButton);
+            this.furnitureTabpage.Controls.Add(this.furnitureSearchTextBox);
+            this.furnitureTabpage.Controls.Add(this.furnitureSearchButton);
             this.furnitureTabpage.Controls.Add(this.addFurnitureButton);
             this.furnitureTabpage.Controls.Add(this.furnitureGridView);
             this.furnitureTabpage.Location = new System.Drawing.Point(4, 24);
@@ -162,6 +178,73 @@
             this.furnitureTabpage.TabIndex = 2;
             this.furnitureTabpage.Text = "Furniture";
             this.furnitureTabpage.UseVisualStyleBackColor = true;
+            // 
+            // categoryRadioButton
+            // 
+            this.categoryRadioButton.AutoSize = true;
+            this.categoryRadioButton.Location = new System.Drawing.Point(468, 8);
+            this.categoryRadioButton.Name = "categoryRadioButton";
+            this.categoryRadioButton.Size = new System.Drawing.Size(73, 19);
+            this.categoryRadioButton.TabIndex = 8;
+            this.categoryRadioButton.Text = "Category";
+            this.categoryRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // StyleRadioButton
+            // 
+            this.StyleRadioButton.AutoSize = true;
+            this.StyleRadioButton.Location = new System.Drawing.Point(312, 7);
+            this.StyleRadioButton.Name = "StyleRadioButton";
+            this.StyleRadioButton.Size = new System.Drawing.Size(50, 19);
+            this.StyleRadioButton.TabIndex = 7;
+            this.StyleRadioButton.Text = "Style";
+            this.StyleRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // categoryComboBox
+            // 
+            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(547, 6);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(105, 23);
+            this.categoryComboBox.TabIndex = 6;
+            // 
+            // styleComboBox
+            // 
+            this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.styleComboBox.FormattingEnabled = true;
+            this.styleComboBox.Location = new System.Drawing.Point(368, 8);
+            this.styleComboBox.Name = "styleComboBox";
+            this.styleComboBox.Size = new System.Drawing.Size(94, 23);
+            this.styleComboBox.TabIndex = 5;
+            // 
+            // IdRadioButton
+            // 
+            this.IdRadioButton.AutoSize = true;
+            this.IdRadioButton.Checked = true;
+            this.IdRadioButton.Location = new System.Drawing.Point(149, 8);
+            this.IdRadioButton.Name = "IdRadioButton";
+            this.IdRadioButton.Size = new System.Drawing.Size(86, 19);
+            this.IdRadioButton.TabIndex = 4;
+            this.IdRadioButton.TabStop = true;
+            this.IdRadioButton.Text = "Furniture Id";
+            this.IdRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // furnitureSearchTextBox
+            // 
+            this.furnitureSearchTextBox.Location = new System.Drawing.Point(241, 6);
+            this.furnitureSearchTextBox.Name = "furnitureSearchTextBox";
+            this.furnitureSearchTextBox.Size = new System.Drawing.Size(65, 23);
+            this.furnitureSearchTextBox.TabIndex = 3;
+            // 
+            // furnitureSearchButton
+            // 
+            this.furnitureSearchButton.Location = new System.Drawing.Point(658, 6);
+            this.furnitureSearchButton.Name = "furnitureSearchButton";
+            this.furnitureSearchButton.Size = new System.Drawing.Size(56, 23);
+            this.furnitureSearchButton.TabIndex = 2;
+            this.furnitureSearchButton.Text = "Search";
+            this.furnitureSearchButton.UseVisualStyleBackColor = true;
+            this.furnitureSearchButton.Click += new System.EventHandler(this.furnitureSearchButton_Click);
             // 
             // addFurnitureButton
             // 
@@ -176,10 +259,10 @@
             // furnitureGridView
             // 
             this.furnitureGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.furnitureGridView.Location = new System.Drawing.Point(146, 6);
+            this.furnitureGridView.Location = new System.Drawing.Point(146, 35);
             this.furnitureGridView.Name = "furnitureGridView";
             this.furnitureGridView.RowTemplate.Height = 25;
-            this.furnitureGridView.Size = new System.Drawing.Size(617, 341);
+            this.furnitureGridView.Size = new System.Drawing.Size(617, 312);
             this.furnitureGridView.TabIndex = 0;
             // 
             // employeesTab
@@ -193,6 +276,16 @@
             this.employeesTab.TabIndex = 1;
             this.employeesTab.Text = "Employees";
             this.employeesTab.UseVisualStyleBackColor = true;
+            // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(715, 7);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(48, 23);
+            this.resetButton.TabIndex = 9;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // MainScreenForm
             // 
@@ -210,6 +303,7 @@
             this.dashboardTabs.ResumeLayout(false);
             this.customersTab.ResumeLayout(false);
             this.furnitureTabpage.ResumeLayout(false);
+            this.furnitureTabpage.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).EndInit();
             this.employeesTab.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -232,5 +326,13 @@
         private TabPage furnitureTabpage;
         private DataGridView furnitureGridView;
         private Button addFurnitureButton;
+        private RadioButton IdRadioButton;
+        private TextBox furnitureSearchTextBox;
+        private Button furnitureSearchButton;
+        private RadioButton categoryRadioButton;
+        private RadioButton StyleRadioButton;
+        private ComboBox categoryComboBox;
+        private ComboBox styleComboBox;
+        private Button resetButton;
     }
 }

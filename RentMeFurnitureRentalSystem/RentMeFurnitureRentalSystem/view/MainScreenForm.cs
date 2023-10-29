@@ -28,6 +28,8 @@ public partial class MainScreenForm : Form
 
         getData();
 
+        this.populateStyleAndCategoryComboBoxes();
+
         setupGridViews();
     }
 
@@ -151,6 +153,18 @@ public partial class MainScreenForm : Form
         dashboardTabs.TabPages.Remove(employeesTab);
     }
 
+    private void populateStyleAndCategoryComboBoxes()
+    {
+        this.categoryComboBox.Items.Clear();
+        this.styleComboBox.Items.Clear();
+
+        var categories = CategoryDAL.GetCategories();
+        var styles = StyleDAL.GetStyles();
+
+        this.categoryComboBox.DataSource = categories.ToList();
+        this.styleComboBox.DataSource = styles.ToList();
+    }
+
     private void customerGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
     {
         if (e.StateChanged != DataGridViewElementStates.Selected) return;
@@ -243,6 +257,35 @@ public partial class MainScreenForm : Form
 
         employeeDisplayForm.ShowDialog();
     }
+    private void furnitureSearchButton_Click(object sender, EventArgs e)
+    {
+        if (this.IdRadioButton.Checked)
+        {
+            var id = int.Parse(this.furnitureSearchTextBox.Text);
 
+            var furniture = FurnitureDAL.GetFurnitureById(id);
+
+            this.Furniture.Clear();
+
+            this.Furniture = furniture.ToList();
+            this.populateGridViews();
+        } 
+        else if (this.categoryRadioButton.Checked)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+    private void resetButton_Click(object sender, EventArgs e)
+    {
+        this.Furniture.Clear();
+        this.Furniture = FurnitureDAL.GetFurniture().ToList();
+        this.populateGridViews();
+    }
     #endregion
+
+
 }

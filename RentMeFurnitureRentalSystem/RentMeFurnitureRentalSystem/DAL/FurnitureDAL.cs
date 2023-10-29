@@ -18,6 +18,21 @@ public class FurnitureDAL
         return furnitureList;
     }
 
+    public static IList<Furniture> GetFurnitureById(int id)
+    {
+        var list = new List<Furniture>();
+
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var result = connection.Query<Furniture>(QueryStrings.GetFurnitureById,new {id = id});
+
+        foreach (var furniture in result)
+        {
+            list.Add(furniture);
+        }
+        return list;
+    }
+
     public static bool CreateFurniture(Furniture furniture)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);

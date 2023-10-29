@@ -53,6 +53,8 @@ public static class QueryStrings
 
     public const string GetFurniture = "select * from furniture";
 
+    public const string GetFurnitureById = "select * from furniture where furniture_id=@id";
+
     public const string CreateFurniture =
         "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category,@Style,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
 
