@@ -32,6 +32,7 @@ public static class QueryStrings
 
     public const string GetCustomerByPhone = "select * from customer where phone=@phone";
 
+    public const string GetCustomerByName = "select * from customer where fname=@fname and lname=@lname";
     #endregion
 
     #region Login

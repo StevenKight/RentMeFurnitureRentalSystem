@@ -349,6 +349,14 @@ public partial class MainScreenForm : Form
         }
         else
         {
+            var firstName = this.firstNameSearchTextBox.Text;
+            var lastName = this.lastNameSearchTextBox.Text;
+
+            var customer = CustomerDal.GetCustomerByName(firstName, lastName);
+
+            this.Customers.Clear();
+            this.Customers = customer.ToList();
+            this.populateGridViews();
 
         }
     }
