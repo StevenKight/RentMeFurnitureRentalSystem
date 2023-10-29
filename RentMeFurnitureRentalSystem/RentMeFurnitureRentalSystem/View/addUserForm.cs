@@ -8,28 +8,35 @@ namespace RentMeFurnitureRentalSystem.view;
 
 public partial class addUserForm : Form
 {
-    private void zipcodeInput_Validating(object sender, CancelEventArgs e)
-    {
-        var zip = zipcodeInput.Text;
-
-        if (!Regex.IsMatch(zip, ZIPREGEX))
-        {
-            e.Cancel = true;
-            addUserError.SetError(zipcodeInput,
-                "Given zipcode is invalid.");
-        }
-        else
-        {
-            e.Cancel = false;
-            addUserError.SetError(zipcodeInput, "");
-        }
-    }
-
     #region Data members
 
     public const string EMAILREGEX = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
     public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
     public const string ZIPREGEX = @"^[0-9]{5}(?:-[0-9]{4})?$";
+
+    private static readonly string[] stateOptions =
+    {
+        "Alabama", "Alaska", "Arizona", "Arkansas", "California",
+        "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
+        "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
+        "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
+        "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri",
+        "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
+        "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
+        "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
+        "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
+        "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
+    };
+
+    private static readonly string[] genderOptions = { "O", "M", "F" };
+
+    private string[]? roleOptions;
+
+    private bool isEmployee;
+    private bool isPrepopulated;
+
+    private Employee GivenEmployee;
+    private Customer GivenCustomer;
 
     #endregion
 
@@ -37,38 +44,40 @@ public partial class addUserForm : Form
 
     public addUserForm(bool employee)
     {
-        initializeDisplay();
+        this.initializeDisplay();
 
         if (employee)
-            displayEmployeeData();
+        {
+            this.displayEmployeeData();
+        }
         else
-            displayCustomerData();
+        {
+            this.displayCustomerData();
+        }
     }
 
     public addUserForm(Customer customer)
     {
-        initializeDisplay();
-        displayCustomerData();
+        this.initializeDisplay();
+        this.displayCustomerData();
 
-        addButton.Enabled = false;
-        addButton.Hide();
+        this.addButton.Enabled = false;
 
-        fillDialog(customer);
+        this.fillDialog(customer);
 
-        cancelButton.Text = "Close";
+        this.cancelButton.Text = "Close";
     }
 
     public addUserForm(Employee employee)
     {
-        initializeDisplay();
-        displayEmployeeData();
+        this.initializeDisplay();
+        this.displayEmployeeData();
 
-        addButton.Enabled = false;
-        addButton.Hide();
+        this.addButton.Enabled = false;
 
-        fillDialog(employee);
+        this.fillDialog(employee);
 
-        cancelButton.Text = "Close";
+        this.cancelButton.Text = "Close";
     }
 
     #endregion
@@ -77,93 +86,123 @@ public partial class addUserForm : Form
 
     private void fillDialog(Customer customer)
     {
-        firstnameInput.Text = customer.Fname;
-        lastnameInput.Text = customer.Lname;
-        emailInput.Text = customer.Email;
-        phoneInput.Text = customer.Phone;
-        genderComboBox.Text = customer.Gender;
-        dobTimePicker.Value = customer.Dob;
-        streetAdressInput.Text = customer.Address;
-        zipcodeInput.Text = customer.Zip;
-        cityInput.Text = customer.City;
-        stateComboBox.Text = customer.State;
+        this.firstnameInput.Text = customer.Fname;
+        this.lastnameInput.Text = customer.Lname;
+        this.emailInput.Text = customer.Email;
+        this.phoneInput.Text = customer.Phone;
+        this.genderComboBox.Text = customer.Gender;
+        this.dobTimePicker.Value = customer.Dob;
+        this.streetAdressInput.Text = customer.Address;
+        this.zipcodeInput.Text = customer.Zip;
+        this.cityInput.Text = customer.City;
+        this.stateComboBox.Text = customer.State;
+
+        this.GivenCustomer = customer;
+
+        this.fillDialog();
     }
 
     private void fillDialog(Employee employee)
     {
-        usernameInput.Text = employee.Username;
-        passwordInput.Text = employee.Password;
-        firstnameInput.Text = employee.Fname;
-        lastnameInput.Text = employee.Lname;
-        emailInput.Text = employee.Email;
-        phoneInput.Text = employee.Phone;
-        genderComboBox.Text = employee.Gender;
-        dobTimePicker.Value = employee.Dob;
-        streetAdressInput.Text = employee.Address;
-        zipcodeInput.Text = employee.Zip;
-        cityInput.Text = employee.City;
-        stateComboBox.Text = employee.State;
-        roleComboBox.Text = employee.Role_name;
+        this.usernameInput.Text = employee.Username;
+        this.passwordInput.Text = employee.Password;
+        this.firstnameInput.Text = employee.Fname;
+        this.lastnameInput.Text = employee.Lname;
+        this.emailInput.Text = employee.Email;
+        this.phoneInput.Text = employee.Phone;
+        this.genderComboBox.Text = employee.Gender;
+        this.dobTimePicker.Value = employee.Dob;
+        this.streetAdressInput.Text = employee.Address;
+        this.zipcodeInput.Text = employee.Zip;
+        this.cityInput.Text = employee.City;
+        this.stateComboBox.Text = employee.State;
+        this.roleComboBox.Text = employee.Role_name;
+
+        this.GivenEmployee = employee;
+
+        this.fillDialog();
+    }
+
+    private void fillDialog()
+    {
+        this.isPrepopulated = true;
+
+        this.addButton.Enabled = false;
+
+        var user = this.isEmployee ? "Employee" : "Customer";
+        this.addButton.Text = "Update " + user;
+
+        this.cancelButton.Text = "Close";
+
+        this.usernameInput.ReadOnly = true;
+        this.usernameInput.Validating -= this.textInput_Validating;
+
+        this.passwordInput.ReadOnly = true;
+        this.passwordInput.Validating -= this.textInput_Validating;
     }
 
     private void showPasswordCheckBox_CheckedChanged(object sender, EventArgs e)
     {
-        passwordInput.UseSystemPasswordChar = !showPasswordCheckBox.Checked;
+        this.passwordInput.UseSystemPasswordChar = !this.showPasswordCheckBox.Checked;
     }
 
     private void initializeDisplay()
     {
-        InitializeComponent();
+        this.InitializeComponent();
         AutoValidate = AutoValidate.EnableAllowFocusChange;
-        populateGenderComboBox();
-        populateStateComboBox();
+        this.populateGenderComboBox();
+        this.populateStateComboBox();
     }
 
     private void displayEmployeeData()
     {
-        usernameLabel.Show();
-        usernameInput.Show();
-        usernameInput.Validating += textInput_Validating;
+        this.isEmployee = true;
 
-        passwordLabel.Show();
-        passwordInput.Show();
-        passwordInput.Validating += textInput_Validating;
+        this.usernameLabel.Show();
+        this.usernameInput.Show();
+        this.usernameInput.Validating += this.textInput_Validating;
 
-        roleLabel.Show();
-        roleComboBox.Show();
-        roleComboBox.Validating += roleComboBox_Validating;
+        this.passwordLabel.Show();
+        this.passwordInput.Show();
+        this.passwordInput.Validating += this.textInput_Validating;
+
+        this.roleLabel.Show();
+        this.roleComboBox.Show();
+        this.roleComboBox.Validating += this.roleComboBox_Validating;
         var roles = RolesDal.GetRoles();
-        roleComboBox.DataSource = roles;
+        this.roleComboBox.DataSource = roles;
 
-        addDialogHeading.Text = "Add Employee";
-        addButton.Click += addEmployeeButton_Click;
-        addButton.Text = "Add Employee";
+        this.addDialogHeading.Text = "Add Employee";
+        this.addButton.Click += this.addEmployeeButton_Click;
+        this.addButton.Text = "Add Employee";
+
+        this.roleOptions = RolesDal.GetRoles().ToArray();
     }
 
     private void displayCustomerData()
     {
-        usernameLabel.Hide();
-        usernameInput.Hide();
-        usernameInput.Enabled = false;
-        usernameInput.Validating -= textInput_Validating;
+        this.usernameLabel.Hide();
+        this.usernameInput.Hide();
+        this.usernameInput.Enabled = false;
+        this.usernameInput.Validating -= this.textInput_Validating;
 
-        passwordLabel.Hide();
-        passwordInput.Hide();
-        passwordInput.Enabled = false;
-        passwordInput.Validating -= textInput_Validating;
-        showPasswordCheckBox.Hide();
+        this.passwordLabel.Hide();
+        this.passwordInput.Hide();
+        this.passwordInput.Enabled = false;
+        this.passwordInput.Validating -= this.textInput_Validating;
+        this.showPasswordCheckBox.Hide();
 
-        roleLabel.Hide();
-        roleComboBox.Hide();
-        roleComboBox.Enabled = false;
-        roleComboBox.Validating -= roleComboBox_Validating;
+        this.roleLabel.Hide();
+        this.roleComboBox.Hide();
+        this.roleComboBox.Enabled = false;
+        this.roleComboBox.Validating -= this.roleComboBox_Validating;
 
-        addDialogHeading.Text = "Add Customer";
-        addButton.Click += addCustomerButton_Click;
-        addButton.Text = "Add Customer";
+        this.addDialogHeading.Text = "Add Customer";
+        this.addButton.Click += this.addCustomerButton_Click;
+        this.addButton.Text = "Add Customer";
     }
 
-    private void addCustomerButton_Click(object sender, EventArgs e)
+    private void addCustomerButton_Click(object? sender, EventArgs e)
     {
         if (!ValidateChildren(ValidationConstraints.Enabled))
         {
@@ -173,18 +212,33 @@ public partial class addUserForm : Form
 
         var customer = new Customer
         {
-            Fname = firstnameInput.Text,
-            Lname = lastnameInput.Text,
-            Gender = genderComboBox.Text,
-            Email = emailInput.Text,
-            Dob = dobTimePicker.Value.Date,
-            Phone = phoneInput.Text,
-            Address = streetAdressInput.Text,
-            City = cityInput.Text,
-            State = stateComboBox.Text,
-            Zip = zipcodeInput.Text
+            Fname = this.firstnameInput.Text,
+            Lname = this.lastnameInput.Text,
+            Gender = this.genderComboBox.Text,
+            Email = this.emailInput.Text,
+            Dob = this.dobTimePicker.Value.Date,
+            Phone = this.phoneInput.Text,
+            Address = this.streetAdressInput.Text,
+            City = this.cityInput.Text,
+            State = this.stateComboBox.Text,
+            Zip = this.zipcodeInput.Text
         };
 
+        if (this.isPrepopulated)
+        {
+            customer.Member_id = this.GivenCustomer.Member_id;
+            customer.Register_date = this.GivenCustomer.Register_date;
+
+            if (!CustomerDal.UpdateCustomer(customer))
+            {
+                MessageBox.Show("Error Updating Customer");
+                return;
+            }
+
+            MessageBox.Show("Customer Updated");
+            Close();
+            return;
+        }
 
         if (!CustomerDal.CreateCustomer(customer))
         {
@@ -196,7 +250,7 @@ public partial class addUserForm : Form
         Close();
     }
 
-    private void addEmployeeButton_Click(object sender, EventArgs e)
+    private void addEmployeeButton_Click(object? sender, EventArgs e)
     {
         if (!ValidateChildren(ValidationConstraints.Enabled))
         {
@@ -204,33 +258,37 @@ public partial class addUserForm : Form
             return;
         }
 
-        var login = new Login
+        var employee = new Employee
         {
-            Username = usernameInput.Text,
-            Password = passwordInput.Text
+            Username = this.usernameInput.Text,
+            Password = this.passwordInput.Text,
+            Fname = this.firstnameInput.Text,
+            Lname = this.lastnameInput.Text,
+            Gender = this.genderComboBox.Text,
+            Email = this.emailInput.Text,
+            Dob = this.dobTimePicker.Value.Date,
+            Phone = this.phoneInput.Text,
+            Address = this.streetAdressInput.Text,
+            City = this.cityInput.Text,
+            State = this.stateComboBox.Text,
+            Zip = this.zipcodeInput.Text,
+            Role_name = this.roleComboBox.Text
         };
-        if (!LoginDal.CreateLogin(login))
+
+        if (this.isPrepopulated)
         {
-            MessageBox.Show("Error Creating Login");
+            employee.Employee_num = this.GivenEmployee.Employee_num;
+            if (!EmployeeDal.UpdateEmployee(employee))
+            {
+                MessageBox.Show("Error Updating Employee");
+                return;
+            }
+
+            MessageBox.Show("Employee Updated");
+            Close();
             return;
         }
 
-        var employee = new Employee
-        {
-            Username = login.Username,
-            Password = login.Password,
-            Fname = firstnameInput.Text,
-            Lname = lastnameInput.Text,
-            Gender = genderComboBox.Text,
-            Email = emailInput.Text,
-            Dob = dobTimePicker.Value.Date,
-            Phone = phoneInput.Text,
-            Address = streetAdressInput.Text,
-            City = cityInput.Text,
-            State = stateComboBox.Text,
-            Zip = zipcodeInput.Text,
-            Role_name = roleComboBox.Text
-        };
         if (!EmployeeDal.CreateEmployee(employee))
         {
             MessageBox.Show("Error Creating employee");
@@ -249,136 +307,139 @@ public partial class addUserForm : Form
 
     private void populateGenderComboBox()
     {
-        genderComboBox.Items.Clear();
-        genderComboBox.DataSource = genderOptions;
+        this.genderComboBox.Items.Clear();
+        this.genderComboBox.DataSource = genderOptions;
     }
 
     private void populateStateComboBox()
     {
-        stateComboBox.Items.Clear();
-        stateComboBox.DataSource = stateOptions;
+        this.stateComboBox.Items.Clear();
+        this.stateComboBox.DataSource = stateOptions;
     }
 
-    private void textInput_Validating(object sender, CancelEventArgs e)
+    private void textInput_Validating(object? sender, CancelEventArgs e)
     {
         var inputBox = sender as TextBox;
 
-        if (string.IsNullOrEmpty(inputBox.Text))
+        if (string.IsNullOrEmpty(inputBox?.Text))
         {
             e.Cancel = true;
-            addUserError.SetError(inputBox, "Field should not be left blank!");
+            this.addUserError.SetError(inputBox, "Field should not be left blank!");
         }
         else
         {
             e.Cancel = false;
-            addUserError.SetError(inputBox, "");
+            this.addUserError.SetError(inputBox, "");
         }
     }
 
     private void emailInput_Validating(object sender, CancelEventArgs e)
     {
-        var value = emailInput.Text;
+        var value = this.emailInput.Text;
 
         if (!Regex.IsMatch(value, EMAILREGEX))
         {
             e.Cancel = true;
-            addUserError.SetError(emailInput, "Email should match format of 'test@example.com'.");
+            this.addUserError.SetError(this.emailInput, "Email should match format of 'test@example.com'.");
         }
         else
         {
             e.Cancel = false;
-            addUserError.SetError(emailInput, "");
+            this.addUserError.SetError(this.emailInput, "");
         }
     }
 
     private void phoneInput_Validating(object sender, CancelEventArgs e)
     {
-        var value = phoneInput.Text;
+        var value = this.phoneInput.Text;
         value = value.Replace("-", "");
 
         if (!Regex.IsMatch(value, PHONEREGEXNODASH))
         {
             e.Cancel = true;
-            addUserError.SetError(phoneInput,
+            this.addUserError.SetError(this.phoneInput,
                 "Phone number should have 10 digits and no other characters other than '-'.");
         }
         else
         {
             e.Cancel = false;
-            addUserError.SetError(phoneInput, "");
+            this.addUserError.SetError(this.phoneInput, "");
 
             var areaCode = value.Substring(0, 3);
             var next = value.Substring(3, 3);
             var last = value.Substring(6, 4);
 
-            phoneInput.Text = areaCode + "-" + next + "-" + last;
+            this.phoneInput.Text = areaCode + "-" + next + "-" + last;
         }
     }
 
     private void genderComboBox_Validating(object sender, CancelEventArgs e)
     {
-        if (!genderOptions.Contains(genderComboBox.Text))
+        if (!genderOptions.Contains(this.genderComboBox.Text))
         {
             e.Cancel = true;
-            addUserError.SetError(genderComboBox, "Gender must match one of the given options.");
+            this.addUserError.SetError(this.genderComboBox, "Gender must match one of the given options.");
         }
         else
         {
             e.Cancel = false;
-            addUserError.SetError(genderComboBox, "");
+            this.addUserError.SetError(this.genderComboBox, "");
         }
     }
 
     private void stateComboBox_Validating(object sender, CancelEventArgs e)
     {
-        if (!stateOptions.Contains(stateComboBox.Text))
+        if (!stateOptions.Contains(this.stateComboBox.Text))
         {
             e.Cancel = true;
-            addUserError.SetError(stateComboBox, "State must match one of the given options.");
+            this.addUserError.SetError(this.stateComboBox, "State must match one of the given options.");
         }
         else
         {
             e.Cancel = false;
-            addUserError.SetError(stateComboBox, "");
+            this.addUserError.SetError(this.stateComboBox, "");
         }
     }
 
-    private void roleComboBox_Validating(object sender, CancelEventArgs e)
+    private void roleComboBox_Validating(object? sender, CancelEventArgs e)
     {
-        if (!roleOptions.Contains(roleComboBox.Text))
+        var options = this.roleOptions;
+        if (options != null && !options.Contains(this.roleComboBox.Text))
         {
             e.Cancel = true;
-            addUserError.SetError(roleComboBox, "Role_name must match one of the given options.");
+            this.addUserError.SetError(this.roleComboBox, "Role_name must match one of the given options.");
         }
         else
         {
             e.Cancel = false;
-            addUserError.SetError(roleComboBox, "");
+            this.addUserError.SetError(this.roleComboBox, "");
         }
     }
 
-    #endregion
-
-    #region Data Members
-
-    private static readonly string[] stateOptions =
+    private void zipcodeInput_Validating(object sender, CancelEventArgs e)
     {
-        "Alabama", "Alaska", "Arizona", "Arkansas", "California",
-        "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
-        "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
-        "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland",
-        "Massachusetts", "Michigan", "Minnesota", "Mississippi", "Missouri",
-        "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey",
-        "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
-        "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina",
-        "South Dakota", "Tennessee", "Texas", "Utah", "Vermont",
-        "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
-    };
+        var zip = this.zipcodeInput.Text;
 
-    private static readonly string[] genderOptions = { "O", "M", "F" };
+        if (!Regex.IsMatch(zip, ZIPREGEX))
+        {
+            e.Cancel = true;
+            this.addUserError.SetError(this.zipcodeInput,
+                "Given zipcode is invalid.");
+        }
+        else
+        {
+            e.Cancel = false;
+            this.addUserError.SetError(this.zipcodeInput, "");
+        }
+    }
 
-    // TODO: Make a request to db
-    private static readonly string[] roleOptions = { "administrator", "employee" };
+    private void input_TextChanged(object sender, EventArgs e)
+    {
+        if (this.isPrepopulated)
+        {
+            this.addButton.Enabled = true;
+        }
+    }
 
     #endregion
 }

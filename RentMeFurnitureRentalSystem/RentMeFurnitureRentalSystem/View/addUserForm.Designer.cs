@@ -66,9 +66,9 @@
             // usernameLabel
             // 
             this.usernameLabel.AutoSize = true;
-            this.usernameLabel.Location = new System.Drawing.Point(13, 62);
+            this.usernameLabel.Location = new System.Drawing.Point(15, 83);
             this.usernameLabel.Name = "usernameLabel";
-            this.usernameLabel.Size = new System.Drawing.Size(60, 15);
+            this.usernameLabel.Size = new System.Drawing.Size(75, 20);
             this.usernameLabel.TabIndex = 0;
             this.usernameLabel.Text = "Username";
             // 
@@ -76,205 +76,237 @@
             // 
             this.addDialogHeading.AutoSize = true;
             this.addDialogHeading.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.addDialogHeading.Location = new System.Drawing.Point(128, 9);
+            this.addDialogHeading.Location = new System.Drawing.Point(146, 12);
             this.addDialogHeading.Name = "addDialogHeading";
-            this.addDialogHeading.Size = new System.Drawing.Size(133, 32);
+            this.addDialogHeading.Size = new System.Drawing.Size(167, 41);
             this.addDialogHeading.TabIndex = 1;
             this.addDialogHeading.Text = "Add Dialog";
             // 
             // usernameInput
             // 
-            this.usernameInput.Location = new System.Drawing.Point(84, 59);
+            this.usernameInput.Location = new System.Drawing.Point(96, 79);
+            this.usernameInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.usernameInput.Name = "usernameInput";
-            this.usernameInput.Size = new System.Drawing.Size(127, 23);
+            this.usernameInput.Size = new System.Drawing.Size(145, 27);
             this.usernameInput.TabIndex = 2;
+            this.usernameInput.TextChanged += new System.EventHandler(this.input_TextChanged);
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(228, 62);
+            this.passwordLabel.Location = new System.Drawing.Point(261, 83);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(57, 15);
+            this.passwordLabel.Size = new System.Drawing.Size(70, 20);
             this.passwordLabel.TabIndex = 3;
             this.passwordLabel.Text = "Password";
             // 
             // passwordInput
             // 
-            this.passwordInput.Location = new System.Drawing.Point(294, 59);
+            this.passwordInput.Location = new System.Drawing.Point(336, 79);
+            this.passwordInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.passwordInput.Name = "passwordInput";
-            this.passwordInput.Size = new System.Drawing.Size(127, 23);
+            this.passwordInput.Size = new System.Drawing.Size(145, 27);
             this.passwordInput.TabIndex = 4;
             this.passwordInput.UseSystemPasswordChar = true;
+            this.passwordInput.TextChanged += new System.EventHandler(this.input_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(226, 111);
+            this.label5.Location = new System.Drawing.Point(258, 148);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(43, 15);
+            this.label5.Size = new System.Drawing.Size(72, 20);
             this.label5.TabIndex = 6;
-            this.label5.Text = "Lname";
+            this.label5.Text = "Lastname";
             // 
             // firstnameInput
             // 
-            this.firstnameInput.Location = new System.Drawing.Point(84, 109);
+            this.firstnameInput.Location = new System.Drawing.Point(96, 145);
+            this.firstnameInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.firstnameInput.Name = "firstnameInput";
-            this.firstnameInput.Size = new System.Drawing.Size(127, 23);
+            this.firstnameInput.Size = new System.Drawing.Size(145, 27);
             this.firstnameInput.TabIndex = 7;
+            this.firstnameInput.TextChanged += new System.EventHandler(this.input_TextChanged);
             // 
             // lastnameInput
             // 
-            this.lastnameInput.Location = new System.Drawing.Point(294, 109);
+            this.lastnameInput.Location = new System.Drawing.Point(336, 145);
+            this.lastnameInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lastnameInput.Name = "lastnameInput";
-            this.lastnameInput.Size = new System.Drawing.Size(127, 23);
+            this.lastnameInput.Size = new System.Drawing.Size(145, 27);
             this.lastnameInput.TabIndex = 8;
+            this.lastnameInput.TextChanged += new System.EventHandler(this.input_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(29, 190);
+            this.label6.Location = new System.Drawing.Point(33, 253);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(45, 15);
+            this.label6.Size = new System.Drawing.Size(57, 20);
             this.label6.TabIndex = 9;
             this.label6.Text = "Gender";
             // 
             // genderComboBox
             // 
+            this.genderComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.genderComboBox.FormattingEnabled = true;
-            this.genderComboBox.Location = new System.Drawing.Point(84, 188);
+            this.genderComboBox.Location = new System.Drawing.Point(96, 251);
+            this.genderComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.genderComboBox.Name = "genderComboBox";
-            this.genderComboBox.Size = new System.Drawing.Size(127, 23);
+            this.genderComboBox.Size = new System.Drawing.Size(145, 28);
             this.genderComboBox.TabIndex = 11;
+            this.genderComboBox.TextChanged += new System.EventHandler(this.input_TextChanged);
+            this.genderComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.genderComboBox_Validating);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(245, 147);
+            this.label7.Location = new System.Drawing.Point(280, 196);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(41, 15);
+            this.label7.Size = new System.Drawing.Size(50, 20);
             this.label7.TabIndex = 11;
             this.label7.Text = "Phone";
             // 
             // phoneInput
             // 
-            this.phoneInput.Location = new System.Drawing.Point(294, 145);
+            this.phoneInput.Location = new System.Drawing.Point(336, 193);
+            this.phoneInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.phoneInput.Name = "phoneInput";
-            this.phoneInput.Size = new System.Drawing.Size(127, 23);
+            this.phoneInput.Size = new System.Drawing.Size(145, 27);
             this.phoneInput.TabIndex = 10;
+            this.phoneInput.TextChanged += new System.EventHandler(this.input_TextChanged);
+            this.phoneInput.Validating += new System.ComponentModel.CancelEventHandler(this.phoneInput_Validating);
             // 
             // dobTimePicker
             // 
             this.dobTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dobTimePicker.Location = new System.Drawing.Point(294, 187);
+            this.dobTimePicker.Location = new System.Drawing.Point(336, 249);
+            this.dobTimePicker.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dobTimePicker.Name = "dobTimePicker";
-            this.dobTimePicker.Size = new System.Drawing.Size(127, 23);
+            this.dobTimePicker.Size = new System.Drawing.Size(145, 27);
             this.dobTimePicker.TabIndex = 13;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(233, 190);
+            this.label8.Location = new System.Drawing.Point(266, 253);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(51, 15);
+            this.label8.Size = new System.Drawing.Size(64, 20);
             this.label8.TabIndex = 14;
             this.label8.Text = "Birthday";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(37, 232);
+            this.label9.Location = new System.Drawing.Point(42, 309);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(37, 15);
+            this.label9.Size = new System.Drawing.Size(48, 20);
             this.label9.TabIndex = 15;
             this.label9.Text = "Street";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(251, 279);
+            this.label10.Location = new System.Drawing.Point(287, 372);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(33, 15);
+            this.label10.Size = new System.Drawing.Size(43, 20);
             this.label10.TabIndex = 16;
             this.label10.Text = "State";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(49, 279);
+            this.label11.Location = new System.Drawing.Point(56, 372);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 15);
+            this.label11.Size = new System.Drawing.Size(34, 20);
             this.label11.TabIndex = 17;
             this.label11.Text = "City";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(233, 232);
+            this.label12.Location = new System.Drawing.Point(266, 309);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(24, 15);
+            this.label12.Size = new System.Drawing.Size(64, 20);
             this.label12.TabIndex = 18;
-            this.label12.Text = "Zip";
+            this.label12.Text = "Zipcode";
             // 
             // cityInput
             // 
-            this.cityInput.Location = new System.Drawing.Point(84, 277);
+            this.cityInput.Location = new System.Drawing.Point(96, 369);
+            this.cityInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cityInput.Name = "cityInput";
-            this.cityInput.Size = new System.Drawing.Size(127, 23);
+            this.cityInput.Size = new System.Drawing.Size(145, 27);
             this.cityInput.TabIndex = 20;
+            this.cityInput.TextChanged += new System.EventHandler(this.input_TextChanged);
             // 
             // streetAdressInput
             // 
-            this.streetAdressInput.Location = new System.Drawing.Point(84, 230);
+            this.streetAdressInput.Location = new System.Drawing.Point(96, 307);
+            this.streetAdressInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.streetAdressInput.Name = "streetAdressInput";
-            this.streetAdressInput.Size = new System.Drawing.Size(127, 23);
+            this.streetAdressInput.Size = new System.Drawing.Size(145, 27);
             this.streetAdressInput.TabIndex = 19;
+            this.streetAdressInput.TextChanged += new System.EventHandler(this.input_TextChanged);
             // 
             // zipcodeInput
             // 
-            this.zipcodeInput.Location = new System.Drawing.Point(294, 230);
+            this.zipcodeInput.Location = new System.Drawing.Point(336, 307);
+            this.zipcodeInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.zipcodeInput.Name = "zipcodeInput";
-            this.zipcodeInput.Size = new System.Drawing.Size(127, 23);
+            this.zipcodeInput.Size = new System.Drawing.Size(145, 27);
             this.zipcodeInput.TabIndex = 21;
+            this.zipcodeInput.TextChanged += new System.EventHandler(this.input_TextChanged);
+            this.zipcodeInput.Validating += new System.ComponentModel.CancelEventHandler(this.zipcodeInput_Validating);
             // 
             // stateComboBox
             // 
+            this.stateComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.stateComboBox.FormattingEnabled = true;
-            this.stateComboBox.Location = new System.Drawing.Point(294, 277);
+            this.stateComboBox.Location = new System.Drawing.Point(336, 369);
+            this.stateComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.stateComboBox.Name = "stateComboBox";
-            this.stateComboBox.Size = new System.Drawing.Size(127, 23);
+            this.stateComboBox.Size = new System.Drawing.Size(145, 28);
             this.stateComboBox.TabIndex = 22;
+            this.stateComboBox.TextChanged += new System.EventHandler(this.input_TextChanged);
+            this.stateComboBox.Validating += new System.ComponentModel.CancelEventHandler(this.stateComboBox_Validating);
             // 
             // roleLabel
             // 
             this.roleLabel.AutoSize = true;
-            this.roleLabel.Location = new System.Drawing.Point(149, 321);
+            this.roleLabel.Location = new System.Drawing.Point(170, 427);
             this.roleLabel.Name = "roleLabel";
-            this.roleLabel.Size = new System.Drawing.Size(33, 15);
+            this.roleLabel.Size = new System.Drawing.Size(39, 20);
             this.roleLabel.TabIndex = 23;
-            this.roleLabel.Text = "Role:";
+            this.roleLabel.Text = "Role";
             // 
             // roleComboBox
             // 
             this.roleComboBox.FormattingEnabled = true;
-            this.roleComboBox.Location = new System.Drawing.Point(188, 318);
+            this.roleComboBox.Location = new System.Drawing.Point(215, 424);
+            this.roleComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.roleComboBox.Name = "roleComboBox";
-            this.roleComboBox.Size = new System.Drawing.Size(112, 23);
+            this.roleComboBox.Size = new System.Drawing.Size(127, 28);
             this.roleComboBox.TabIndex = 24;
+            this.roleComboBox.TextChanged += new System.EventHandler(this.input_TextChanged);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(38, 354);
+            this.cancelButton.Location = new System.Drawing.Point(43, 472);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(120, 23);
+            this.cancelButton.Size = new System.Drawing.Size(137, 31);
             this.cancelButton.TabIndex = 26;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(294, 354);
+            this.addButton.Location = new System.Drawing.Point(336, 472);
+            this.addButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(127, 23);
+            this.addButton.Size = new System.Drawing.Size(145, 31);
             this.addButton.TabIndex = 25;
             this.addButton.Text = "Add Employee";
             this.addButton.UseVisualStyleBackColor = true;
@@ -282,25 +314,28 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 111);
+            this.label4.Location = new System.Drawing.Point(17, 148);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 15);
+            this.label4.Size = new System.Drawing.Size(73, 20);
             this.label4.TabIndex = 5;
-            this.label4.Text = "Fname";
+            this.label4.Text = "Firstname";
             // 
             // emailInput
             // 
-            this.emailInput.Location = new System.Drawing.Point(84, 147);
+            this.emailInput.Location = new System.Drawing.Point(96, 196);
+            this.emailInput.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.emailInput.Name = "emailInput";
-            this.emailInput.Size = new System.Drawing.Size(127, 23);
+            this.emailInput.Size = new System.Drawing.Size(145, 27);
             this.emailInput.TabIndex = 9;
+            this.emailInput.TextChanged += new System.EventHandler(this.input_TextChanged);
+            this.emailInput.Validating += new System.ComponentModel.CancelEventHandler(this.emailInput_Validating);
             // 
             // emailLabel
             // 
             this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(35, 149);
+            this.emailLabel.Location = new System.Drawing.Point(40, 199);
             this.emailLabel.Name = "emailLabel";
-            this.emailLabel.Size = new System.Drawing.Size(36, 15);
+            this.emailLabel.Size = new System.Drawing.Size(46, 20);
             this.emailLabel.TabIndex = 27;
             this.emailLabel.Text = "Email";
             // 
@@ -311,18 +346,20 @@
             // showPasswordCheckBox
             // 
             this.showPasswordCheckBox.AutoSize = true;
-            this.showPasswordCheckBox.Location = new System.Drawing.Point(294, 84);
+            this.showPasswordCheckBox.Location = new System.Drawing.Point(336, 112);
+            this.showPasswordCheckBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.showPasswordCheckBox.Name = "showPasswordCheckBox";
-            this.showPasswordCheckBox.Size = new System.Drawing.Size(108, 19);
+            this.showPasswordCheckBox.Size = new System.Drawing.Size(132, 24);
             this.showPasswordCheckBox.TabIndex = 28;
             this.showPasswordCheckBox.Text = "Show Password";
             this.showPasswordCheckBox.UseVisualStyleBackColor = true;
+            this.showPasswordCheckBox.CheckedChanged += new System.EventHandler(this.showPasswordCheckBox_CheckedChanged);
             // 
             // addUserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 394);
+            this.ClientSize = new System.Drawing.Size(504, 525);
             this.Controls.Add(this.showPasswordCheckBox);
             this.Controls.Add(this.dobTimePicker);
             this.Controls.Add(this.emailInput);
@@ -353,6 +390,7 @@
             this.Controls.Add(this.usernameInput);
             this.Controls.Add(this.addDialogHeading);
             this.Controls.Add(this.usernameLabel);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "addUserForm";
             this.Text = "Add User";
             ((System.ComponentModel.ISupportInitialize)(this.addUserError)).EndInit();
