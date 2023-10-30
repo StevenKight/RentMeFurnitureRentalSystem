@@ -7,7 +7,7 @@ using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.view;
 
-public partial class RentalForm : Form
+public partial class RentalRecieptForm : Form
 {
     private List<Customer> Customers;
     private List<Furniture> Furniture;
@@ -17,14 +17,12 @@ public partial class RentalForm : Form
 
     #region Constructors
 
-    public RentalForm(Employee employee, Customer customer)
+    public RentalRecieptForm(Employee employee, Customer customer)
     {
         this.employee = employee;
         this.customer = customer;
 
         this.InitializeComponent();
-
-        this.titleTextBox.Text = "Rent to " + this.customer.Fullname;
 
         this.loadData();
     }
@@ -36,7 +34,7 @@ public partial class RentalForm : Form
         this.Furniture = FurnitureDAL.GetFurniture().Where(piece => piece.Quantity > 0).ToList();
         this.Furniture.ForEach(x => x.Quantity = 0);
 
-        this.furnitureGridView.DataSource = this.Furniture;
+        this.furnitureGridView.DataSource = this.Furniture; ;
     }
 
     private void cancelButton_Click(object sender, EventArgs e)
@@ -86,7 +84,9 @@ public partial class RentalForm : Form
             }
         }
 
-        MessageBox.Show($"Successfully rented {selectedFurniture.Count} item(s) to {this.customer.Fullname}.");
+        MessageBox.Show("Successfully rented.");
         this.Close();
+
+
     }
 }
