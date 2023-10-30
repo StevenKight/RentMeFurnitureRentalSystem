@@ -1,6 +1,6 @@
 ﻿namespace RentMeFurnitureRentalSystem.view
 {
-    partial class RentalRecieptForm
+    partial class RentalReceiptForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            submitButton = new Button();
+            backButton = new Button();
             dueDateTextBox = new TextBox();
             errorProvider = new ErrorProvider(components);
             titleTextBox = new TextBox();
@@ -45,27 +45,29 @@
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
+            submitButton = new Button();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             ((System.ComponentModel.ISupportInitialize)furnitureBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)furnitureGridView).BeginInit();
             SuspendLayout();
             // 
-            // submitButton
+            // backButton
             // 
-            submitButton.Location = new Point(165, 377);
-            submitButton.Name = "submitButton";
-            submitButton.Size = new Size(127, 23);
-            submitButton.TabIndex = 25;
-            submitButton.Text = "Submit Rental";
-            submitButton.UseVisualStyleBackColor = true;
-            submitButton.Click += submitButton_Click;
+            backButton.Enabled = false;
+            backButton.Location = new Point(83, 380);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(127, 23);
+            backButton.TabIndex = 25;
+            backButton.Text = "Back";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
             // 
             // dueDateTextBox
             // 
             dueDateTextBox.BackColor = SystemColors.Control;
             dueDateTextBox.BorderStyle = BorderStyle.None;
             dueDateTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dueDateTextBox.Location = new Point(12, 103);
+            dueDateTextBox.Location = new Point(12, 106);
             dueDateTextBox.Name = "dueDateTextBox";
             dueDateTextBox.ReadOnly = true;
             dueDateTextBox.Size = new Size(430, 22);
@@ -108,7 +110,7 @@
             itemCountTextBox.BackColor = SystemColors.Control;
             itemCountTextBox.BorderStyle = BorderStyle.None;
             itemCountTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            itemCountTextBox.Location = new Point(12, 131);
+            itemCountTextBox.Location = new Point(12, 134);
             itemCountTextBox.Name = "itemCountTextBox";
             itemCountTextBox.ReadOnly = true;
             itemCountTextBox.Size = new Size(430, 22);
@@ -129,7 +131,7 @@
             furnitureGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             furnitureGridView.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8 });
             furnitureGridView.DataSource = furnitureBindingSource;
-            furnitureGridView.Location = new Point(12, 159);
+            furnitureGridView.Location = new Point(12, 162);
             furnitureGridView.MultiSelect = false;
             furnitureGridView.Name = "furnitureGridView";
             furnitureGridView.RowHeadersVisible = false;
@@ -204,19 +206,31 @@
             dataGridViewTextBoxColumn8.DataPropertyName = "Quantity";
             dataGridViewTextBoxColumn8.HeaderText = "Quantity";
             dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // RentalRecieptForm
+            // submitButton
+            // 
+            submitButton.Location = new Point(243, 380);
+            submitButton.Name = "submitButton";
+            submitButton.Size = new Size(127, 23);
+            submitButton.TabIndex = 35;
+            submitButton.Text = "Submit Rental";
+            submitButton.UseVisualStyleBackColor = true;
+            submitButton.Click += submitButton_Click;
+            // 
+            // RentalReceiptForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(454, 411);
+            Controls.Add(submitButton);
             Controls.Add(furnitureGridView);
             Controls.Add(itemCountTextBox);
             Controls.Add(totalTextBox);
             Controls.Add(titleTextBox);
             Controls.Add(dueDateTextBox);
-            Controls.Add(submitButton);
-            Name = "RentalRecieptForm";
+            Controls.Add(backButton);
+            Name = "RentalReceiptForm";
             Text = "Rental";
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ((System.ComponentModel.ISupportInitialize)furnitureBindingSource).EndInit();
@@ -227,7 +241,7 @@
 
         #endregion
         private Button cancelButton;
-        private Button submitButton;
+        private Button backButton;
         private TextBox dueDateTextBox;
         private ErrorProvider errorProvider;
         private DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn;
@@ -266,5 +280,6 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private Button submitButton;
     }
 }

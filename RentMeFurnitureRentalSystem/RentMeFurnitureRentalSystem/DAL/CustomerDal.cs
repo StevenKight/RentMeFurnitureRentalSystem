@@ -17,6 +17,15 @@ public class CustomerDal
         return results.ToList();
     }
 
+    public static Customer GetCustomerById(int id)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var results = connection.Query<Customer>(QueryStrings.GetCustomerById, new { Id = id });
+
+        return results.ElementAt(0);
+    }
+
     public static bool CreateCustomer(Customer newCustomer)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);

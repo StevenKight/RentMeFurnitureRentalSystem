@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="view\RentalRecieptForm.cs">
+    <Compile Update="view\RentalReceiptForm.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

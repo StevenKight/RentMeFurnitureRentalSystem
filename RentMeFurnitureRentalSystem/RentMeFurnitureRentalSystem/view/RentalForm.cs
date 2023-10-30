@@ -9,7 +9,6 @@ namespace RentMeFurnitureRentalSystem.view;
 
 public partial class RentalForm : Form
 {
-    private List<Customer> Customers;
     private List<Furniture> Furniture;
 
     private Employee employee;
@@ -86,7 +85,19 @@ public partial class RentalForm : Form
             }
         }
 
-        MessageBox.Show($"Successfully rented {selectedFurniture.Count} item(s) to {this.customer.Fullname}.");
-        this.Close();
+        MessageBox.Show("Successfully rented to user");
+        var rentalId = RentalDAL.GetRentalId(rental);
+
+        var receipt = new RentalReceiptForm(rentalId);
+        receipt.StartPosition = FormStartPosition.Manual;
+        receipt.Left = Left + (Width - receipt.Width) / 2;
+        receipt.Top = Top + (Height - receipt.Height) / 2;
+
+        receipt.ShowDialog();
+
+        if (receipt.DialogResult == DialogResult.OK)
+        {
+            this.Close();
+        }
     }
 }
