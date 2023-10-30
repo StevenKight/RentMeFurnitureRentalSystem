@@ -295,24 +295,25 @@ public partial class MainScreenForm : Form
                 MessageBox.Show("Enter a postive number");
             }
 
-        } else if (this.phoneNumberRadioButton.Checked)
+        }
+        else if (this.phoneNumberRadioButton.Checked)
         {
             var phoneValue = this.phoneNumberTextBox.Text;
-           var value = phoneValue.Replace("-", "");
-           try
-           {
-               var areaCode = value.Substring(0, 3);
-               var next = value.Substring(3, 3);
-               var last = value.Substring(6, 4);
-               var validPhone = areaCode + "-" + next + "-" + last;
-               var customer = CustomerDal.GetCustomerByPhone(validPhone);
-               this.Customers.Clear();
-               this.Customers = customer.ToList();
-               this.populateGridViews();
+            var value = phoneValue.Replace("-", "");
+            try
+            {
+                var areaCode = value.Substring(0, 3);
+                var next = value.Substring(3, 3);
+                var last = value.Substring(6, 4);
+                var validPhone = areaCode + "-" + next + "-" + last;
+                var customer = CustomerDal.GetCustomerByPhone(validPhone);
+                this.Customers.Clear();
+                this.Customers = customer.ToList();
+                this.populateGridViews();
             }
             catch (Exception ex)
             {
-               MessageBox.Show("Enter a valid number without - ");
+                MessageBox.Show("Enter a valid number without - ");
             }
         }
         else
