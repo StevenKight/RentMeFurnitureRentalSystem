@@ -1,4 +1,6 @@
-﻿using RentMeFurnitureRentalSystem.DAL;
+﻿using System.Text.RegularExpressions;
+using Google.Protobuf.WellKnownTypes;
+using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 using RentMeFurnitureRentalSystem.view;
@@ -21,6 +23,8 @@ public partial class MainScreenForm : Form
     public Customer SelectedCustomer { get; set; }
 
     public Furniture SelectedFurniture { get; set; }
+
+    public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
 
     #endregion
 
@@ -59,6 +63,7 @@ public partial class MainScreenForm : Form
         Furniture = FurnitureDAL.GetFurniture().ToList();
 
         populateGridViews();
+        populateStyleAndCategoryComboBoxes();
     }
 
     private void setupGridViews()
@@ -371,6 +376,62 @@ public partial class MainScreenForm : Form
         this.populateGridViews();
     }
 
+    private void customerSearchButton_Click(object sender, EventArgs e)
+    {
+        if (this.memberIDRadioButton.Checked)
+        {
+            try
+            {
+                var memberId = int.Parse(this.memberIdTextBox.Text);
+                var customers = CustomerDal.GetCustomerByMemberID(memberId);
+                this.Customers.Clear();
+                this.Customers = customers.ToList();
+                this.populateGridViews();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Enter a postive number");
+            }
+
+        } else if (this.phoneNumberRadioButton.Checked)
+        {
+            var phoneValue = this.phoneNumberTextBox.Text;
+           var value = phoneValue.Replace("-", "");
+           try
+           {
+               var areaCode = value.Substring(0, 3);
+               var next = value.Substring(3, 3);
+               var last = value.Substring(6, 4);
+               var validPhone = areaCode + "-" + next + "-" + last;
+               var customer = CustomerDal.GetCustomerByPhone(validPhone);
+               this.Customers.Clear();
+               this.Customers = customer.ToList();
+               this.populateGridViews();
+            }
+            catch (Exception ex)
+            {
+               MessageBox.Show("Enter a valid number without - ");
+            }
+        }
+        else
+        {
+            var firstName = this.firstNameSearchTextBox.Text;
+            var lastName = this.lastNameSearchTextBox.Text;
+
+            var customer = CustomerDal.GetCustomerByName(firstName, lastName);
+
+            this.Customers.Clear();
+            this.Customers = customer.ToList();
+            this.populateGridViews();
+
+        }
+    }
+    private void resetCustomerButton_Click(object sender, EventArgs e)
+    {
+        this.Customers.Clear();
+        this.Customers = CustomerDal.GetAllCustomers();
+        this.populateGridViews();
+    }
     private void dashboardTabs_SelectedIndexChanged(object sender, EventArgs e)
     {
         var selectedTab = this.dashboardTabs.SelectedTab;

@@ -17,6 +17,32 @@ public class CustomerDal
         return results.ToList();
     }
 
+    public static IList<Customer> GetCustomerByMemberID(int id)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var results = connection.Query<Customer>(QueryStrings.GetCustomerByMemberId,new {id = id});
+
+        return results.ToList();
+    }
+
+    public static IList<Customer> GetCustomerByPhone(string phone)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var results = connection.Query<Customer>(QueryStrings.GetCustomerByPhone, new { phone = phone });
+
+        return results.ToList();
+    }
+
+    public static IList<Customer> GetCustomerByName(string firstName, string lastName)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var results = connection.Query<Customer>(QueryStrings.GetCustomerByName, new { fname = firstName, lname = lastName });
+
+        return results.ToList();
+    }
     public static bool CreateCustomer(Customer newCustomer)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);

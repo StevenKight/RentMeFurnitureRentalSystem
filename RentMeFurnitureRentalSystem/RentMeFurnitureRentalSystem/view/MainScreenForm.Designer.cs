@@ -28,37 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            addEmployeeButton = new Button();
-            label1 = new Label();
-            addCustomerButton = new Button();
-            logoutButton = new Button();
-            employeeDisplay = new TextBox();
-            customerGridView = new DataGridView();
-            employeeGridView = new DataGridView();
-            dashboardTabs = new TabControl();
-            customersTab = new TabPage();
-            deleteCustomerButton = new Button();
-            employeesTab = new TabPage();
-            deleteEmployeeButton = new Button();
-            furnitureTabpage = new TabPage();
-            resetButton = new Button();
-            categoryRadioButton = new RadioButton();
-            StyleRadioButton = new RadioButton();
-            categoryComboBox = new ComboBox();
-            styleComboBox = new ComboBox();
-            IdRadioButton = new RadioButton();
-            furnitureSearchTextBox = new TextBox();
-            furnitureSearchButton = new Button();
-            addFurnitureButton = new Button();
-            furnitureGridView = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)customerGridView).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)employeeGridView).BeginInit();
-            dashboardTabs.SuspendLayout();
-            customersTab.SuspendLayout();
-            employeesTab.SuspendLayout();
-            furnitureTabpage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)furnitureGridView).BeginInit();
-            SuspendLayout();
+            this.addEmployeeButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.addCustomerButton = new System.Windows.Forms.Button();
+            this.logoutButton = new System.Windows.Forms.Button();
+            this.employeeDisplay = new System.Windows.Forms.TextBox();
+            this.customerGridView = new System.Windows.Forms.DataGridView();
+            this.employeeGridView = new System.Windows.Forms.DataGridView();
+            this.dashboardTabs = new System.Windows.Forms.TabControl();
+            this.customersTab = new System.Windows.Forms.TabPage();
+            this.resetCustomerButton = new System.Windows.Forms.Button();
+            this.customerSearchButton = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lastNameSearchTextBox = new System.Windows.Forms.TextBox();
+            this.nameRadioButton = new System.Windows.Forms.RadioButton();
+            this.firstNameSearchTextBox = new System.Windows.Forms.TextBox();
+            this.phoneNumberRadioButton = new System.Windows.Forms.RadioButton();
+            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
+            this.memberIdTextBox = new System.Windows.Forms.TextBox();
+            this.memberIDRadioButton = new System.Windows.Forms.RadioButton();
+            this.furnitureTabpage = new System.Windows.Forms.TabPage();
+            this.resetButton = new System.Windows.Forms.Button();
+            this.categoryRadioButton = new System.Windows.Forms.RadioButton();
+            this.StyleRadioButton = new System.Windows.Forms.RadioButton();
+            this.categoryComboBox = new System.Windows.Forms.ComboBox();
+            this.styleComboBox = new System.Windows.Forms.ComboBox();
+            this.IdRadioButton = new System.Windows.Forms.RadioButton();
+            this.furnitureSearchTextBox = new System.Windows.Forms.TextBox();
+            this.furnitureSearchButton = new System.Windows.Forms.Button();
+            this.addFurnitureButton = new System.Windows.Forms.Button();
+            this.furnitureGridView = new System.Windows.Forms.DataGridView();
+            this.employeesTab = new System.Windows.Forms.TabPage();            
+            this.deleteCustomerButton = new Button();
+            this.deleteEmployeeButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)(this.customerGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).BeginInit();
+            this.dashboardTabs.SuspendLayout();
+            this.customersTab.SuspendLayout();
+            this.furnitureTabpage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).BeginInit();
+            this.employeesTab.SuspendLayout();
+            this.SuspendLayout();
             // 
             // addEmployeeButton
             // 
@@ -117,7 +128,7 @@
             customerGridView.AllowUserToAddRows = false;
             customerGridView.AllowUserToDeleteRows = false;
             customerGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            customerGridView.Location = new Point(146, 6);
+            customerGridView.Location = new Point(146, 64);
             customerGridView.MultiSelect = false;
             customerGridView.Name = "customerGridView";
             customerGridView.ReadOnly = true;
@@ -125,7 +136,7 @@
             customerGridView.RowHeadersWidth = 51;
             customerGridView.RowTemplate.Height = 25;
             customerGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            customerGridView.Size = new Size(614, 320);
+            customerGridView.Size = new Size(617, 283);
             customerGridView.TabIndex = 10;
             customerGridView.RowStateChanged += customerGridView_RowStateChanged;
             customerGridView.MouseDoubleClick += customerGridView_MouseDoubleClick;
@@ -162,6 +173,239 @@
             // 
             // customersTab
             // 
+            this.customersTab.Controls.Add(this.resetCustomerButton);
+            this.customersTab.Controls.Add(this.customerSearchButton);
+            this.customersTab.Controls.Add(this.label3);
+            this.customersTab.Controls.Add(this.label2);
+            this.customersTab.Controls.Add(this.lastNameSearchTextBox);
+            this.customersTab.Controls.Add(this.nameRadioButton);
+            this.customersTab.Controls.Add(this.firstNameSearchTextBox);
+            this.customersTab.Controls.Add(this.phoneNumberRadioButton);
+            this.customersTab.Controls.Add(this.phoneNumberTextBox);
+            this.customersTab.Controls.Add(this.memberIdTextBox);
+            this.customersTab.Controls.Add(this.memberIDRadioButton);
+            this.customersTab.Controls.Add(this.addCustomerButton);
+            this.customersTab.Controls.Add(this.customerGridView);
+            this.customersTab.Location = new System.Drawing.Point(4, 24);
+            this.customersTab.Name = "customersTab";
+            this.customersTab.Padding = new System.Windows.Forms.Padding(3);
+            this.customersTab.Size = new System.Drawing.Size(769, 353);
+            this.customersTab.TabIndex = 0;
+            this.customersTab.Text = "Customers";
+            this.customersTab.UseVisualStyleBackColor = true;
+            // 
+            // resetCustomerButton
+            // 
+            this.resetCustomerButton.Location = new System.Drawing.Point(668, 8);
+            this.resetCustomerButton.Name = "resetCustomerButton";
+            this.resetCustomerButton.Size = new System.Drawing.Size(75, 23);
+            this.resetCustomerButton.TabIndex = 21;
+            this.resetCustomerButton.Text = "Reset";
+            this.resetCustomerButton.UseVisualStyleBackColor = true;
+            this.resetCustomerButton.Click += new System.EventHandler(this.resetCustomerButton_Click);
+            // 
+            // customerSearchButton
+            // 
+            this.customerSearchButton.Location = new System.Drawing.Point(587, 8);
+            this.customerSearchButton.Name = "customerSearchButton";
+            this.customerSearchButton.Size = new System.Drawing.Size(75, 23);
+            this.customerSearchButton.TabIndex = 20;
+            this.customerSearchButton.Text = "Search";
+            this.customerSearchButton.UseVisualStyleBackColor = true;
+            this.customerSearchButton.Click += new System.EventHandler(this.customerSearchButton_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(444, 41);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 15);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Last Name:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(209, 41);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(67, 15);
+            this.label2.TabIndex = 18;
+            this.label2.Text = "First Name:";
+            // 
+            // lastNameSearchTextBox
+            // 
+            this.lastNameSearchTextBox.Location = new System.Drawing.Point(516, 38);
+            this.lastNameSearchTextBox.Name = "lastNameSearchTextBox";
+            this.lastNameSearchTextBox.Size = new System.Drawing.Size(159, 23);
+            this.lastNameSearchTextBox.TabIndex = 17;
+            // 
+            // nameRadioButton
+            // 
+            this.nameRadioButton.AutoSize = true;
+            this.nameRadioButton.Location = new System.Drawing.Point(146, 39);
+            this.nameRadioButton.Name = "nameRadioButton";
+            this.nameRadioButton.Size = new System.Drawing.Size(57, 19);
+            this.nameRadioButton.TabIndex = 16;
+            this.nameRadioButton.Text = "Name";
+            this.nameRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // firstNameSearchTextBox
+            // 
+            this.firstNameSearchTextBox.Location = new System.Drawing.Point(282, 38);
+            this.firstNameSearchTextBox.Name = "firstNameSearchTextBox";
+            this.firstNameSearchTextBox.Size = new System.Drawing.Size(156, 23);
+            this.firstNameSearchTextBox.TabIndex = 15;
+            // 
+            // phoneNumberRadioButton
+            // 
+            this.phoneNumberRadioButton.AutoSize = true;
+            this.phoneNumberRadioButton.Location = new System.Drawing.Point(329, 10);
+            this.phoneNumberRadioButton.Name = "phoneNumberRadioButton";
+            this.phoneNumberRadioButton.Size = new System.Drawing.Size(109, 19);
+            this.phoneNumberRadioButton.TabIndex = 14;
+            this.phoneNumberRadioButton.Text = "Phone Number:";
+            this.phoneNumberRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // phoneNumberTextBox
+            // 
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(444, 8);
+            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(137, 23);
+            this.phoneNumberTextBox.TabIndex = 13;
+            // 
+            // memberIdTextBox
+            // 
+            this.memberIdTextBox.Location = new System.Drawing.Point(239, 8);
+            this.memberIdTextBox.Name = "memberIdTextBox";
+            this.memberIdTextBox.Size = new System.Drawing.Size(84, 23);
+            this.memberIdTextBox.TabIndex = 12;
+            // 
+            // memberIDRadioButton
+            // 
+            this.memberIDRadioButton.AutoSize = true;
+            this.memberIDRadioButton.Checked = true;
+            this.memberIDRadioButton.Location = new System.Drawing.Point(146, 10);
+            this.memberIDRadioButton.Name = "memberIDRadioButton";
+            this.memberIDRadioButton.Size = new System.Drawing.Size(86, 19);
+            this.memberIDRadioButton.TabIndex = 11;
+            this.memberIDRadioButton.TabStop = true;
+            this.memberIDRadioButton.Text = "Member Id:";
+            this.memberIDRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // furnitureTabpage
+            // 
+            this.furnitureTabpage.Controls.Add(this.resetButton);
+            this.furnitureTabpage.Controls.Add(this.categoryRadioButton);
+            this.furnitureTabpage.Controls.Add(this.StyleRadioButton);
+            this.furnitureTabpage.Controls.Add(this.categoryComboBox);
+            this.furnitureTabpage.Controls.Add(this.styleComboBox);
+            this.furnitureTabpage.Controls.Add(this.IdRadioButton);
+            this.furnitureTabpage.Controls.Add(this.furnitureSearchTextBox);
+            this.furnitureTabpage.Controls.Add(this.furnitureSearchButton);
+            this.furnitureTabpage.Controls.Add(this.addFurnitureButton);
+            this.furnitureTabpage.Controls.Add(this.furnitureGridView);
+            this.furnitureTabpage.Location = new System.Drawing.Point(4, 24);
+            this.furnitureTabpage.Name = "furnitureTabpage";
+            this.furnitureTabpage.Size = new System.Drawing.Size(769, 353);
+            this.furnitureTabpage.TabIndex = 2;
+            this.furnitureTabpage.Text = "Furniture";
+            this.furnitureTabpage.UseVisualStyleBackColor = true;
+            // 
+            // resetButton
+            // 
+            this.resetButton.Location = new System.Drawing.Point(715, 7);
+            this.resetButton.Name = "resetButton";
+            this.resetButton.Size = new System.Drawing.Size(48, 23);
+            this.resetButton.TabIndex = 9;
+            this.resetButton.Text = "Reset";
+            this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
+            // 
+            // categoryRadioButton
+            // 
+            this.categoryRadioButton.AutoSize = true;
+            this.categoryRadioButton.Location = new System.Drawing.Point(468, 8);
+            this.categoryRadioButton.Name = "categoryRadioButton";
+            this.categoryRadioButton.Size = new System.Drawing.Size(73, 19);
+            this.categoryRadioButton.TabIndex = 8;
+            this.categoryRadioButton.Text = "Category";
+            this.categoryRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // StyleRadioButton
+            // 
+            this.StyleRadioButton.AutoSize = true;
+            this.StyleRadioButton.Location = new System.Drawing.Point(312, 7);
+            this.StyleRadioButton.Name = "StyleRadioButton";
+            this.StyleRadioButton.Size = new System.Drawing.Size(50, 19);
+            this.StyleRadioButton.TabIndex = 7;
+            this.StyleRadioButton.Text = "Style";
+            this.StyleRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // categoryComboBox
+            // 
+            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.categoryComboBox.FormattingEnabled = true;
+            this.categoryComboBox.Location = new System.Drawing.Point(547, 6);
+            this.categoryComboBox.Name = "categoryComboBox";
+            this.categoryComboBox.Size = new System.Drawing.Size(105, 23);
+            this.categoryComboBox.TabIndex = 6;
+            // 
+            // styleComboBox
+            // 
+            this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.styleComboBox.FormattingEnabled = true;
+            this.styleComboBox.Location = new System.Drawing.Point(368, 8);
+            this.styleComboBox.Name = "styleComboBox";
+            this.styleComboBox.Size = new System.Drawing.Size(94, 23);
+            this.styleComboBox.TabIndex = 5;
+            // 
+            // IdRadioButton
+            // 
+            this.IdRadioButton.AutoSize = true;
+            this.IdRadioButton.Checked = true;
+            this.IdRadioButton.Location = new System.Drawing.Point(149, 8);
+            this.IdRadioButton.Name = "IdRadioButton";
+            this.IdRadioButton.Size = new System.Drawing.Size(86, 19);
+            this.IdRadioButton.TabIndex = 4;
+            this.IdRadioButton.TabStop = true;
+            this.IdRadioButton.Text = "Furniture Id";
+            this.IdRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // furnitureSearchTextBox
+            // 
+            this.furnitureSearchTextBox.Location = new System.Drawing.Point(241, 6);
+            this.furnitureSearchTextBox.Name = "furnitureSearchTextBox";
+            this.furnitureSearchTextBox.Size = new System.Drawing.Size(65, 23);
+            this.furnitureSearchTextBox.TabIndex = 3;
+            // 
+            // furnitureSearchButton
+            // 
+            this.furnitureSearchButton.Location = new System.Drawing.Point(658, 6);
+            this.furnitureSearchButton.Name = "furnitureSearchButton";
+            this.furnitureSearchButton.Size = new System.Drawing.Size(56, 23);
+            this.furnitureSearchButton.TabIndex = 2;
+            this.furnitureSearchButton.Text = "Search";
+            this.furnitureSearchButton.UseVisualStyleBackColor = true;
+            this.furnitureSearchButton.Click += new System.EventHandler(this.furnitureSearchButton_Click);
+            // 
+            // addFurnitureButton
+            // 
+            this.addFurnitureButton.Location = new System.Drawing.Point(6, 6);
+            this.addFurnitureButton.Name = "addFurnitureButton";
+            this.addFurnitureButton.Size = new System.Drawing.Size(137, 23);
+            this.addFurnitureButton.TabIndex = 1;
+            this.addFurnitureButton.Text = "Add Furniture";
+            this.addFurnitureButton.UseVisualStyleBackColor = true;
+            this.addFurnitureButton.Click += new System.EventHandler(this.addFurnitureButton_Click);
+            // 
+            // furnitureGridView
+            // 
+            this.furnitureGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.furnitureGridView.Location = new System.Drawing.Point(146, 35);
+            this.furnitureGridView.Name = "furnitureGridView";
+            this.furnitureGridView.RowTemplate.Height = 25;
+            this.furnitureGridView.Size = new System.Drawing.Size(617, 312);
+            this.furnitureGridView.TabIndex = 0;
             customersTab.Controls.Add(deleteCustomerButton);
             customersTab.Controls.Add(addCustomerButton);
             customersTab.Controls.Add(customerGridView);
@@ -229,127 +473,29 @@
             furnitureTabpage.Text = "Furniture";
             furnitureTabpage.UseVisualStyleBackColor = true;
             // 
-            // resetButton
-            // 
-            resetButton.Location = new Point(710, 6);
-            resetButton.Name = "resetButton";
-            resetButton.Size = new Size(49, 23);
-            resetButton.TabIndex = 9;
-            resetButton.Text = "Reset";
-            resetButton.UseVisualStyleBackColor = true;
-            resetButton.Click += resetButton_Click;
-            // 
-            // categoryRadioButton
-            // 
-            categoryRadioButton.AutoSize = true;
-            categoryRadioButton.Location = new Point(464, 8);
-            categoryRadioButton.Name = "categoryRadioButton";
-            categoryRadioButton.Size = new Size(73, 19);
-            categoryRadioButton.TabIndex = 8;
-            categoryRadioButton.Text = "Category";
-            categoryRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // StyleRadioButton
-            // 
-            StyleRadioButton.AutoSize = true;
-            StyleRadioButton.Location = new Point(308, 8);
-            StyleRadioButton.Name = "StyleRadioButton";
-            StyleRadioButton.Size = new Size(50, 19);
-            StyleRadioButton.TabIndex = 7;
-            StyleRadioButton.Text = "Style";
-            StyleRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // categoryComboBox
-            // 
-            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            categoryComboBox.FormattingEnabled = true;
-            categoryComboBox.Location = new Point(542, 7);
-            categoryComboBox.Name = "categoryComboBox";
-            categoryComboBox.Size = new Size(106, 23);
-            categoryComboBox.TabIndex = 6;
-            // 
-            // styleComboBox
-            // 
-            styleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
-            styleComboBox.FormattingEnabled = true;
-            styleComboBox.Location = new Point(363, 7);
-            styleComboBox.Name = "styleComboBox";
-            styleComboBox.Size = new Size(95, 23);
-            styleComboBox.TabIndex = 5;
-            // 
-            // IdRadioButton
-            // 
-            IdRadioButton.AutoSize = true;
-            IdRadioButton.Checked = true;
-            IdRadioButton.Location = new Point(145, 8);
-            IdRadioButton.Name = "IdRadioButton";
-            IdRadioButton.Size = new Size(86, 19);
-            IdRadioButton.TabIndex = 4;
-            IdRadioButton.TabStop = true;
-            IdRadioButton.Text = "Furniture Id";
-            IdRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // furnitureSearchTextBox
-            // 
-            furnitureSearchTextBox.Location = new Point(236, 7);
-            furnitureSearchTextBox.Name = "furnitureSearchTextBox";
-            furnitureSearchTextBox.Size = new Size(66, 23);
-            furnitureSearchTextBox.TabIndex = 3;
-            // 
-            // furnitureSearchButton
-            // 
-            furnitureSearchButton.Location = new Point(653, 6);
-            furnitureSearchButton.Name = "furnitureSearchButton";
-            furnitureSearchButton.Size = new Size(57, 23);
-            furnitureSearchButton.TabIndex = 2;
-            furnitureSearchButton.Text = "Search";
-            furnitureSearchButton.UseVisualStyleBackColor = true;
-            furnitureSearchButton.Click += furnitureSearchButton_Click;
-            // 
-            // addFurnitureButton
-            // 
-            addFurnitureButton.Location = new Point(6, 6);
-            addFurnitureButton.Name = "addFurnitureButton";
-            addFurnitureButton.Size = new Size(134, 23);
-            addFurnitureButton.TabIndex = 1;
-            addFurnitureButton.Text = "Add Furniture";
-            addFurnitureButton.UseVisualStyleBackColor = true;
-            addFurnitureButton.Click += addFurnitureButton_Click;
-            // 
-            // furnitureGridView
-            // 
-            furnitureGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            furnitureGridView.Location = new Point(146, 37);
-            furnitureGridView.MultiSelect = false;
-            furnitureGridView.Name = "furnitureGridView";
-            furnitureGridView.ReadOnly = true;
-            furnitureGridView.RowTemplate.Height = 25;
-            furnitureGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            furnitureGridView.Size = new Size(614, 289);
-            furnitureGridView.TabIndex = 0;
-            // 
             // MainScreenForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(dashboardTabs);
-            Controls.Add(employeeDisplay);
-            Controls.Add(logoutButton);
-            Controls.Add(label1);
-            Margin = new Padding(3, 4, 3, 4);
-            Name = "MainScreenForm";
-            Text = "MainScreenForm";
-            ((System.ComponentModel.ISupportInitialize)customerGridView).EndInit();
-            ((System.ComponentModel.ISupportInitialize)employeeGridView).EndInit();
-            dashboardTabs.ResumeLayout(false);
-            customersTab.ResumeLayout(false);
-            employeesTab.ResumeLayout(false);
-            furnitureTabpage.ResumeLayout(false);
-            furnitureTabpage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)furnitureGridView).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dashboardTabs);
+            this.Controls.Add(this.employeeDisplay);
+            this.Controls.Add(this.logoutButton);
+            this.Controls.Add(this.label1);
+            this.Name = "MainScreenForm";
+            this.Text = "MainScreenForm";
+            ((System.ComponentModel.ISupportInitialize)(this.customerGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).EndInit();
+            this.dashboardTabs.ResumeLayout(false);
+            this.customersTab.ResumeLayout(false);
+            this.customersTab.PerformLayout();
+            this.furnitureTabpage.ResumeLayout(false);
+            this.furnitureTabpage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).EndInit();
+            this.employeesTab.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -377,5 +523,16 @@
         private ComboBox categoryComboBox;
         private ComboBox styleComboBox;
         private Button resetButton;
+        private Label label2;
+        private TextBox lastNameSearchTextBox;
+        private RadioButton nameRadioButton;
+        private TextBox firstNameSearchTextBox;
+        private RadioButton phoneNumberRadioButton;
+        private TextBox phoneNumberTextBox;
+        private TextBox memberIdTextBox;
+        private RadioButton memberIDRadioButton;
+        private Label label3;
+        private Button resetCustomerButton;
+        private Button customerSearchButton;
     }
 }

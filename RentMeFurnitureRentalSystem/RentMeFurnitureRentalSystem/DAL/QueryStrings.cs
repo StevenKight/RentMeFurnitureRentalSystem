@@ -44,6 +44,11 @@ public static class QueryStrings
                                          "`zip` = @Zip " +
                                          "WHERE `member_id` = @Member_id;";
 
+    public const string GetCustomerByMemberId = "select * from customer where member_id=@id";
+
+    public const string GetCustomerByPhone = "select * from customer where phone=@phone";
+
+    public const string GetCustomerByName = "select * from customer where fname=@fname and lname=@lname";
     #endregion
 
     #region Login
