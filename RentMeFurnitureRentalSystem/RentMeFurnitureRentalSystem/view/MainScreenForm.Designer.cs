@@ -28,48 +28,90 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.addEmployeeButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.addCustomerButton = new System.Windows.Forms.Button();
-            this.logoutButton = new System.Windows.Forms.Button();
-            this.employeeDisplay = new System.Windows.Forms.TextBox();
-            this.customerGridView = new System.Windows.Forms.DataGridView();
-            this.employeeGridView = new System.Windows.Forms.DataGridView();
-            this.dashboardTabs = new System.Windows.Forms.TabControl();
-            this.customersTab = new System.Windows.Forms.TabPage();
-            this.resetCustomerButton = new System.Windows.Forms.Button();
-            this.customerSearchButton = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lastNameSearchTextBox = new System.Windows.Forms.TextBox();
-            this.nameRadioButton = new System.Windows.Forms.RadioButton();
-            this.firstNameSearchTextBox = new System.Windows.Forms.TextBox();
-            this.phoneNumberRadioButton = new System.Windows.Forms.RadioButton();
-            this.phoneNumberTextBox = new System.Windows.Forms.TextBox();
-            this.memberIdTextBox = new System.Windows.Forms.TextBox();
-            this.memberIDRadioButton = new System.Windows.Forms.RadioButton();
-            this.furnitureTabpage = new System.Windows.Forms.TabPage();
-            this.resetButton = new System.Windows.Forms.Button();
-            this.categoryRadioButton = new System.Windows.Forms.RadioButton();
-            this.StyleRadioButton = new System.Windows.Forms.RadioButton();
-            this.categoryComboBox = new System.Windows.Forms.ComboBox();
-            this.styleComboBox = new System.Windows.Forms.ComboBox();
-            this.IdRadioButton = new System.Windows.Forms.RadioButton();
-            this.furnitureSearchTextBox = new System.Windows.Forms.TextBox();
-            this.furnitureSearchButton = new System.Windows.Forms.Button();
-            this.addFurnitureButton = new System.Windows.Forms.Button();
-            this.furnitureGridView = new System.Windows.Forms.DataGridView();
-            this.employeesTab = new System.Windows.Forms.TabPage();            
-            this.deleteCustomerButton = new Button();
-            this.deleteEmployeeButton = new Button();
-            ((System.ComponentModel.ISupportInitialize)(this.customerGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).BeginInit();
-            this.dashboardTabs.SuspendLayout();
-            this.customersTab.SuspendLayout();
-            this.furnitureTabpage.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).BeginInit();
-            this.employeesTab.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            addEmployeeButton = new Button();
+            label1 = new Label();
+            addCustomerButton = new Button();
+            logoutButton = new Button();
+            employeeDisplay = new TextBox();
+            customerBindingSource = new BindingSource(components);
+            customerSearchButton = new Button();
+            label3 = new Label();
+            label2 = new Label();
+            lastNameSearchTextBox = new TextBox();
+            nameRadioButton = new RadioButton();
+            firstNameSearchTextBox = new TextBox();
+            phoneNumberRadioButton = new RadioButton();
+            phoneNumberTextBox = new TextBox();
+            memberIdTextBox = new TextBox();
+            memberIDRadioButton = new RadioButton();
+            employeeGridView = new DataGridView();
+            fullnameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            usernameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            passwordDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fnameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            lnameDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            dobDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            genderDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            phoneDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            addressDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            cityDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            stateDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            zipDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            emailDataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
+            rolenameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            employeeBindingSource = new BindingSource(components);
+            dashboardTabs = new TabControl();
+            customersTab = new TabPage();
+            rentButton = new Button();
+            deleteCustomerButton = new Button();
+            furnitureTabpage = new TabPage();
+            resetButton = new Button();
+            categoryRadioButton = new RadioButton();
+            StyleRadioButton = new RadioButton();
+            categoryComboBox = new ComboBox();
+            styleComboBox = new ComboBox();
+            IdRadioButton = new RadioButton();
+            furnitureSearchTextBox = new TextBox();
+            furnitureSearchButton = new Button();
+            addFurnitureButton = new Button();
+            furnitureGridView = new DataGridView();
+            furnitureidDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            nameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            categorynameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            stylenameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            descriptionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            rentalrateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            finerateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            quantityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            furnitureBindingSource = new BindingSource(components);
+            employeesTab = new TabPage();
+            deleteEmployeeButton = new Button();
+            registerdateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            zipDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            stateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            cityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            addressDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            emailDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            phoneDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            genderDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            dobDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            lnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            fullnameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
+            customerGridView = new DataGridView();
+            resetCustomerButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).BeginInit();
+            dashboardTabs.SuspendLayout();
+            customersTab.SuspendLayout();
+            furnitureTabpage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)furnitureGridView).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)furnitureBindingSource).BeginInit();
+            employeesTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)customerGridView).BeginInit();
+            SuspendLayout();
             // 
             // addEmployeeButton
             // 
@@ -123,27 +165,104 @@
             employeeDisplay.Text = "USER";
             employeeDisplay.TextAlign = HorizontalAlignment.Center;
             // 
-            // customerGridView
+            // customerBindingSource
             // 
-            customerGridView.AllowUserToAddRows = false;
-            customerGridView.AllowUserToDeleteRows = false;
-            customerGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            customerGridView.Location = new Point(146, 64);
-            customerGridView.MultiSelect = false;
-            customerGridView.Name = "customerGridView";
-            customerGridView.ReadOnly = true;
-            customerGridView.RowHeadersVisible = false;
-            customerGridView.RowHeadersWidth = 51;
-            customerGridView.RowTemplate.Height = 25;
-            customerGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            customerGridView.Size = new Size(617, 283);
-            customerGridView.TabIndex = 10;
-            customerGridView.RowStateChanged += customerGridView_RowStateChanged;
-            customerGridView.MouseDoubleClick += customerGridView_MouseDoubleClick;
+            customerBindingSource.DataSource = typeof(Model.Customer);
+            // 
+            // customerSearchButton
+            // 
+            customerSearchButton.Location = new Point(587, 8);
+            customerSearchButton.Name = "customerSearchButton";
+            customerSearchButton.Size = new Size(75, 23);
+            customerSearchButton.TabIndex = 20;
+            customerSearchButton.Text = "Search";
+            customerSearchButton.UseVisualStyleBackColor = true;
+            customerSearchButton.Click += customerSearchButton_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(444, 41);
+            label3.Name = "label3";
+            label3.Size = new Size(66, 15);
+            label3.TabIndex = 19;
+            label3.Text = "Last Name:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(209, 41);
+            label2.Name = "label2";
+            label2.Size = new Size(67, 15);
+            label2.TabIndex = 18;
+            label2.Text = "First Name:";
+            // 
+            // lastNameSearchTextBox
+            // 
+            lastNameSearchTextBox.Location = new Point(516, 38);
+            lastNameSearchTextBox.Name = "lastNameSearchTextBox";
+            lastNameSearchTextBox.Size = new Size(159, 23);
+            lastNameSearchTextBox.TabIndex = 17;
+            // 
+            // nameRadioButton
+            // 
+            nameRadioButton.AutoSize = true;
+            nameRadioButton.Location = new Point(146, 39);
+            nameRadioButton.Name = "nameRadioButton";
+            nameRadioButton.Size = new Size(57, 19);
+            nameRadioButton.TabIndex = 16;
+            nameRadioButton.Text = "Name";
+            nameRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // firstNameSearchTextBox
+            // 
+            firstNameSearchTextBox.Location = new Point(282, 38);
+            firstNameSearchTextBox.Name = "firstNameSearchTextBox";
+            firstNameSearchTextBox.Size = new Size(156, 23);
+            firstNameSearchTextBox.TabIndex = 15;
+            // 
+            // phoneNumberRadioButton
+            // 
+            phoneNumberRadioButton.AutoSize = true;
+            phoneNumberRadioButton.Location = new Point(329, 10);
+            phoneNumberRadioButton.Name = "phoneNumberRadioButton";
+            phoneNumberRadioButton.Size = new Size(109, 19);
+            phoneNumberRadioButton.TabIndex = 14;
+            phoneNumberRadioButton.Text = "Phone Number:";
+            phoneNumberRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // phoneNumberTextBox
+            // 
+            phoneNumberTextBox.Location = new Point(444, 8);
+            phoneNumberTextBox.Name = "phoneNumberTextBox";
+            phoneNumberTextBox.Size = new Size(137, 23);
+            phoneNumberTextBox.TabIndex = 13;
+            // 
+            // memberIdTextBox
+            // 
+            memberIdTextBox.Location = new Point(239, 8);
+            memberIdTextBox.Name = "memberIdTextBox";
+            memberIdTextBox.Size = new Size(84, 23);
+            memberIdTextBox.TabIndex = 12;
+            // 
+            // memberIDRadioButton
+            // 
+            memberIDRadioButton.AutoSize = true;
+            memberIDRadioButton.Checked = true;
+            memberIDRadioButton.Location = new Point(146, 10);
+            memberIDRadioButton.Name = "memberIDRadioButton";
+            memberIDRadioButton.Size = new Size(86, 19);
+            memberIDRadioButton.TabIndex = 11;
+            memberIDRadioButton.TabStop = true;
+            memberIDRadioButton.Text = "Member Id:";
+            memberIDRadioButton.UseVisualStyleBackColor = true;
             // 
             // employeeGridView
             // 
+            employeeGridView.AutoGenerateColumns = false;
             employeeGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            employeeGridView.Columns.AddRange(new DataGridViewColumn[] { fullnameDataGridViewTextBoxColumn1, usernameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, fnameDataGridViewTextBoxColumn1, lnameDataGridViewTextBoxColumn1, dobDataGridViewTextBoxColumn1, genderDataGridViewTextBoxColumn1, phoneDataGridViewTextBoxColumn1, addressDataGridViewTextBoxColumn1, cityDataGridViewTextBoxColumn1, stateDataGridViewTextBoxColumn1, zipDataGridViewTextBoxColumn1, emailDataGridViewTextBoxColumn1, rolenameDataGridViewTextBoxColumn });
+            employeeGridView.DataSource = employeeBindingSource;
             employeeGridView.Location = new Point(146, 6);
             employeeGridView.Margin = new Padding(3, 4, 3, 4);
             employeeGridView.MultiSelect = false;
@@ -158,11 +277,132 @@
             employeeGridView.RowStateChanged += employeeGridView_RowStateChanged;
             employeeGridView.MouseDoubleClick += employeeGridView_MouseDoubleClick;
             // 
+            // fullnameDataGridViewTextBoxColumn1
+            // 
+            fullnameDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            fullnameDataGridViewTextBoxColumn1.DataPropertyName = "Fullname";
+            fullnameDataGridViewTextBoxColumn1.HeaderText = "Fullname";
+            fullnameDataGridViewTextBoxColumn1.Name = "fullnameDataGridViewTextBoxColumn1";
+            fullnameDataGridViewTextBoxColumn1.ReadOnly = true;
+            fullnameDataGridViewTextBoxColumn1.Width = 81;
+            // 
+            // usernameDataGridViewTextBoxColumn
+            // 
+            usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
+            usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
+            usernameDataGridViewTextBoxColumn.ReadOnly = true;
+            usernameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // passwordDataGridViewTextBoxColumn
+            // 
+            passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
+            passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
+            passwordDataGridViewTextBoxColumn.ReadOnly = true;
+            passwordDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // fnameDataGridViewTextBoxColumn1
+            // 
+            fnameDataGridViewTextBoxColumn1.DataPropertyName = "Fname";
+            fnameDataGridViewTextBoxColumn1.HeaderText = "Fname";
+            fnameDataGridViewTextBoxColumn1.Name = "fnameDataGridViewTextBoxColumn1";
+            fnameDataGridViewTextBoxColumn1.ReadOnly = true;
+            fnameDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // lnameDataGridViewTextBoxColumn1
+            // 
+            lnameDataGridViewTextBoxColumn1.DataPropertyName = "Lname";
+            lnameDataGridViewTextBoxColumn1.HeaderText = "Lname";
+            lnameDataGridViewTextBoxColumn1.Name = "lnameDataGridViewTextBoxColumn1";
+            lnameDataGridViewTextBoxColumn1.ReadOnly = true;
+            lnameDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // dobDataGridViewTextBoxColumn1
+            // 
+            dobDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dobDataGridViewTextBoxColumn1.DataPropertyName = "Dob";
+            dobDataGridViewTextBoxColumn1.HeaderText = "Dob";
+            dobDataGridViewTextBoxColumn1.Name = "dobDataGridViewTextBoxColumn1";
+            dobDataGridViewTextBoxColumn1.ReadOnly = true;
+            dobDataGridViewTextBoxColumn1.Width = 54;
+            // 
+            // genderDataGridViewTextBoxColumn1
+            // 
+            genderDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            genderDataGridViewTextBoxColumn1.DataPropertyName = "Gender";
+            genderDataGridViewTextBoxColumn1.HeaderText = "Gender";
+            genderDataGridViewTextBoxColumn1.Name = "genderDataGridViewTextBoxColumn1";
+            genderDataGridViewTextBoxColumn1.ReadOnly = true;
+            genderDataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // phoneDataGridViewTextBoxColumn1
+            // 
+            phoneDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            phoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
+            phoneDataGridViewTextBoxColumn1.HeaderText = "Phone";
+            phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
+            phoneDataGridViewTextBoxColumn1.ReadOnly = true;
+            phoneDataGridViewTextBoxColumn1.Width = 66;
+            // 
+            // addressDataGridViewTextBoxColumn1
+            // 
+            addressDataGridViewTextBoxColumn1.DataPropertyName = "Address";
+            addressDataGridViewTextBoxColumn1.HeaderText = "Address";
+            addressDataGridViewTextBoxColumn1.Name = "addressDataGridViewTextBoxColumn1";
+            addressDataGridViewTextBoxColumn1.ReadOnly = true;
+            addressDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // cityDataGridViewTextBoxColumn1
+            // 
+            cityDataGridViewTextBoxColumn1.DataPropertyName = "City";
+            cityDataGridViewTextBoxColumn1.HeaderText = "City";
+            cityDataGridViewTextBoxColumn1.Name = "cityDataGridViewTextBoxColumn1";
+            cityDataGridViewTextBoxColumn1.ReadOnly = true;
+            cityDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // stateDataGridViewTextBoxColumn1
+            // 
+            stateDataGridViewTextBoxColumn1.DataPropertyName = "State";
+            stateDataGridViewTextBoxColumn1.HeaderText = "State";
+            stateDataGridViewTextBoxColumn1.Name = "stateDataGridViewTextBoxColumn1";
+            stateDataGridViewTextBoxColumn1.ReadOnly = true;
+            stateDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // zipDataGridViewTextBoxColumn1
+            // 
+            zipDataGridViewTextBoxColumn1.DataPropertyName = "Zip";
+            zipDataGridViewTextBoxColumn1.HeaderText = "Zip";
+            zipDataGridViewTextBoxColumn1.Name = "zipDataGridViewTextBoxColumn1";
+            zipDataGridViewTextBoxColumn1.ReadOnly = true;
+            zipDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // emailDataGridViewTextBoxColumn1
+            // 
+            emailDataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            emailDataGridViewTextBoxColumn1.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn1.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn1.Name = "emailDataGridViewTextBoxColumn1";
+            emailDataGridViewTextBoxColumn1.ReadOnly = true;
+            emailDataGridViewTextBoxColumn1.Width = 61;
+            // 
+            // rolenameDataGridViewTextBoxColumn
+            // 
+            rolenameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            rolenameDataGridViewTextBoxColumn.DataPropertyName = "Role_name";
+            rolenameDataGridViewTextBoxColumn.HeaderText = "Role_name";
+            rolenameDataGridViewTextBoxColumn.Name = "rolenameDataGridViewTextBoxColumn";
+            rolenameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // employeeBindingSource
+            // 
+            employeeBindingSource.DataSource = typeof(model.Employee);
+            // 
             // dashboardTabs
             // 
             dashboardTabs.Controls.Add(customersTab);
-            dashboardTabs.Controls.Add(employeesTab);
             dashboardTabs.Controls.Add(furnitureTabpage);
+            dashboardTabs.Controls.Add(employeesTab);
             dashboardTabs.Location = new Point(14, 76);
             dashboardTabs.Margin = new Padding(3, 4, 3, 4);
             dashboardTabs.Name = "dashboardTabs";
@@ -173,239 +413,18 @@
             // 
             // customersTab
             // 
-            this.customersTab.Controls.Add(this.resetCustomerButton);
-            this.customersTab.Controls.Add(this.customerSearchButton);
-            this.customersTab.Controls.Add(this.label3);
-            this.customersTab.Controls.Add(this.label2);
-            this.customersTab.Controls.Add(this.lastNameSearchTextBox);
-            this.customersTab.Controls.Add(this.nameRadioButton);
-            this.customersTab.Controls.Add(this.firstNameSearchTextBox);
-            this.customersTab.Controls.Add(this.phoneNumberRadioButton);
-            this.customersTab.Controls.Add(this.phoneNumberTextBox);
-            this.customersTab.Controls.Add(this.memberIdTextBox);
-            this.customersTab.Controls.Add(this.memberIDRadioButton);
-            this.customersTab.Controls.Add(this.addCustomerButton);
-            this.customersTab.Controls.Add(this.customerGridView);
-            this.customersTab.Location = new System.Drawing.Point(4, 24);
-            this.customersTab.Name = "customersTab";
-            this.customersTab.Padding = new System.Windows.Forms.Padding(3);
-            this.customersTab.Size = new System.Drawing.Size(769, 353);
-            this.customersTab.TabIndex = 0;
-            this.customersTab.Text = "Customers";
-            this.customersTab.UseVisualStyleBackColor = true;
-            // 
-            // resetCustomerButton
-            // 
-            this.resetCustomerButton.Location = new System.Drawing.Point(668, 8);
-            this.resetCustomerButton.Name = "resetCustomerButton";
-            this.resetCustomerButton.Size = new System.Drawing.Size(75, 23);
-            this.resetCustomerButton.TabIndex = 21;
-            this.resetCustomerButton.Text = "Reset";
-            this.resetCustomerButton.UseVisualStyleBackColor = true;
-            this.resetCustomerButton.Click += new System.EventHandler(this.resetCustomerButton_Click);
-            // 
-            // customerSearchButton
-            // 
-            this.customerSearchButton.Location = new System.Drawing.Point(587, 8);
-            this.customerSearchButton.Name = "customerSearchButton";
-            this.customerSearchButton.Size = new System.Drawing.Size(75, 23);
-            this.customerSearchButton.TabIndex = 20;
-            this.customerSearchButton.Text = "Search";
-            this.customerSearchButton.UseVisualStyleBackColor = true;
-            this.customerSearchButton.Click += new System.EventHandler(this.customerSearchButton_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(444, 41);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 15);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Last Name:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(209, 41);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 15);
-            this.label2.TabIndex = 18;
-            this.label2.Text = "First Name:";
-            // 
-            // lastNameSearchTextBox
-            // 
-            this.lastNameSearchTextBox.Location = new System.Drawing.Point(516, 38);
-            this.lastNameSearchTextBox.Name = "lastNameSearchTextBox";
-            this.lastNameSearchTextBox.Size = new System.Drawing.Size(159, 23);
-            this.lastNameSearchTextBox.TabIndex = 17;
-            // 
-            // nameRadioButton
-            // 
-            this.nameRadioButton.AutoSize = true;
-            this.nameRadioButton.Location = new System.Drawing.Point(146, 39);
-            this.nameRadioButton.Name = "nameRadioButton";
-            this.nameRadioButton.Size = new System.Drawing.Size(57, 19);
-            this.nameRadioButton.TabIndex = 16;
-            this.nameRadioButton.Text = "Name";
-            this.nameRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // firstNameSearchTextBox
-            // 
-            this.firstNameSearchTextBox.Location = new System.Drawing.Point(282, 38);
-            this.firstNameSearchTextBox.Name = "firstNameSearchTextBox";
-            this.firstNameSearchTextBox.Size = new System.Drawing.Size(156, 23);
-            this.firstNameSearchTextBox.TabIndex = 15;
-            // 
-            // phoneNumberRadioButton
-            // 
-            this.phoneNumberRadioButton.AutoSize = true;
-            this.phoneNumberRadioButton.Location = new System.Drawing.Point(329, 10);
-            this.phoneNumberRadioButton.Name = "phoneNumberRadioButton";
-            this.phoneNumberRadioButton.Size = new System.Drawing.Size(109, 19);
-            this.phoneNumberRadioButton.TabIndex = 14;
-            this.phoneNumberRadioButton.Text = "Phone Number:";
-            this.phoneNumberRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // phoneNumberTextBox
-            // 
-            this.phoneNumberTextBox.Location = new System.Drawing.Point(444, 8);
-            this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new System.Drawing.Size(137, 23);
-            this.phoneNumberTextBox.TabIndex = 13;
-            // 
-            // memberIdTextBox
-            // 
-            this.memberIdTextBox.Location = new System.Drawing.Point(239, 8);
-            this.memberIdTextBox.Name = "memberIdTextBox";
-            this.memberIdTextBox.Size = new System.Drawing.Size(84, 23);
-            this.memberIdTextBox.TabIndex = 12;
-            // 
-            // memberIDRadioButton
-            // 
-            this.memberIDRadioButton.AutoSize = true;
-            this.memberIDRadioButton.Checked = true;
-            this.memberIDRadioButton.Location = new System.Drawing.Point(146, 10);
-            this.memberIDRadioButton.Name = "memberIDRadioButton";
-            this.memberIDRadioButton.Size = new System.Drawing.Size(86, 19);
-            this.memberIDRadioButton.TabIndex = 11;
-            this.memberIDRadioButton.TabStop = true;
-            this.memberIDRadioButton.Text = "Member Id:";
-            this.memberIDRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // furnitureTabpage
-            // 
-            this.furnitureTabpage.Controls.Add(this.resetButton);
-            this.furnitureTabpage.Controls.Add(this.categoryRadioButton);
-            this.furnitureTabpage.Controls.Add(this.StyleRadioButton);
-            this.furnitureTabpage.Controls.Add(this.categoryComboBox);
-            this.furnitureTabpage.Controls.Add(this.styleComboBox);
-            this.furnitureTabpage.Controls.Add(this.IdRadioButton);
-            this.furnitureTabpage.Controls.Add(this.furnitureSearchTextBox);
-            this.furnitureTabpage.Controls.Add(this.furnitureSearchButton);
-            this.furnitureTabpage.Controls.Add(this.addFurnitureButton);
-            this.furnitureTabpage.Controls.Add(this.furnitureGridView);
-            this.furnitureTabpage.Location = new System.Drawing.Point(4, 24);
-            this.furnitureTabpage.Name = "furnitureTabpage";
-            this.furnitureTabpage.Size = new System.Drawing.Size(769, 353);
-            this.furnitureTabpage.TabIndex = 2;
-            this.furnitureTabpage.Text = "Furniture";
-            this.furnitureTabpage.UseVisualStyleBackColor = true;
-            // 
-            // resetButton
-            // 
-            this.resetButton.Location = new System.Drawing.Point(715, 7);
-            this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(48, 23);
-            this.resetButton.TabIndex = 9;
-            this.resetButton.Text = "Reset";
-            this.resetButton.UseVisualStyleBackColor = true;
-            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
-            // 
-            // categoryRadioButton
-            // 
-            this.categoryRadioButton.AutoSize = true;
-            this.categoryRadioButton.Location = new System.Drawing.Point(468, 8);
-            this.categoryRadioButton.Name = "categoryRadioButton";
-            this.categoryRadioButton.Size = new System.Drawing.Size(73, 19);
-            this.categoryRadioButton.TabIndex = 8;
-            this.categoryRadioButton.Text = "Category";
-            this.categoryRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // StyleRadioButton
-            // 
-            this.StyleRadioButton.AutoSize = true;
-            this.StyleRadioButton.Location = new System.Drawing.Point(312, 7);
-            this.StyleRadioButton.Name = "StyleRadioButton";
-            this.StyleRadioButton.Size = new System.Drawing.Size(50, 19);
-            this.StyleRadioButton.TabIndex = 7;
-            this.StyleRadioButton.Text = "Style";
-            this.StyleRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // categoryComboBox
-            // 
-            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(547, 6);
-            this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(105, 23);
-            this.categoryComboBox.TabIndex = 6;
-            // 
-            // styleComboBox
-            // 
-            this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.styleComboBox.FormattingEnabled = true;
-            this.styleComboBox.Location = new System.Drawing.Point(368, 8);
-            this.styleComboBox.Name = "styleComboBox";
-            this.styleComboBox.Size = new System.Drawing.Size(94, 23);
-            this.styleComboBox.TabIndex = 5;
-            // 
-            // IdRadioButton
-            // 
-            this.IdRadioButton.AutoSize = true;
-            this.IdRadioButton.Checked = true;
-            this.IdRadioButton.Location = new System.Drawing.Point(149, 8);
-            this.IdRadioButton.Name = "IdRadioButton";
-            this.IdRadioButton.Size = new System.Drawing.Size(86, 19);
-            this.IdRadioButton.TabIndex = 4;
-            this.IdRadioButton.TabStop = true;
-            this.IdRadioButton.Text = "Furniture Id";
-            this.IdRadioButton.UseVisualStyleBackColor = true;
-            // 
-            // furnitureSearchTextBox
-            // 
-            this.furnitureSearchTextBox.Location = new System.Drawing.Point(241, 6);
-            this.furnitureSearchTextBox.Name = "furnitureSearchTextBox";
-            this.furnitureSearchTextBox.Size = new System.Drawing.Size(65, 23);
-            this.furnitureSearchTextBox.TabIndex = 3;
-            // 
-            // furnitureSearchButton
-            // 
-            this.furnitureSearchButton.Location = new System.Drawing.Point(658, 6);
-            this.furnitureSearchButton.Name = "furnitureSearchButton";
-            this.furnitureSearchButton.Size = new System.Drawing.Size(56, 23);
-            this.furnitureSearchButton.TabIndex = 2;
-            this.furnitureSearchButton.Text = "Search";
-            this.furnitureSearchButton.UseVisualStyleBackColor = true;
-            this.furnitureSearchButton.Click += new System.EventHandler(this.furnitureSearchButton_Click);
-            // 
-            // addFurnitureButton
-            // 
-            this.addFurnitureButton.Location = new System.Drawing.Point(6, 6);
-            this.addFurnitureButton.Name = "addFurnitureButton";
-            this.addFurnitureButton.Size = new System.Drawing.Size(137, 23);
-            this.addFurnitureButton.TabIndex = 1;
-            this.addFurnitureButton.Text = "Add Furniture";
-            this.addFurnitureButton.UseVisualStyleBackColor = true;
-            this.addFurnitureButton.Click += new System.EventHandler(this.addFurnitureButton_Click);
-            // 
-            // furnitureGridView
-            // 
-            this.furnitureGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.furnitureGridView.Location = new System.Drawing.Point(146, 35);
-            this.furnitureGridView.Name = "furnitureGridView";
-            this.furnitureGridView.RowTemplate.Height = 25;
-            this.furnitureGridView.Size = new System.Drawing.Size(617, 312);
-            this.furnitureGridView.TabIndex = 0;
+            customersTab.Controls.Add(rentButton);
+            customersTab.Controls.Add(resetCustomerButton);
+            customersTab.Controls.Add(customerSearchButton);
+            customersTab.Controls.Add(label3);
+            customersTab.Controls.Add(label2);
+            customersTab.Controls.Add(lastNameSearchTextBox);
+            customersTab.Controls.Add(nameRadioButton);
+            customersTab.Controls.Add(firstNameSearchTextBox);
+            customersTab.Controls.Add(phoneNumberRadioButton);
+            customersTab.Controls.Add(phoneNumberTextBox);
+            customersTab.Controls.Add(memberIdTextBox);
+            customersTab.Controls.Add(memberIDRadioButton);
             customersTab.Controls.Add(deleteCustomerButton);
             customersTab.Controls.Add(addCustomerButton);
             customersTab.Controls.Add(customerGridView);
@@ -418,6 +437,16 @@
             customersTab.Text = "Customers";
             customersTab.UseVisualStyleBackColor = true;
             // 
+            // rentButton
+            // 
+            rentButton.Location = new Point(6, 66);
+            rentButton.Name = "rentButton";
+            rentButton.Size = new Size(134, 23);
+            rentButton.TabIndex = 13;
+            rentButton.Text = "Rent Furniture";
+            rentButton.UseVisualStyleBackColor = true;
+            rentButton.Click += rentButton_Click;
+            // 
             // deleteCustomerButton
             // 
             deleteCustomerButton.Location = new Point(6, 36);
@@ -428,6 +457,203 @@
             deleteCustomerButton.Text = "Delete Customer";
             deleteCustomerButton.UseVisualStyleBackColor = true;
             deleteCustomerButton.Click += deleteCustomerButton_Click;
+            // 
+            // furnitureTabpage
+            // 
+            furnitureTabpage.Controls.Add(resetButton);
+            furnitureTabpage.Controls.Add(categoryRadioButton);
+            furnitureTabpage.Controls.Add(StyleRadioButton);
+            furnitureTabpage.Controls.Add(categoryComboBox);
+            furnitureTabpage.Controls.Add(styleComboBox);
+            furnitureTabpage.Controls.Add(IdRadioButton);
+            furnitureTabpage.Controls.Add(furnitureSearchTextBox);
+            furnitureTabpage.Controls.Add(furnitureSearchButton);
+            furnitureTabpage.Controls.Add(addFurnitureButton);
+            furnitureTabpage.Controls.Add(furnitureGridView);
+            furnitureTabpage.Location = new Point(4, 24);
+            furnitureTabpage.Name = "furnitureTabpage";
+            furnitureTabpage.Size = new Size(766, 333);
+            furnitureTabpage.TabIndex = 2;
+            furnitureTabpage.Text = "Furniture";
+            furnitureTabpage.UseVisualStyleBackColor = true;
+            // 
+            // resetButton
+            // 
+            resetButton.Location = new Point(710, 6);
+            resetButton.Name = "resetButton";
+            resetButton.Size = new Size(49, 23);
+            resetButton.TabIndex = 9;
+            resetButton.Text = "Reset";
+            resetButton.UseVisualStyleBackColor = true;
+            resetButton.Click += resetButton_Click;
+            // 
+            // categoryRadioButton
+            // 
+            categoryRadioButton.AutoSize = true;
+            categoryRadioButton.Location = new Point(464, 8);
+            categoryRadioButton.Name = "categoryRadioButton";
+            categoryRadioButton.Size = new Size(73, 19);
+            categoryRadioButton.TabIndex = 8;
+            categoryRadioButton.Text = "Category";
+            categoryRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // StyleRadioButton
+            // 
+            StyleRadioButton.AutoSize = true;
+            StyleRadioButton.Location = new Point(308, 8);
+            StyleRadioButton.Name = "StyleRadioButton";
+            StyleRadioButton.Size = new Size(50, 19);
+            StyleRadioButton.TabIndex = 7;
+            StyleRadioButton.Text = "Style";
+            StyleRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // categoryComboBox
+            // 
+            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            categoryComboBox.FormattingEnabled = true;
+            categoryComboBox.Location = new Point(542, 7);
+            categoryComboBox.Name = "categoryComboBox";
+            categoryComboBox.Size = new Size(106, 23);
+            categoryComboBox.TabIndex = 6;
+            // 
+            // styleComboBox
+            // 
+            styleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            styleComboBox.FormattingEnabled = true;
+            styleComboBox.Location = new Point(363, 7);
+            styleComboBox.Name = "styleComboBox";
+            styleComboBox.Size = new Size(95, 23);
+            styleComboBox.TabIndex = 5;
+            // 
+            // IdRadioButton
+            // 
+            IdRadioButton.AutoSize = true;
+            IdRadioButton.Checked = true;
+            IdRadioButton.Location = new Point(145, 8);
+            IdRadioButton.Name = "IdRadioButton";
+            IdRadioButton.Size = new Size(86, 19);
+            IdRadioButton.TabIndex = 4;
+            IdRadioButton.TabStop = true;
+            IdRadioButton.Text = "Furniture Id";
+            IdRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // furnitureSearchTextBox
+            // 
+            furnitureSearchTextBox.Location = new Point(236, 7);
+            furnitureSearchTextBox.Name = "furnitureSearchTextBox";
+            furnitureSearchTextBox.Size = new Size(66, 23);
+            furnitureSearchTextBox.TabIndex = 3;
+            // 
+            // furnitureSearchButton
+            // 
+            furnitureSearchButton.Location = new Point(653, 6);
+            furnitureSearchButton.Name = "furnitureSearchButton";
+            furnitureSearchButton.Size = new Size(57, 23);
+            furnitureSearchButton.TabIndex = 2;
+            furnitureSearchButton.Text = "Search";
+            furnitureSearchButton.UseVisualStyleBackColor = true;
+            furnitureSearchButton.Click += furnitureSearchButton_Click;
+            // 
+            // addFurnitureButton
+            // 
+            addFurnitureButton.Location = new Point(6, 6);
+            addFurnitureButton.Name = "addFurnitureButton";
+            addFurnitureButton.Size = new Size(134, 23);
+            addFurnitureButton.TabIndex = 1;
+            addFurnitureButton.Text = "Add Furniture";
+            addFurnitureButton.UseVisualStyleBackColor = true;
+            addFurnitureButton.Click += addFurnitureButton_Click;
+            // 
+            // furnitureGridView
+            // 
+            furnitureGridView.AutoGenerateColumns = false;
+            furnitureGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            furnitureGridView.Columns.AddRange(new DataGridViewColumn[] { furnitureidDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, categorynameDataGridViewTextBoxColumn, stylenameDataGridViewTextBoxColumn, descriptionDataGridViewTextBoxColumn, rentalrateDataGridViewTextBoxColumn, finerateDataGridViewTextBoxColumn, quantityDataGridViewTextBoxColumn });
+            furnitureGridView.DataSource = furnitureBindingSource;
+            furnitureGridView.Location = new Point(146, 37);
+            furnitureGridView.MultiSelect = false;
+            furnitureGridView.Name = "furnitureGridView";
+            furnitureGridView.ReadOnly = true;
+            furnitureGridView.RowHeadersVisible = false;
+            furnitureGridView.RowTemplate.Height = 25;
+            furnitureGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            furnitureGridView.Size = new Size(614, 289);
+            furnitureGridView.TabIndex = 0;
+            // 
+            // furnitureidDataGridViewTextBoxColumn
+            // 
+            furnitureidDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            furnitureidDataGridViewTextBoxColumn.DataPropertyName = "Furniture_id";
+            furnitureidDataGridViewTextBoxColumn.HeaderText = "Furniture_id";
+            furnitureidDataGridViewTextBoxColumn.Name = "furnitureidDataGridViewTextBoxColumn";
+            furnitureidDataGridViewTextBoxColumn.ReadOnly = true;
+            furnitureidDataGridViewTextBoxColumn.Width = 95;
+            // 
+            // nameDataGridViewTextBoxColumn
+            // 
+            nameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
+            nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
+            nameDataGridViewTextBoxColumn.ReadOnly = true;
+            nameDataGridViewTextBoxColumn.Width = 64;
+            // 
+            // categorynameDataGridViewTextBoxColumn
+            // 
+            categorynameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            categorynameDataGridViewTextBoxColumn.DataPropertyName = "Category_name";
+            categorynameDataGridViewTextBoxColumn.HeaderText = "Category";
+            categorynameDataGridViewTextBoxColumn.Name = "categorynameDataGridViewTextBoxColumn";
+            categorynameDataGridViewTextBoxColumn.ReadOnly = true;
+            categorynameDataGridViewTextBoxColumn.Width = 80;
+            // 
+            // stylenameDataGridViewTextBoxColumn
+            // 
+            stylenameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            stylenameDataGridViewTextBoxColumn.DataPropertyName = "Style_name";
+            stylenameDataGridViewTextBoxColumn.HeaderText = "Style";
+            stylenameDataGridViewTextBoxColumn.Name = "stylenameDataGridViewTextBoxColumn";
+            stylenameDataGridViewTextBoxColumn.ReadOnly = true;
+            stylenameDataGridViewTextBoxColumn.Width = 57;
+            // 
+            // descriptionDataGridViewTextBoxColumn
+            // 
+            descriptionDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
+            descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
+            descriptionDataGridViewTextBoxColumn.ReadOnly = true;
+            descriptionDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // rentalrateDataGridViewTextBoxColumn
+            // 
+            rentalrateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            rentalrateDataGridViewTextBoxColumn.DataPropertyName = "Rental_rate";
+            rentalrateDataGridViewTextBoxColumn.HeaderText = "Rental_rate";
+            rentalrateDataGridViewTextBoxColumn.Name = "rentalrateDataGridViewTextBoxColumn";
+            rentalrateDataGridViewTextBoxColumn.ReadOnly = true;
+            rentalrateDataGridViewTextBoxColumn.Width = 90;
+            // 
+            // finerateDataGridViewTextBoxColumn
+            // 
+            finerateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            finerateDataGridViewTextBoxColumn.DataPropertyName = "Fine_rate";
+            finerateDataGridViewTextBoxColumn.HeaderText = "Fine_rate";
+            finerateDataGridViewTextBoxColumn.Name = "finerateDataGridViewTextBoxColumn";
+            finerateDataGridViewTextBoxColumn.ReadOnly = true;
+            finerateDataGridViewTextBoxColumn.Width = 79;
+            // 
+            // quantityDataGridViewTextBoxColumn
+            // 
+            quantityDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
+            quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
+            quantityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // furnitureBindingSource
+            // 
+            furnitureBindingSource.DataSource = typeof(model.Furniture);
             // 
             // employeesTab
             // 
@@ -454,48 +680,164 @@
             deleteEmployeeButton.UseVisualStyleBackColor = true;
             deleteEmployeeButton.Click += deleteEmployeeButton_Click;
             // 
-            // furnitureTabpage
+            // registerdateDataGridViewTextBoxColumn
             // 
-            furnitureTabpage.Controls.Add(resetButton);
-            furnitureTabpage.Controls.Add(categoryRadioButton);
-            furnitureTabpage.Controls.Add(StyleRadioButton);
-            furnitureTabpage.Controls.Add(categoryComboBox);
-            furnitureTabpage.Controls.Add(styleComboBox);
-            furnitureTabpage.Controls.Add(IdRadioButton);
-            furnitureTabpage.Controls.Add(furnitureSearchTextBox);
-            furnitureTabpage.Controls.Add(furnitureSearchButton);
-            furnitureTabpage.Controls.Add(addFurnitureButton);
-            furnitureTabpage.Controls.Add(furnitureGridView);
-            furnitureTabpage.Location = new Point(4, 24);
-            furnitureTabpage.Name = "furnitureTabpage";
-            furnitureTabpage.Size = new Size(766, 333);
-            furnitureTabpage.TabIndex = 2;
-            furnitureTabpage.Text = "Furniture";
-            furnitureTabpage.UseVisualStyleBackColor = true;
+            registerdateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            registerdateDataGridViewTextBoxColumn.DataPropertyName = "Register_date";
+            registerdateDataGridViewTextBoxColumn.HeaderText = "Register_date";
+            registerdateDataGridViewTextBoxColumn.Name = "registerdateDataGridViewTextBoxColumn";
+            registerdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // zipDataGridViewTextBoxColumn
+            // 
+            zipDataGridViewTextBoxColumn.DataPropertyName = "Zip";
+            zipDataGridViewTextBoxColumn.HeaderText = "Zip";
+            zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
+            zipDataGridViewTextBoxColumn.ReadOnly = true;
+            zipDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // stateDataGridViewTextBoxColumn
+            // 
+            stateDataGridViewTextBoxColumn.DataPropertyName = "State";
+            stateDataGridViewTextBoxColumn.HeaderText = "State";
+            stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
+            stateDataGridViewTextBoxColumn.ReadOnly = true;
+            stateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // cityDataGridViewTextBoxColumn
+            // 
+            cityDataGridViewTextBoxColumn.DataPropertyName = "City";
+            cityDataGridViewTextBoxColumn.HeaderText = "City";
+            cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
+            cityDataGridViewTextBoxColumn.ReadOnly = true;
+            cityDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // addressDataGridViewTextBoxColumn
+            // 
+            addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
+            addressDataGridViewTextBoxColumn.ReadOnly = true;
+            addressDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // emailDataGridViewTextBoxColumn
+            // 
+            emailDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
+            emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
+            emailDataGridViewTextBoxColumn.ReadOnly = true;
+            emailDataGridViewTextBoxColumn.Width = 61;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            phoneDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            phoneDataGridViewTextBoxColumn.Width = 66;
+            // 
+            // genderDataGridViewTextBoxColumn
+            // 
+            genderDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
+            genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
+            genderDataGridViewTextBoxColumn.ReadOnly = true;
+            genderDataGridViewTextBoxColumn.Width = 70;
+            // 
+            // dobDataGridViewTextBoxColumn
+            // 
+            dobDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dobDataGridViewTextBoxColumn.DataPropertyName = "Dob";
+            dobDataGridViewTextBoxColumn.HeaderText = "Dob";
+            dobDataGridViewTextBoxColumn.Name = "dobDataGridViewTextBoxColumn";
+            dobDataGridViewTextBoxColumn.ReadOnly = true;
+            dobDataGridViewTextBoxColumn.Width = 54;
+            // 
+            // lnameDataGridViewTextBoxColumn
+            // 
+            lnameDataGridViewTextBoxColumn.DataPropertyName = "Lname";
+            lnameDataGridViewTextBoxColumn.HeaderText = "Lname";
+            lnameDataGridViewTextBoxColumn.Name = "lnameDataGridViewTextBoxColumn";
+            lnameDataGridViewTextBoxColumn.ReadOnly = true;
+            lnameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // fnameDataGridViewTextBoxColumn
+            // 
+            fnameDataGridViewTextBoxColumn.DataPropertyName = "Fname";
+            fnameDataGridViewTextBoxColumn.HeaderText = "Fname";
+            fnameDataGridViewTextBoxColumn.Name = "fnameDataGridViewTextBoxColumn";
+            fnameDataGridViewTextBoxColumn.ReadOnly = true;
+            fnameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // fullnameDataGridViewTextBoxColumn
+            // 
+            fullnameDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            fullnameDataGridViewTextBoxColumn.DataPropertyName = "Fullname";
+            fullnameDataGridViewTextBoxColumn.HeaderText = "Fullname";
+            fullnameDataGridViewTextBoxColumn.Name = "fullnameDataGridViewTextBoxColumn";
+            fullnameDataGridViewTextBoxColumn.ReadOnly = true;
+            fullnameDataGridViewTextBoxColumn.Width = 81;
+            // 
+            // customerGridView
+            // 
+            customerGridView.AllowUserToAddRows = false;
+            customerGridView.AllowUserToDeleteRows = false;
+            customerGridView.AutoGenerateColumns = false;
+            customerGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            customerGridView.Columns.AddRange(new DataGridViewColumn[] { fullnameDataGridViewTextBoxColumn, fnameDataGridViewTextBoxColumn, lnameDataGridViewTextBoxColumn, dobDataGridViewTextBoxColumn, genderDataGridViewTextBoxColumn, phoneDataGridViewTextBoxColumn, emailDataGridViewTextBoxColumn, addressDataGridViewTextBoxColumn, cityDataGridViewTextBoxColumn, stateDataGridViewTextBoxColumn, zipDataGridViewTextBoxColumn, registerdateDataGridViewTextBoxColumn });
+            customerGridView.DataSource = customerBindingSource;
+            customerGridView.Location = new Point(143, 67);
+            customerGridView.MultiSelect = false;
+            customerGridView.Name = "customerGridView";
+            customerGridView.ReadOnly = true;
+            customerGridView.RowHeadersVisible = false;
+            customerGridView.RowHeadersWidth = 51;
+            customerGridView.RowTemplate.Height = 25;
+            customerGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            customerGridView.Size = new Size(617, 259);
+            customerGridView.TabIndex = 10;
+            customerGridView.RowStateChanged += customerGridView_RowStateChanged;
+            customerGridView.MouseDoubleClick += customerGridView_MouseDoubleClick;
+            // 
+            // resetCustomerButton
+            // 
+            resetCustomerButton.Location = new Point(668, 8);
+            resetCustomerButton.Name = "resetCustomerButton";
+            resetCustomerButton.Size = new Size(75, 23);
+            resetCustomerButton.TabIndex = 21;
+            resetCustomerButton.Text = "Reset";
+            resetCustomerButton.UseVisualStyleBackColor = true;
+            resetCustomerButton.Click += resetCustomerButton_Click;
             // 
             // MainScreenForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dashboardTabs);
-            this.Controls.Add(this.employeeDisplay);
-            this.Controls.Add(this.logoutButton);
-            this.Controls.Add(this.label1);
-            this.Name = "MainScreenForm";
-            this.Text = "MainScreenForm";
-            ((System.ComponentModel.ISupportInitialize)(this.customerGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).EndInit();
-            this.dashboardTabs.ResumeLayout(false);
-            this.customersTab.ResumeLayout(false);
-            this.customersTab.PerformLayout();
-            this.furnitureTabpage.ResumeLayout(false);
-            this.furnitureTabpage.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).EndInit();
-            this.employeesTab.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(dashboardTabs);
+            Controls.Add(employeeDisplay);
+            Controls.Add(logoutButton);
+            Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "MainScreenForm";
+            Text = "MainScreenForm";
+            ((System.ComponentModel.ISupportInitialize)customerBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)employeeBindingSource).EndInit();
+            dashboardTabs.ResumeLayout(false);
+            customersTab.ResumeLayout(false);
+            customersTab.PerformLayout();
+            furnitureTabpage.ResumeLayout(false);
+            furnitureTabpage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)furnitureGridView).EndInit();
+            ((System.ComponentModel.ISupportInitialize)furnitureBindingSource).EndInit();
+            employeesTab.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)customerGridView).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -505,11 +847,28 @@
         private Button addCustomerButton;
         private Button logoutButton;
         private TextBox employeeDisplay;
-        private DataGridView customerGridView;
         private DataGridView employeeGridView;
         private TabControl dashboardTabs;
         private TabPage customersTab;
         private TabPage employeesTab;
+        private Button rentButton;
+        private BindingSource customerBindingSource;
+        private BindingSource employeeBindingSource;
+        private DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn employeeNumDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn usernameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn passwordDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fnameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn lnameDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dobDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn rolenameDataGridViewTextBoxColumn;
         private Button deleteCustomerButton;
         private Button deleteEmployeeButton;
         private TabPage furnitureTabpage;
@@ -523,6 +882,15 @@
         private ComboBox categoryComboBox;
         private ComboBox styleComboBox;
         private Button resetButton;
+        private BindingSource furnitureBindingSource;
+        private DataGridViewTextBoxColumn furnitureidDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn nameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn categorynameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn stylenameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn rentalrateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn finerateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private Label label2;
         private TextBox lastNameSearchTextBox;
         private RadioButton nameRadioButton;
@@ -532,7 +900,20 @@
         private TextBox memberIdTextBox;
         private RadioButton memberIDRadioButton;
         private Label label3;
-        private Button resetCustomerButton;
         private Button customerSearchButton;
+        private Button resetCustomerButton;
+        private DataGridView customerGridView;
+        private DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn fnameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn lnameDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dobDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn genderDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn emailDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn addressDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn cityDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn registerdateDataGridViewTextBoxColumn;
     }
 }

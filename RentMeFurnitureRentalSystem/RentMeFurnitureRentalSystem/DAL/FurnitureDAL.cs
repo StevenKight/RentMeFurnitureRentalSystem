@@ -8,29 +8,19 @@ public class FurnitureDAL
 {
     public static IList<Furniture> GetFurniture()
     {
-        var furnitureList = new List<Furniture>();
-
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
         var result = connection.Query<Furniture>(QueryStrings.GetFurniture);
-
-        foreach (var furniture in result) furnitureList.Add(furniture);
-        return furnitureList;
+        return result.ToList();
     }
 
     public static IList<Furniture> GetFurnitureById(int id)
     {
-        var list = new List<Furniture>();
-
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
         var result = connection.Query<Furniture>(QueryStrings.GetFurnitureById,new {id = id});
 
-        foreach (var furniture in result)
-        {
-            list.Add(furniture);
-        }
-        return list;
+        return result.ToList();
     }
 
     public static IList<Furniture> GetFurnitureByCategory(string category)

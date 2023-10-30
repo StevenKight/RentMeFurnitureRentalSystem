@@ -4,6 +4,8 @@ public class Customer
 {
     #region Properties
 
+    public string Fullname => this.Fname + " " + this.Lname;
+
     public int Member_id { get; set; }
     public string Fname { get; set; }
     public string Lname { get; set; }

@@ -28,202 +28,197 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.nameTextBox = new System.Windows.Forms.TextBox();
-            this.fineRateTextBox = new System.Windows.Forms.TextBox();
-            this.rentalRateTextBox = new System.Windows.Forms.TextBox();
-            this.descriptionTextArea = new System.Windows.Forms.TextBox();
-            this.styleComboBox = new System.Windows.Forms.ComboBox();
-            this.categoryComboBox = new System.Windows.Forms.ComboBox();
-            this.name = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cancelButton = new System.Windows.Forms.Button();
-            this.addButton = new System.Windows.Forms.Button();
-            this.addFurnitureError = new System.Windows.Forms.ErrorProvider(this.components);
-            this.quantiyNumber = new System.Windows.Forms.NumericUpDown();
-            this.label6 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.addFurnitureError)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quantiyNumber)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            nameTextBox = new TextBox();
+            fineRateTextBox = new TextBox();
+            rentalRateTextBox = new TextBox();
+            descriptionTextArea = new TextBox();
+            styleComboBox = new ComboBox();
+            categoryComboBox = new ComboBox();
+            name = new Label();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            cancelButton = new Button();
+            addButton = new Button();
+            addFurnitureError = new ErrorProvider(components);
+            quantiyNumber = new NumericUpDown();
+            label6 = new Label();
+            ((System.ComponentModel.ISupportInitialize)addFurnitureError).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)quantiyNumber).BeginInit();
+            SuspendLayout();
             // 
             // nameTextBox
             // 
-            this.nameTextBox.Location = new System.Drawing.Point(60, 27);
-            this.nameTextBox.Name = "nameTextBox";
-            this.nameTextBox.Size = new System.Drawing.Size(310, 23);
-            this.nameTextBox.TabIndex = 0;
+            nameTextBox.Location = new Point(84, 27);
+            nameTextBox.Name = "nameTextBox";
+            nameTextBox.Size = new Size(310, 23);
+            nameTextBox.TabIndex = 0;
             // 
             // fineRateTextBox
             // 
-            this.fineRateTextBox.Location = new System.Drawing.Point(283, 152);
-            this.fineRateTextBox.Name = "fineRateTextBox";
-            this.fineRateTextBox.Size = new System.Drawing.Size(121, 23);
-            this.fineRateTextBox.TabIndex = 4;
+            fineRateTextBox.Location = new Point(278, 135);
+            fineRateTextBox.Name = "fineRateTextBox";
+            fineRateTextBox.Size = new Size(121, 23);
+            fineRateTextBox.TabIndex = 4;
             // 
             // rentalRateTextBox
             // 
-            this.rentalRateTextBox.Location = new System.Drawing.Point(84, 152);
-            this.rentalRateTextBox.Name = "rentalRateTextBox";
-            this.rentalRateTextBox.Size = new System.Drawing.Size(100, 23);
-            this.rentalRateTextBox.TabIndex = 3;
+            rentalRateTextBox.Location = new Point(89, 135);
+            rentalRateTextBox.Name = "rentalRateTextBox";
+            rentalRateTextBox.Size = new Size(100, 23);
+            rentalRateTextBox.TabIndex = 3;
             // 
             // descriptionTextArea
             // 
-            this.descriptionTextArea.Location = new System.Drawing.Point(55, 303);
-            this.descriptionTextArea.Multiline = true;
-            this.descriptionTextArea.Name = "descriptionTextArea";
-            this.descriptionTextArea.Size = new System.Drawing.Size(326, 95);
-            this.descriptionTextArea.TabIndex = 6;
+            descriptionTextArea.Location = new Point(62, 239);
+            descriptionTextArea.Multiline = true;
+            descriptionTextArea.Name = "descriptionTextArea";
+            descriptionTextArea.Size = new Size(326, 95);
+            descriptionTextArea.TabIndex = 6;
             // 
             // styleComboBox
             // 
-            this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.styleComboBox.FormattingEnabled = true;
-            this.styleComboBox.Location = new System.Drawing.Point(55, 81);
-            this.styleComboBox.Name = "styleComboBox";
-            this.styleComboBox.Size = new System.Drawing.Size(121, 23);
-            this.styleComboBox.TabIndex = 1;
+            styleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            styleComboBox.FormattingEnabled = true;
+            styleComboBox.Location = new Point(89, 81);
+            styleComboBox.Name = "styleComboBox";
+            styleComboBox.Size = new Size(100, 23);
+            styleComboBox.TabIndex = 1;
             // 
             // categoryComboBox
             // 
-            this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(283, 81);
-            this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(121, 23);
-            this.categoryComboBox.TabIndex = 2;
+            categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            categoryComboBox.FormattingEnabled = true;
+            categoryComboBox.Location = new Point(278, 81);
+            categoryComboBox.Name = "categoryComboBox";
+            categoryComboBox.Size = new Size(121, 23);
+            categoryComboBox.TabIndex = 2;
             // 
             // name
             // 
-            this.name.AutoSize = true;
-            this.name.Location = new System.Drawing.Point(12, 27);
-            this.name.Name = "name";
-            this.name.Size = new System.Drawing.Size(42, 15);
-            this.name.TabIndex = 6;
-            this.name.Text = "Name:";
+            name.AutoSize = true;
+            name.Location = new Point(36, 30);
+            name.Name = "name";
+            name.Size = new Size(42, 15);
+            name.TabIndex = 6;
+            name.Text = "Name:";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 84);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Style:";
+            label1.AutoSize = true;
+            label1.Location = new Point(48, 84);
+            label1.Name = "label1";
+            label1.Size = new Size(35, 15);
+            label1.TabIndex = 7;
+            label1.Text = "Style:";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(219, 84);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 15);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Category:";
+            label2.AutoSize = true;
+            label2.Location = new Point(214, 84);
+            label2.Name = "label2";
+            label2.Size = new Size(58, 15);
+            label2.TabIndex = 8;
+            label2.Text = "Category:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 155);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 15);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Rental Rate:";
+            label3.AutoSize = true;
+            label3.Location = new Point(14, 138);
+            label3.Name = "label3";
+            label3.Size = new Size(69, 15);
+            label3.TabIndex = 9;
+            label3.Text = "Rental Rate:";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(219, 155);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 15);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Fine Rate:";
+            label4.AutoSize = true;
+            label4.Location = new Point(214, 138);
+            label4.Name = "label4";
+            label4.Size = new Size(58, 15);
+            label4.TabIndex = 10;
+            label4.Text = "Fine Rate:";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(55, 285);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(70, 15);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Description:";
+            label5.AutoSize = true;
+            label5.Location = new Point(62, 221);
+            label5.Name = "label5";
+            label5.Size = new Size(70, 15);
+            label5.TabIndex = 11;
+            label5.Text = "Description:";
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(55, 415);
-            this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 8;
-            this.cancelButton.Text = "Cancel";
-            this.cancelButton.UseVisualStyleBackColor = true;
-            this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
+            cancelButton.Location = new Point(78, 351);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(75, 23);
+            cancelButton.TabIndex = 8;
+            cancelButton.Text = "Cancel";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
             // 
             // addButton
             // 
-            this.addButton.Location = new System.Drawing.Point(283, 415);
-            this.addButton.Name = "addButton";
-            this.addButton.Size = new System.Drawing.Size(75, 23);
-            this.addButton.TabIndex = 7;
-            this.addButton.Text = "Add";
-            this.addButton.UseVisualStyleBackColor = true;
-            this.addButton.Click += new System.EventHandler(this.addButton_Click);
+            addButton.Location = new Point(272, 351);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(75, 23);
+            addButton.TabIndex = 7;
+            addButton.Text = "Add";
+            addButton.UseVisualStyleBackColor = true;
+            addButton.Click += addButton_Click;
             // 
             // addFurnitureError
             // 
-            this.addFurnitureError.ContainerControl = this;
+            addFurnitureError.ContainerControl = this;
             // 
             // quantiyNumber
             // 
-            this.quantiyNumber.Location = new System.Drawing.Point(157, 223);
-            this.quantiyNumber.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.quantiyNumber.Name = "quantiyNumber";
-            this.quantiyNumber.Size = new System.Drawing.Size(120, 23);
-            this.quantiyNumber.TabIndex = 5;
+            quantiyNumber.Location = new Point(182, 182);
+            quantiyNumber.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
+            quantiyNumber.Name = "quantiyNumber";
+            quantiyNumber.Size = new Size(120, 23);
+            quantiyNumber.TabIndex = 5;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(95, 225);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 15);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Quantity:";
+            label6.AutoSize = true;
+            label6.Location = new Point(120, 184);
+            label6.Name = "label6";
+            label6.Size = new Size(56, 15);
+            label6.TabIndex = 15;
+            label6.Text = "Quantity:";
             // 
             // addFurnitureForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 450);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.quantiyNumber);
-            this.Controls.Add(this.addButton);
-            this.Controls.Add(this.cancelButton);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.name);
-            this.Controls.Add(this.categoryComboBox);
-            this.Controls.Add(this.styleComboBox);
-            this.Controls.Add(this.descriptionTextArea);
-            this.Controls.Add(this.rentalRateTextBox);
-            this.Controls.Add(this.fineRateTextBox);
-            this.Controls.Add(this.nameTextBox);
-            this.Name = "addFurnitureForm";
-            this.Text = "addFurnitureForm";
-            ((System.ComponentModel.ISupportInitialize)(this.addFurnitureError)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.quantiyNumber)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(429, 390);
+            Controls.Add(label6);
+            Controls.Add(quantiyNumber);
+            Controls.Add(addButton);
+            Controls.Add(cancelButton);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(name);
+            Controls.Add(categoryComboBox);
+            Controls.Add(styleComboBox);
+            Controls.Add(descriptionTextArea);
+            Controls.Add(rentalRateTextBox);
+            Controls.Add(fineRateTextBox);
+            Controls.Add(nameTextBox);
+            Name = "addFurnitureForm";
+            Text = "addFurnitureForm";
+            ((System.ComponentModel.ISupportInitialize)addFurnitureError).EndInit();
+            ((System.ComponentModel.ISupportInitialize)quantiyNumber).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

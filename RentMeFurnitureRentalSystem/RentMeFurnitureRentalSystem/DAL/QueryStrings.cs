@@ -23,6 +23,8 @@ public static class QueryStrings
 
     #region Customer
 
+    public const string GetCustomerById = "select * from customer where member_id=@Id";
+
     public const string GetCustomers = "select * from customer";
 
     public const string CreateCustomer =
@@ -101,6 +103,39 @@ public static class QueryStrings
 
     public const string CreateFurniture =
         "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category,@Style,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
+
+    #endregion
+
+    #region Rental
+
+    public const string GetRentalById = "select * from `rental` where rental_id=@Id";
+
+    public const string GetRentalItems = "select * from `rental_item` where rental_id=@Id";
+
+    public const string GetRentalTotal = "SELECT SUM(`furniture`.rental_rate * `rental_item`.quantity) " +
+                                         "FROM `rental_item`, `furniture` " +
+                                         "WHERE `rental_item`.furniture_id=`furniture`.furniture_id " +
+                                         "AND `rental_item`.rental_id = @Id " +
+                                         "GROUP BY `rental_item`.rental_id";
+
+    public static string GetRentalId = "SELECT rental_id " +
+                                       "FROM `rental` " +
+                                       "WHERE member_id = @Member_id " +
+                                       "AND employee_num = @Employee_num " +
+                                       "AND `start_date` = @Start_date";
+
+    public static string CreateRental = "INSERT INTO `rental`(member_id, employee_num, `start_date`, due_date)" +
+                                        "VALUES (@Member_id, @Employee_num, @Start_date, @Due_date);";
+
+    public static string CreateRentalItem = "INSERT INTO `rental_item`(rental_id, furniture_id, quantity)" +
+                                            "VALUES (" +
+                                            "(SELECT rental_id " +
+                                            "FROM `rental` " +
+                                            "WHERE member_id = @Member_id " +
+                                            "AND employee_num = @Employee_num " +
+                                            "AND `start_date` = @Start_date " +
+                                            "AND due_date = @Due_date), " +
+                                            "@Furniture_id, @Quantity);";
 
     #endregion
 }
