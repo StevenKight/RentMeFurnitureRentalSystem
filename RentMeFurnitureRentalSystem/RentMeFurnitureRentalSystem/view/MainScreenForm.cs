@@ -290,7 +290,7 @@ public partial class MainScreenForm : Form
 
     private void rentButton_Click(object sender, EventArgs e)
     {
-        var rentalForm = new RentalRecieptForm(this.LoggedInEmployee, this.SelectedCustomer);
+        var rentalForm = new Rece(this.LoggedInEmployee, this.SelectedCustomer);
         rentalForm.StartPosition = FormStartPosition.Manual;
         rentalForm.Left = Left + (Width - rentalForm.Width) / 2;
         rentalForm.Top = Top + (Height - rentalForm.Height) / 2;

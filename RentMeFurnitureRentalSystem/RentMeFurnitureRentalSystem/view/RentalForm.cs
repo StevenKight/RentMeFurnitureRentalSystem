@@ -12,10 +12,16 @@ public partial class RentalForm : Form
     private List<Customer> Customers;
     private List<Furniture> Furniture;
 
+    private Employee employee;
+    private Customer customer;
+
     #region Constructors
 
-    public RentalForm(Employee employee)
+    public RentalForm(Employee employee, Customer customer)
     {
+        this.employee = employee;
+        this.customer = customer;
+
         this.InitializeComponent();
 
         this.loadData();
@@ -25,10 +31,6 @@ public partial class RentalForm : Form
 
     private void loadData()
     {
-        this.Customers = CustomerDal.GetAllCustomers();
-
-        this.userDataGridView.DataSource = this.Customers;
-
         this.Furniture = FurnitureDAL.GetFurniture().Where(piece => piece.Quantity > 0).ToList();
         this.Furniture.ForEach(x => x.Quantity = 0);
 
@@ -42,27 +44,47 @@ public partial class RentalForm : Form
 
     private void submitButton_Click(object sender, EventArgs e)
     {
-        var selectedCustomer = this.getSelectedCustomer();
         var selectedFurniture = this.Furniture.Where(x => x.Quantity > 0).ToList();
 
-        // TODO: Write out to db
-    }
-
-    private Customer getSelectedCustomer()
-    {
-        if (userDataGridView.SelectedRows.Count == 0)
+        if (selectedFurniture.Count <= 0)
         {
-            this.errorProvider.SetError(this.userDataGridView, "Please select a user.");
+            this.errorProvider.SetError(this.furnitureGridView, "Please select at least one piece of furniture for the rental.");
         }
 
-        return userDataGridView.SelectedRows[0].DataBoundItem as Customer;
-    }
-
-    private void furnitureGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
-    {
-        if (this.furnitureGridView.CurrentCell.ColumnIndex == 4)
+        var rental = new RentalItem()
         {
-            var currentCell = this.furnitureGridView.CurrentCell;
+            Member_id = this.customer.Member_id,
+            Employee_num = this.employee.Employee_num,
+            Start_date = DateTime.Now.Date,
+            Due_date = this.dueDateDateTimePicker.Value.Date
+        };
+
+        if (!RentalDAL.CreateRental(rental))
+        {
+            MessageBox.Show("Error creating rental transaction.");
+            return;
         }
+
+        foreach (var furniture in selectedFurniture)
+        {
+            var item = new RentalItem()
+            {
+                Member_id = rental.Member_id,
+                Employee_num = rental.Employee_num,
+                Start_date = rental.Start_date,
+                Due_date = rental.Due_date,
+                Furniture_id = furniture.Furniture_id,
+                Quantity = furniture.Quantity
+            };
+
+            if (!RentalDAL.CreateRentalItem(item))
+            {
+                MessageBox.Show("Error adding " + furniture.Name + " to the transaction.");
+                return;
+            }
+        }
+
+        MessageBox.Show("Successfully rented " + selectedFurniture.Count + " items to " + this.customer.Fullname + ".");
+        this.Close();
     }
 }
