@@ -26,7 +26,7 @@ public partial class RentalReceiptForm : Form
     private void loadData(int rentalId)
     {
         var rental = RentalDAL.GetRentalById(rentalId);
-        var customer = CustomerDal.GetCustomerById(rental.Member_id);
+        var customer = CustomerDal.GetCustomerByMemberID(rental.Member_id).ElementAt(0);
         var rentalItems = RentalDAL.GetRentalItems(rentalId);
         var rentalTotal = RentalDAL.GetRentalTotal(rentalId);
         this.Furniture = FurnitureDAL.GetFurniture().Where(piece => piece.Quantity > 0).ToList();
