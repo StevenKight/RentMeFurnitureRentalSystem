@@ -37,11 +37,6 @@ public partial class RentalRecieptForm : Form
         this.furnitureGridView.DataSource = this.Furniture; ;
     }
 
-    private void cancelButton_Click(object sender, EventArgs e)
-    {
-        this.Close();
-    }
-
     private void submitButton_Click(object sender, EventArgs e)
     {
         var selectedFurniture = this.Furniture.Where(x => x.Quantity > 0).ToList();
@@ -85,8 +80,7 @@ public partial class RentalRecieptForm : Form
         }
 
         MessageBox.Show("Successfully rented.");
-        this.Close();
 
-
+        // TODO: Open receipt as modal and hide self and if continue result, don't close, else close
     }
 }

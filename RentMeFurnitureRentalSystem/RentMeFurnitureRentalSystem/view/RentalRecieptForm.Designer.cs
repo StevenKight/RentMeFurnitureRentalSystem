@@ -29,35 +29,18 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            cancelButton = new Button();
             submitButton = new Button();
-            customerBindingSource = new BindingSource(components);
-            furnitureGridView = new DataGridView();
-            furnitureBindingSource = new BindingSource(components);
-            textBox2 = new TextBox();
+            dueDateTextBox = new TextBox();
             errorProvider = new ErrorProvider(components);
-            textBox1 = new TextBox();
-            textBox3 = new TextBox();
-            dueDateDateTimePicker = new DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)furnitureGridView).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)furnitureBindingSource).BeginInit();
+            titleTextBox = new TextBox();
+            totalTextBox = new TextBox();
+            itemCountTextBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)errorProvider).BeginInit();
             SuspendLayout();
             // 
-            // cancelButton
-            // 
-            cancelButton.Location = new Point(68, 329);
-            cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(120, 23);
-            cancelButton.TabIndex = 26;
-            cancelButton.Text = "Cancel";
-            cancelButton.UseVisualStyleBackColor = true;
-            cancelButton.Click += cancelButton_Click;
-            // 
             // submitButton
             // 
-            submitButton.Location = new Point(266, 329);
+            submitButton.Location = new Point(171, 376);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(127, 23);
             submitButton.TabIndex = 25;
@@ -65,92 +48,74 @@
             submitButton.UseVisualStyleBackColor = true;
             submitButton.Click += submitButton_Click;
             // 
-            // furnitureGridView
+            // dueDateTextBox
             // 
-            furnitureGridView.AllowUserToAddRows = false;
-            furnitureGridView.AllowUserToDeleteRows = false;
-            furnitureGridView.AutoGenerateColumns = false;
-            furnitureGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            furnitureGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            furnitureGridView.DataSource = furnitureBindingSource;
-            furnitureGridView.Location = new Point(24, 83);
-            furnitureGridView.MultiSelect = false;
-            furnitureGridView.Name = "furnitureGridView";
-            furnitureGridView.RowHeadersVisible = false;
-            furnitureGridView.RowTemplate.Height = 25;
-            furnitureGridView.SelectionMode = DataGridViewSelectionMode.CellSelect;
-            furnitureGridView.Size = new Size(405, 192);
-            furnitureGridView.TabIndex = 28;
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = SystemColors.Control;
-            textBox2.BorderStyle = BorderStyle.None;
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(24, 61);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(405, 22);
-            textBox2.TabIndex = 30;
-            textBox2.Text = "Please Enter a Quantity of Each Furniture to be Rented";
-            textBox2.TextAlign = HorizontalAlignment.Center;
+            dueDateTextBox.BackColor = SystemColors.Control;
+            dueDateTextBox.BorderStyle = BorderStyle.None;
+            dueDateTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dueDateTextBox.Location = new Point(12, 103);
+            dueDateTextBox.Name = "dueDateTextBox";
+            dueDateTextBox.ReadOnly = true;
+            dueDateTextBox.Size = new Size(430, 22);
+            dueDateTextBox.TabIndex = 30;
+            dueDateTextBox.Text = "All items due by <DUE_DATE>";
+            dueDateTextBox.TextAlign = HorizontalAlignment.Center;
             // 
             // errorProvider
             // 
             errorProvider.ContainerControl = this;
             // 
-            // textBox1
+            // titleTextBox
             // 
-            textBox1.BackColor = SystemColors.Control;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(24, 12);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(405, 43);
-            textBox1.TabIndex = 31;
-            textBox1.Text = "Rent to <USER>";
-            textBox1.TextAlign = HorizontalAlignment.Center;
+            titleTextBox.BackColor = SystemColors.Control;
+            titleTextBox.BorderStyle = BorderStyle.None;
+            titleTextBox.Font = new Font("Segoe UI", 24F, FontStyle.Regular, GraphicsUnit.Point);
+            titleTextBox.Location = new Point(12, 12);
+            titleTextBox.Name = "titleTextBox";
+            titleTextBox.ReadOnly = true;
+            titleTextBox.Size = new Size(430, 43);
+            titleTextBox.TabIndex = 31;
+            titleTextBox.Text = "Rental <ID> for <USER>";
+            titleTextBox.TextAlign = HorizontalAlignment.Center;
             // 
-            // textBox3
+            // totalTextBox
             // 
-            textBox3.BackColor = SystemColors.Control;
-            textBox3.BorderStyle = BorderStyle.None;
-            textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(89, 294);
-            textBox3.Name = "textBox3";
-            textBox3.ReadOnly = true;
-            textBox3.Size = new Size(146, 22);
-            textBox3.TabIndex = 32;
-            textBox3.Text = "Select a Due Date:";
-            textBox3.TextAlign = HorizontalAlignment.Center;
+            totalTextBox.BackColor = SystemColors.Control;
+            totalTextBox.BorderStyle = BorderStyle.None;
+            totalTextBox.Font = new Font("Segoe UI", 20F, FontStyle.Regular, GraphicsUnit.Point);
+            totalTextBox.Location = new Point(12, 61);
+            totalTextBox.Name = "totalTextBox";
+            totalTextBox.ReadOnly = true;
+            totalTextBox.Size = new Size(430, 36);
+            totalTextBox.TabIndex = 32;
+            totalTextBox.Text = "Total: <TOTAL>";
+            totalTextBox.TextAlign = HorizontalAlignment.Center;
             // 
-            // dueDateDateTimePicker
+            // itemCountTextBox
             // 
-            dueDateDateTimePicker.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            dueDateDateTimePicker.Format = DateTimePickerFormat.Short;
-            dueDateDateTimePicker.Location = new Point(241, 288);
-            dueDateDateTimePicker.Name = "dueDateDateTimePicker";
-            dueDateDateTimePicker.Size = new Size(128, 29);
-            dueDateDateTimePicker.TabIndex = 33;
+            itemCountTextBox.BackColor = SystemColors.Control;
+            itemCountTextBox.BorderStyle = BorderStyle.None;
+            itemCountTextBox.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            itemCountTextBox.Location = new Point(12, 131);
+            itemCountTextBox.Name = "itemCountTextBox";
+            itemCountTextBox.ReadOnly = true;
+            itemCountTextBox.Size = new Size(430, 22);
+            itemCountTextBox.TabIndex = 33;
+            itemCountTextBox.Text = "<ITEM_COUNT> item(s):";
+            itemCountTextBox.TextAlign = HorizontalAlignment.Center;
             // 
-            // RentalForm
+            // RentalRecieptForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(494, 364);
-            Controls.Add(dueDateDateTimePicker);
-            Controls.Add(textBox3);
-            Controls.Add(textBox1);
-            Controls.Add(textBox2);
-            Controls.Add(furnitureGridView);
+            ClientSize = new Size(454, 411);
+            Controls.Add(itemCountTextBox);
+            Controls.Add(totalTextBox);
+            Controls.Add(titleTextBox);
+            Controls.Add(dueDateTextBox);
             Controls.Add(submitButton);
-            Controls.Add(cancelButton);
-            Name = "RentalForm";
+            Name = "RentalRecieptForm";
             Text = "Rental";
-            ((System.ComponentModel.ISupportInitialize)customerBindingSource).EndInit();
-            ((System.ComponentModel.ISupportInitialize)furnitureGridView).EndInit();
-            ((System.ComponentModel.ISupportInitialize)furnitureBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)errorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -160,7 +125,7 @@
         private Button cancelButton;
         private Button submitButton;
         private DataGridView furnitureGridView;
-        private TextBox textBox2;
+        private TextBox dueDateTextBox;
         private ErrorProvider errorProvider;
         private DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fnameDataGridViewTextBoxColumn;
@@ -185,7 +150,9 @@
         private DataGridViewTextBoxColumn finerateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private TextBox textBox3;
-        private TextBox textBox1;
+        private TextBox titleTextBox;
+        private TextBox totalTextBox;
         private DateTimePicker dueDateDateTimePicker;
+        private TextBox itemCountTextBox;
     }
 }
