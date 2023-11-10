@@ -6,6 +6,8 @@ namespace RentMeFurnitureRentalSystem.DAL;
 
 public class FurnitureDAL
 {
+    #region Methods
+
     public static IList<Furniture> GetFurniture()
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -14,61 +16,70 @@ public class FurnitureDAL
         return result.ToList();
     }
 
+    public static IList<Furniture> GetRentableFurniture()
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var result = connection.Query<Furniture>(QueryStrings.GetRentableFurniture);
+        return result.ToList();
+    }
+
     public static IList<Furniture> GetFurnitureById(int id)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
-        var result = connection.Query<Furniture>(QueryStrings.GetFurnitureById,new {id = id});
-
+        var result = connection.Query<Furniture>(QueryStrings.GetFurnitureById, new { id });
         return result.ToList();
     }
 
     public static IList<Furniture> GetFurnitureByCategory(string category)
     {
-        var list = new List<Furniture>();
-
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
         var result = connection.Query<Furniture>(QueryStrings.GetFurnitureByCategory, new { category });
-        foreach (var furniture in result)
-        {
-            list.Add(furniture);
-        }
-        return list;
+        return result.ToList();
     }
 
     public static IList<Furniture> GetFurnitureByStyle(string style)
     {
-        var list = new List<Furniture>();
-
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
         var result = connection.Query<Furniture>(QueryStrings.GetFurnitureByStyle, new { style });
-
-        foreach (var furniture in result)
-        {
-            list.Add(furniture);
-        }
-
-        return list;
+        return result.ToList();
     }
+
+    public static IList<Furniture> GetRentableFurnitureById(int id)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var result = connection.Query<Furniture>(QueryStrings.GetRentableFurnitureById, new { id });
+        return result.ToList();
+    }
+
+    public static IList<Furniture> GetRentableFurnitureByCategory(string category)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var result = connection.Query<Furniture>(QueryStrings.GetRentableFurnitureByCategory, new { category });
+        return result.ToList();
+    }
+
+    public static IList<Furniture> GetRentableFurnitureByStyle(string style)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var result = connection.Query<Furniture>(QueryStrings.GetRentableFurnitureByStyle, new { style });
+        return result.ToList();
+    }
+
     public static bool CreateFurniture(Furniture furniture)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
         try
         {
-            var result = connection.Execute(QueryStrings.CreateFurniture, new
-            {
-                Category = furniture.Category_name,
-                Style = furniture.Style_name,
-                furniture.Name,
-                furniture.Description,
-                rental_rate = furniture.Rental_rate,
-                furniture.Fine_rate,
-                furniture.Quantity
-            });
-            return true;
+            var result = connection.Execute(QueryStrings.CreateFurniture, furniture);
+            return result > 0;
         }
         catch (Exception ex)
         {
@@ -76,4 +87,6 @@ public class FurnitureDAL
             return false;
         }
     }
+
+    #endregion
 }

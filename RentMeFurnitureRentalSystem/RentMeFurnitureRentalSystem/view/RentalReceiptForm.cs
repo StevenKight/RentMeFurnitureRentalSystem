@@ -1,27 +1,28 @@
-﻿using System.ComponentModel;
-using System.IO.Pipelines;
-using System.Text.RegularExpressions;
-using RentMeFurnitureRentalSystem.DAL;
+﻿using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.model;
-using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.view;
 
 public partial class RentalReceiptForm : Form
 {
+    #region Data members
+
     private List<Furniture> Furniture;
+
+    #endregion
 
     #region Constructors
 
     public RentalReceiptForm(int rentalId)
     {
-
         this.InitializeComponent();
 
         this.loadData(rentalId);
     }
 
     #endregion
+
+    #region Methods
 
     private void loadData(int rentalId)
     {
@@ -55,18 +56,10 @@ public partial class RentalReceiptForm : Form
         this.itemCountTextBox.Text = this.itemCountTextBox.Text.Replace("<ITEM_COUNT>", itemCount.ToString());
     }
 
-    private void submitButton_Click(object sender, EventArgs e)
+    private void closeButton_Click(object sender, EventArgs e)
     {
-        // TODO: if back continue result, else close
-
-        MessageBox.Show("Successfully rented.");
-        this.DialogResult = DialogResult.OK;
-        this.Close();
+        Close();
     }
 
-    private void backButton_Click(object sender, EventArgs e)
-    {
-        this.DialogResult = DialogResult.Cancel;
-        this.Close();
-    }
+    #endregion
 }
