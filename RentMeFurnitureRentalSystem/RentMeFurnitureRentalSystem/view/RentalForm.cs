@@ -137,7 +137,8 @@ public partial class RentalForm : Form
 
         // TODO: Add a confirmation chance for the user to confirm the rental
 
-        if (!RentalDAL.CreateRental(rental))
+        var newRentalId = RentalDAL.CreateRental(rental);
+        if (newRentalId <= 0)
         {
             MessageBox.Show("Error creating rental transaction.");
             return;
@@ -147,6 +148,7 @@ public partial class RentalForm : Form
         {
             var item = new RentalItem
             {
+                Rental_id = newRentalId,
                 Member_id = rental.Member_id,
                 Employee_num = rental.Employee_num,
                 Start_date = rental.Start_date,

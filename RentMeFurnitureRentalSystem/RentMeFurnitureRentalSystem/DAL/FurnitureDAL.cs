@@ -72,6 +72,22 @@ public class FurnitureDAL
         return result.ToList();
     }
 
+    public static bool RentQuantity(RentalItem rentalItem)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        try
+        {
+            var result = connection.Execute(QueryStrings.RentQuantity, rentalItem);
+            return result > 0;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+    }
+
     public static bool CreateFurniture(Furniture furniture)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
