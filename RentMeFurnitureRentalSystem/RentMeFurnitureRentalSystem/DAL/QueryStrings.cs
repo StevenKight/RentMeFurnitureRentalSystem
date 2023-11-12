@@ -130,11 +130,7 @@ public static class QueryStrings
                                          "AND `rental_item`.rental_id = @Id " +
                                          "GROUP BY `rental_item`.rental_id";
 
-    public const string GetRentalId = "SELECT rental_id " +
-                                      "FROM `rental` " +
-                                      "WHERE member_id = @Member_id " +
-                                      "AND employee_num = @Employee_num " +
-                                      "AND `start_date` = @Start_date"; // TODO: Find better way to find rental id
+    public const string GetRentalByMember = "select * from `rental` where member_id=@Member_id";
 
     #endregion
 }

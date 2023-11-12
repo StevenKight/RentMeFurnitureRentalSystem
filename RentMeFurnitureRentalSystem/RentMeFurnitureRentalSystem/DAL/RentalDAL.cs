@@ -39,21 +39,14 @@ public class RentalDAL
         return results;
     }
 
-    public static int GetRentalId(RentalItem rental)
+    public static List<RentalItem> GetRentalsByCustomer(Customer customer)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
 
-        var result = connection.Query<int>(QueryStrings.GetRentalId, rental);
+        var results = connection.Query<RentalItem>(QueryStrings.GetRentalByMember, customer);
 
-        try
-        {
-            return result.ElementAt(0);
-        }
-        catch
-        {
-            return -1;
-        }
+        return results.ToList();
     }
 
     public static int CreateRental(RentalItem rental)

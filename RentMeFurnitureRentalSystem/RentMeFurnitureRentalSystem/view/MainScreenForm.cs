@@ -180,11 +180,13 @@ public partial class MainScreenForm : Form
         {
             this.deleteCustomerButton.Enabled = false;
             this.rentButton.Enabled = false;
+            this.returnButton.Enabled = false;
             return;
         }
 
         this.deleteCustomerButton.Enabled = true;
         this.rentButton.Enabled = true;
+        this.returnButton.Enabled = true;
 
         var selectedRows = this.customerGridView.SelectedRows;
         if (selectedRows.Count > 0)
@@ -356,6 +358,15 @@ public partial class MainScreenForm : Form
         rentalForm.Left = Left + (Width - rentalForm.Width) / 2;
         rentalForm.Top = Top + (Height - rentalForm.Height) / 2;
         rentalForm.ShowDialog();
+    }
+
+    private void returnButton_Click(object sender, EventArgs e)
+    {
+        var returnForm = new ReturnForm(this.LoggedInEmployee, this.SelectedCustomer);
+        returnForm.StartPosition = FormStartPosition.Manual;
+        returnForm.Left = Left + (Width - returnForm.Width) / 2;
+        returnForm.Top = Top + (Height - returnForm.Height) / 2;
+        returnForm.ShowDialog();
     }
 
     #endregion

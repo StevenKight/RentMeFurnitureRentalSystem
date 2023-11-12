@@ -165,9 +165,8 @@ public partial class RentalForm : Form
         }
 
         MessageBox.Show("Successfully rented to user");
-        var rentalId = RentalDAL.GetRentalId(rental);
 
-        var receipt = new RentalReceiptForm(rentalId);
+        var receipt = new RentalReceiptForm(newRentalId);
         receipt.StartPosition = FormStartPosition.Manual;
         receipt.Left = Left + (Width - receipt.Width) / 2;
         receipt.Top = Top + (Height - receipt.Height) / 2;
