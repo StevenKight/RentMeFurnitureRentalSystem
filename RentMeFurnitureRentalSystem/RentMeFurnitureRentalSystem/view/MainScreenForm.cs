@@ -59,7 +59,7 @@ public partial class MainScreenForm : Form
         Employees = EmployeeDal.GetAllEmployees();
         Customers = CustomerDal.GetAllCustomers();
         Furniture = FurnitureDAL.GetFurniture().ToList();
-
+        
         populateGridViews();
         this.populateStyleAndCategoryComboBoxes();
     }

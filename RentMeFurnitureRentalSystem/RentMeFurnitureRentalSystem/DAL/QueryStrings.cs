@@ -2,7 +2,6 @@
 
 public static class QueryStrings
 {
-
     #region Roles
 
     public const string GetRoles = "select * from role";
@@ -51,6 +50,7 @@ public static class QueryStrings
     public const string GetCustomerByPhone = "select * from customer where phone=@phone";
 
     public const string GetCustomerByName = "select * from customer where fname=@fname and lname=@lname";
+
     #endregion
 
     #region Login
@@ -95,14 +95,26 @@ public static class QueryStrings
 
     public const string GetFurniture = "select * from furniture";
 
+    public const string GetRentableFurniture = "select * from furniture where quantity > 0";
+
     public const string GetFurnitureById = "select * from furniture where furniture_id=@id";
 
     public const string GetFurnitureByCategory = "select * from furniture where category_name=@category";
 
     public const string GetFurnitureByStyle = "select * from furniture where style_name=@style";
 
+    public const string GetRentableFurnitureById = "select * from furniture where furniture_id=@id and quantity > 0";
+
+    public const string GetRentableFurnitureByCategory =
+        "select * from furniture where category_name=@category and quantity > 0";
+
+    public const string GetRentableFurnitureByStyle =
+        "select * from furniture where style_name=@style and quantity > 0";
+
     public const string CreateFurniture =
-        "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category,@Style,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
+        "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category_name,@Style_name,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
+
+    public const string RentQuantity = "update furniture set quantity = quantity - @Quantity where furniture_id=@Furniture_id";
 
     #endregion
 
@@ -118,24 +130,11 @@ public static class QueryStrings
                                          "AND `rental_item`.rental_id = @Id " +
                                          "GROUP BY `rental_item`.rental_id";
 
-    public static string GetRentalId = "SELECT rental_id " +
-                                       "FROM `rental` " +
-                                       "WHERE member_id = @Member_id " +
-                                       "AND employee_num = @Employee_num " +
-                                       "AND `start_date` = @Start_date";
-
-    public static string CreateRental = "INSERT INTO `rental`(member_id, employee_num, `start_date`, due_date)" +
-                                        "VALUES (@Member_id, @Employee_num, @Start_date, @Due_date);";
-
-    public static string CreateRentalItem = "INSERT INTO `rental_item`(rental_id, furniture_id, quantity)" +
-                                            "VALUES (" +
-                                            "(SELECT rental_id " +
-                                            "FROM `rental` " +
-                                            "WHERE member_id = @Member_id " +
-                                            "AND employee_num = @Employee_num " +
-                                            "AND `start_date` = @Start_date " +
-                                            "AND due_date = @Due_date), " +
-                                            "@Furniture_id, @Quantity);";
+    public const string GetRentalId = "SELECT rental_id " +
+                                      "FROM `rental` " +
+                                      "WHERE member_id = @Member_id " +
+                                      "AND employee_num = @Employee_num " +
+                                      "AND `start_date` = @Start_date"; // TODO: Find better way to find rental id
 
     #endregion
 }
