@@ -8,6 +8,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace RentMeFurnitureRentalSystem.Utils
 {
+    /// <summary>
+    /// The Password hasher is using the Microsoft.AspNetCore.Identity;
+    /// password hasher. For more info about the hasher visit this link
+    /// https://learn.microsoft.com/en-us/dotnet/api/microsoft.aspnetcore.identity.passwordhasher-1?view=aspnetcore-7.0
+    /// 
+    /// </summary>
     public static class PasswordHasher
     {
         
