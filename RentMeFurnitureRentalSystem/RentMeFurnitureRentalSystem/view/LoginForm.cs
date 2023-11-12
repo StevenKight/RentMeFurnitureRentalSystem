@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Identity;
 using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.Utils;
 
 namespace RentMeFurnitureRentalSystem;
 
@@ -82,7 +84,7 @@ public partial class Form1 : Form
 
         var loginInfo = LoginDal.CheckLogin(username);
 
-        if (username.Equals(loginInfo.Username) && password.Equals(loginInfo.Password))
+        if (username.Equals(loginInfo.Username) && PasswordHasher.CheckHashedPassword(loginInfo.Password,password) == PasswordVerificationResult.Success)
         {
             return true;
         }
