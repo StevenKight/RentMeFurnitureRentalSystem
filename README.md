@@ -1,5 +1,15 @@
 # RentMeFurnitureRentalSystem
 
+# Test Accounts
+***Note: All accounts for previous iterations do not work due to new encryption***
+
+Format:
+- Username | Password
+
+Employee Role:
+- hash | passhash
+- hash 2 | pass
+
 ## Short Description
 This project serves as a practical application of the knowledge gained in our course, offering hands-on experience in designing and implementing a database-driven application. 
 By contributing to this project, we have the opportunity to develop a comprehensive understanding of various aspects, including: 
