@@ -8,6 +8,8 @@ Format:
 
 Employee Role:
 - hash | passhash
+
+Admin Role:
 - hash 2 | pass
 
 ## Short Description
