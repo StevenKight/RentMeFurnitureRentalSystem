@@ -357,6 +357,11 @@ public partial class MainScreenForm : Form
         rentalForm.Top = Top + (Height - rentalForm.Height) / 2;
         rentalForm.ShowDialog();
     }
+    private void adminTableButton_Click(object sender, EventArgs e)
+    {
 
+    }
     #endregion
+
+
 }
