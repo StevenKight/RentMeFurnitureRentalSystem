@@ -77,7 +77,8 @@ public partial class MainScreenForm : Form
         {
             return;
         }
-
+        this.adminTableButton.Enabled = false;
+        this.adminTableButton.Visible = false;
         this.dashboardTabs.TabPages.Remove(this.employeesTab);
     }
 
@@ -373,10 +374,19 @@ public partial class MainScreenForm : Form
         }
         catch (ObjectDisposedException ex)
         {
-            // TODO: Find better way around this
             // This helps catch if there was any rentals for the user selected.
         }
     }
 
+    private void adminTableButton_Click(object sender, EventArgs e)
+    {
+        var tableForm = new AdminTableForm();
+        tableForm.StartPosition = FormStartPosition.Manual;
+        tableForm.Left = Left + (Width - tableForm.Width) / 2;
+        tableForm.Top = Top + (Height - tableForm.Height) / 2;
+        tableForm.ShowDialog();
+    }
     #endregion
+
+
 }

@@ -102,6 +102,7 @@
             this.furnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.employeesTab = new System.Windows.Forms.TabPage();
             this.deleteEmployeeButton = new System.Windows.Forms.Button();
+            this.adminTableButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
@@ -116,10 +117,9 @@
             // 
             // addEmployeeButton
             // 
-            this.addEmployeeButton.Location = new System.Drawing.Point(7, 8);
-            this.addEmployeeButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addEmployeeButton.Location = new System.Drawing.Point(6, 6);
             this.addEmployeeButton.Name = "addEmployeeButton";
-            this.addEmployeeButton.Size = new System.Drawing.Size(153, 31);
+            this.addEmployeeButton.Size = new System.Drawing.Size(134, 23);
             this.addEmployeeButton.TabIndex = 0;
             this.addEmployeeButton.Text = "Add Employee ";
             this.addEmployeeButton.UseVisualStyleBackColor = true;
@@ -129,18 +129,17 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(323, 28);
+            this.label1.Location = new System.Drawing.Point(283, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(382, 46);
+            this.label1.Size = new System.Drawing.Size(301, 37);
             this.label1.TabIndex = 1;
             this.label1.Text = "Rental Furniture System ";
             // 
             // addCustomerButton
             // 
-            this.addCustomerButton.Location = new System.Drawing.Point(7, 8);
-            this.addCustomerButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addCustomerButton.Location = new System.Drawing.Point(6, 6);
             this.addCustomerButton.Name = "addCustomerButton";
-            this.addCustomerButton.Size = new System.Drawing.Size(153, 31);
+            this.addCustomerButton.Size = new System.Drawing.Size(134, 23);
             this.addCustomerButton.TabIndex = 2;
             this.addCustomerButton.Text = "Add Customer";
             this.addCustomerButton.UseVisualStyleBackColor = true;
@@ -148,10 +147,9 @@
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(749, 37);
-            this.logoutButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.logoutButton.Location = new System.Drawing.Point(659, 39);
             this.logoutButton.Name = "logoutButton";
-            this.logoutButton.Size = new System.Drawing.Size(86, 31);
+            this.logoutButton.Size = new System.Drawing.Size(75, 23);
             this.logoutButton.TabIndex = 3;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
@@ -161,9 +159,10 @@
             // 
             this.employeeDisplay.BackColor = System.Drawing.SystemColors.Control;
             this.employeeDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.employeeDisplay.Location = new System.Drawing.Point(685, 15);
+            this.employeeDisplay.Location = new System.Drawing.Point(615, 18);
+            this.employeeDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.employeeDisplay.Name = "employeeDisplay";
-            this.employeeDisplay.Size = new System.Drawing.Size(213, 20);
+            this.employeeDisplay.Size = new System.Drawing.Size(163, 16);
             this.employeeDisplay.TabIndex = 7;
             this.employeeDisplay.Text = "USER";
             this.employeeDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -174,10 +173,9 @@
             // 
             // customerSearchButton
             // 
-            this.customerSearchButton.Location = new System.Drawing.Point(671, 11);
-            this.customerSearchButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.customerSearchButton.Location = new System.Drawing.Point(587, 8);
             this.customerSearchButton.Name = "customerSearchButton";
-            this.customerSearchButton.Size = new System.Drawing.Size(86, 31);
+            this.customerSearchButton.Size = new System.Drawing.Size(75, 23);
             this.customerSearchButton.TabIndex = 20;
             this.customerSearchButton.Text = "Search";
             this.customerSearchButton.UseVisualStyleBackColor = true;
@@ -186,83 +184,76 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(507, 55);
+            this.label3.Location = new System.Drawing.Point(444, 41);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 20);
+            this.label3.Size = new System.Drawing.Size(66, 15);
             this.label3.TabIndex = 19;
             this.label3.Text = "Last Name:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(239, 55);
+            this.label2.Location = new System.Drawing.Point(209, 41);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 20);
+            this.label2.Size = new System.Drawing.Size(67, 15);
             this.label2.TabIndex = 18;
             this.label2.Text = "First Name:";
             // 
             // lastNameSearchTextBox
             // 
-            this.lastNameSearchTextBox.Location = new System.Drawing.Point(590, 51);
-            this.lastNameSearchTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lastNameSearchTextBox.Location = new System.Drawing.Point(516, 38);
             this.lastNameSearchTextBox.Name = "lastNameSearchTextBox";
-            this.lastNameSearchTextBox.Size = new System.Drawing.Size(181, 27);
+            this.lastNameSearchTextBox.Size = new System.Drawing.Size(159, 23);
             this.lastNameSearchTextBox.TabIndex = 17;
             // 
             // nameRadioButton
             // 
             this.nameRadioButton.AutoSize = true;
-            this.nameRadioButton.Location = new System.Drawing.Point(167, 52);
-            this.nameRadioButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.nameRadioButton.Location = new System.Drawing.Point(146, 39);
             this.nameRadioButton.Name = "nameRadioButton";
-            this.nameRadioButton.Size = new System.Drawing.Size(70, 24);
+            this.nameRadioButton.Size = new System.Drawing.Size(57, 19);
             this.nameRadioButton.TabIndex = 16;
             this.nameRadioButton.Text = "Name";
             this.nameRadioButton.UseVisualStyleBackColor = true;
             // 
             // firstNameSearchTextBox
             // 
-            this.firstNameSearchTextBox.Location = new System.Drawing.Point(322, 51);
-            this.firstNameSearchTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.firstNameSearchTextBox.Location = new System.Drawing.Point(282, 38);
             this.firstNameSearchTextBox.Name = "firstNameSearchTextBox";
-            this.firstNameSearchTextBox.Size = new System.Drawing.Size(178, 27);
+            this.firstNameSearchTextBox.Size = new System.Drawing.Size(156, 23);
             this.firstNameSearchTextBox.TabIndex = 15;
             // 
             // phoneNumberRadioButton
             // 
             this.phoneNumberRadioButton.AutoSize = true;
-            this.phoneNumberRadioButton.Location = new System.Drawing.Point(376, 13);
-            this.phoneNumberRadioButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.phoneNumberRadioButton.Location = new System.Drawing.Point(329, 10);
             this.phoneNumberRadioButton.Name = "phoneNumberRadioButton";
-            this.phoneNumberRadioButton.Size = new System.Drawing.Size(132, 24);
+            this.phoneNumberRadioButton.Size = new System.Drawing.Size(109, 19);
             this.phoneNumberRadioButton.TabIndex = 14;
             this.phoneNumberRadioButton.Text = "Phone Number:";
             this.phoneNumberRadioButton.UseVisualStyleBackColor = true;
             // 
             // phoneNumberTextBox
             // 
-            this.phoneNumberTextBox.Location = new System.Drawing.Point(507, 11);
-            this.phoneNumberTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.phoneNumberTextBox.Location = new System.Drawing.Point(444, 8);
             this.phoneNumberTextBox.Name = "phoneNumberTextBox";
-            this.phoneNumberTextBox.Size = new System.Drawing.Size(156, 27);
+            this.phoneNumberTextBox.Size = new System.Drawing.Size(137, 23);
             this.phoneNumberTextBox.TabIndex = 13;
             // 
             // memberIdTextBox
             // 
-            this.memberIdTextBox.Location = new System.Drawing.Point(273, 11);
-            this.memberIdTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.memberIdTextBox.Location = new System.Drawing.Point(239, 8);
             this.memberIdTextBox.Name = "memberIdTextBox";
-            this.memberIdTextBox.Size = new System.Drawing.Size(95, 27);
+            this.memberIdTextBox.Size = new System.Drawing.Size(84, 23);
             this.memberIdTextBox.TabIndex = 12;
             // 
             // memberIDRadioButton
             // 
             this.memberIDRadioButton.AutoSize = true;
             this.memberIDRadioButton.Checked = true;
-            this.memberIDRadioButton.Location = new System.Drawing.Point(167, 13);
-            this.memberIDRadioButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.memberIDRadioButton.Location = new System.Drawing.Point(146, 10);
             this.memberIDRadioButton.Name = "memberIDRadioButton";
-            this.memberIDRadioButton.Size = new System.Drawing.Size(106, 24);
+            this.memberIDRadioButton.Size = new System.Drawing.Size(86, 19);
             this.memberIDRadioButton.TabIndex = 11;
             this.memberIDRadioButton.TabStop = true;
             this.memberIDRadioButton.Text = "Member Id:";
@@ -288,8 +279,8 @@
             this.emailDataGridViewTextBoxColumn1,
             this.rolenameDataGridViewTextBoxColumn});
             this.employeeGridView.DataSource = this.employeeBindingSource;
-            this.employeeGridView.Location = new System.Drawing.Point(167, 8);
-            this.employeeGridView.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.employeeGridView.Location = new System.Drawing.Point(146, 6);
+            this.employeeGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.employeeGridView.MultiSelect = false;
             this.employeeGridView.Name = "employeeGridView";
             this.employeeGridView.ReadOnly = true;
@@ -297,7 +288,7 @@
             this.employeeGridView.RowHeadersWidth = 51;
             this.employeeGridView.RowTemplate.Height = 25;
             this.employeeGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.employeeGridView.Size = new System.Drawing.Size(702, 427);
+            this.employeeGridView.Size = new System.Drawing.Size(614, 320);
             this.employeeGridView.TabIndex = 11;
             this.employeeGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.employeeGridView_RowStateChanged);
             // 
@@ -309,7 +300,7 @@
             this.fullnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.fullnameDataGridViewTextBoxColumn1.Name = "fullnameDataGridViewTextBoxColumn1";
             this.fullnameDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.fullnameDataGridViewTextBoxColumn1.Width = 98;
+            this.fullnameDataGridViewTextBoxColumn1.Width = 81;
             // 
             // usernameDataGridViewTextBoxColumn
             // 
@@ -359,7 +350,7 @@
             this.dobDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dobDataGridViewTextBoxColumn1.Name = "dobDataGridViewTextBoxColumn1";
             this.dobDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dobDataGridViewTextBoxColumn1.Width = 67;
+            this.dobDataGridViewTextBoxColumn1.Width = 54;
             // 
             // genderDataGridViewTextBoxColumn1
             // 
@@ -369,7 +360,7 @@
             this.genderDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.genderDataGridViewTextBoxColumn1.Name = "genderDataGridViewTextBoxColumn1";
             this.genderDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.genderDataGridViewTextBoxColumn1.Width = 86;
+            this.genderDataGridViewTextBoxColumn1.Width = 70;
             // 
             // phoneDataGridViewTextBoxColumn1
             // 
@@ -379,7 +370,7 @@
             this.phoneDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
             this.phoneDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.phoneDataGridViewTextBoxColumn1.Width = 79;
+            this.phoneDataGridViewTextBoxColumn1.Width = 66;
             // 
             // addressDataGridViewTextBoxColumn1
             // 
@@ -429,7 +420,7 @@
             this.emailDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.emailDataGridViewTextBoxColumn1.Name = "emailDataGridViewTextBoxColumn1";
             this.emailDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.emailDataGridViewTextBoxColumn1.Width = 75;
+            this.emailDataGridViewTextBoxColumn1.Width = 61;
             // 
             // rolenameDataGridViewTextBoxColumn
             // 
@@ -449,11 +440,11 @@
             this.dashboardTabs.Controls.Add(this.customersTab);
             this.dashboardTabs.Controls.Add(this.furnitureTabpage);
             this.dashboardTabs.Controls.Add(this.employeesTab);
-            this.dashboardTabs.Location = new System.Drawing.Point(16, 101);
-            this.dashboardTabs.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.dashboardTabs.Location = new System.Drawing.Point(14, 76);
+            this.dashboardTabs.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dashboardTabs.Name = "dashboardTabs";
             this.dashboardTabs.SelectedIndex = 0;
-            this.dashboardTabs.Size = new System.Drawing.Size(885, 481);
+            this.dashboardTabs.Size = new System.Drawing.Size(774, 361);
             this.dashboardTabs.TabIndex = 12;
             this.dashboardTabs.SelectedIndexChanged += new System.EventHandler(this.dashboardTabs_SelectedIndexChanged);
             // 
@@ -475,21 +466,20 @@
             this.customersTab.Controls.Add(this.deleteCustomerButton);
             this.customersTab.Controls.Add(this.addCustomerButton);
             this.customersTab.Controls.Add(this.customerGridView);
-            this.customersTab.Location = new System.Drawing.Point(4, 29);
-            this.customersTab.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.customersTab.Location = new System.Drawing.Point(4, 24);
+            this.customersTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.customersTab.Name = "customersTab";
-            this.customersTab.Padding = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.customersTab.Size = new System.Drawing.Size(877, 448);
+            this.customersTab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.customersTab.Size = new System.Drawing.Size(766, 333);
             this.customersTab.TabIndex = 0;
             this.customersTab.Text = "Customers";
             this.customersTab.UseVisualStyleBackColor = true;
             // 
             // returnButton
             // 
-            this.returnButton.Location = new System.Drawing.Point(7, 127);
-            this.returnButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.returnButton.Location = new System.Drawing.Point(6, 95);
             this.returnButton.Name = "returnButton";
-            this.returnButton.Size = new System.Drawing.Size(153, 31);
+            this.returnButton.Size = new System.Drawing.Size(134, 23);
             this.returnButton.TabIndex = 22;
             this.returnButton.Text = "Return Furniture";
             this.returnButton.UseVisualStyleBackColor = true;
@@ -497,10 +487,9 @@
             // 
             // rentButton
             // 
-            this.rentButton.Location = new System.Drawing.Point(7, 88);
-            this.rentButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.rentButton.Location = new System.Drawing.Point(6, 66);
             this.rentButton.Name = "rentButton";
-            this.rentButton.Size = new System.Drawing.Size(153, 31);
+            this.rentButton.Size = new System.Drawing.Size(134, 23);
             this.rentButton.TabIndex = 13;
             this.rentButton.Text = "Rent Furniture";
             this.rentButton.UseVisualStyleBackColor = true;
@@ -508,10 +497,9 @@
             // 
             // resetCustomerButton
             // 
-            this.resetCustomerButton.Location = new System.Drawing.Point(763, 11);
-            this.resetCustomerButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.resetCustomerButton.Location = new System.Drawing.Point(668, 8);
             this.resetCustomerButton.Name = "resetCustomerButton";
-            this.resetCustomerButton.Size = new System.Drawing.Size(86, 31);
+            this.resetCustomerButton.Size = new System.Drawing.Size(75, 23);
             this.resetCustomerButton.TabIndex = 21;
             this.resetCustomerButton.Text = "Reset";
             this.resetCustomerButton.UseVisualStyleBackColor = true;
@@ -519,10 +507,10 @@
             // 
             // deleteCustomerButton
             // 
-            this.deleteCustomerButton.Location = new System.Drawing.Point(7, 48);
-            this.deleteCustomerButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.deleteCustomerButton.Location = new System.Drawing.Point(6, 36);
+            this.deleteCustomerButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.deleteCustomerButton.Name = "deleteCustomerButton";
-            this.deleteCustomerButton.Size = new System.Drawing.Size(153, 31);
+            this.deleteCustomerButton.Size = new System.Drawing.Size(134, 23);
             this.deleteCustomerButton.TabIndex = 11;
             this.deleteCustomerButton.Text = "Delete Customer";
             this.deleteCustomerButton.UseVisualStyleBackColor = true;
@@ -548,8 +536,7 @@
             this.zipDataGridViewTextBoxColumn,
             this.registerdateDataGridViewTextBoxColumn});
             this.customerGridView.DataSource = this.customerBindingSource;
-            this.customerGridView.Location = new System.Drawing.Point(163, 89);
-            this.customerGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.customerGridView.Location = new System.Drawing.Point(143, 67);
             this.customerGridView.MultiSelect = false;
             this.customerGridView.Name = "customerGridView";
             this.customerGridView.ReadOnly = true;
@@ -557,7 +544,7 @@
             this.customerGridView.RowHeadersWidth = 51;
             this.customerGridView.RowTemplate.Height = 25;
             this.customerGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.customerGridView.Size = new System.Drawing.Size(705, 345);
+            this.customerGridView.Size = new System.Drawing.Size(617, 259);
             this.customerGridView.TabIndex = 10;
             this.customerGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.customerGridView_RowStateChanged);
             // 
@@ -569,7 +556,7 @@
             this.fullnameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.fullnameDataGridViewTextBoxColumn.Name = "fullnameDataGridViewTextBoxColumn";
             this.fullnameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fullnameDataGridViewTextBoxColumn.Width = 98;
+            this.fullnameDataGridViewTextBoxColumn.Width = 81;
             // 
             // fnameDataGridViewTextBoxColumn
             // 
@@ -599,7 +586,7 @@
             this.dobDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dobDataGridViewTextBoxColumn.Name = "dobDataGridViewTextBoxColumn";
             this.dobDataGridViewTextBoxColumn.ReadOnly = true;
-            this.dobDataGridViewTextBoxColumn.Width = 67;
+            this.dobDataGridViewTextBoxColumn.Width = 54;
             // 
             // genderDataGridViewTextBoxColumn
             // 
@@ -609,7 +596,7 @@
             this.genderDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
             this.genderDataGridViewTextBoxColumn.ReadOnly = true;
-            this.genderDataGridViewTextBoxColumn.Width = 86;
+            this.genderDataGridViewTextBoxColumn.Width = 70;
             // 
             // phoneDataGridViewTextBoxColumn
             // 
@@ -619,7 +606,7 @@
             this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
             this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
-            this.phoneDataGridViewTextBoxColumn.Width = 79;
+            this.phoneDataGridViewTextBoxColumn.Width = 66;
             // 
             // emailDataGridViewTextBoxColumn
             // 
@@ -629,7 +616,7 @@
             this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             this.emailDataGridViewTextBoxColumn.ReadOnly = true;
-            this.emailDataGridViewTextBoxColumn.Width = 75;
+            this.emailDataGridViewTextBoxColumn.Width = 61;
             // 
             // addressDataGridViewTextBoxColumn
             // 
@@ -692,20 +679,18 @@
             this.furnitureTabpage.Controls.Add(this.furnitureSearchButton);
             this.furnitureTabpage.Controls.Add(this.addFurnitureButton);
             this.furnitureTabpage.Controls.Add(this.furnitureGridView);
-            this.furnitureTabpage.Location = new System.Drawing.Point(4, 29);
-            this.furnitureTabpage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.furnitureTabpage.Location = new System.Drawing.Point(4, 24);
             this.furnitureTabpage.Name = "furnitureTabpage";
-            this.furnitureTabpage.Size = new System.Drawing.Size(877, 448);
+            this.furnitureTabpage.Size = new System.Drawing.Size(766, 333);
             this.furnitureTabpage.TabIndex = 2;
             this.furnitureTabpage.Text = "Furniture";
             this.furnitureTabpage.UseVisualStyleBackColor = true;
             // 
             // resetButton
             // 
-            this.resetButton.Location = new System.Drawing.Point(811, 8);
-            this.resetButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.resetButton.Location = new System.Drawing.Point(710, 6);
             this.resetButton.Name = "resetButton";
-            this.resetButton.Size = new System.Drawing.Size(56, 31);
+            this.resetButton.Size = new System.Drawing.Size(49, 23);
             this.resetButton.TabIndex = 9;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
@@ -714,10 +699,9 @@
             // categoryRadioButton
             // 
             this.categoryRadioButton.AutoSize = true;
-            this.categoryRadioButton.Location = new System.Drawing.Point(530, 11);
-            this.categoryRadioButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.categoryRadioButton.Location = new System.Drawing.Point(464, 8);
             this.categoryRadioButton.Name = "categoryRadioButton";
-            this.categoryRadioButton.Size = new System.Drawing.Size(90, 24);
+            this.categoryRadioButton.Size = new System.Drawing.Size(73, 19);
             this.categoryRadioButton.TabIndex = 8;
             this.categoryRadioButton.Text = "Category";
             this.categoryRadioButton.UseVisualStyleBackColor = true;
@@ -725,10 +709,9 @@
             // StyleRadioButton
             // 
             this.StyleRadioButton.AutoSize = true;
-            this.StyleRadioButton.Location = new System.Drawing.Point(352, 11);
-            this.StyleRadioButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.StyleRadioButton.Location = new System.Drawing.Point(308, 8);
             this.StyleRadioButton.Name = "StyleRadioButton";
-            this.StyleRadioButton.Size = new System.Drawing.Size(62, 24);
+            this.StyleRadioButton.Size = new System.Drawing.Size(50, 19);
             this.StyleRadioButton.TabIndex = 7;
             this.StyleRadioButton.Text = "Style";
             this.StyleRadioButton.UseVisualStyleBackColor = true;
@@ -737,30 +720,27 @@
             // 
             this.categoryComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.categoryComboBox.FormattingEnabled = true;
-            this.categoryComboBox.Location = new System.Drawing.Point(619, 9);
-            this.categoryComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.categoryComboBox.Location = new System.Drawing.Point(542, 7);
             this.categoryComboBox.Name = "categoryComboBox";
-            this.categoryComboBox.Size = new System.Drawing.Size(121, 28);
+            this.categoryComboBox.Size = new System.Drawing.Size(106, 23);
             this.categoryComboBox.TabIndex = 6;
             // 
             // styleComboBox
             // 
             this.styleComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.styleComboBox.FormattingEnabled = true;
-            this.styleComboBox.Location = new System.Drawing.Point(415, 9);
-            this.styleComboBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.styleComboBox.Location = new System.Drawing.Point(363, 7);
             this.styleComboBox.Name = "styleComboBox";
-            this.styleComboBox.Size = new System.Drawing.Size(108, 28);
+            this.styleComboBox.Size = new System.Drawing.Size(95, 23);
             this.styleComboBox.TabIndex = 5;
             // 
             // IdRadioButton
             // 
             this.IdRadioButton.AutoSize = true;
             this.IdRadioButton.Checked = true;
-            this.IdRadioButton.Location = new System.Drawing.Point(166, 11);
-            this.IdRadioButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.IdRadioButton.Location = new System.Drawing.Point(145, 8);
             this.IdRadioButton.Name = "IdRadioButton";
-            this.IdRadioButton.Size = new System.Drawing.Size(105, 24);
+            this.IdRadioButton.Size = new System.Drawing.Size(86, 19);
             this.IdRadioButton.TabIndex = 4;
             this.IdRadioButton.TabStop = true;
             this.IdRadioButton.Text = "Furniture Id";
@@ -768,18 +748,16 @@
             // 
             // furnitureSearchTextBox
             // 
-            this.furnitureSearchTextBox.Location = new System.Drawing.Point(270, 9);
-            this.furnitureSearchTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.furnitureSearchTextBox.Location = new System.Drawing.Point(236, 7);
             this.furnitureSearchTextBox.Name = "furnitureSearchTextBox";
-            this.furnitureSearchTextBox.Size = new System.Drawing.Size(75, 27);
+            this.furnitureSearchTextBox.Size = new System.Drawing.Size(66, 23);
             this.furnitureSearchTextBox.TabIndex = 3;
             // 
             // furnitureSearchButton
             // 
-            this.furnitureSearchButton.Location = new System.Drawing.Point(746, 8);
-            this.furnitureSearchButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.furnitureSearchButton.Location = new System.Drawing.Point(653, 6);
             this.furnitureSearchButton.Name = "furnitureSearchButton";
-            this.furnitureSearchButton.Size = new System.Drawing.Size(65, 31);
+            this.furnitureSearchButton.Size = new System.Drawing.Size(57, 23);
             this.furnitureSearchButton.TabIndex = 2;
             this.furnitureSearchButton.Text = "Search";
             this.furnitureSearchButton.UseVisualStyleBackColor = true;
@@ -787,10 +765,9 @@
             // 
             // addFurnitureButton
             // 
-            this.addFurnitureButton.Location = new System.Drawing.Point(7, 8);
-            this.addFurnitureButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addFurnitureButton.Location = new System.Drawing.Point(6, 6);
             this.addFurnitureButton.Name = "addFurnitureButton";
-            this.addFurnitureButton.Size = new System.Drawing.Size(153, 31);
+            this.addFurnitureButton.Size = new System.Drawing.Size(134, 23);
             this.addFurnitureButton.TabIndex = 1;
             this.addFurnitureButton.Text = "Add Furniture";
             this.addFurnitureButton.UseVisualStyleBackColor = true;
@@ -810,8 +787,7 @@
             this.finerateDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn});
             this.furnitureGridView.DataSource = this.furnitureBindingSource;
-            this.furnitureGridView.Location = new System.Drawing.Point(167, 49);
-            this.furnitureGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.furnitureGridView.Location = new System.Drawing.Point(146, 37);
             this.furnitureGridView.MultiSelect = false;
             this.furnitureGridView.Name = "furnitureGridView";
             this.furnitureGridView.ReadOnly = true;
@@ -819,7 +795,7 @@
             this.furnitureGridView.RowHeadersWidth = 51;
             this.furnitureGridView.RowTemplate.Height = 25;
             this.furnitureGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.furnitureGridView.Size = new System.Drawing.Size(702, 385);
+            this.furnitureGridView.Size = new System.Drawing.Size(614, 289);
             this.furnitureGridView.TabIndex = 0;
             // 
             // furnitureidDataGridViewTextBoxColumn
@@ -830,7 +806,7 @@
             this.furnitureidDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.furnitureidDataGridViewTextBoxColumn.Name = "furnitureidDataGridViewTextBoxColumn";
             this.furnitureidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.furnitureidDataGridViewTextBoxColumn.Width = 115;
+            this.furnitureidDataGridViewTextBoxColumn.Width = 95;
             // 
             // nameDataGridViewTextBoxColumn
             // 
@@ -840,7 +816,7 @@
             this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nameDataGridViewTextBoxColumn.Width = 78;
+            this.nameDataGridViewTextBoxColumn.Width = 64;
             // 
             // categorynameDataGridViewTextBoxColumn
             // 
@@ -850,7 +826,7 @@
             this.categorynameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.categorynameDataGridViewTextBoxColumn.Name = "categorynameDataGridViewTextBoxColumn";
             this.categorynameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categorynameDataGridViewTextBoxColumn.Width = 98;
+            this.categorynameDataGridViewTextBoxColumn.Width = 80;
             // 
             // stylenameDataGridViewTextBoxColumn
             // 
@@ -860,7 +836,7 @@
             this.stylenameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.stylenameDataGridViewTextBoxColumn.Name = "stylenameDataGridViewTextBoxColumn";
             this.stylenameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stylenameDataGridViewTextBoxColumn.Width = 70;
+            this.stylenameDataGridViewTextBoxColumn.Width = 57;
             // 
             // descriptionDataGridViewTextBoxColumn
             // 
@@ -871,7 +847,6 @@
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             this.descriptionDataGridViewTextBoxColumn.Visible = false;
-            this.descriptionDataGridViewTextBoxColumn.Width = 125;
             // 
             // rentalrateDataGridViewTextBoxColumn
             // 
@@ -881,7 +856,7 @@
             this.rentalrateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rentalrateDataGridViewTextBoxColumn.Name = "rentalrateDataGridViewTextBoxColumn";
             this.rentalrateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.rentalrateDataGridViewTextBoxColumn.Width = 112;
+            this.rentalrateDataGridViewTextBoxColumn.Width = 90;
             // 
             // finerateDataGridViewTextBoxColumn
             // 
@@ -891,7 +866,7 @@
             this.finerateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.finerateDataGridViewTextBoxColumn.Name = "finerateDataGridViewTextBoxColumn";
             this.finerateDataGridViewTextBoxColumn.ReadOnly = true;
-            this.finerateDataGridViewTextBoxColumn.Width = 97;
+            this.finerateDataGridViewTextBoxColumn.Width = 79;
             // 
             // quantityDataGridViewTextBoxColumn
             // 
@@ -911,36 +886,45 @@
             this.employeesTab.Controls.Add(this.deleteEmployeeButton);
             this.employeesTab.Controls.Add(this.employeeGridView);
             this.employeesTab.Controls.Add(this.addEmployeeButton);
-            this.employeesTab.Location = new System.Drawing.Point(4, 29);
-            this.employeesTab.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.employeesTab.Location = new System.Drawing.Point(4, 24);
+            this.employeesTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.employeesTab.Name = "employeesTab";
-            this.employeesTab.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.employeesTab.Size = new System.Drawing.Size(877, 448);
+            this.employeesTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.employeesTab.Size = new System.Drawing.Size(766, 333);
             this.employeesTab.TabIndex = 1;
             this.employeesTab.Text = "Employees";
             this.employeesTab.UseVisualStyleBackColor = true;
             // 
             // deleteEmployeeButton
             // 
-            this.deleteEmployeeButton.Location = new System.Drawing.Point(7, 48);
-            this.deleteEmployeeButton.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.deleteEmployeeButton.Location = new System.Drawing.Point(6, 35);
             this.deleteEmployeeButton.Name = "deleteEmployeeButton";
-            this.deleteEmployeeButton.Size = new System.Drawing.Size(153, 31);
+            this.deleteEmployeeButton.Size = new System.Drawing.Size(134, 26);
             this.deleteEmployeeButton.TabIndex = 12;
             this.deleteEmployeeButton.Text = "Delete Employee ";
             this.deleteEmployeeButton.UseVisualStyleBackColor = true;
-            this.deleteEmployeeButton.Click += new System.EventHandler(this.deleteEmployeeButton_Click);
+            // 
+            // adminTableButton
+            // 
+            this.adminTableButton.Location = new System.Drawing.Point(52, 32);
+            this.adminTableButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.adminTableButton.Name = "adminTableButton";
+            this.adminTableButton.Size = new System.Drawing.Size(106, 26);
+            this.adminTableButton.TabIndex = 13;
+            this.adminTableButton.Text = "Admin Search";
+            this.adminTableButton.UseVisualStyleBackColor = true;
             // 
             // MainScreenForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.adminTableButton);
             this.Controls.Add(this.dashboardTabs);
             this.Controls.Add(this.employeeDisplay);
             this.Controls.Add(this.logoutButton);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainScreenForm";
             this.Text = "MainScreenForm";
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
@@ -1036,5 +1020,6 @@
         private DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn registerdateDataGridViewTextBoxColumn;
         private Button returnButton;
+        private Button adminTableButton;
     }
 }

@@ -61,6 +61,8 @@ public static class QueryStrings
 
     public const string DeleteLogin = "DELETE FROM login WHERE username=@Username;";
 
+    public const string ChangeLogin = "ChangePassword";
+
     #endregion
 
     #region Employee
