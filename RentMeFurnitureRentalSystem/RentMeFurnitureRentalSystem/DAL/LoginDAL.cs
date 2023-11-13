@@ -1,8 +1,10 @@
-﻿using Dapper;
+﻿using System.Diagnostics;
+using Dapper;
 using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 using System.Transactions;
+using RentMeFurnitureRentalSystem.Utils;
 
 namespace RentMeFurnitureRentalSystem.DAL;
 
@@ -25,7 +27,8 @@ public class LoginDal
 
         try
         {
-            connection.Execute(QueryStrings.CreateLogin, new { username = login.Username, password = login.Password });
+            
+            connection.Execute(QueryStrings.CreateLogin, new { username = login.Username, password = PasswordHasher.HashPassword(login.Password) });
             return true;
         }
         catch (Exception ex)
