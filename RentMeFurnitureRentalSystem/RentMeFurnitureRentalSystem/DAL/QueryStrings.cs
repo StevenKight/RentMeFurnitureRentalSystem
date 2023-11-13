@@ -101,6 +101,8 @@ public static class QueryStrings
 
     public const string GetFurnitureByCategory = "select * from furniture where category_name=@category";
 
+    public const string GetFurnitureByRental = "select * from furniture where furniture_id in (select furniture_id from rental_item where rental_id=@Id)";
+
     public const string GetFurnitureByStyle = "select * from furniture where style_name=@style";
 
     public const string GetRentableFurnitureById = "select * from furniture where furniture_id=@id and quantity > 0";
@@ -113,8 +115,6 @@ public static class QueryStrings
 
     public const string CreateFurniture =
         "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category_name,@Style_name,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
-
-    public const string RentQuantity = "update furniture set quantity = quantity - @Quantity where furniture_id=@Furniture_id";
 
     #endregion
 

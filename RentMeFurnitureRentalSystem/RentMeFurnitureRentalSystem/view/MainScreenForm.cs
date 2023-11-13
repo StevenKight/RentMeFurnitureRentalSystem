@@ -366,7 +366,16 @@ public partial class MainScreenForm : Form
         returnForm.StartPosition = FormStartPosition.Manual;
         returnForm.Left = Left + (Width - returnForm.Width) / 2;
         returnForm.Top = Top + (Height - returnForm.Height) / 2;
-        returnForm.ShowDialog();
+
+        try
+        {
+            returnForm.ShowDialog();
+        }
+        catch (ObjectDisposedException ex)
+        {
+            // TODO: Find better way around this
+            // This helps catch if there was any rentals for the user selected.
+        }
     }
 
     #endregion

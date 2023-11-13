@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.cancelButton = new System.Windows.Forms.Button();
             this.submitButton = new System.Windows.Forms.Button();
-            this.furnitureGridView = new System.Windows.Forms.DataGridView();
+            this.furnitureDataGridView = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +54,7 @@
             this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox1 = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalsDataGridView)).BeginInit();
@@ -63,7 +63,7 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(60, 449);
+            this.cancelButton.Location = new System.Drawing.Point(60, 465);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(120, 23);
             this.cancelButton.TabIndex = 26;
@@ -73,7 +73,7 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(258, 449);
+            this.submitButton.Location = new System.Drawing.Point(258, 465);
             this.submitButton.Name = "submitButton";
             this.submitButton.Size = new System.Drawing.Size(127, 23);
             this.submitButton.TabIndex = 25;
@@ -81,14 +81,14 @@
             this.submitButton.UseVisualStyleBackColor = true;
             this.submitButton.Click += new System.EventHandler(this.submitButton_Click);
             // 
-            // furnitureGridView
+            // furnitureDataGridView
             // 
-            this.furnitureGridView.AllowUserToAddRows = false;
-            this.furnitureGridView.AllowUserToDeleteRows = false;
-            this.furnitureGridView.AutoGenerateColumns = false;
-            this.furnitureGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.furnitureGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.furnitureGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.furnitureDataGridView.AllowUserToAddRows = false;
+            this.furnitureDataGridView.AllowUserToDeleteRows = false;
+            this.furnitureDataGridView.AutoGenerateColumns = false;
+            this.furnitureDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.furnitureDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.furnitureDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
@@ -97,16 +97,16 @@
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8});
-            this.furnitureGridView.DataSource = this.furnitureBindingSource;
-            this.furnitureGridView.Location = new System.Drawing.Point(12, 245);
-            this.furnitureGridView.MultiSelect = false;
-            this.furnitureGridView.Name = "furnitureGridView";
-            this.furnitureGridView.RowHeadersVisible = false;
-            this.furnitureGridView.RowHeadersWidth = 51;
-            this.furnitureGridView.RowTemplate.Height = 25;
-            this.furnitureGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.furnitureGridView.Size = new System.Drawing.Size(430, 192);
-            this.furnitureGridView.TabIndex = 28;
+            this.furnitureDataGridView.DataSource = this.furnitureBindingSource;
+            this.furnitureDataGridView.Location = new System.Drawing.Point(12, 261);
+            this.furnitureDataGridView.MultiSelect = false;
+            this.furnitureDataGridView.Name = "furnitureDataGridView";
+            this.furnitureDataGridView.RowHeadersVisible = false;
+            this.furnitureDataGridView.RowHeadersWidth = 51;
+            this.furnitureDataGridView.RowTemplate.Height = 25;
+            this.furnitureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.furnitureDataGridView.Size = new System.Drawing.Size(430, 192);
+            this.furnitureDataGridView.TabIndex = 28;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -192,7 +192,7 @@
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(12, 219);
+            this.textBox2.Location = new System.Drawing.Point(12, 232);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(430, 22);
@@ -214,7 +214,7 @@
             this.titleTextBox.ReadOnly = true;
             this.titleTextBox.Size = new System.Drawing.Size(430, 43);
             this.titleTextBox.TabIndex = 31;
-            this.titleTextBox.Text = "Retrun to <USER>";
+            this.titleTextBox.Text = "Return to <USER>";
             this.titleTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rentalsDataGridView
@@ -233,7 +233,7 @@
             this.furnitureidDataGridViewTextBoxColumn,
             this.quantityDataGridViewTextBoxColumn});
             this.rentalsDataGridView.DataSource = this.rentalItemBindingSource;
-            this.rentalsDataGridView.Location = new System.Drawing.Point(12, 80);
+            this.rentalsDataGridView.Location = new System.Drawing.Point(12, 91);
             this.rentalsDataGridView.MultiSelect = false;
             this.rentalsDataGridView.Name = "rentalsDataGridView";
             this.rentalsDataGridView.RowHeadersVisible = false;
@@ -242,6 +242,7 @@
             this.rentalsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.rentalsDataGridView.Size = new System.Drawing.Size(430, 134);
             this.rentalsDataGridView.TabIndex = 32;
+            this.rentalsDataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.rentalsDataGridView_RowStateChanged);
             // 
             // rentalidDataGridViewTextBoxColumn
             // 
@@ -314,7 +315,7 @@
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(12, 53);
+            this.textBox1.Location = new System.Drawing.Point(12, 63);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(430, 22);
@@ -326,17 +327,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 484);
+            this.ClientSize = new System.Drawing.Size(454, 500);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.rentalsDataGridView);
             this.Controls.Add(this.titleTextBox);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.furnitureGridView);
+            this.Controls.Add(this.furnitureDataGridView);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.cancelButton);
             this.Name = "ReturnForm";
             this.Text = "Rental";
-            ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).EndInit();
+            this.Shown += new System.EventHandler(this.ReturnForm_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rentalsDataGridView)).EndInit();
@@ -349,7 +351,7 @@
         #endregion
         private Button cancelButton;
         private Button submitButton;
-        private DataGridView furnitureGridView;
+        private DataGridView furnitureDataGridView;
         private TextBox textBox2;
         private ErrorProvider errorProvider;
         private DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn;

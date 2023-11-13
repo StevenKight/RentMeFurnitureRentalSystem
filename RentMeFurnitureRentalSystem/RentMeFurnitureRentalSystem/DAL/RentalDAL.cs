@@ -67,7 +67,7 @@ public class RentalDAL
         return newId;
     }
 
-    public static bool CreateRentalItem(RentalItem rentalItem) // TODO: Use transaction
+    public static bool CreateRentalItem(RentalItem rentalItem)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
@@ -78,6 +78,39 @@ public class RentalDAL
         param.Add("rentedQuantity", rentalItem.Quantity);
 
         var outcome = connection.Query<int>("CreateRentalItem", param, commandType: CommandType.StoredProcedure);
+
+        return outcome != null;
+    }
+
+    public static int CreateReturn(RentalItem rental)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var param = new DynamicParameters();
+        param.Add("memberId", rental.Member_id);
+        param.Add("employeeNum", rental.Employee_num);
+        param.Add("returnDate", rental.Start_date);
+        param.Add("returnId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+        connection.Query<int>("CreateReturn", param, commandType: CommandType.StoredProcedure);
+        var newId = param.Get<int>("returnId");
+
+        return newId;
+    }
+
+    public static bool CreateReturnItem(RentalItem rentalItem)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var param = new DynamicParameters();
+        param.Add("rentalId", rentalItem.Rental_id);
+        param.Add("returnId", rentalItem.Return_id);
+        param.Add("furnitureId", rentalItem.Furniture_id);
+        param.Add("returnedQuantity", rentalItem.Quantity);
+
+        var outcome = connection.Query<int>("CreateReturnItem", param, commandType: CommandType.StoredProcedure);
 
         return outcome != null;
     }
