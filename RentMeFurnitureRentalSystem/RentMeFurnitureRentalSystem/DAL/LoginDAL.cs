@@ -5,6 +5,7 @@ using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 using System.Transactions;
 using RentMeFurnitureRentalSystem.Utils;
+using System.Data;
 
 namespace RentMeFurnitureRentalSystem.DAL;
 
@@ -60,5 +61,28 @@ public class LoginDal
         return loginResult.ElementAt(0);
     }
 
+    public static bool ChangeLogin(string username, int id, string newPassword)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        try
+        {
+            var parameters = new
+            {
+                inputUsername = username,
+                inputId = id,
+                newPassword = newPassword
+            };
+            var result = connection.Execute(QueryStrings.ChangeLogin,parameters,commandType: CommandType.StoredProcedure);
+            return result > 0;
+
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+            return false;
+        }
+
+    }
     #endregion
 }
