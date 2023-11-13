@@ -1,8 +1,11 @@
 There are no known issues or incomplete features.
 
-Users in the system
-username: admin
-password: pass
+Users in the system:
 
-username: employee
+Employee Role:
+username: hash
+password: passhash
+
+Admin Role:
+username: hash 2
 password: pass
