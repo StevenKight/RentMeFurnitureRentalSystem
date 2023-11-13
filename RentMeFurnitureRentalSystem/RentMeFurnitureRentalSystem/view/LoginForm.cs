@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Utils;
+using RentMeFurnitureRentalSystem.view;
 
 namespace RentMeFurnitureRentalSystem;
 
@@ -93,6 +94,12 @@ public partial class Form1 : Form
         this.loginErrorProvider.SetError(this.passwordInput, "Username and/or Password is incorrect.");
         return false;
     }
-
+    private void forgotPasswordButton_Click(object sender, EventArgs e)
+    {
+        var changepasswordForm = new ChangePasswordForm();
+        changepasswordForm.ShowDialog();
+    }
     #endregion
+
+
 }
