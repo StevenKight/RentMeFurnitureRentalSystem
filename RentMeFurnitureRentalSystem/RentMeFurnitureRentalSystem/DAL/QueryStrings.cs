@@ -103,6 +103,14 @@ public static class QueryStrings
 
     public const string GetFurnitureByCategory = "select * from furniture where category_name=@category";
 
+    public const string GetFurnitureByRental =
+        "select * from furniture " +
+        "where furniture_id in (select furniture_id from rental_item where rental_id=@Id)" +
+        "AND furniture_id not in (select furniture_id " +
+        "from return_item, `return` " +
+        "where return_item.return_id=`return`.return_id " +
+        "AND `return`.member_id=@Member_id)";
+
     public const string GetFurnitureByStyle = "select * from furniture where style_name=@style";
 
     public const string GetRentableFurnitureById = "select * from furniture where furniture_id=@id and quantity > 0";
@@ -116,13 +124,13 @@ public static class QueryStrings
     public const string CreateFurniture =
         "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category_name,@Style_name,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
 
-    public const string RentQuantity = "update furniture set quantity = quantity - @Quantity where furniture_id=@Furniture_id";
-
     #endregion
 
     #region Rental
 
     public const string GetRentalById = "select * from `rental` where rental_id=@Id";
+
+    public const string GetReturnById = "select * from `return` where return_id=@Id";
 
     public const string GetRentalItems = "select * from `rental_item` where rental_id=@Id";
 
@@ -132,11 +140,19 @@ public static class QueryStrings
                                          "AND `rental_item`.rental_id = @Id " +
                                          "GROUP BY `rental_item`.rental_id";
 
-    public const string GetRentalId = "SELECT rental_id " +
-                                      "FROM `rental` " +
-                                      "WHERE member_id = @Member_id " +
-                                      "AND employee_num = @Employee_num " +
-                                      "AND `start_date` = @Start_date"; // TODO: Find better way to find rental id
+    public const string GetRentalByMember = "select * from `rental` where member_id=@Member_id";
+
+    public const string GetReturnItems = "select * from `return_item`,`furniture` " +
+                                         "where `return_item`.furniture_id=`furniture`.furniture_id " +
+                                         "AND `return_item`.return_id=@Id";
+
+    public const string GetReturnFineTotal = "SELECT SUM(`furniture`.rental_rate * `return_item`.quantity) AS fine_total " +
+                                            "FROM `return_item`, `furniture`, `rental` " +
+                                            "WHERE `return_item`.furniture_id=`furniture`.furniture_id " +
+                                            "AND `return_item`.rental_id=`rental`.rental_id " +
+                                            "AND `return_item`.return_id = @Id " +
+                                            "AND `rental`.due_date < NOW() " +
+                                            "GROUP BY `return_item`.return_id";
 
     #endregion
 }

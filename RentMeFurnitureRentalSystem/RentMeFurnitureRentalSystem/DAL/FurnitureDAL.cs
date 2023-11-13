@@ -67,25 +67,19 @@ public class FurnitureDAL
     public static IList<Furniture> GetRentableFurnitureByStyle(string style)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
 
         var result = connection.Query<Furniture>(QueryStrings.GetRentableFurnitureByStyle, new { style });
         return result.ToList();
     }
 
-    public static bool RentQuantity(RentalItem rentalItem)
+    public static List<Furniture> GetFurnitureByRental(RentalItem selectedRental)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
 
-        try
-        {
-            var result = connection.Execute(QueryStrings.RentQuantity, rentalItem);
-            return result > 0;
-        }
-        catch (Exception ex)
-        {
-            MessageBox.Show(ex.Message);
-            return false;
-        }
+        var result = connection.Query<Furniture>(QueryStrings.GetFurnitureByRental, new { Id = selectedRental.Rental_id, Member_id = selectedRental.Member_id });
+        return result.ToList();
     }
 
     public static bool CreateFurniture(Furniture furniture)

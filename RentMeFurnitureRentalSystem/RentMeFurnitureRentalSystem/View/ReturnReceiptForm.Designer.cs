@@ -1,6 +1,6 @@
 ﻿namespace RentMeFurnitureRentalSystem.view
 {
-    partial class RentalReceiptForm
+    partial class ReturnReceiptForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dueDateTextBox = new System.Windows.Forms.TextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.totalTextBox = new System.Windows.Forms.TextBox();
@@ -38,6 +37,7 @@
             this.furnitureGridView = new System.Windows.Forms.DataGridView();
             this.submitButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rental_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,19 +49,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dueDateTextBox
-            // 
-            this.dueDateTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.dueDateTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dueDateTextBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.dueDateTextBox.Location = new System.Drawing.Point(12, 106);
-            this.dueDateTextBox.Name = "dueDateTextBox";
-            this.dueDateTextBox.ReadOnly = true;
-            this.dueDateTextBox.Size = new System.Drawing.Size(430, 22);
-            this.dueDateTextBox.TabIndex = 30;
-            this.dueDateTextBox.Text = "All items due by <DUE_DATE>";
-            this.dueDateTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // errorProvider
             // 
@@ -77,7 +64,7 @@
             this.titleTextBox.ReadOnly = true;
             this.titleTextBox.Size = new System.Drawing.Size(430, 43);
             this.titleTextBox.TabIndex = 31;
-            this.titleTextBox.Text = "Rental <ID> for <USER>";
+            this.titleTextBox.Text = "Return <ID> for <USER>";
             this.titleTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // totalTextBox
@@ -85,12 +72,12 @@
             this.totalTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.totalTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.totalTextBox.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalTextBox.Location = new System.Drawing.Point(12, 61);
+            this.totalTextBox.Location = new System.Drawing.Point(12, 80);
             this.totalTextBox.Name = "totalTextBox";
             this.totalTextBox.ReadOnly = true;
             this.totalTextBox.Size = new System.Drawing.Size(430, 36);
             this.totalTextBox.TabIndex = 32;
-            this.totalTextBox.Text = "Total: $<TOTAL>";
+            this.totalTextBox.Text = "Fine: $<TOTAL>";
             this.totalTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // itemCountTextBox
@@ -119,6 +106,7 @@
             this.furnitureGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.furnitureGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
+            this.Rental_id,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
@@ -153,7 +141,16 @@
             this.dataGridViewTextBoxColumn1.HeaderText = "Id";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             this.dataGridViewTextBoxColumn1.Width = 42;
+            // 
+            // Rental_id
+            // 
+            this.Rental_id.DataPropertyName = "Rental_id";
+            this.Rental_id.HeaderText = "Rental Id";
+            this.Rental_id.Name = "Rental_id";
+            this.Rental_id.ReadOnly = true;
+            this.Rental_id.Width = 78;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -202,6 +199,7 @@
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Visible = false;
             this.dataGridViewTextBoxColumn6.Width = 55;
             // 
             // dataGridViewTextBoxColumn7
@@ -222,7 +220,7 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
             // 
-            // RentalReceiptForm
+            // ReturnReceiptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -232,8 +230,7 @@
             this.Controls.Add(this.itemCountTextBox);
             this.Controls.Add(this.totalTextBox);
             this.Controls.Add(this.titleTextBox);
-            this.Controls.Add(this.dueDateTextBox);
-            this.Name = "RentalReceiptForm";
+            this.Name = "ReturnReceiptForm";
             this.Text = "Rental";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).EndInit();
@@ -245,7 +242,6 @@
 
         #endregion
         private Button cancelButton;
-        private TextBox dueDateTextBox;
         private ErrorProvider errorProvider;
         private DataGridViewTextBoxColumn fullnameDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn fnameDataGridViewTextBoxColumn;
@@ -277,6 +273,7 @@
         private DataGridView furnitureGridView;
         private Button submitButton;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn Rental_id;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;

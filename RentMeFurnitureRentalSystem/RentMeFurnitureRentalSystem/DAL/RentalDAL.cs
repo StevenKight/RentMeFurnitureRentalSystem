@@ -19,6 +19,16 @@ public class RentalDAL
         return results.ElementAt(0);
     }
 
+    public static RentalItem GetReturnById(int id)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var results = connection.Query<RentalItem>(QueryStrings.GetReturnById, new { Id = id });
+
+        return results.ElementAt(0);
+    }
+
     public static List<RentalItem> GetRentalItems(int rentalId)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -39,21 +49,14 @@ public class RentalDAL
         return results;
     }
 
-    public static int GetRentalId(RentalItem rental)
+    public static List<RentalItem> GetRentalsByCustomer(Customer customer)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
 
-        var result = connection.Query<int>(QueryStrings.GetRentalId, rental);
+        var results = connection.Query<RentalItem>(QueryStrings.GetRentalByMember, customer);
 
-        try
-        {
-            return result.ElementAt(0);
-        }
-        catch
-        {
-            return -1;
-        }
+        return results.ToList();
     }
 
     public static int CreateRental(RentalItem rental)
@@ -74,7 +77,7 @@ public class RentalDAL
         return newId;
     }
 
-    public static bool CreateRentalItem(RentalItem rentalItem) // TODO: Use transaction
+    public static bool CreateRentalItem(RentalItem rentalItem)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
@@ -87,5 +90,65 @@ public class RentalDAL
         var outcome = connection.Query<int>("CreateRentalItem", param, commandType: CommandType.StoredProcedure);
 
         return outcome != null;
+    }
+
+    public static int CreateReturn(RentalItem rental)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var param = new DynamicParameters();
+        param.Add("memberId", rental.Member_id);
+        param.Add("employeeNum", rental.Employee_num);
+        param.Add("returnDate", rental.Start_date);
+        param.Add("returnId", dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+        connection.Query<int>("CreateReturn", param, commandType: CommandType.StoredProcedure);
+        var newId = param.Get<int>("returnId");
+
+        return newId;
+    }
+
+    public static bool CreateReturnItem(RentalItem rentalItem)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var param = new DynamicParameters();
+        param.Add("rentalId", rentalItem.Rental_id);
+        param.Add("returnId", rentalItem.Return_id);
+        param.Add("furnitureId", rentalItem.Furniture_id);
+        param.Add("returnedQuantity", rentalItem.Quantity);
+
+        var outcome = connection.Query<int>("CreateReturnItem", param, commandType: CommandType.StoredProcedure);
+
+        return outcome != null;
+    }
+
+    public static List<Furniture> GetReturnItems(int returnId)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var results = connection.Query<Furniture>(QueryStrings.GetReturnItems, new { Id = returnId });
+
+        return results.ToList();
+    }
+
+    public static decimal GetReturnTotal(int returnId)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        try
+        {
+            var results = connection.QuerySingle<decimal>(QueryStrings.GetReturnFineTotal, new { Id = returnId });
+
+            return results;
+        }
+        catch (InvalidOperationException ex)
+        {
+            return 0;
+        }
     }
 }

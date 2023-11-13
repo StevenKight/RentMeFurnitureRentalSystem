@@ -63,6 +63,7 @@
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dashboardTabs = new System.Windows.Forms.TabControl();
             this.customersTab = new System.Windows.Forms.TabPage();
+            this.returnButton = new System.Windows.Forms.Button();
             this.rentButton = new System.Windows.Forms.Button();
             this.resetCustomerButton = new System.Windows.Forms.Button();
             this.deleteCustomerButton = new System.Windows.Forms.Button();
@@ -122,7 +123,7 @@
             this.addEmployeeButton.TabIndex = 0;
             this.addEmployeeButton.Text = "Add Employee ";
             this.addEmployeeButton.UseVisualStyleBackColor = true;
-            addEmployeeButton.Click += addEmployeeButton_Click;
+            this.addEmployeeButton.Click += new System.EventHandler(this.addEmployeeButton_Click);
             // 
             // label1
             // 
@@ -142,26 +143,26 @@
             this.addCustomerButton.TabIndex = 2;
             this.addCustomerButton.Text = "Add Customer";
             this.addCustomerButton.UseVisualStyleBackColor = true;
-            addCustomerButton.Click += addCustomerButton_Click;
+            this.addCustomerButton.Click += new System.EventHandler(this.addCustomerButton_Click);
             // 
             // logoutButton
             // 
-            this.logoutButton.Location = new System.Drawing.Point(655, 28);
+            this.logoutButton.Location = new System.Drawing.Point(659, 39);
             this.logoutButton.Name = "logoutButton";
             this.logoutButton.Size = new System.Drawing.Size(75, 23);
             this.logoutButton.TabIndex = 3;
             this.logoutButton.Text = "Logout";
             this.logoutButton.UseVisualStyleBackColor = true;
-            logoutButton.Click += logoutButton_Click;
+            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
             // 
             // employeeDisplay
             // 
             this.employeeDisplay.BackColor = System.Drawing.SystemColors.Control;
             this.employeeDisplay.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.employeeDisplay.Location = new System.Drawing.Point(599, 11);
+            this.employeeDisplay.Location = new System.Drawing.Point(615, 18);
             this.employeeDisplay.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.employeeDisplay.Name = "employeeDisplay";
-            this.employeeDisplay.Size = new System.Drawing.Size(186, 16);
+            this.employeeDisplay.Size = new System.Drawing.Size(163, 16);
             this.employeeDisplay.TabIndex = 7;
             this.employeeDisplay.Text = "USER";
             this.employeeDisplay.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -178,7 +179,7 @@
             this.customerSearchButton.TabIndex = 20;
             this.customerSearchButton.Text = "Search";
             this.customerSearchButton.UseVisualStyleBackColor = true;
-            customerSearchButton.Click += customerSearchButton_Click;
+            this.customerSearchButton.Click += new System.EventHandler(this.customerSearchButton_Click);
             // 
             // label3
             // 
@@ -289,14 +290,14 @@
             this.employeeGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.employeeGridView.Size = new System.Drawing.Size(614, 320);
             this.employeeGridView.TabIndex = 11;
-            employeeGridView.RowStateChanged += employeeGridView_RowStateChanged;
-            employeeGridView.MouseDoubleClick += employeeGridView_MouseDoubleClick;
+            this.employeeGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.employeeGridView_RowStateChanged);
             // 
             // fullnameDataGridViewTextBoxColumn1
             // 
             this.fullnameDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fullnameDataGridViewTextBoxColumn1.DataPropertyName = "Fullname";
             this.fullnameDataGridViewTextBoxColumn1.HeaderText = "Fullname";
+            this.fullnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.fullnameDataGridViewTextBoxColumn1.Name = "fullnameDataGridViewTextBoxColumn1";
             this.fullnameDataGridViewTextBoxColumn1.ReadOnly = true;
             this.fullnameDataGridViewTextBoxColumn1.Width = 81;
@@ -305,39 +306,48 @@
             // 
             this.usernameDataGridViewTextBoxColumn.DataPropertyName = "Username";
             this.usernameDataGridViewTextBoxColumn.HeaderText = "Username";
+            this.usernameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.usernameDataGridViewTextBoxColumn.Name = "usernameDataGridViewTextBoxColumn";
             this.usernameDataGridViewTextBoxColumn.ReadOnly = true;
             this.usernameDataGridViewTextBoxColumn.Visible = false;
+            this.usernameDataGridViewTextBoxColumn.Width = 125;
             // 
             // passwordDataGridViewTextBoxColumn
             // 
             this.passwordDataGridViewTextBoxColumn.DataPropertyName = "Password";
             this.passwordDataGridViewTextBoxColumn.HeaderText = "Password";
+            this.passwordDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.passwordDataGridViewTextBoxColumn.Name = "passwordDataGridViewTextBoxColumn";
             this.passwordDataGridViewTextBoxColumn.ReadOnly = true;
             this.passwordDataGridViewTextBoxColumn.Visible = false;
+            this.passwordDataGridViewTextBoxColumn.Width = 125;
             // 
             // fnameDataGridViewTextBoxColumn1
             // 
             this.fnameDataGridViewTextBoxColumn1.DataPropertyName = "Fname";
             this.fnameDataGridViewTextBoxColumn1.HeaderText = "Fname";
+            this.fnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.fnameDataGridViewTextBoxColumn1.Name = "fnameDataGridViewTextBoxColumn1";
             this.fnameDataGridViewTextBoxColumn1.ReadOnly = true;
             this.fnameDataGridViewTextBoxColumn1.Visible = false;
+            this.fnameDataGridViewTextBoxColumn1.Width = 125;
             // 
             // lnameDataGridViewTextBoxColumn1
             // 
             this.lnameDataGridViewTextBoxColumn1.DataPropertyName = "Lname";
             this.lnameDataGridViewTextBoxColumn1.HeaderText = "Lname";
+            this.lnameDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.lnameDataGridViewTextBoxColumn1.Name = "lnameDataGridViewTextBoxColumn1";
             this.lnameDataGridViewTextBoxColumn1.ReadOnly = true;
             this.lnameDataGridViewTextBoxColumn1.Visible = false;
+            this.lnameDataGridViewTextBoxColumn1.Width = 125;
             // 
             // dobDataGridViewTextBoxColumn1
             // 
             this.dobDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dobDataGridViewTextBoxColumn1.DataPropertyName = "Dob";
             this.dobDataGridViewTextBoxColumn1.HeaderText = "Dob";
+            this.dobDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dobDataGridViewTextBoxColumn1.Name = "dobDataGridViewTextBoxColumn1";
             this.dobDataGridViewTextBoxColumn1.ReadOnly = true;
             this.dobDataGridViewTextBoxColumn1.Width = 54;
@@ -347,6 +357,7 @@
             this.genderDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.genderDataGridViewTextBoxColumn1.DataPropertyName = "Gender";
             this.genderDataGridViewTextBoxColumn1.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.genderDataGridViewTextBoxColumn1.Name = "genderDataGridViewTextBoxColumn1";
             this.genderDataGridViewTextBoxColumn1.ReadOnly = true;
             this.genderDataGridViewTextBoxColumn1.Width = 70;
@@ -356,6 +367,7 @@
             this.phoneDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.phoneDataGridViewTextBoxColumn1.DataPropertyName = "Phone";
             this.phoneDataGridViewTextBoxColumn1.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.phoneDataGridViewTextBoxColumn1.Name = "phoneDataGridViewTextBoxColumn1";
             this.phoneDataGridViewTextBoxColumn1.ReadOnly = true;
             this.phoneDataGridViewTextBoxColumn1.Width = 66;
@@ -364,39 +376,48 @@
             // 
             this.addressDataGridViewTextBoxColumn1.DataPropertyName = "Address";
             this.addressDataGridViewTextBoxColumn1.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.addressDataGridViewTextBoxColumn1.Name = "addressDataGridViewTextBoxColumn1";
             this.addressDataGridViewTextBoxColumn1.ReadOnly = true;
             this.addressDataGridViewTextBoxColumn1.Visible = false;
+            this.addressDataGridViewTextBoxColumn1.Width = 125;
             // 
             // cityDataGridViewTextBoxColumn1
             // 
             this.cityDataGridViewTextBoxColumn1.DataPropertyName = "City";
             this.cityDataGridViewTextBoxColumn1.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.cityDataGridViewTextBoxColumn1.Name = "cityDataGridViewTextBoxColumn1";
             this.cityDataGridViewTextBoxColumn1.ReadOnly = true;
             this.cityDataGridViewTextBoxColumn1.Visible = false;
+            this.cityDataGridViewTextBoxColumn1.Width = 125;
             // 
             // stateDataGridViewTextBoxColumn1
             // 
             this.stateDataGridViewTextBoxColumn1.DataPropertyName = "State";
             this.stateDataGridViewTextBoxColumn1.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.stateDataGridViewTextBoxColumn1.Name = "stateDataGridViewTextBoxColumn1";
             this.stateDataGridViewTextBoxColumn1.ReadOnly = true;
             this.stateDataGridViewTextBoxColumn1.Visible = false;
+            this.stateDataGridViewTextBoxColumn1.Width = 125;
             // 
             // zipDataGridViewTextBoxColumn1
             // 
             this.zipDataGridViewTextBoxColumn1.DataPropertyName = "Zip";
             this.zipDataGridViewTextBoxColumn1.HeaderText = "Zip";
+            this.zipDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.zipDataGridViewTextBoxColumn1.Name = "zipDataGridViewTextBoxColumn1";
             this.zipDataGridViewTextBoxColumn1.ReadOnly = true;
             this.zipDataGridViewTextBoxColumn1.Visible = false;
+            this.zipDataGridViewTextBoxColumn1.Width = 125;
             // 
             // emailDataGridViewTextBoxColumn1
             // 
             this.emailDataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.emailDataGridViewTextBoxColumn1.DataPropertyName = "Email";
             this.emailDataGridViewTextBoxColumn1.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.emailDataGridViewTextBoxColumn1.Name = "emailDataGridViewTextBoxColumn1";
             this.emailDataGridViewTextBoxColumn1.ReadOnly = true;
             this.emailDataGridViewTextBoxColumn1.Width = 61;
@@ -406,6 +427,7 @@
             this.rolenameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.rolenameDataGridViewTextBoxColumn.DataPropertyName = "Role_name";
             this.rolenameDataGridViewTextBoxColumn.HeaderText = "Role_name";
+            this.rolenameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rolenameDataGridViewTextBoxColumn.Name = "rolenameDataGridViewTextBoxColumn";
             this.rolenameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -424,10 +446,11 @@
             this.dashboardTabs.SelectedIndex = 0;
             this.dashboardTabs.Size = new System.Drawing.Size(774, 361);
             this.dashboardTabs.TabIndex = 12;
-            dashboardTabs.SelectedIndexChanged += dashboardTabs_SelectedIndexChanged;
+            this.dashboardTabs.SelectedIndexChanged += new System.EventHandler(this.dashboardTabs_SelectedIndexChanged);
             // 
             // customersTab
             // 
+            this.customersTab.Controls.Add(this.returnButton);
             this.customersTab.Controls.Add(this.rentButton);
             this.customersTab.Controls.Add(this.resetCustomerButton);
             this.customersTab.Controls.Add(this.customerSearchButton);
@@ -452,6 +475,16 @@
             this.customersTab.Text = "Customers";
             this.customersTab.UseVisualStyleBackColor = true;
             // 
+            // returnButton
+            // 
+            this.returnButton.Location = new System.Drawing.Point(6, 95);
+            this.returnButton.Name = "returnButton";
+            this.returnButton.Size = new System.Drawing.Size(134, 23);
+            this.returnButton.TabIndex = 22;
+            this.returnButton.Text = "Return Furniture";
+            this.returnButton.UseVisualStyleBackColor = true;
+            this.returnButton.Click += new System.EventHandler(this.returnButton_Click);
+            // 
             // rentButton
             // 
             this.rentButton.Location = new System.Drawing.Point(6, 66);
@@ -460,8 +493,7 @@
             this.rentButton.TabIndex = 13;
             this.rentButton.Text = "Rent Furniture";
             this.rentButton.UseVisualStyleBackColor = true;
-            rentButton.Click += rentButton_Click;
-
+            this.rentButton.Click += new System.EventHandler(this.rentButton_Click);
             // 
             // resetCustomerButton
             // 
@@ -471,7 +503,7 @@
             this.resetCustomerButton.TabIndex = 21;
             this.resetCustomerButton.Text = "Reset";
             this.resetCustomerButton.UseVisualStyleBackColor = true;
-            resetCustomerButton.Click += resetCustomerButton_Click;
+            this.resetCustomerButton.Click += new System.EventHandler(this.resetCustomerButton_Click);
             // 
             // deleteCustomerButton
             // 
@@ -482,7 +514,7 @@
             this.deleteCustomerButton.TabIndex = 11;
             this.deleteCustomerButton.Text = "Delete Customer";
             this.deleteCustomerButton.UseVisualStyleBackColor = true;
-            deleteCustomerButton.Click += deleteCustomerButton_Click;
+            this.deleteCustomerButton.Click += new System.EventHandler(this.deleteCustomerButton_Click);
             // 
             // customerGridView
             // 
@@ -514,14 +546,14 @@
             this.customerGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.customerGridView.Size = new System.Drawing.Size(617, 259);
             this.customerGridView.TabIndex = 10;
-            customerGridView.MouseDoubleClick += customerGridView_MouseDoubleClick;
-            customerGridView.RowStateChanged += customerGridView_RowStateChanged;
+            this.customerGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.customerGridView_RowStateChanged);
             // 
             // fullnameDataGridViewTextBoxColumn
             // 
             this.fullnameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.fullnameDataGridViewTextBoxColumn.DataPropertyName = "Fullname";
             this.fullnameDataGridViewTextBoxColumn.HeaderText = "Fullname";
+            this.fullnameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.fullnameDataGridViewTextBoxColumn.Name = "fullnameDataGridViewTextBoxColumn";
             this.fullnameDataGridViewTextBoxColumn.ReadOnly = true;
             this.fullnameDataGridViewTextBoxColumn.Width = 81;
@@ -530,23 +562,28 @@
             // 
             this.fnameDataGridViewTextBoxColumn.DataPropertyName = "Fname";
             this.fnameDataGridViewTextBoxColumn.HeaderText = "Fname";
+            this.fnameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.fnameDataGridViewTextBoxColumn.Name = "fnameDataGridViewTextBoxColumn";
             this.fnameDataGridViewTextBoxColumn.ReadOnly = true;
             this.fnameDataGridViewTextBoxColumn.Visible = false;
+            this.fnameDataGridViewTextBoxColumn.Width = 125;
             // 
             // lnameDataGridViewTextBoxColumn
             // 
             this.lnameDataGridViewTextBoxColumn.DataPropertyName = "Lname";
             this.lnameDataGridViewTextBoxColumn.HeaderText = "Lname";
+            this.lnameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.lnameDataGridViewTextBoxColumn.Name = "lnameDataGridViewTextBoxColumn";
             this.lnameDataGridViewTextBoxColumn.ReadOnly = true;
             this.lnameDataGridViewTextBoxColumn.Visible = false;
+            this.lnameDataGridViewTextBoxColumn.Width = 125;
             // 
             // dobDataGridViewTextBoxColumn
             // 
             this.dobDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.dobDataGridViewTextBoxColumn.DataPropertyName = "Dob";
             this.dobDataGridViewTextBoxColumn.HeaderText = "Dob";
+            this.dobDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.dobDataGridViewTextBoxColumn.Name = "dobDataGridViewTextBoxColumn";
             this.dobDataGridViewTextBoxColumn.ReadOnly = true;
             this.dobDataGridViewTextBoxColumn.Width = 54;
@@ -556,6 +593,7 @@
             this.genderDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.genderDataGridViewTextBoxColumn.DataPropertyName = "Gender";
             this.genderDataGridViewTextBoxColumn.HeaderText = "Gender";
+            this.genderDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.genderDataGridViewTextBoxColumn.Name = "genderDataGridViewTextBoxColumn";
             this.genderDataGridViewTextBoxColumn.ReadOnly = true;
             this.genderDataGridViewTextBoxColumn.Width = 70;
@@ -565,6 +603,7 @@
             this.phoneDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
             this.phoneDataGridViewTextBoxColumn.HeaderText = "Phone";
+            this.phoneDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
             this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
             this.phoneDataGridViewTextBoxColumn.Width = 66;
@@ -574,6 +613,7 @@
             this.emailDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.emailDataGridViewTextBoxColumn.DataPropertyName = "Email";
             this.emailDataGridViewTextBoxColumn.HeaderText = "Email";
+            this.emailDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.emailDataGridViewTextBoxColumn.Name = "emailDataGridViewTextBoxColumn";
             this.emailDataGridViewTextBoxColumn.ReadOnly = true;
             this.emailDataGridViewTextBoxColumn.Width = 61;
@@ -582,39 +622,48 @@
             // 
             this.addressDataGridViewTextBoxColumn.DataPropertyName = "Address";
             this.addressDataGridViewTextBoxColumn.HeaderText = "Address";
+            this.addressDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.addressDataGridViewTextBoxColumn.Name = "addressDataGridViewTextBoxColumn";
             this.addressDataGridViewTextBoxColumn.ReadOnly = true;
             this.addressDataGridViewTextBoxColumn.Visible = false;
+            this.addressDataGridViewTextBoxColumn.Width = 125;
             // 
             // cityDataGridViewTextBoxColumn
             // 
             this.cityDataGridViewTextBoxColumn.DataPropertyName = "City";
             this.cityDataGridViewTextBoxColumn.HeaderText = "City";
+            this.cityDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.cityDataGridViewTextBoxColumn.Name = "cityDataGridViewTextBoxColumn";
             this.cityDataGridViewTextBoxColumn.ReadOnly = true;
             this.cityDataGridViewTextBoxColumn.Visible = false;
+            this.cityDataGridViewTextBoxColumn.Width = 125;
             // 
             // stateDataGridViewTextBoxColumn
             // 
             this.stateDataGridViewTextBoxColumn.DataPropertyName = "State";
             this.stateDataGridViewTextBoxColumn.HeaderText = "State";
+            this.stateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.stateDataGridViewTextBoxColumn.Name = "stateDataGridViewTextBoxColumn";
             this.stateDataGridViewTextBoxColumn.ReadOnly = true;
             this.stateDataGridViewTextBoxColumn.Visible = false;
+            this.stateDataGridViewTextBoxColumn.Width = 125;
             // 
             // zipDataGridViewTextBoxColumn
             // 
             this.zipDataGridViewTextBoxColumn.DataPropertyName = "Zip";
             this.zipDataGridViewTextBoxColumn.HeaderText = "Zip";
+            this.zipDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.zipDataGridViewTextBoxColumn.Name = "zipDataGridViewTextBoxColumn";
             this.zipDataGridViewTextBoxColumn.ReadOnly = true;
             this.zipDataGridViewTextBoxColumn.Visible = false;
+            this.zipDataGridViewTextBoxColumn.Width = 125;
             // 
             // registerdateDataGridViewTextBoxColumn
             // 
             this.registerdateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.registerdateDataGridViewTextBoxColumn.DataPropertyName = "Register_date";
             this.registerdateDataGridViewTextBoxColumn.HeaderText = "Register_date";
+            this.registerdateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.registerdateDataGridViewTextBoxColumn.Name = "registerdateDataGridViewTextBoxColumn";
             this.registerdateDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -645,7 +694,7 @@
             this.resetButton.TabIndex = 9;
             this.resetButton.Text = "Reset";
             this.resetButton.UseVisualStyleBackColor = true;
-            resetButton.Click += resetButton_Click;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // categoryRadioButton
             // 
@@ -712,7 +761,7 @@
             this.furnitureSearchButton.TabIndex = 2;
             this.furnitureSearchButton.Text = "Search";
             this.furnitureSearchButton.UseVisualStyleBackColor = true;
-            furnitureSearchButton.Click += furnitureSearchButton_Click;
+            this.furnitureSearchButton.Click += new System.EventHandler(this.furnitureSearchButton_Click);
             // 
             // addFurnitureButton
             // 
@@ -722,7 +771,7 @@
             this.addFurnitureButton.TabIndex = 1;
             this.addFurnitureButton.Text = "Add Furniture";
             this.addFurnitureButton.UseVisualStyleBackColor = true;
-            addFurnitureButton.Click += addFurnitureButton_Click;
+            this.addFurnitureButton.Click += new System.EventHandler(this.addFurnitureButton_Click);
             // 
             // furnitureGridView
             // 
@@ -743,6 +792,7 @@
             this.furnitureGridView.Name = "furnitureGridView";
             this.furnitureGridView.ReadOnly = true;
             this.furnitureGridView.RowHeadersVisible = false;
+            this.furnitureGridView.RowHeadersWidth = 51;
             this.furnitureGridView.RowTemplate.Height = 25;
             this.furnitureGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.furnitureGridView.Size = new System.Drawing.Size(614, 289);
@@ -753,6 +803,7 @@
             this.furnitureidDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.furnitureidDataGridViewTextBoxColumn.DataPropertyName = "Furniture_id";
             this.furnitureidDataGridViewTextBoxColumn.HeaderText = "Furniture_id";
+            this.furnitureidDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.furnitureidDataGridViewTextBoxColumn.Name = "furnitureidDataGridViewTextBoxColumn";
             this.furnitureidDataGridViewTextBoxColumn.ReadOnly = true;
             this.furnitureidDataGridViewTextBoxColumn.Width = 95;
@@ -762,6 +813,7 @@
             this.nameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             this.nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            this.nameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             this.nameDataGridViewTextBoxColumn.ReadOnly = true;
             this.nameDataGridViewTextBoxColumn.Width = 64;
@@ -771,6 +823,7 @@
             this.categorynameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.categorynameDataGridViewTextBoxColumn.DataPropertyName = "Category_name";
             this.categorynameDataGridViewTextBoxColumn.HeaderText = "Category";
+            this.categorynameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.categorynameDataGridViewTextBoxColumn.Name = "categorynameDataGridViewTextBoxColumn";
             this.categorynameDataGridViewTextBoxColumn.ReadOnly = true;
             this.categorynameDataGridViewTextBoxColumn.Width = 80;
@@ -780,6 +833,7 @@
             this.stylenameDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.stylenameDataGridViewTextBoxColumn.DataPropertyName = "Style_name";
             this.stylenameDataGridViewTextBoxColumn.HeaderText = "Style";
+            this.stylenameDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.stylenameDataGridViewTextBoxColumn.Name = "stylenameDataGridViewTextBoxColumn";
             this.stylenameDataGridViewTextBoxColumn.ReadOnly = true;
             this.stylenameDataGridViewTextBoxColumn.Width = 57;
@@ -789,6 +843,7 @@
             this.descriptionDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.descriptionDataGridViewTextBoxColumn.DataPropertyName = "Description";
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
+            this.descriptionDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             this.descriptionDataGridViewTextBoxColumn.ReadOnly = true;
             this.descriptionDataGridViewTextBoxColumn.Visible = false;
@@ -798,6 +853,7 @@
             this.rentalrateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.rentalrateDataGridViewTextBoxColumn.DataPropertyName = "Rental_rate";
             this.rentalrateDataGridViewTextBoxColumn.HeaderText = "Rental_rate";
+            this.rentalrateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.rentalrateDataGridViewTextBoxColumn.Name = "rentalrateDataGridViewTextBoxColumn";
             this.rentalrateDataGridViewTextBoxColumn.ReadOnly = true;
             this.rentalrateDataGridViewTextBoxColumn.Width = 90;
@@ -807,6 +863,7 @@
             this.finerateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.finerateDataGridViewTextBoxColumn.DataPropertyName = "Fine_rate";
             this.finerateDataGridViewTextBoxColumn.HeaderText = "Fine_rate";
+            this.finerateDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.finerateDataGridViewTextBoxColumn.Name = "finerateDataGridViewTextBoxColumn";
             this.finerateDataGridViewTextBoxColumn.ReadOnly = true;
             this.finerateDataGridViewTextBoxColumn.Width = 79;
@@ -816,6 +873,7 @@
             this.quantityDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
             this.quantityDataGridViewTextBoxColumn.HeaderText = "Quantity";
+            this.quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
             this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             this.quantityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -831,7 +889,7 @@
             this.employeesTab.Location = new System.Drawing.Point(4, 24);
             this.employeesTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.employeesTab.Name = "employeesTab";
-            this.employeesTab.Padding = new System.Windows.Forms.Padding(3);
+            this.employeesTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
             this.employeesTab.Size = new System.Drawing.Size(766, 333);
             this.employeesTab.TabIndex = 1;
             this.employeesTab.Text = "Employees";
@@ -839,24 +897,22 @@
             // 
             // deleteEmployeeButton
             // 
-            this.deleteEmployeeButton.Location = new System.Drawing.Point(6, 36);
-            this.deleteEmployeeButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.deleteEmployeeButton.Location = new System.Drawing.Point(6, 35);
             this.deleteEmployeeButton.Name = "deleteEmployeeButton";
-            this.deleteEmployeeButton.Size = new System.Drawing.Size(134, 23);
+            this.deleteEmployeeButton.Size = new System.Drawing.Size(134, 26);
             this.deleteEmployeeButton.TabIndex = 12;
             this.deleteEmployeeButton.Text = "Delete Employee ";
             this.deleteEmployeeButton.UseVisualStyleBackColor = true;
-            deleteEmployeeButton.Click += deleteEmployeeButton_Click;
             // 
             // adminTableButton
             // 
-            this.adminTableButton.Location = new System.Drawing.Point(43, 24);
+            this.adminTableButton.Location = new System.Drawing.Point(52, 32);
+            this.adminTableButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.adminTableButton.Name = "adminTableButton";
-            this.adminTableButton.Size = new System.Drawing.Size(75, 23);
+            this.adminTableButton.Size = new System.Drawing.Size(106, 26);
             this.adminTableButton.TabIndex = 13;
-            this.adminTableButton.Text = "Admin table";
+            this.adminTableButton.Text = "Admin Search";
             this.adminTableButton.UseVisualStyleBackColor = true;
-            this.adminTableButton.Click += adminTableButton_Click;
             // 
             // MainScreenForm
             // 
@@ -963,6 +1019,7 @@
         private DataGridViewTextBoxColumn stateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn zipDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn registerdateDataGridViewTextBoxColumn;
+        private Button returnButton;
         private Button adminTableButton;
     }
 }

@@ -9,6 +9,7 @@ namespace RentMeFurnitureRentalSystem.model
     public class RentalItem
     {
         public int Rental_id { get; set; }
+        public int Return_id { get; set; }
         public int Member_id { get; set; }
         public int Employee_num { get; set; }
         public DateTime Start_date { get; set; }

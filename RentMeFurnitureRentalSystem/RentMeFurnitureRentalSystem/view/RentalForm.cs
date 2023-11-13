@@ -135,7 +135,13 @@ public partial class RentalForm : Form
             Due_date = this.dueDateDateTimePicker.Value.Date
         };
 
-        // TODO: Add a confirmation chance for the user to confirm the rental
+        var confirmation = MessageBox.Show("Are you sure you want to rent the selected furniture?", "Confirm Rental",
+            MessageBoxButtons.YesNo);
+
+        if (confirmation != DialogResult.Yes)
+        {
+            return;
+        }
 
         var newRentalId = RentalDAL.CreateRental(rental);
         if (newRentalId <= 0)
@@ -165,9 +171,8 @@ public partial class RentalForm : Form
         }
 
         MessageBox.Show("Successfully rented to user");
-        var rentalId = RentalDAL.GetRentalId(rental);
 
-        var receipt = new RentalReceiptForm(rentalId);
+        var receipt = new RentalReceiptForm(newRentalId);
         receipt.StartPosition = FormStartPosition.Manual;
         receipt.Left = Left + (Width - receipt.Width) / 2;
         receipt.Top = Top + (Height - receipt.Height) / 2;
