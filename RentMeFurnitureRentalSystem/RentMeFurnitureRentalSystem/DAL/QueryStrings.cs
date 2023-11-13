@@ -101,7 +101,8 @@ public static class QueryStrings
 
     public const string GetFurnitureByCategory = "select * from furniture where category_name=@category";
 
-    public const string GetFurnitureByRental = "select * from furniture where furniture_id in (select furniture_id from rental_item where rental_id=@Id)";
+    public const string GetFurnitureByRental =
+        "select * from furniture where furniture_id in (select furniture_id from rental_item where rental_id=@Id)";
 
     public const string GetFurnitureByStyle = "select * from furniture where style_name=@style";
 
@@ -131,6 +132,16 @@ public static class QueryStrings
                                          "GROUP BY `rental_item`.rental_id";
 
     public const string GetRentalByMember = "select * from `rental` where member_id=@Member_id";
+
+    public const string GetReturnItems = "select * from `return_item` where return_id=@Id";
+
+    public const string GetReturnFineTotal = "SELECT SUM(`furniture`.rental_rate * `return_item`.quantity) AS fine_total " +
+                                            "FROM `return_item`, `furniture`, `rental` " +
+                                            "WHERE `return_item`.furniture_id=`furniture`.furniture_id " +
+                                            "AND `return_item`.rental_id=`rental`.rental_id " +
+                                            "AND `return_item`.return_id = @Id " +
+                                            "AND `rental`.due_date < NOW() " +
+                                            "GROUP BY `return_item`.return_id";
 
     #endregion
 }

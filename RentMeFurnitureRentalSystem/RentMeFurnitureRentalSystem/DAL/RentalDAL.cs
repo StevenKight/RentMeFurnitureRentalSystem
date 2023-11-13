@@ -114,4 +114,24 @@ public class RentalDAL
 
         return outcome != null;
     }
+
+    public static List<RentalItem> GetReturnItems(int returnId)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var results = connection.Query<RentalItem>(QueryStrings.GetReturnItems, new { Id = returnId });
+
+        return results.ToList();
+    }
+
+    public static decimal GetReturnTotal(int returnId)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var results = connection.QuerySingle<decimal>(QueryStrings.GetReturnFineTotal, new { Id = returnId });
+
+        return results;
+    }
 }
