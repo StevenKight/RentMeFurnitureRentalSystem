@@ -26,11 +26,11 @@ public partial class ReturnReceiptForm : Form
 
     private void loadData(int returnId)
     {
-        var receiptReturn = RentalDAL.GetRentalById(returnId);
+        var receiptReturn = RentalDAL.GetReturnById(returnId);
         var customer = CustomerDal.GetCustomerByMemberID(receiptReturn.Member_id).ElementAt(0);
         var returnItems = RentalDAL.GetReturnItems(returnId);
         var returnTotal = RentalDAL.GetReturnTotal(returnId);
-        this.Furniture = FurnitureDAL.GetFurniture().Where(piece => piece.Quantity > 0).ToList();
+        this.Furniture = returnItems;
 
         this.titleTextBox.Text = this.titleTextBox.Text.Replace("<ID>", returnId.ToString());
         this.titleTextBox.Text = this.titleTextBox.Text.Replace("<USER>", customer.Fullname);

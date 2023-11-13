@@ -87,6 +87,10 @@ public partial class ReturnForm : Form
                     var displayed = this.Furniture.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
                     x.Quantity = displayed.Quantity;
                 }
+                else
+                {
+                    x.Quantity = 0;
+                }
             });
 
             this.Display = rentalFurniture;
@@ -146,7 +150,13 @@ public partial class ReturnForm : Form
             Start_date = DateTime.Now.Date
         };
 
-        // TODO: Add a confirmation chance for the user to confirm the rental
+        var confirmation = MessageBox.Show("Are you sure you want to return the selected furniture?", "Confirm Return",
+            MessageBoxButtons.YesNo);
+
+        if (confirmation != DialogResult.Yes)
+        {
+            return;
+        }
 
         var newReturnId = RentalDAL.CreateReturn(newReturn);
         if (newReturnId <= 0)

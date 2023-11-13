@@ -35,7 +35,9 @@
             this.itemCountTextBox = new System.Windows.Forms.TextBox();
             this.furnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.furnitureGridView = new System.Windows.Forms.DataGridView();
+            this.submitButton = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rental_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,7 +45,6 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.submitButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureGridView)).BeginInit();
@@ -71,12 +72,12 @@
             this.totalTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.totalTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.totalTextBox.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.totalTextBox.Location = new System.Drawing.Point(12, 75);
+            this.totalTextBox.Location = new System.Drawing.Point(12, 80);
             this.totalTextBox.Name = "totalTextBox";
             this.totalTextBox.ReadOnly = true;
             this.totalTextBox.Size = new System.Drawing.Size(430, 36);
             this.totalTextBox.TabIndex = 32;
-            this.totalTextBox.Text = "Fine: <TOTAL>";
+            this.totalTextBox.Text = "Fine: $<TOTAL>";
             this.totalTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // itemCountTextBox
@@ -105,6 +106,7 @@
             this.furnitureGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.furnitureGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
+            this.Rental_id,
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
@@ -123,14 +125,32 @@
             this.furnitureGridView.Size = new System.Drawing.Size(430, 206);
             this.furnitureGridView.TabIndex = 34;
             // 
+            // submitButton
+            // 
+            this.submitButton.Location = new System.Drawing.Point(165, 377);
+            this.submitButton.Name = "submitButton";
+            this.submitButton.Size = new System.Drawing.Size(127, 23);
+            this.submitButton.TabIndex = 35;
+            this.submitButton.Text = "Close";
+            this.submitButton.UseVisualStyleBackColor = true;
+            this.submitButton.Click += new System.EventHandler(this.closeButton_Click);
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Furniture_id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Furniture_id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Id";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 92;
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 42;
+            // 
+            // Rental_id
+            // 
+            this.Rental_id.DataPropertyName = "Rental_id";
+            this.Rental_id.HeaderText = "Rental Id";
+            this.Rental_id.Name = "Rental_id";
+            this.Rental_id.ReadOnly = true;
+            this.Rental_id.Width = 78;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -169,7 +189,7 @@
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.Visible = false;
-            this.dataGridViewTextBoxColumn5.Width = 114;
+            this.dataGridViewTextBoxColumn5.Width = 92;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -179,6 +199,7 @@
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Visible = false;
             this.dataGridViewTextBoxColumn6.Width = 55;
             // 
             // dataGridViewTextBoxColumn7
@@ -188,7 +209,7 @@
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Visible = false;
-            this.dataGridViewTextBoxColumn7.Width = 97;
+            this.dataGridViewTextBoxColumn7.Width = 79;
             // 
             // dataGridViewTextBoxColumn8
             // 
@@ -198,16 +219,6 @@
             this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // submitButton
-            // 
-            this.submitButton.Location = new System.Drawing.Point(165, 377);
-            this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(127, 23);
-            this.submitButton.TabIndex = 35;
-            this.submitButton.Text = "Close";
-            this.submitButton.UseVisualStyleBackColor = true;
-            this.submitButton.Click += new System.EventHandler(this.closeButton_Click);
             // 
             // ReturnReceiptForm
             // 
@@ -262,6 +273,7 @@
         private DataGridView furnitureGridView;
         private Button submitButton;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn Rental_id;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;

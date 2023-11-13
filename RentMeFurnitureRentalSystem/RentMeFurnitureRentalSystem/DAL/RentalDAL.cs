@@ -19,6 +19,16 @@ public class RentalDAL
         return results.ElementAt(0);
     }
 
+    public static RentalItem GetReturnById(int id)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var results = connection.Query<RentalItem>(QueryStrings.GetReturnById, new { Id = id });
+
+        return results.ElementAt(0);
+    }
+
     public static List<RentalItem> GetRentalItems(int rentalId)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -115,12 +125,12 @@ public class RentalDAL
         return outcome != null;
     }
 
-    public static List<RentalItem> GetReturnItems(int returnId)
+    public static List<Furniture> GetReturnItems(int returnId)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
 
-        var results = connection.Query<RentalItem>(QueryStrings.GetReturnItems, new { Id = returnId });
+        var results = connection.Query<Furniture>(QueryStrings.GetReturnItems, new { Id = returnId });
 
         return results.ToList();
     }
@@ -130,8 +140,15 @@ public class RentalDAL
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
 
-        var results = connection.QuerySingle<decimal>(QueryStrings.GetReturnFineTotal, new { Id = returnId });
+        try
+        {
+            var results = connection.QuerySingle<decimal>(QueryStrings.GetReturnFineTotal, new { Id = returnId });
 
-        return results;
+            return results;
+        }
+        catch (InvalidOperationException ex)
+        {
+            return 0;
+        }
     }
 }

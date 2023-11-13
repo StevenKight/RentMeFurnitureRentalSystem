@@ -45,15 +45,14 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.rentalsDataGridView = new System.Windows.Forms.DataGridView();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.rentalidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeenumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.duedateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.quantityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -230,8 +229,7 @@
             this.employeenumDataGridViewTextBoxColumn,
             this.startdateDataGridViewTextBoxColumn,
             this.duedateDataGridViewTextBoxColumn,
-            this.furnitureidDataGridViewTextBoxColumn,
-            this.quantityDataGridViewTextBoxColumn});
+            this.furnitureidDataGridViewTextBoxColumn});
             this.rentalsDataGridView.DataSource = this.rentalItemBindingSource;
             this.rentalsDataGridView.Location = new System.Drawing.Point(12, 91);
             this.rentalsDataGridView.MultiSelect = false;
@@ -243,68 +241,6 @@
             this.rentalsDataGridView.Size = new System.Drawing.Size(430, 134);
             this.rentalsDataGridView.TabIndex = 32;
             this.rentalsDataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.rentalsDataGridView_RowStateChanged);
-            // 
-            // rentalidDataGridViewTextBoxColumn
-            // 
-            this.rentalidDataGridViewTextBoxColumn.DataPropertyName = "Rental_id";
-            this.rentalidDataGridViewTextBoxColumn.HeaderText = "Rental_id";
-            this.rentalidDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.rentalidDataGridViewTextBoxColumn.Name = "rentalidDataGridViewTextBoxColumn";
-            this.rentalidDataGridViewTextBoxColumn.Visible = false;
-            this.rentalidDataGridViewTextBoxColumn.Width = 76;
-            // 
-            // memberidDataGridViewTextBoxColumn
-            // 
-            this.memberidDataGridViewTextBoxColumn.DataPropertyName = "Member_id";
-            this.memberidDataGridViewTextBoxColumn.HeaderText = "Member_id";
-            this.memberidDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.memberidDataGridViewTextBoxColumn.Name = "memberidDataGridViewTextBoxColumn";
-            this.memberidDataGridViewTextBoxColumn.Visible = false;
-            this.memberidDataGridViewTextBoxColumn.Width = 90;
-            // 
-            // employeenumDataGridViewTextBoxColumn
-            // 
-            this.employeenumDataGridViewTextBoxColumn.DataPropertyName = "Employee_num";
-            this.employeenumDataGridViewTextBoxColumn.HeaderText = "Employee_num";
-            this.employeenumDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.employeenumDataGridViewTextBoxColumn.Name = "employeenumDataGridViewTextBoxColumn";
-            this.employeenumDataGridViewTextBoxColumn.Visible = false;
-            this.employeenumDataGridViewTextBoxColumn.Width = 116;
-            // 
-            // startdateDataGridViewTextBoxColumn
-            // 
-            this.startdateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.startdateDataGridViewTextBoxColumn.DataPropertyName = "Start_date";
-            this.startdateDataGridViewTextBoxColumn.HeaderText = "Start Date";
-            this.startdateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.startdateDataGridViewTextBoxColumn.Name = "startdateDataGridViewTextBoxColumn";
-            this.startdateDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // duedateDataGridViewTextBoxColumn
-            // 
-            this.duedateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.duedateDataGridViewTextBoxColumn.DataPropertyName = "Due_date";
-            this.duedateDataGridViewTextBoxColumn.HeaderText = "Due Date";
-            this.duedateDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.duedateDataGridViewTextBoxColumn.Name = "duedateDataGridViewTextBoxColumn";
-            this.duedateDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // furnitureidDataGridViewTextBoxColumn
-            // 
-            this.furnitureidDataGridViewTextBoxColumn.DataPropertyName = "Furniture_id";
-            this.furnitureidDataGridViewTextBoxColumn.HeaderText = "Furniture_id";
-            this.furnitureidDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.furnitureidDataGridViewTextBoxColumn.Name = "furnitureidDataGridViewTextBoxColumn";
-            this.furnitureidDataGridViewTextBoxColumn.Visible = false;
-            this.furnitureidDataGridViewTextBoxColumn.Width = 115;
-            // 
-            // quantityDataGridViewTextBoxColumn
-            // 
-            this.quantityDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.quantityDataGridViewTextBoxColumn.DataPropertyName = "Quantity";
-            this.quantityDataGridViewTextBoxColumn.HeaderText = "# of Items";
-            this.quantityDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.quantityDataGridViewTextBoxColumn.Name = "quantityDataGridViewTextBoxColumn";
             // 
             // rentalItemBindingSource
             // 
@@ -322,6 +258,59 @@
             this.textBox1.TabIndex = 33;
             this.textBox1.Text = "Please Select a Rental to See Items For";
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // rentalidDataGridViewTextBoxColumn
+            // 
+            this.rentalidDataGridViewTextBoxColumn.DataPropertyName = "Rental_id";
+            this.rentalidDataGridViewTextBoxColumn.HeaderText = "Rental_id";
+            this.rentalidDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.rentalidDataGridViewTextBoxColumn.Name = "rentalidDataGridViewTextBoxColumn";
+            this.rentalidDataGridViewTextBoxColumn.Visible = false;
+            this.rentalidDataGridViewTextBoxColumn.Width = 61;
+            // 
+            // memberidDataGridViewTextBoxColumn
+            // 
+            this.memberidDataGridViewTextBoxColumn.DataPropertyName = "Member_id";
+            this.memberidDataGridViewTextBoxColumn.HeaderText = "Member_id";
+            this.memberidDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.memberidDataGridViewTextBoxColumn.Name = "memberidDataGridViewTextBoxColumn";
+            this.memberidDataGridViewTextBoxColumn.Visible = false;
+            this.memberidDataGridViewTextBoxColumn.Width = 73;
+            // 
+            // employeenumDataGridViewTextBoxColumn
+            // 
+            this.employeenumDataGridViewTextBoxColumn.DataPropertyName = "Employee_num";
+            this.employeenumDataGridViewTextBoxColumn.HeaderText = "Employee_num";
+            this.employeenumDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.employeenumDataGridViewTextBoxColumn.Name = "employeenumDataGridViewTextBoxColumn";
+            this.employeenumDataGridViewTextBoxColumn.Visible = false;
+            this.employeenumDataGridViewTextBoxColumn.Width = 95;
+            // 
+            // startdateDataGridViewTextBoxColumn
+            // 
+            this.startdateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.startdateDataGridViewTextBoxColumn.DataPropertyName = "Start_date";
+            this.startdateDataGridViewTextBoxColumn.HeaderText = "Start Date";
+            this.startdateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.startdateDataGridViewTextBoxColumn.Name = "startdateDataGridViewTextBoxColumn";
+            this.startdateDataGridViewTextBoxColumn.Width = 200;
+            // 
+            // duedateDataGridViewTextBoxColumn
+            // 
+            this.duedateDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.duedateDataGridViewTextBoxColumn.DataPropertyName = "Due_date";
+            this.duedateDataGridViewTextBoxColumn.HeaderText = "Due Date";
+            this.duedateDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.duedateDataGridViewTextBoxColumn.Name = "duedateDataGridViewTextBoxColumn";
+            // 
+            // furnitureidDataGridViewTextBoxColumn
+            // 
+            this.furnitureidDataGridViewTextBoxColumn.DataPropertyName = "Furniture_id";
+            this.furnitureidDataGridViewTextBoxColumn.HeaderText = "Furniture_id";
+            this.furnitureidDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.furnitureidDataGridViewTextBoxColumn.Name = "furnitureidDataGridViewTextBoxColumn";
+            this.furnitureidDataGridViewTextBoxColumn.Visible = false;
+            this.furnitureidDataGridViewTextBoxColumn.Width = 95;
             // 
             // ReturnForm
             // 
@@ -391,6 +380,5 @@
         private DataGridViewTextBoxColumn startdateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn duedateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn furnitureidDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
     }
 }

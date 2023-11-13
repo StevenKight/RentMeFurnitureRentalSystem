@@ -102,7 +102,12 @@ public static class QueryStrings
     public const string GetFurnitureByCategory = "select * from furniture where category_name=@category";
 
     public const string GetFurnitureByRental =
-        "select * from furniture where furniture_id in (select furniture_id from rental_item where rental_id=@Id)";
+        "select * from furniture " +
+        "where furniture_id in (select furniture_id from rental_item where rental_id=@Id)" +
+        "AND furniture_id not in (select furniture_id " +
+        "from return_item, `return` " +
+        "where return_item.return_id=`return`.return_id " +
+        "AND `return`.member_id=@Member_id)";
 
     public const string GetFurnitureByStyle = "select * from furniture where style_name=@style";
 
@@ -123,6 +128,8 @@ public static class QueryStrings
 
     public const string GetRentalById = "select * from `rental` where rental_id=@Id";
 
+    public const string GetReturnById = "select * from `return` where return_id=@Id";
+
     public const string GetRentalItems = "select * from `rental_item` where rental_id=@Id";
 
     public const string GetRentalTotal = "SELECT SUM(`furniture`.rental_rate * `rental_item`.quantity) " +
@@ -133,7 +140,9 @@ public static class QueryStrings
 
     public const string GetRentalByMember = "select * from `rental` where member_id=@Member_id";
 
-    public const string GetReturnItems = "select * from `return_item` where return_id=@Id";
+    public const string GetReturnItems = "select * from `return_item`,`furniture` " +
+                                         "where `return_item`.furniture_id=`furniture`.furniture_id " +
+                                         "AND `return_item`.return_id=@Id";
 
     public const string GetReturnFineTotal = "SELECT SUM(`furniture`.rental_rate * `return_item`.quantity) AS fine_total " +
                                             "FROM `return_item`, `furniture`, `rental` " +
