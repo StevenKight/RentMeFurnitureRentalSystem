@@ -29,12 +29,12 @@ public class RentalDAL
         return results.ElementAt(0);
     }
 
-    public static List<RentalItem> GetRentalItems(int rentalId)
+    public static List<Furniture> GetRentalItems(int rentalId)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
 
-        var results = connection.Query<RentalItem>(QueryStrings.GetRentalItems, new { Id = rentalId });
+        var results = connection.Query<Furniture>(QueryStrings.GetRentalItems, new { Id = rentalId });
 
         return results.ToList();
     }
