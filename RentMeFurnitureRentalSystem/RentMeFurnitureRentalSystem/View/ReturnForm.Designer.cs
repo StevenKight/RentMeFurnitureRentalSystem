@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cancelButton = new System.Windows.Forms.Button();
             this.submitButton = new System.Windows.Forms.Button();
             this.furnitureDataGridView = new System.Windows.Forms.DataGridView();
@@ -39,20 +40,21 @@
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DisplayQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.titleTextBox = new System.Windows.Forms.TextBox();
             this.rentalsDataGridView = new System.Windows.Forms.DataGridView();
-            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.rentalidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.memberidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeenumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.startdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.duedateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.furnitureidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rentalItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.furnitureBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -62,9 +64,10 @@
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(60, 465);
+            this.cancelButton.Location = new System.Drawing.Point(149, 623);
+            this.cancelButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(120, 23);
+            this.cancelButton.Size = new System.Drawing.Size(137, 31);
             this.cancelButton.TabIndex = 26;
             this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
@@ -72,9 +75,10 @@
             // 
             // submitButton
             // 
-            this.submitButton.Location = new System.Drawing.Point(258, 465);
+            this.submitButton.Location = new System.Drawing.Point(375, 623);
+            this.submitButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.submitButton.Name = "submitButton";
-            this.submitButton.Size = new System.Drawing.Size(127, 23);
+            this.submitButton.Size = new System.Drawing.Size(145, 31);
             this.submitButton.TabIndex = 25;
             this.submitButton.Text = "Submit Rental";
             this.submitButton.UseVisualStyleBackColor = true;
@@ -95,26 +99,28 @@
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
+            this.DisplayQuantity,
             this.dataGridViewTextBoxColumn8});
             this.furnitureDataGridView.DataSource = this.furnitureBindingSource;
-            this.furnitureDataGridView.Location = new System.Drawing.Point(12, 261);
+            this.furnitureDataGridView.Location = new System.Drawing.Point(14, 348);
+            this.furnitureDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.furnitureDataGridView.MultiSelect = false;
             this.furnitureDataGridView.Name = "furnitureDataGridView";
             this.furnitureDataGridView.RowHeadersVisible = false;
             this.furnitureDataGridView.RowHeadersWidth = 51;
             this.furnitureDataGridView.RowTemplate.Height = 25;
             this.furnitureDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.furnitureDataGridView.Size = new System.Drawing.Size(430, 192);
+            this.furnitureDataGridView.Size = new System.Drawing.Size(611, 256);
             this.furnitureDataGridView.TabIndex = 28;
+            this.furnitureDataGridView.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.furnitureDataGridView_CellEndEdit);
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Furniture_id";
-            this.dataGridViewTextBoxColumn1.HeaderText = "Furniture_id";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Furniture Id";
             this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 76;
+            this.dataGridViewTextBoxColumn1.Width = 113;
             // 
             // dataGridViewTextBoxColumn2
             // 
@@ -124,7 +130,7 @@
             this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Width = 64;
+            this.dataGridViewTextBoxColumn2.Width = 78;
             // 
             // dataGridViewTextBoxColumn3
             // 
@@ -134,7 +140,7 @@
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Width = 80;
+            this.dataGridViewTextBoxColumn3.Width = 98;
             // 
             // dataGridViewTextBoxColumn4
             // 
@@ -144,7 +150,7 @@
             this.dataGridViewTextBoxColumn4.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Width = 57;
+            this.dataGridViewTextBoxColumn4.Width = 70;
             // 
             // dataGridViewTextBoxColumn5
             // 
@@ -153,7 +159,7 @@
             this.dataGridViewTextBoxColumn5.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             this.dataGridViewTextBoxColumn5.Visible = false;
-            this.dataGridViewTextBoxColumn5.Width = 92;
+            this.dataGridViewTextBoxColumn5.Width = 114;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -163,7 +169,7 @@
             this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Width = 55;
+            this.dataGridViewTextBoxColumn6.Width = 68;
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -172,12 +178,24 @@
             this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
             this.dataGridViewTextBoxColumn7.Visible = false;
-            this.dataGridViewTextBoxColumn7.Width = 79;
+            this.dataGridViewTextBoxColumn7.Width = 97;
+            // 
+            // DisplayQuantity
+            // 
+            this.DisplayQuantity.DataPropertyName = "DisplayQuantity";
+            this.DisplayQuantity.HeaderText = "Rented";
+            this.DisplayQuantity.MinimumWidth = 6;
+            this.DisplayQuantity.Name = "DisplayQuantity";
+            this.DisplayQuantity.ReadOnly = true;
+            this.DisplayQuantity.Width = 85;
             // 
             // dataGridViewTextBoxColumn8
             // 
             this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn8.DataPropertyName = "Quantity";
+            dataGridViewCellStyle1.Format = "N0";
+            dataGridViewCellStyle1.NullValue = "0";
+            this.dataGridViewTextBoxColumn8.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTextBoxColumn8.HeaderText = "Quantity";
             this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
@@ -191,10 +209,11 @@
             this.textBox2.BackColor = System.Drawing.SystemColors.Control;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.Location = new System.Drawing.Point(12, 232);
+            this.textBox2.Location = new System.Drawing.Point(14, 309);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(430, 22);
+            this.textBox2.Size = new System.Drawing.Size(611, 27);
             this.textBox2.TabIndex = 30;
             this.textBox2.Text = "Please Enter a Quantity of Each Furniture to be Returned";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -208,10 +227,11 @@
             this.titleTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.titleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.titleTextBox.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.titleTextBox.Location = new System.Drawing.Point(12, 10);
+            this.titleTextBox.Location = new System.Drawing.Point(14, 13);
+            this.titleTextBox.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.titleTextBox.Name = "titleTextBox";
             this.titleTextBox.ReadOnly = true;
-            this.titleTextBox.Size = new System.Drawing.Size(430, 43);
+            this.titleTextBox.Size = new System.Drawing.Size(611, 54);
             this.titleTextBox.TabIndex = 31;
             this.titleTextBox.Text = "Return to <USER>";
             this.titleTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -231,33 +251,17 @@
             this.duedateDataGridViewTextBoxColumn,
             this.furnitureidDataGridViewTextBoxColumn});
             this.rentalsDataGridView.DataSource = this.rentalItemBindingSource;
-            this.rentalsDataGridView.Location = new System.Drawing.Point(12, 91);
+            this.rentalsDataGridView.Location = new System.Drawing.Point(14, 121);
+            this.rentalsDataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.rentalsDataGridView.MultiSelect = false;
             this.rentalsDataGridView.Name = "rentalsDataGridView";
             this.rentalsDataGridView.RowHeadersVisible = false;
             this.rentalsDataGridView.RowHeadersWidth = 51;
             this.rentalsDataGridView.RowTemplate.Height = 25;
             this.rentalsDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.rentalsDataGridView.Size = new System.Drawing.Size(430, 134);
+            this.rentalsDataGridView.Size = new System.Drawing.Size(611, 179);
             this.rentalsDataGridView.TabIndex = 32;
             this.rentalsDataGridView.RowStateChanged += new System.Windows.Forms.DataGridViewRowStateChangedEventHandler(this.rentalsDataGridView_RowStateChanged);
-            // 
-            // rentalItemBindingSource
-            // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMeFurnitureRentalSystem.model.RentalItem);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.Location = new System.Drawing.Point(12, 63);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(430, 22);
-            this.textBox1.TabIndex = 33;
-            this.textBox1.Text = "Please Select a Rental to See Items For";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // rentalidDataGridViewTextBoxColumn
             // 
@@ -312,11 +316,29 @@
             this.furnitureidDataGridViewTextBoxColumn.Visible = false;
             this.furnitureidDataGridViewTextBoxColumn.Width = 95;
             // 
+            // rentalItemBindingSource
+            // 
+            this.rentalItemBindingSource.DataSource = typeof(RentMeFurnitureRentalSystem.model.RentalItem);
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Location = new System.Drawing.Point(14, 84);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(611, 27);
+            this.textBox1.TabIndex = 33;
+            this.textBox1.Text = "Please Select a Rental to See Items For";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ReturnForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(454, 500);
+            this.ClientSize = new System.Drawing.Size(647, 667);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.rentalsDataGridView);
             this.Controls.Add(this.titleTextBox);
@@ -324,6 +346,7 @@
             this.Controls.Add(this.furnitureDataGridView);
             this.Controls.Add(this.submitButton);
             this.Controls.Add(this.cancelButton);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "ReturnForm";
             this.Text = "Rental";
             this.Shown += new System.EventHandler(this.ReturnForm_Shown);
@@ -362,14 +385,6 @@
         private DataGridViewTextBoxColumn rentalrateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn finerateDataGridViewTextBoxColumn;
         private TextBox titleTextBox;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private BindingSource furnitureBindingSource;
         private TextBox textBox1;
         private DataGridView rentalsDataGridView;
@@ -380,5 +395,14 @@
         private DataGridViewTextBoxColumn startdateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn duedateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn furnitureidDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn DisplayQuantity;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
     }
 }

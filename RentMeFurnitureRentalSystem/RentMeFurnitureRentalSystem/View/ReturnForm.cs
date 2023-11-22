@@ -49,6 +49,22 @@ public partial class ReturnForm : Form
         this.furnitureDataGridView.ClearSelection();
     }
 
+    private void furnitureDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+    {
+        var gridView = (DataGridView)sender;
+        if (gridView.CurrentCell.ColumnIndex != 8)
+        {
+            return;
+        }
+
+        var currentObject = (Furniture)gridView.CurrentRow?.DataBoundItem;
+        if (currentObject.DisplayQuantity < currentObject.Quantity)
+        {
+            this.errorProvider.SetError(gridView, "Cannot set quantity to more than rented.");
+            currentObject.Quantity = currentObject.DisplayQuantity;
+        }
+    }
+
     private void rentalsDataGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
     {
         if (e.StateChanged != DataGridViewElementStates.Selected)
@@ -79,17 +95,15 @@ public partial class ReturnForm : Form
             });
 
             var rentalFurniture = FurnitureDAL.GetFurnitureByRental(selectedRental);
-
             rentalFurniture.ForEach(x =>
             {
+                x.DisplayQuantity = x.Quantity;
+                x.Quantity = 0;
+
                 if (this.Furniture.Contains(x))
                 {
                     var displayed = this.Furniture.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
                     x.Quantity = displayed.Quantity;
-                }
-                else
-                {
-                    x.Quantity = 0;
                 }
             });
 

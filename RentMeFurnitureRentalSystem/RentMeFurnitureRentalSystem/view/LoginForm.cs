@@ -57,6 +57,9 @@ public partial class Form1 : Form
     private void displayDashboard(Employee employee)
     {
         var mainWindow = new MainScreenForm(employee);
+        mainWindow.StartPosition = FormStartPosition.Manual;
+        mainWindow.Left = Left + (Width - mainWindow.Width) / 2;
+        mainWindow.Top = Top + (Height - mainWindow.Height) / 2;
 
         this.usernameInput.Text = "";
         this.passwordInput.Text = "";

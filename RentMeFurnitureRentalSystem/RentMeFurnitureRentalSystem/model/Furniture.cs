@@ -13,6 +13,7 @@ public class Furniture
     public decimal Rental_rate { get; set; }
     public decimal Fine_rate { get; set; }
     public int Quantity { get; set; }
+    public int DisplayQuantity { get; set; }
 
     #endregion
 

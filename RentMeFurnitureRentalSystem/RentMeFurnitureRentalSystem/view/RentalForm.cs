@@ -47,10 +47,15 @@ public partial class RentalForm : Form
     private void loadData()
     {
         this.Furniture = FurnitureDAL.GetRentableFurniture().ToList();
-        this.Furniture.ForEach(x => x.Quantity = 0);
+        this.Furniture.ForEach(x =>
+        {
+            x.DisplayQuantity = x.Quantity;
+            x.Quantity = 0;
+        });
+
         this.Display = this.Furniture;
 
-        this.displayData(this.Furniture);
+        this.displayData(this.Display);
     }
 
     private void displayData(List<Furniture> furniture)
@@ -76,6 +81,22 @@ public partial class RentalForm : Form
         this.Display = furniture;
 
         this.furnitureGridView.DataSource = this.Display;
+    }
+
+    private void furnitureDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+    {
+        var gridView = (DataGridView)sender;
+        if (gridView.CurrentCell.ColumnIndex != 8)
+        {
+            return;
+        }
+
+        var currentObject = (Furniture)gridView.CurrentRow?.DataBoundItem;
+        if (currentObject.DisplayQuantity < currentObject.Quantity)
+        {
+            this.errorProvider.SetError(gridView, "Cannot set quantity to more than in stock.");
+            currentObject.Quantity = currentObject.DisplayQuantity;
+        }
     }
 
     private void searchButton_Click(object sender, EventArgs e)
@@ -104,6 +125,7 @@ public partial class RentalForm : Form
             filteredFurniture = FurnitureDAL.GetRentableFurnitureByStyle(style).ToList();
         }
 
+        filteredFurniture.ForEach(x => x.DisplayQuantity = x.Quantity);
         this.displayData(filteredFurniture);
     }
 
