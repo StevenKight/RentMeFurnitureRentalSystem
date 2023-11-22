@@ -103,13 +103,7 @@ public static class QueryStrings
 
     public const string GetFurnitureByCategory = "select * from furniture where category_name=@category";
 
-    public const string GetFurnitureByRental =
-        "select * from furniture " +
-        "where furniture_id in (select furniture_id from rental_item where rental_id=@Id)" +
-        "AND furniture_id not in (select furniture_id " +
-        "from return_item, `return` " +
-        "where return_item.return_id=`return`.return_id " +
-        "AND `return`.member_id=@Member_id)";
+    public const string GetFurnitureByRental = "CALL GetReturnableItems(@Rental_id, @Member_id)";
 
     public const string GetFurnitureByStyle = "select * from furniture where style_name=@style";
 

@@ -78,7 +78,7 @@ public class FurnitureDAL
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
 
-        var result = connection.Query<Furniture>(QueryStrings.GetFurnitureByRental, new { Id = selectedRental.Rental_id, Member_id = selectedRental.Member_id });
+        var result = connection.Query<Furniture>(QueryStrings.GetFurnitureByRental, selectedRental);
         return result.ToList();
     }
 
