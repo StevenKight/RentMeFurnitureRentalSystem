@@ -59,7 +59,7 @@ public class RentalDAL
         return results.ToList();
     }
 
-    public static int CreateRental(RentalItem rental)
+    public static int CreateRental(RentalItem rental) // TODO: This and CreateRentalItem should be in a transaction
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
@@ -92,7 +92,7 @@ public class RentalDAL
         return outcome != null;
     }
 
-    public static int CreateReturn(RentalItem rental)
+    public static int CreateReturn(RentalItem rental) // TODO: This and CreateReturnItem should be in a transaction
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
