@@ -41,5 +41,20 @@ namespace RentMeFurnitureRentalSystem.view
         {
             this.sqlTextArea.Clear();
         }
+
+        private void returnScreenButton_Click(object sender, EventArgs e)
+        {
+            var tableForm = new AdminToolSelectorForm();
+
+
+            
+            tableForm.StartPosition = FormStartPosition.Manual;
+            tableForm.Left = Left + (Width - tableForm.Width) / 2;
+            tableForm.Top = Top + (Height - tableForm.Height) / 2;
+            tableForm.Show();
+            Close();
+
+
+        }
     }
 }

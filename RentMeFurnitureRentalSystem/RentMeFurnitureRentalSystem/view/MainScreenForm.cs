@@ -380,11 +380,11 @@ public partial class MainScreenForm : Form
 
     private void adminTableButton_Click(object sender, EventArgs e)
     {
-        var tableForm = new AdminTableForm();
-        tableForm.StartPosition = FormStartPosition.Manual;
-        tableForm.Left = Left + (Width - tableForm.Width) / 2;
-        tableForm.Top = Top + (Height - tableForm.Height) / 2;
-        tableForm.ShowDialog();
+        var toolSelectorForm = new AdminToolSelectorForm();
+        toolSelectorForm.StartPosition = FormStartPosition.Manual;
+        toolSelectorForm.Left = Left + (Width - toolSelectorForm.Width) / 2;
+        toolSelectorForm.Top = Top + (Height - toolSelectorForm.Height) / 2;
+        toolSelectorForm.ShowDialog();
     }
     #endregion
 
