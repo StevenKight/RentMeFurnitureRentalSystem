@@ -28,53 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.adminSQLTableButton = new System.Windows.Forms.Button();
-            this.dateReportButton = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            label1 = new Label();
+            adminSQLTableButton = new Button();
+            dateReportButton = new Button();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(52, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(241, 54);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Admin Tools";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(52, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(241, 54);
+            label1.TabIndex = 0;
+            label1.Text = "Admin Tools";
             // 
             // adminSQLTableButton
             // 
-            this.adminSQLTableButton.Location = new System.Drawing.Point(110, 155);
-            this.adminSQLTableButton.Name = "adminSQLTableButton";
-            this.adminSQLTableButton.Size = new System.Drawing.Size(118, 23);
-            this.adminSQLTableButton.TabIndex = 1;
-            this.adminSQLTableButton.Text = "Admin SQL Table";
-            this.adminSQLTableButton.UseVisualStyleBackColor = true;
-            this.adminSQLTableButton.Click += new System.EventHandler(this.adminSQLTableButton_Click);
+            adminSQLTableButton.Location = new Point(110, 155);
+            adminSQLTableButton.Name = "adminSQLTableButton";
+            adminSQLTableButton.Size = new Size(118, 23);
+            adminSQLTableButton.TabIndex = 1;
+            adminSQLTableButton.Text = "Admin SQL Table";
+            adminSQLTableButton.UseVisualStyleBackColor = true;
+            adminSQLTableButton.Click += adminSQLTableButton_Click;
             // 
             // dateReportButton
             // 
-            this.dateReportButton.Location = new System.Drawing.Point(110, 210);
-            this.dateReportButton.Name = "dateReportButton";
-            this.dateReportButton.Size = new System.Drawing.Size(118, 23);
-            this.dateReportButton.TabIndex = 2;
-            this.dateReportButton.Text = "View Report";
-            this.dateReportButton.UseVisualStyleBackColor = true;
+            dateReportButton.Location = new Point(110, 210);
+            dateReportButton.Name = "dateReportButton";
+            dateReportButton.Size = new Size(118, 23);
+            dateReportButton.TabIndex = 2;
+            dateReportButton.Text = "View Report";
+            dateReportButton.UseVisualStyleBackColor = true;
+            dateReportButton.Click += dateReportButton_Click;
             // 
             // AdminToolSelectorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(347, 345);
-            this.Controls.Add(this.dateReportButton);
-            this.Controls.Add(this.adminSQLTableButton);
-            this.Controls.Add(this.label1);
-            this.Name = "AdminToolSelectorForm";
-            this.Text = "AdminToolSelectorForm";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(347, 345);
+            Controls.Add(dateReportButton);
+            Controls.Add(adminSQLTableButton);
+            Controls.Add(label1);
+            Name = "AdminToolSelectorForm";
+            Text = "AdminToolSelectorForm";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

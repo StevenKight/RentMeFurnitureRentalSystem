@@ -26,5 +26,15 @@ namespace RentMeFurnitureRentalSystem.view
             tableForm.ShowDialog();
             Close();
         }
+
+        private void dateReportButton_Click(object sender, EventArgs e)
+        {
+            var reportForm = new DayToDayReportForm();
+            reportForm.StartPosition = FormStartPosition.Manual;
+            reportForm.Left = Left + (Width - reportForm.Width) / 2;
+            reportForm.Top = Top + (Height - reportForm.Height) / 2;
+            reportForm.ShowDialog();
+            Close();
+        }
     }
 }

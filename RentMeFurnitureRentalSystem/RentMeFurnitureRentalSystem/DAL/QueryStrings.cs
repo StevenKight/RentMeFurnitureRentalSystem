@@ -155,4 +155,11 @@ public static class QueryStrings
                                             "GROUP BY `return_item`.return_id";
 
     #endregion
+
+    #region Report
+
+    public const string GetReturnReport = "SELECT * FROM `return` WHERE `return`.return_date BETWEEN @fromDate AND @toDate";
+
+    public const string GetRentalReport = "SELECT * FROM rental WHERE start_date BETWEEN @fromDate AND @toDate";
+    #endregion
 }
