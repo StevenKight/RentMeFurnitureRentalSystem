@@ -115,10 +115,15 @@
             // 
             // itemsDataGridView
             // 
+            itemsDataGridView.AllowUserToAddRows = false;
+            itemsDataGridView.AllowUserToDeleteRows = false;
             itemsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             itemsDataGridView.Location = new Point(508, 152);
+            itemsDataGridView.MultiSelect = false;
             itemsDataGridView.Name = "itemsDataGridView";
+            itemsDataGridView.ReadOnly = true;
             itemsDataGridView.RowTemplate.Height = 25;
+            itemsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             itemsDataGridView.Size = new Size(380, 252);
             itemsDataGridView.TabIndex = 8;
             // 
@@ -141,6 +146,7 @@
             reportTabControl.SelectedIndex = 0;
             reportTabControl.Size = new Size(490, 280);
             reportTabControl.TabIndex = 10;
+            reportTabControl.SelectedIndexChanged += reportTabControl_SelectedIndexChanged;
             // 
             // rentalTabPage
             // 
@@ -155,14 +161,18 @@
             // 
             // rentalsDataGridView
             // 
+            rentalsDataGridView.AllowUserToAddRows = false;
+            rentalsDataGridView.AllowUserToDeleteRows = false;
             rentalsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             rentalsDataGridView.Location = new Point(0, 0);
+            rentalsDataGridView.MultiSelect = false;
             rentalsDataGridView.Name = "rentalsDataGridView";
+            rentalsDataGridView.ReadOnly = true;
             rentalsDataGridView.RowTemplate.Height = 25;
+            rentalsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             rentalsDataGridView.Size = new Size(482, 252);
             rentalsDataGridView.TabIndex = 0;
             rentalsDataGridView.CellClick += rentalsDataGridView_CellClick;
-            rentalsDataGridView.CellDoubleClick += rentalsDataGridView_CellDoubleClick;
             // 
             // returnsTabPage
             // 
@@ -177,23 +187,27 @@
             // 
             // returnsDataGridView
             // 
+            returnsDataGridView.AllowUserToAddRows = false;
+            returnsDataGridView.AllowUserToDeleteRows = false;
             returnsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             returnsDataGridView.Location = new Point(0, 0);
+            returnsDataGridView.MultiSelect = false;
             returnsDataGridView.Name = "returnsDataGridView";
+            returnsDataGridView.ReadOnly = true;
             returnsDataGridView.RowTemplate.Height = 25;
+            returnsDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             returnsDataGridView.Size = new Size(482, 252);
             returnsDataGridView.TabIndex = 0;
             returnsDataGridView.CellClick += returnsDataGridView_CellClick;
-            returnsDataGridView.CellDoubleClick += returnsDataGridView_CellDoubleClick;
             // 
             // selectedLabel
             // 
             selectedLabel.AutoSize = true;
             selectedLabel.Location = new Point(508, 131);
             selectedLabel.Name = "selectedLabel";
-            selectedLabel.Size = new Size(56, 15);
+            selectedLabel.Size = new Size(175, 15);
             selectedLabel.TabIndex = 11;
-            selectedLabel.Text = "Rental Id:";
+            selectedLabel.Text = "Please select a item on the left...";
             // 
             // selectedRentalIdTextbox
             // 
@@ -209,8 +223,8 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(913, 450);
-            Controls.Add(selectedRentalIdTextbox);
             Controls.Add(selectedLabel);
+            Controls.Add(selectedRentalIdTextbox);
             Controls.Add(reportTabControl);
             Controls.Add(returnButton);
             Controls.Add(itemsDataGridView);

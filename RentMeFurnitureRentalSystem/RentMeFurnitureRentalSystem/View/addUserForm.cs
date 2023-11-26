@@ -144,6 +144,7 @@ public partial class addUserForm : Form
 
         var user = this.isEmployee ? "Employee" : "Customer";
         this.addButton.Text = "Update " + user;
+        this.addDialogHeading.Text = "Update " + user;
 
         this.cancelButton.Text = "Close";
 
