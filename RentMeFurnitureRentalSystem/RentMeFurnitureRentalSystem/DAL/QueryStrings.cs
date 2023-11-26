@@ -161,5 +161,18 @@ public static class QueryStrings
     public const string GetReturnReport = "SELECT * FROM `return` WHERE `return`.return_date BETWEEN @fromDate AND @toDate";
 
     public const string GetRentalReport = "SELECT * FROM rental WHERE start_date BETWEEN @fromDate AND @toDate";
+
+    public const string GetRentalReportBySelected =@"
+   SELECT 
+        rental_item.furniture_id, rental_item.quantity, furniture.`name`
+    FROM
+        rental
+            INNER JOIN
+        rental_item ON rental.rental_id = rental_item.rental_id
+            INNER JOIN
+        furniture ON furniture.furniture_id = rental_item.furniture_id
+    WHERE
+        rental.rental_id = @rentalId";
+
     #endregion
 }

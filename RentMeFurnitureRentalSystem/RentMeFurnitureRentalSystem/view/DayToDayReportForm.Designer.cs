@@ -42,6 +42,8 @@
             rentalsDataGridView = new DataGridView();
             returnsTabPage = new TabPage();
             returnsDataGridView = new DataGridView();
+            selectedLabel = new Label();
+            selectedRentalIdTextbox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)itemsDataGridView).BeginInit();
             reportTabControl.SuspendLayout();
             rentalTabPage.SuspendLayout();
@@ -114,10 +116,10 @@
             // itemsDataGridView
             // 
             itemsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            itemsDataGridView.Location = new Point(530, 149);
+            itemsDataGridView.Location = new Point(508, 152);
             itemsDataGridView.Name = "itemsDataGridView";
             itemsDataGridView.RowTemplate.Height = 25;
-            itemsDataGridView.Size = new Size(240, 259);
+            itemsDataGridView.Size = new Size(380, 252);
             itemsDataGridView.TabIndex = 8;
             // 
             // returnButton
@@ -159,6 +161,8 @@
             rentalsDataGridView.RowTemplate.Height = 25;
             rentalsDataGridView.Size = new Size(482, 252);
             rentalsDataGridView.TabIndex = 0;
+            rentalsDataGridView.CellClick += rentalsDataGridView_CellClick;
+            rentalsDataGridView.CellDoubleClick += rentalsDataGridView_CellDoubleClick;
             // 
             // returnsTabPage
             // 
@@ -180,11 +184,31 @@
             returnsDataGridView.Size = new Size(482, 252);
             returnsDataGridView.TabIndex = 0;
             // 
+            // selectedLabel
+            // 
+            selectedLabel.AutoSize = true;
+            selectedLabel.Location = new Point(508, 131);
+            selectedLabel.Name = "selectedLabel";
+            selectedLabel.Size = new Size(56, 15);
+            selectedLabel.TabIndex = 11;
+            selectedLabel.Text = "Rental Id:";
+            // 
+            // selectedRentalIdTextbox
+            // 
+            selectedRentalIdTextbox.BackColor = SystemColors.Control;
+            selectedRentalIdTextbox.BorderStyle = BorderStyle.None;
+            selectedRentalIdTextbox.Location = new Point(570, 131);
+            selectedRentalIdTextbox.Name = "selectedRentalIdTextbox";
+            selectedRentalIdTextbox.Size = new Size(100, 16);
+            selectedRentalIdTextbox.TabIndex = 12;
+            // 
             // DayToDayReportForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(913, 450);
+            Controls.Add(selectedRentalIdTextbox);
+            Controls.Add(selectedLabel);
             Controls.Add(reportTabControl);
             Controls.Add(returnButton);
             Controls.Add(itemsDataGridView);
@@ -223,5 +247,7 @@
         private TabPage returnsTabPage;
         private DataGridView rentalsDataGridView;
         private DataGridView returnsDataGridView;
+        private Label selectedLabel;
+        private TextBox selectedRentalIdTextbox;
     }
 }
