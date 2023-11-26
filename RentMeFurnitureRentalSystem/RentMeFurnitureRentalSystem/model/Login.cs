@@ -1,5 +1,7 @@
 ﻿namespace RentMeFurnitureRentalSystem.model;
-
+/// <summary>
+/// login class that represents a login in the database
+/// </summary>
 public class Login
 {
     #region Properties

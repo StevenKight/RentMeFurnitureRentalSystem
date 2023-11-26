@@ -2,27 +2,34 @@
 
 namespace RentMeFurnitureRentalSystem.view
 {
+
     public partial class DayToDayReportForm : Form
     {
         #region Properties
+        
         public DataGridViewCell SelectedCell { get; set; }
         #endregion
         public DayToDayReportForm()
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// This method returns the user to the admin tool selector form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void returnButton_Click(object sender, EventArgs e)
         {
             var tableForm = new AdminToolSelectorForm();
-
-            tableForm.StartPosition = FormStartPosition.Manual;
-            tableForm.Left = Left + (Width - tableForm.Width) / 2;
-            tableForm.Top = Top + (Height - tableForm.Height) / 2;
             tableForm.Show();
             Close();
-        }
 
+        }
+        /// <summary>
+        /// This method submits the report and displays the results in the data grid view
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void submitButton_Click(object sender, EventArgs e)
         {
             this.rentalsDataGridView.Columns.Clear();
@@ -52,7 +59,11 @@ namespace RentMeFurnitureRentalSystem.view
             }
 
         }
-
+        /// <summary>
+        /// displays the rental items in the data grid view when the user double clicks on a row
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rentalsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var rental_id = this.rentalsDataGridView.Rows[e.RowIndex].Cells["Rental_id"].Value;
@@ -69,18 +80,30 @@ namespace RentMeFurnitureRentalSystem.view
             this.selectedLabel.Text = "Rental Id:";
 
         }
-
+        /// <summary>
+        /// sets the selected cell to the cell that the user clicks on
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rentalsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.SelectedCell = this.rentalsDataGridView.CurrentCell;
 
         }
-
+        /// <summary>
+        ///  sets the selected cell to the cell that the user clicks on
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void returnsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.SelectedCell = this.returnsDataGridView.CurrentCell;
         }
-
+        /// <summary>
+        /// displays the return items in the data grid view when the user double clicks on a row
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void returnsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             var return_id = this.returnsDataGridView.Rows[e.RowIndex].Cells["Return_id"].Value;

@@ -4,16 +4,22 @@ using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.view;
-
+/// <summary>
+/// The form for adding furniture
+/// </summary>
 public partial class addFurnitureForm : Form
 {
     #region Data members
-
+    /// <summary>
+    /// Regex for validating rental and fine rates
+    /// </summary>
     public const string RENTALANDFINERATEREGEX =
         @"(?:^[1-9]([0-9]+)?(?:\.[0-9]{1,2})?$)|(?:^(?:0)$)|(?:^[0-9]\.[0-9](?:[0-9])?$)";
 
     #endregion
-
+    /// <summary>
+    /// Creates a new instance of the add furniture form
+    /// </summary>
     public addFurnitureForm()
     {
         InitializeComponent();

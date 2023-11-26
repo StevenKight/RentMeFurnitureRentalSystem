@@ -5,11 +5,15 @@ using RentMeFurnitureRentalSystem.Utils;
 using RentMeFurnitureRentalSystem.view;
 
 namespace RentMeFurnitureRentalSystem;
-
+/// <summary>
+/// Form for the login screen
+/// </summary>
 public partial class Form1 : Form
 {
     #region Constructors
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Form1"/> class.
+    /// </summary>
     public Form1()
     {
         this.InitializeComponent();

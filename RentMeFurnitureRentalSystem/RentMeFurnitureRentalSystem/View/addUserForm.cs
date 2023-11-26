@@ -5,13 +5,23 @@ using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.view;
-
+/// <summary>
+/// The form that allows the user to add a new user to the database
+/// </summary>
 public partial class addUserForm : Form
 {
     #region Data members
-
+    /// <summary>
+    /// Email regex
+    /// </summary>
     public const string EMAILREGEX = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+    /// <summary>
+    /// Phone number regex
+    /// </summary>
     public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
+    /// <summary>
+    /// Zipcode regex
+    /// </summary>
     public const string ZIPREGEX = @"^[0-9]{5}(?:-[0-9]{4})?$";
 
     private static readonly string[] stateOptions =
@@ -41,7 +51,10 @@ public partial class addUserForm : Form
     #endregion
 
     #region Constructors
-
+    /// <summary>
+    /// Creates a new addUserForm and checks if the user is an employee or adminsitrator
+    /// </summary>
+    /// <param name="employee"></param>
     public addUserForm(bool employee)
     {
         this.initializeDisplay();

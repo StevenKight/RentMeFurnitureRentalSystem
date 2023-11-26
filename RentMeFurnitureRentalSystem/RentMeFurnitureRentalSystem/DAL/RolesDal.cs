@@ -3,11 +3,16 @@ using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
-
+/// <summary>
+/// Roles Dal class
+/// </summary>
 public class RolesDal
 {
     #region Methods
-
+    /// <summary>
+    /// get all roles in the database
+    /// </summary>
+    /// <returns></returns>
     public static IList<string> GetRoles()
     {
         var roles = new List<string>();

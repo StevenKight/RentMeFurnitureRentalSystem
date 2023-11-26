@@ -1,5 +1,7 @@
 ﻿namespace RentMeFurnitureRentalSystem.DAL;
-
+/// <summary>
+/// Query strings for all the queries used in the application
+/// </summary>
 public static class QueryStrings
 {
     #region Roles

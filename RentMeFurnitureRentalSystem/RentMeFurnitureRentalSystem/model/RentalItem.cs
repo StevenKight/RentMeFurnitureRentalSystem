@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace RentMeFurnitureRentalSystem.model
 {
+    /// <summary>
+    /// The class which represents the rental item
+    /// </summary>
     public class RentalItem
     {
         public int Rental_id { get; set; }

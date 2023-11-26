@@ -10,8 +10,14 @@ using System.Windows.Forms;
 
 namespace RentMeFurnitureRentalSystem.view
 {
+    /// <summary>
+    /// AdminToolSelectorForm form
+    /// </summary>
     public partial class AdminToolSelectorForm : Form
     {
+        /// <summary>
+        /// AdminToolSelectorForm constructor
+        /// </summary>
         public AdminToolSelectorForm()
         {
             InitializeComponent();

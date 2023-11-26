@@ -12,8 +12,14 @@ using String = System.String;
 
 namespace RentMeFurnitureRentalSystem.view
 {
+    /// <summary>
+    /// AdminTableForm class
+    /// </summary>
     public partial class AdminTableForm : Form
     {
+        /// <summary>
+        /// AdminTableForm constructor
+        /// </summary>
         public AdminTableForm()
         {
             InitializeComponent();
