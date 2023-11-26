@@ -171,31 +171,11 @@ public partial class RentalForm : Form
             return;
         }
 
-        var newRentalId = RentalDAL.CreateRental(rental);
-        if (newRentalId <= 0)
+        var newRentalId = RentalDAL.RentFurniture(rental, selectedFurniture);
+        if (newRentalId == -1)
         {
-            MessageBox.Show("Error creating rental transaction.");
+            MessageBox.Show("Error creating rental for user.");
             return;
-        }
-
-        foreach (var furniture in selectedFurniture)
-        {
-            var item = new RentalItem
-            {
-                Rental_id = newRentalId,
-                Member_id = rental.Member_id,
-                Employee_num = rental.Employee_num,
-                Start_date = rental.Start_date,
-                Due_date = rental.Due_date,
-                Furniture_id = furniture.Furniture_id,
-                Quantity = furniture.Quantity
-            };
-
-            if (!RentalDAL.CreateRentalItem(item))
-            {
-                MessageBox.Show("Error adding " + furniture.Name + " to the transaction.");
-                return;
-            }
         }
 
         MessageBox.Show("Successfully rented to user");

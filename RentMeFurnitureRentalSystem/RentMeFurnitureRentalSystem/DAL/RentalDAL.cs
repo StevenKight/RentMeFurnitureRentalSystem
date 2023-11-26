@@ -80,16 +80,59 @@ public class RentalDAL
 
         return results.ToList();
     }
+
+    /// <summary>
+    ///     Create a rental for a user and add given furniture to the rental.
+    /// </summary>
+    /// <param name="rental">The rental user, employee and other data.</param>
+    /// <param name="furniture">The list of furniture to rent.</param>
+    /// <returns>New rental id if rental is processed, -1 otherwise.</returns>
+    public static int RentFurniture(RentalItem rental, List<Furniture> furniture)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        using var transaction = connection.BeginTransaction();
+
+        try
+        {
+            var newRentalId = CreateRental(rental, connection);
+
+            foreach (var furnitureItem in furniture)
+            {
+                var item = new RentalItem
+                {
+                    Rental_id = newRentalId,
+                    Member_id = rental.Member_id,
+                    Employee_num = rental.Employee_num,
+                    Start_date = rental.Start_date,
+                    Due_date = rental.Due_date,
+                    Furniture_id = furnitureItem.Furniture_id,
+                    Quantity = furnitureItem.Quantity
+                };
+
+                RentalDAL.CreateRentalItem(item, connection);
+            }
+
+            transaction.Commit();
+
+            return newRentalId;
+        }
+        catch (Exception ex)
+        {
+            transaction.Rollback();
+            
+            return -1;
+        }
+    }
+
     /// <summary>
     /// create rental in the database
     /// </summary>
     /// <param name="rental"></param>
     /// <returns></returns>
-    public static int CreateRental(RentalItem rental) // TODO: This and CreateRentalItem should be in a transaction
+    public static int CreateRental(RentalItem rental, MySqlConnection transactionConnection)
     {
-        using var connection = new MySqlConnection(Connection.ConnectionString);
-        connection.Open();
-
         var param = new DynamicParameters();
         param.Add("memberId", rental.Member_id);
         param.Add("employeeNum", rental.Employee_num);
@@ -97,7 +140,7 @@ public class RentalDAL
         param.Add("dueDate", rental.Due_date);
         param.Add("rentalId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-        connection.Query<int>("CreateRental", param, commandType: CommandType.StoredProcedure);
+        transactionConnection.Query<int>("CreateRental", param, commandType: CommandType.StoredProcedure);
         var newId = param.Get<int>("rentalId");
 
         return newId;
@@ -107,37 +150,77 @@ public class RentalDAL
     /// </summary>
     /// <param name="rentalItem"></param>
     /// <returns></returns>
-    public static bool CreateRentalItem(RentalItem rentalItem)
+    public static bool CreateRentalItem(RentalItem rentalItem, MySqlConnection transactionConnection)
     {
-        using var connection = new MySqlConnection(Connection.ConnectionString);
-        connection.Open();
-
         var param = new DynamicParameters();
         param.Add("rentalId", rentalItem.Rental_id);
         param.Add("furnitureId", rentalItem.Furniture_id);
         param.Add("rentedQuantity", rentalItem.Quantity);
 
-        var outcome = connection.Query<int>("CreateRentalItem", param, commandType: CommandType.StoredProcedure);
+        var outcome = transactionConnection.Query<int>("CreateRentalItem", param, commandType: CommandType.StoredProcedure);
 
         return outcome != null;
     }
+
+    /// <summary>
+    ///     Create a return for a user and add given furniture to the return.
+    /// </summary>
+    /// <param name="returnData">The return user, employee and other data.</param>
+    /// <param name="furniture">The list of furniture to return.</param>
+    /// <returns>New return id if return is processed, -1 otherwise.</returns>
+    public static int ReturnFurniture(RentalItem returnData, List<Furniture> furniture)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        using var transaction = connection.BeginTransaction();
+
+        try
+        {
+            var newReturnId = CreateReturn(returnData, connection);
+
+            foreach (var furnitureItem in furniture)
+            {
+                var item = new RentalItem
+                {
+                    Return_id = newReturnId,
+                    Rental_id = furnitureItem.Rental_id,
+                    Member_id = returnData.Member_id,
+                    Employee_num = returnData.Employee_num,
+                    Start_date = returnData.Start_date,
+                    Furniture_id = furnitureItem.Furniture_id,
+                    Quantity = furnitureItem.Quantity
+                };
+
+                RentalDAL.CreateReturnItem(item, connection);
+            }
+
+            transaction.Commit();
+
+            return newReturnId;
+        }
+        catch (Exception ex)
+        {
+            transaction.Rollback();
+
+            return -1;
+        }
+    }
+
     /// <summary>
     /// create return in the database
     /// </summary>
     /// <param name="rental"></param>
     /// <returns></returns>
-    public static int CreateReturn(RentalItem rental) // TODO: This and CreateReturnItem should be in a transaction
+    public static int CreateReturn(RentalItem rental, MySqlConnection transactionConnection)
     {
-        using var connection = new MySqlConnection(Connection.ConnectionString);
-        connection.Open();
-
         var param = new DynamicParameters();
         param.Add("memberId", rental.Member_id);
         param.Add("employeeNum", rental.Employee_num);
         param.Add("returnDate", rental.Start_date);
         param.Add("returnId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-        connection.Query<int>("CreateReturn", param, commandType: CommandType.StoredProcedure);
+        transactionConnection.Query<int>("CreateReturn", param, commandType: CommandType.StoredProcedure);
         var newId = param.Get<int>("returnId");
 
         return newId;
@@ -147,21 +230,19 @@ public class RentalDAL
     /// </summary>
     /// <param name="rentalItem"></param>
     /// <returns></returns>
-    public static bool CreateReturnItem(RentalItem rentalItem)
+    public static bool CreateReturnItem(RentalItem rentalItem, MySqlConnection transactionConnection)
     {
-        using var connection = new MySqlConnection(Connection.ConnectionString);
-        connection.Open();
-
         var param = new DynamicParameters();
         param.Add("rentalId", rentalItem.Rental_id);
         param.Add("returnId", rentalItem.Return_id);
         param.Add("furnitureId", rentalItem.Furniture_id);
         param.Add("returnedQuantity", rentalItem.Quantity);
 
-        var outcome = connection.Query<int>("CreateReturnItem", param, commandType: CommandType.StoredProcedure);
+        var outcome = transactionConnection.Query<int>("CreateReturnItem", param, commandType: CommandType.StoredProcedure);
 
         return outcome != null;
     }
+
     /// <summary>
     /// get return items
     /// </summary>

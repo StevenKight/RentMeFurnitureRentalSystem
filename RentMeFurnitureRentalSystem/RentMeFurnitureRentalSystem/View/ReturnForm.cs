@@ -178,31 +178,11 @@ public partial class ReturnForm : Form
             return;
         }
 
-        var newReturnId = RentalDAL.CreateReturn(newReturn);
-        if (newReturnId <= 0)
+        var newReturnId = RentalDAL.ReturnFurniture(newReturn, selectedFurniture);
+        if (newReturnId == -1)
         {
-            MessageBox.Show("Error creating return transaction.");
+            MessageBox.Show("Error creating return for user.");
             return;
-        }
-
-        foreach (var furniture in selectedFurniture)
-        {
-            var item = new RentalItem
-            {
-                Return_id = newReturnId,
-                Rental_id = furniture.Rental_id,
-                Member_id = newReturn.Member_id,
-                Employee_num = newReturn.Employee_num,
-                Start_date = newReturn.Start_date,
-                Furniture_id = furniture.Furniture_id,
-                Quantity = furniture.Quantity
-            };
-
-            if (!RentalDAL.CreateReturnItem(item))
-            {
-                MessageBox.Show("Error adding " + furniture.Name + " to the transaction.");
-                return;
-            }
         }
 
         MessageBox.Show("Successfully returned furniture");
