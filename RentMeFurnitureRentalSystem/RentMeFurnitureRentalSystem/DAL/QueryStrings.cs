@@ -174,5 +174,7 @@ public static class QueryStrings
     WHERE
         rental.rental_id = @rentalId";
 
+    public const string GetReturnReportBySelected = "select `return_item`.furniture_id, `return_item`.quantity, furniture.`name` from `return` inner join `return_item` on `return`.return_id = `return_item`.return_id inner join furniture ON furniture.furniture_id = `return_item`.furniture_id where `return`.return_id=@returnID";
+
     #endregion
 }

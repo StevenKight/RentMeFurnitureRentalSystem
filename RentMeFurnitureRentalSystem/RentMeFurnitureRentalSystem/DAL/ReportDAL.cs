@@ -76,5 +76,27 @@ namespace RentMeFurnitureRentalSystem.DAL
 
             return null;
         }
+        public static DataTable GetReturnReportBySelectedRow(int returnId)
+        {
+            try
+            {
+                using var connection = new MySqlConnection(Connection.ConnectionString);
+                var dataTable = new DataTable();
+                using (var reader = connection.ExecuteReader(QueryStrings.GetReturnReportBySelected,
+                           new { returnId = returnId }))
+                {
+                    dataTable.Load(reader);
+                }
+
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            return null;
+        }
     }
+
 }

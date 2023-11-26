@@ -73,7 +73,28 @@ namespace RentMeFurnitureRentalSystem.view
         private void rentalsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.SelectedCell = this.rentalsDataGridView.CurrentCell;
-            
+
+        }
+
+        private void returnsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.SelectedCell = this.returnsDataGridView.CurrentCell;
+        }
+
+        private void returnsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            var return_id = this.returnsDataGridView.Rows[e.RowIndex].Cells["Return_id"].Value;
+            var rentalItems = ReportDAL.GetReturnReportBySelectedRow((int)return_id);
+            this.itemsDataGridView.DataSource = rentalItems;
+
+            int amountOfColumns = this.itemsDataGridView.ColumnCount - 1;
+            this.itemsDataGridView.Columns[amountOfColumns].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            this.itemsDataGridView.RowHeadersVisible = false;
+
+            this.selectedRentalIdTextbox.Clear();
+            this.selectedRentalIdTextbox.Text = return_id.ToString();
+
+            this.selectedLabel.Text = "Return Id:";
         }
     }
 }

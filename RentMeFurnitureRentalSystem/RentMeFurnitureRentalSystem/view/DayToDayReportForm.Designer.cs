@@ -56,7 +56,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(317, 9);
+            label1.Location = new Point(405, 9);
             label1.Name = "label1";
             label1.Size = new Size(159, 54);
             label1.TabIndex = 0;
@@ -64,14 +64,14 @@
             // 
             // fromDatePicker
             // 
-            fromDatePicker.Location = new Point(63, 99);
+            fromDatePicker.Location = new Point(197, 96);
             fromDatePicker.Name = "fromDatePicker";
             fromDatePicker.Size = new Size(200, 23);
             fromDatePicker.TabIndex = 1;
             // 
             // toDatePicker
             // 
-            toDatePicker.Location = new Point(299, 99);
+            toDatePicker.Location = new Point(470, 98);
             toDatePicker.Name = "toDatePicker";
             toDatePicker.Size = new Size(200, 23);
             toDatePicker.TabIndex = 2;
@@ -79,7 +79,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(19, 104);
+            label2.Location = new Point(153, 100);
             label2.Name = "label2";
             label2.Size = new Size(38, 15);
             label2.TabIndex = 3;
@@ -88,7 +88,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(271, 104);
+            label3.Location = new Point(442, 100);
             label3.Name = "label3";
             label3.Size = new Size(22, 15);
             label3.TabIndex = 4;
@@ -96,7 +96,7 @@
             // 
             // submitButton
             // 
-            submitButton.Location = new Point(670, 99);
+            submitButton.Location = new Point(813, 96);
             submitButton.Name = "submitButton";
             submitButton.Size = new Size(75, 23);
             submitButton.TabIndex = 5;
@@ -106,7 +106,7 @@
             // 
             // clearButton
             // 
-            clearButton.Location = new Point(560, 100);
+            clearButton.Location = new Point(732, 96);
             clearButton.Name = "clearButton";
             clearButton.Size = new Size(75, 23);
             clearButton.TabIndex = 6;
@@ -124,7 +124,7 @@
             // 
             // returnButton
             // 
-            returnButton.Location = new Point(670, 21);
+            returnButton.Location = new Point(813, 12);
             returnButton.Name = "returnButton";
             returnButton.Size = new Size(75, 23);
             returnButton.TabIndex = 9;
@@ -183,6 +183,8 @@
             returnsDataGridView.RowTemplate.Height = 25;
             returnsDataGridView.Size = new Size(482, 252);
             returnsDataGridView.TabIndex = 0;
+            returnsDataGridView.CellClick += returnsDataGridView_CellClick;
+            returnsDataGridView.CellDoubleClick += returnsDataGridView_CellDoubleClick;
             // 
             // selectedLabel
             // 
