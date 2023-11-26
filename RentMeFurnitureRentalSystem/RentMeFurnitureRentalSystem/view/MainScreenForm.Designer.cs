@@ -938,7 +938,7 @@
             this.adminTableButton.Name = "adminTableButton";
             this.adminTableButton.Size = new System.Drawing.Size(121, 35);
             this.adminTableButton.TabIndex = 13;
-            this.adminTableButton.Text = "Admin Search";
+            this.adminTableButton.Text = "Admin Tools";
             this.adminTableButton.UseVisualStyleBackColor = true;
             this.adminTableButton.Click += new System.EventHandler(this.adminTableButton_Click);
             // 

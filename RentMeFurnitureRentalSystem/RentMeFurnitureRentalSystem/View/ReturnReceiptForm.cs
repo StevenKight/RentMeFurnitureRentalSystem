@@ -2,7 +2,9 @@
 using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.view;
-
+/// <summary>
+/// Represents the return receipt form
+/// </summary>
 public partial class ReturnReceiptForm : Form
 {
     #region Data members
@@ -12,7 +14,10 @@ public partial class ReturnReceiptForm : Form
     #endregion
 
     #region Constructors
-
+    /// <summary>
+    /// Returns a new instance of ReturnReceiptForm
+    /// </summary>
+    /// <param name="returnId"></param>
     public ReturnReceiptForm(int returnId)
     {
         this.InitializeComponent();

@@ -3,7 +3,9 @@ using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.view;
-
+/// <summary>
+/// Returns the furniture to the store
+/// </summary>
 public partial class ReturnForm : Form
 {
     #region Data members
@@ -19,7 +21,11 @@ public partial class ReturnForm : Form
     #endregion
 
     #region Constructors
-
+    /// <summary>
+    /// instantiates the return form with the employee and customer
+    /// </summary>
+    /// <param name="employee"></param>
+    /// <param name="customer"></param>
     public ReturnForm(Employee employee, Customer customer)
     {
         this.employee = employee;

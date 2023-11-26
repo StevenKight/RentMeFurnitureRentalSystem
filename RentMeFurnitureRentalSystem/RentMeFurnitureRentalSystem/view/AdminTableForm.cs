@@ -12,8 +12,14 @@ using String = System.String;
 
 namespace RentMeFurnitureRentalSystem.view
 {
+    /// <summary>
+    /// AdminTableForm class
+    /// </summary>
     public partial class AdminTableForm : Form
     {
+        /// <summary>
+        /// AdminTableForm constructor
+        /// </summary>
         public AdminTableForm()
         {
             InitializeComponent();
@@ -40,6 +46,21 @@ namespace RentMeFurnitureRentalSystem.view
         private void clearButton_Click(object sender, EventArgs e)
         {
             this.sqlTextArea.Clear();
+        }
+
+        private void returnScreenButton_Click(object sender, EventArgs e)
+        {
+            var tableForm = new AdminToolSelectorForm();
+
+
+            
+            tableForm.StartPosition = FormStartPosition.Manual;
+            tableForm.Left = Left + (Width - tableForm.Width) / 2;
+            tableForm.Top = Top + (Height - tableForm.Height) / 2;
+            tableForm.Show();
+            Close();
+
+
         }
     }
 }

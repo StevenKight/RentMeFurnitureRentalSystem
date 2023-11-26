@@ -8,11 +8,18 @@ using RentMeFurnitureRentalSystem.Utils;
 using System.Data;
 
 namespace RentMeFurnitureRentalSystem.DAL;
-
+/// <summary>
+///  login DAL class
+/// </summary>
 public class LoginDal
 {
     #region Methods
-
+    /// <summary>
+    /// Create login in the database
+    /// </summary>
+    /// <param name="login"></param>
+    /// <param name="transaction"></param>
+    /// <returns></returns>
     public static bool CreateLogin(Login login, MySqlConnection? transaction = null)
     {
         if (string.IsNullOrWhiteSpace(login.Username) || string.IsNullOrWhiteSpace(login.Password))
@@ -37,7 +44,12 @@ public class LoginDal
             return false;
         }
     }
-
+    /// <summary>
+    /// delete login in the database
+    /// </summary>
+    /// <param name="login"></param>
+    /// <param name="transaction"></param>
+    /// <returns></returns>
     public static bool DeleteLogin(Login login, MySqlConnection? transaction = null)
     {
         using var connection = transaction ?? new MySqlConnection(Connection.ConnectionString);
@@ -51,7 +63,11 @@ public class LoginDal
 
         return affected > 0;
     }
-
+    /// <summary>
+    /// check login in the database
+    /// </summary>
+    /// <param name="username"></param>
+    /// <returns></returns>
     public static Login CheckLogin(string username)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -60,7 +76,13 @@ public class LoginDal
 
         return loginResult.ElementAt(0);
     }
-
+    /// <summary>
+    /// change login in the database
+    /// </summary>
+    /// <param name="username"></param>
+    /// <param name="id"></param>
+    /// <param name="newPassword"></param>
+    /// <returns></returns>
     public static bool ChangeLogin(string username, int id, string newPassword)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);

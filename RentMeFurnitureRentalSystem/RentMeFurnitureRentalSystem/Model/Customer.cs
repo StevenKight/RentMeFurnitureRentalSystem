@@ -1,5 +1,7 @@
 ﻿namespace RentMeFurnitureRentalSystem.Model;
-
+/// <summary>
+/// Customer class which represents a customer
+/// </summary>
 public class Customer
 {
     #region Properties

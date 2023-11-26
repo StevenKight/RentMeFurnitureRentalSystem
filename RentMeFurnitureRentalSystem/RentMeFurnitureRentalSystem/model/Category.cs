@@ -1,5 +1,7 @@
 ﻿namespace RentMeFurnitureRentalSystem.model;
-
+/// <summary>
+/// The category class which represents a category of furniture
+/// </summary>
 public class Category
 {
     #region properties

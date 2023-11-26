@@ -10,8 +10,16 @@ using MySqlX.XDevAPI.Common;
 
 namespace RentMeFurnitureRentalSystem.DAL
 {
+    /// <summary>
+    /// The DAL for the admin table page
+    /// </summary>
     public class AdminSQLDAL
     {
+        /// <summary>
+        /// Executes a SQL statement that returns the results of the query
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public static DataTable ReadStatement(string sql)
         {
             try

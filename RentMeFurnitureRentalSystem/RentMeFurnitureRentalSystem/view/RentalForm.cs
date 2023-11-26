@@ -3,7 +3,9 @@ using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.view;
-
+/// <summary>
+/// The form that handles the rental of furniture
+/// </summary>
 public partial class RentalForm : Form
 {
     #region Data members
@@ -17,7 +19,11 @@ public partial class RentalForm : Form
     #endregion
 
     #region Constructors
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="RentalForm"/> class.
+    /// </summary>
+    /// <param name="employee"></param>
+    /// <param name="customer"></param>
     public RentalForm(Employee employee, Customer customer)
     {
         this.employee = employee;

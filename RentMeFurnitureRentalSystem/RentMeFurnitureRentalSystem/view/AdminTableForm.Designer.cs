@@ -34,6 +34,7 @@
             this.submitButton = new System.Windows.Forms.Button();
             this.resultDataView = new System.Windows.Forms.DataGridView();
             this.clearButton = new System.Windows.Forms.Button();
+            this.returnScreenButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.resultDataView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,11 +94,22 @@
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
+            // returnScreenButton
+            // 
+            this.returnScreenButton.Location = new System.Drawing.Point(423, 12);
+            this.returnScreenButton.Name = "returnScreenButton";
+            this.returnScreenButton.Size = new System.Drawing.Size(75, 23);
+            this.returnScreenButton.TabIndex = 6;
+            this.returnScreenButton.Text = "Return";
+            this.returnScreenButton.UseVisualStyleBackColor = true;
+            this.returnScreenButton.Click += new System.EventHandler(this.returnScreenButton_Click);
+            // 
             // AdminTableForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(523, 450);
+            this.Controls.Add(this.returnScreenButton);
             this.Controls.Add(this.clearButton);
             this.Controls.Add(this.resultDataView);
             this.Controls.Add(this.submitButton);
@@ -120,5 +132,6 @@
         private Button submitButton;
         private DataGridView resultDataView;
         private Button clearButton;
+        private Button returnScreenButton;
     }
 }

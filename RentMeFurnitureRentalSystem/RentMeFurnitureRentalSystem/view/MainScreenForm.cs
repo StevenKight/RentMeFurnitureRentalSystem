@@ -6,30 +6,49 @@ using RentMeFurnitureRentalSystem.Model;
 using RentMeFurnitureRentalSystem.view;
 
 namespace RentMeFurnitureRentalSystem;
-
+/// <summary>
+/// Main screen form that displays all the data for the user to see
+/// </summary>
 public partial class MainScreenForm : Form
 {
 
     #region Data Members
-
+    /// <summary>
+    /// Logged in employee
+    /// </summary>
     public Employee LoggedInEmployee { get; set; }
-
+    /// <summary>
+    /// list of employees
+    /// </summary>
     public List<Employee> Employees { get; set; }
+    /// <summary>
+    /// list of customers
+    /// </summary>
     public List<Customer> Customers { get; set; }
-
+    /// <summary>
+    /// list of furniture
+    /// </summary>
     public List<Furniture> Furniture { get; set; }
-
+    /// <summary>
+    /// selected employee
+    /// </summary>
     public Employee SelectedEmployee { get; set; }
+    /// <summary>
+    /// selected customer
+    /// </summary>
     public Customer SelectedCustomer { get; set; }
-
-    public Furniture SelectedFurniture { get; set; }
-
+    /// <summary>
+    /// regex for phone number
+    /// </summary>
     public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
 
     #endregion
 
     #region Constructors
-
+    /// <summary>
+    /// Initializes a new instance of the <see cref="MainScreenForm"/> class.
+    /// </summary>
+    /// <param name="employee"></param>
     public MainScreenForm(Employee employee)
     {
         this.InitializeComponent();
@@ -380,11 +399,11 @@ public partial class MainScreenForm : Form
 
     private void adminTableButton_Click(object sender, EventArgs e)
     {
-        var tableForm = new AdminTableForm();
-        tableForm.StartPosition = FormStartPosition.Manual;
-        tableForm.Left = Left + (Width - tableForm.Width) / 2;
-        tableForm.Top = Top + (Height - tableForm.Height) / 2;
-        tableForm.ShowDialog();
+        var toolSelectorForm = new AdminToolSelectorForm();
+        toolSelectorForm.StartPosition = FormStartPosition.Manual;
+        toolSelectorForm.Left = Left + (Width - toolSelectorForm.Width) / 2;
+        toolSelectorForm.Top = Top + (Height - toolSelectorForm.Height) / 2;
+        toolSelectorForm.ShowDialog();
     }
     #endregion
 

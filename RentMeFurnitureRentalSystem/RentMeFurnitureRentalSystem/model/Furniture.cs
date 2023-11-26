@@ -1,5 +1,7 @@
 ﻿namespace RentMeFurnitureRentalSystem.model;
-
+/// <summary>
+/// furniture class that represents a furniture in the database
+/// </summary>
 public class Furniture
 {
     #region properties

@@ -1,5 +1,7 @@
 ﻿namespace RentMeFurnitureRentalSystem.DAL;
-
+/// <summary>
+/// The connection string for the database
+/// </summary>
 public static class Connection
 {
     #region Data members
