@@ -12,8 +12,14 @@ using RentMeFurnitureRentalSystem.Utils;
 
 namespace RentMeFurnitureRentalSystem.view
 {
+    /// <summary>
+    /// ChangePasswordForm class
+    /// </summary>
     public partial class ChangePasswordForm : Form
     {
+        /// <summary>
+        /// The constructor for ChangePasswordForm
+        /// </summary>
         public ChangePasswordForm()
         {
             InitializeComponent();

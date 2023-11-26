@@ -2,7 +2,9 @@
 using RentMeFurnitureRentalSystem.model;
 
 namespace RentMeFurnitureRentalSystem.view;
-
+/// <summary>
+/// Rental receipt form
+/// </summary>
 public partial class RentalReceiptForm : Form
 {
     #region Data members
@@ -12,7 +14,10 @@ public partial class RentalReceiptForm : Form
     #endregion
 
     #region Constructors
-
+    /// <summary>
+    /// Constructor for the rental receipt form
+    /// </summary>
+    /// <param name="rentalId"></param>
     public RentalReceiptForm(int rentalId)
     {
         this.InitializeComponent();

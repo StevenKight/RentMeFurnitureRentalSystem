@@ -5,10 +5,16 @@ using RentMeFurnitureRentalSystem.Model;
 using System.Data;
 
 namespace RentMeFurnitureRentalSystem.DAL;
-
+/// <summary>
+/// Rental DAL class that handles all database interactions for rentals
+/// </summary>
 public class RentalDAL
 {
-
+    /// <summary>
+    /// Get all rentals from the database by id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public static RentalItem GetRentalById(int id)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -18,7 +24,11 @@ public class RentalDAL
 
         return results.ElementAt(0);
     }
-
+    /// <summary>
+    /// get return by id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
     public static RentalItem GetReturnById(int id)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -28,7 +38,11 @@ public class RentalDAL
 
         return results.ElementAt(0);
     }
-
+    /// <summary>
+    /// get all rentals
+    /// </summary>
+    /// <param name="rentalId"></param>
+    /// <returns></returns>
     public static List<RentalItem> GetRentalItems(int rentalId)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -38,7 +52,11 @@ public class RentalDAL
 
         return results.ToList();
     }
-
+    /// <summary>
+    /// get rental total
+    /// </summary>
+    /// <param name="rentalId"></param>
+    /// <returns></returns>
     public static decimal GetRentalTotal(int rentalId) 
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -48,7 +66,11 @@ public class RentalDAL
 
         return results;
     }
-
+    /// <summary>
+    /// get rental by customer
+    /// </summary>
+    /// <param name="customer"></param>
+    /// <returns></returns>
     public static List<RentalItem> GetRentalsByCustomer(Customer customer)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -58,7 +80,11 @@ public class RentalDAL
 
         return results.ToList();
     }
-
+    /// <summary>
+    /// create rental in the database
+    /// </summary>
+    /// <param name="rental"></param>
+    /// <returns></returns>
     public static int CreateRental(RentalItem rental)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -76,7 +102,11 @@ public class RentalDAL
 
         return newId;
     }
-
+    /// <summary>
+    /// create rental item in the database
+    /// </summary>
+    /// <param name="rentalItem"></param>
+    /// <returns></returns>
     public static bool CreateRentalItem(RentalItem rentalItem)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -91,7 +121,11 @@ public class RentalDAL
 
         return outcome != null;
     }
-
+    /// <summary>
+    /// create return in the database
+    /// </summary>
+    /// <param name="rental"></param>
+    /// <returns></returns>
     public static int CreateReturn(RentalItem rental)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -108,7 +142,11 @@ public class RentalDAL
 
         return newId;
     }
-
+    /// <summary>
+    /// create return item in the database
+    /// </summary>
+    /// <param name="rentalItem"></param>
+    /// <returns></returns>
     public static bool CreateReturnItem(RentalItem rentalItem)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -124,7 +162,11 @@ public class RentalDAL
 
         return outcome != null;
     }
-
+    /// <summary>
+    /// get return items
+    /// </summary>
+    /// <param name="returnId"></param>
+    /// <returns></returns>
     public static List<Furniture> GetReturnItems(int returnId)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
@@ -134,7 +176,11 @@ public class RentalDAL
 
         return results.ToList();
     }
-
+    /// <summary>
+    /// get return total
+    /// </summary>
+    /// <param name="returnId"></param>
+    /// <returns></returns>
     public static decimal GetReturnTotal(int returnId)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);

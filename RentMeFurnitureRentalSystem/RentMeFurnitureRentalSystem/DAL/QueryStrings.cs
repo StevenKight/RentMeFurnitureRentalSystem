@@ -1,5 +1,7 @@
 ﻿namespace RentMeFurnitureRentalSystem.DAL;
-
+/// <summary>
+/// Query strings for all the queries used in the application
+/// </summary>
 public static class QueryStrings
 {
     #region Roles
@@ -153,6 +155,28 @@ public static class QueryStrings
                                             "AND `return_item`.return_id = @Id " +
                                             "AND `rental`.due_date < NOW() " +
                                             "GROUP BY `return_item`.return_id";
+
+    #endregion
+
+    #region Report
+
+    public const string GetReturnReport = "SELECT * FROM `return` WHERE `return`.return_date BETWEEN @fromDate AND @toDate";
+
+    public const string GetRentalReport = "SELECT * FROM rental WHERE start_date BETWEEN @fromDate AND @toDate";
+
+    public const string GetRentalReportBySelected =@"
+   SELECT 
+        rental_item.furniture_id, rental_item.quantity, furniture.`name`
+    FROM
+        rental
+            INNER JOIN
+        rental_item ON rental.rental_id = rental_item.rental_id
+            INNER JOIN
+        furniture ON furniture.furniture_id = rental_item.furniture_id
+    WHERE
+        rental.rental_id = @rentalId";
+
+    public const string GetReturnReportBySelected = "select `return_item`.furniture_id, `return_item`.quantity, furniture.`name` from `return` inner join `return_item` on `return`.return_id = `return_item`.return_id inner join furniture ON furniture.furniture_id = `return_item`.furniture_id where `return`.return_id=@returnID";
 
     #endregion
 }

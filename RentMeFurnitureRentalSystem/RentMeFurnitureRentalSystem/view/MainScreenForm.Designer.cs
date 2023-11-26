@@ -889,7 +889,7 @@
             this.employeesTab.Location = new System.Drawing.Point(4, 24);
             this.employeesTab.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.employeesTab.Name = "employeesTab";
-            this.employeesTab.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.employeesTab.Padding = new System.Windows.Forms.Padding(3);
             this.employeesTab.Size = new System.Drawing.Size(766, 333);
             this.employeesTab.TabIndex = 1;
             this.employeesTab.Text = "Employees";
@@ -903,6 +903,7 @@
             this.deleteEmployeeButton.TabIndex = 12;
             this.deleteEmployeeButton.Text = "Delete Employee ";
             this.deleteEmployeeButton.UseVisualStyleBackColor = true;
+            this.deleteEmployeeButton.Click += new System.EventHandler(this.deleteEmployeeButton_Click);
             // 
             // adminTableButton
             // 
@@ -911,8 +912,9 @@
             this.adminTableButton.Name = "adminTableButton";
             this.adminTableButton.Size = new System.Drawing.Size(106, 26);
             this.adminTableButton.TabIndex = 13;
-            this.adminTableButton.Text = "Admin Search";
+            this.adminTableButton.Text = "Admin Tools";
             this.adminTableButton.UseVisualStyleBackColor = true;
+            this.adminTableButton.Click += new System.EventHandler(this.adminTableButton_Click);
             // 
             // MainScreenForm
             // 

@@ -1,5 +1,7 @@
 ﻿namespace RentMeFurnitureRentalSystem.model;
-
+/// <summary>
+/// Employee class that represents an employee in the database
+/// </summary>
 public class Employee
 {
     #region Properties
