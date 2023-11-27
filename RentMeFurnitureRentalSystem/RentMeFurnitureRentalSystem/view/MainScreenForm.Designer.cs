@@ -812,6 +812,7 @@
             furnitureGridView.Size = new Size(614, 289);
             furnitureGridView.TabIndex = 0;
             furnitureGridView.RowStateChanged += furnitureGridView_RowStateChanged;
+            furnitureGridView.MouseDoubleClick += furnitureGridView_MouseDoubleClick;
             // 
             // furnitureidDataGridViewTextBoxColumn
             // 

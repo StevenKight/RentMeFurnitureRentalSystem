@@ -129,7 +129,7 @@ public static class QueryStrings
     public const string DeleteFurniture = "DELETE FROM furniture WHERE furniture_id=@Furniture_id";
 
     public const string UpdateFurniture = "UPDATE furniture " +
-                                            "SET `category_name` = @CCategory_name, " +
+                                            "SET `category_name` = @Category_name, " +
                                                 "`style_name` = @Style_name, " +
                                                 "`name` = @Name, " +
                                                 "`description` = @Description, " +

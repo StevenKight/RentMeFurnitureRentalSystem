@@ -82,7 +82,7 @@ public partial class MainScreenForm : Form
         Employees = EmployeeDal.GetAllEmployees();
         Customers = CustomerDal.GetAllCustomers();
         Furniture = FurnitureDAL.GetFurniture().ToList();
-        
+
         populateGridViews();
         this.populateStyleAndCategoryComboBoxes();
     }
@@ -294,6 +294,17 @@ public partial class MainScreenForm : Form
         employeeDisplayForm.Top = Top + (Height - employeeDisplayForm.Height) / 2;
 
         employeeDisplayForm.ShowDialog();
+        this.getData();
+    }
+
+    private void furnitureGridView_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+        var furnitureDisplayForm = new addFurnitureForm(this.SelectedFurniture);
+        furnitureDisplayForm.StartPosition = FormStartPosition.Manual;
+        furnitureDisplayForm.Left = Left + (Width - furnitureDisplayForm.Width) / 2;
+        furnitureDisplayForm.Top = Top + (Height - furnitureDisplayForm.Height) / 2;
+
+        furnitureDisplayForm.ShowDialog();
         this.getData();
     }
 
@@ -515,6 +526,5 @@ public partial class MainScreenForm : Form
         toolSelectorForm.ShowDialog();
     }
     #endregion
-
 
 }

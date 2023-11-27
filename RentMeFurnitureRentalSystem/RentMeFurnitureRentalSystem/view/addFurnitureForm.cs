@@ -16,6 +16,8 @@ public partial class addFurnitureForm : Form
     public const string RENTALANDFINERATEREGEX =
         @"(?:^[1-9]([0-9]+)?(?:\.[0-9]{1,2})?$)|(?:^(?:0)$)|(?:^[0-9]\.[0-9](?:[0-9])?$)";
 
+    private readonly Furniture Furniture;
+
     #endregion
     /// <summary>
     /// Creates a new instance of the add furniture form
@@ -27,6 +29,23 @@ public partial class addFurnitureForm : Form
         populateStyleComboBox();
         populateCategoryComboBox();
         setValidation();
+    }
+    /// <summary>
+    /// Creates a new instance of the add furniture form
+    /// </summary>
+    /// <param name="furniture">The furniture to update</param>
+    public addFurnitureForm(Furniture furniture)
+    {
+        this.Furniture = furniture;
+
+        InitializeComponent();
+        AutoValidate = AutoValidate.EnableAllowFocusChange;
+
+        populateStyleComboBox();
+        populateCategoryComboBox();
+        setValidation();
+
+        fillForm();
     }
 
     private void populateStyleComboBox()
@@ -49,6 +68,29 @@ public partial class addFurnitureForm : Form
         fineRateTextBox.Validating += fineRate_Validating;
         nameTextBox.Validating += nameTextbox_Validating;
         descriptionTextArea.Validating += descriptionTextArea_Validating;
+    }
+
+    private void fillForm()
+    {
+        this.addButton.Text = "Update";
+
+        rentalRateTextBox.Text = this.Furniture.Rental_rate.ToString();
+        fineRateTextBox.Text = this.Furniture.Fine_rate.ToString();
+        nameTextBox.Text = this.Furniture.Name;
+        descriptionTextArea.Text = this.Furniture.Description;
+        quantiyNumber.Value = this.Furniture.Quantity;
+
+        var styles = styleComboBox.Items.Cast<Style>().ToList();
+        var categories = categoryComboBox.Items.Cast<Category>().ToList();
+
+        var style = styles.FirstOrDefault(x => this.Furniture.Style_name.Equals(x.Name));
+        var category = categories.FirstOrDefault(x => this.Furniture.Category_name.Equals(x.Name));
+
+        var styleIndex = styles.IndexOf(style ?? styles[0]);
+        var categoryIndex = categories.IndexOf(category ?? categories[0]);
+
+        styleComboBox.SelectedIndex = styleIndex;
+        categoryComboBox.SelectedIndex = categoryIndex;
     }
 
     private void rentalRate_Validating(object sender, CancelEventArgs e)
@@ -121,6 +163,7 @@ public partial class addFurnitureForm : Form
 
     private void addButton_Click(object sender, EventArgs e)
     {
+
         if (!ValidateChildren(ValidationConstraints.Enabled))
         {
             MessageBox.Show("Please fix errors before submitting");
@@ -138,11 +181,31 @@ public partial class addFurnitureForm : Form
             Quantity = int.Parse(quantiyNumber.Text)
         };
 
+        if (this.Furniture == null) // Add new furniture
+        {
+            if (!FurnitureDAL.CreateFurniture(furniture))
+            {
+                MessageBox.Show("Error creating furniture");
+            }
+            else
+            {
+                MessageBox.Show("Created furniture");
+            }
+        }
+        else // Update existing furniture
+        {
+            furniture.Furniture_id = this.Furniture.Furniture_id;
 
-        if (!FurnitureDAL.CreateFurniture(furniture))
-            MessageBox.Show("Error creating furniture");
-        else
-            MessageBox.Show("Created furniture");
+            if (!FurnitureDAL.UpdateFurniture(furniture))
+            {
+                MessageBox.Show("Error updating furniture");
+            }
+            else
+            {
+                MessageBox.Show("Updated furniture");
+            }
+        }
+
         this.Close();
     }
 }
