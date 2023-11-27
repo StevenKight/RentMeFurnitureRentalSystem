@@ -1,6 +1,7 @@
-﻿namespace RentMeFurnitureRentalSystem.model;
+﻿namespace RentMeFurnitureRentalSystem.Model;
+
 /// <summary>
-/// login class that represents a login in the database
+///     login class that represents a login in the database
 /// </summary>
 public class Login
 {

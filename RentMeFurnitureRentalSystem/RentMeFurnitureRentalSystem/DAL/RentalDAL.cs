@@ -1,17 +1,19 @@
-﻿using Dapper;
+﻿using System.Data;
+using Dapper;
 using MySql.Data.MySqlClient;
-using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
-using System.Data;
 
 namespace RentMeFurnitureRentalSystem.DAL;
+
 /// <summary>
-/// Rental DAL class that handles all database interactions for rentals
+///     Rental DAL class that handles all database interactions for rentals
 /// </summary>
-public class RentalDAL
+public class RentalDal
 {
+    #region Methods
+
     /// <summary>
-    /// Get all rentals from the database by id
+    ///     Get all rentals from the database by id
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -24,8 +26,9 @@ public class RentalDAL
 
         return results.ElementAt(0);
     }
+
     /// <summary>
-    /// get return by id
+    ///     get return by id
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -38,8 +41,9 @@ public class RentalDAL
 
         return results.ElementAt(0);
     }
+
     /// <summary>
-    /// get all rentals
+    ///     get all rentals
     /// </summary>
     /// <param name="rentalId"></param>
     /// <returns></returns>
@@ -52,12 +56,13 @@ public class RentalDAL
 
         return results.ToList();
     }
+
     /// <summary>
-    /// get rental total
+    ///     get rental total
     /// </summary>
     /// <param name="rentalId"></param>
     /// <returns></returns>
-    public static decimal GetRentalTotal(int rentalId) 
+    public static decimal GetRentalTotal(int rentalId)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
@@ -66,8 +71,9 @@ public class RentalDAL
 
         return results;
     }
+
     /// <summary>
-    /// get rental by customer
+    ///     get rental by customer
     /// </summary>
     /// <param name="customer"></param>
     /// <returns></returns>
@@ -102,16 +108,16 @@ public class RentalDAL
             {
                 var item = new RentalItem
                 {
-                    Rental_id = newRentalId,
-                    Member_id = rental.Member_id,
-                    Employee_num = rental.Employee_num,
-                    Start_date = rental.Start_date,
-                    Due_date = rental.Due_date,
-                    Furniture_id = furnitureItem.Furniture_id,
+                    RentalId = newRentalId,
+                    MemberId = rental.MemberId,
+                    EmployeeNum = rental.EmployeeNum,
+                    StartDate = rental.StartDate,
+                    DueDate = rental.DueDate,
+                    FurnitureId = furnitureItem.FurnitureId,
                     Quantity = furnitureItem.Quantity
                 };
 
-                RentalDAL.CreateRentalItem(item, connection);
+                CreateRentalItem(item, connection);
             }
 
             transaction.Commit();
@@ -121,23 +127,23 @@ public class RentalDAL
         catch (Exception ex)
         {
             transaction.Rollback();
-            
+
             return -1;
         }
     }
 
     /// <summary>
-    /// create rental in the database
+    ///     create rental in the database
     /// </summary>
     /// <param name="rental"></param>
     /// <returns></returns>
     public static int CreateRental(RentalItem rental, MySqlConnection transactionConnection)
     {
         var param = new DynamicParameters();
-        param.Add("memberId", rental.Member_id);
-        param.Add("employeeNum", rental.Employee_num);
-        param.Add("startDate", rental.Start_date);
-        param.Add("dueDate", rental.Due_date);
+        param.Add("memberId", rental.MemberId);
+        param.Add("employeeNum", rental.EmployeeNum);
+        param.Add("startDate", rental.StartDate);
+        param.Add("dueDate", rental.DueDate);
         param.Add("rentalId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
         transactionConnection.Query<int>("CreateRental", param, commandType: CommandType.StoredProcedure);
@@ -145,19 +151,21 @@ public class RentalDAL
 
         return newId;
     }
+
     /// <summary>
-    /// create rental item in the database
+    ///     create rental item in the database
     /// </summary>
     /// <param name="rentalItem"></param>
     /// <returns></returns>
     public static bool CreateRentalItem(RentalItem rentalItem, MySqlConnection transactionConnection)
     {
         var param = new DynamicParameters();
-        param.Add("rentalId", rentalItem.Rental_id);
-        param.Add("furnitureId", rentalItem.Furniture_id);
+        param.Add("rentalId", rentalItem.RentalId);
+        param.Add("furnitureId", rentalItem.FurnitureId);
         param.Add("rentedQuantity", rentalItem.Quantity);
 
-        var outcome = transactionConnection.Query<int>("CreateRentalItem", param, commandType: CommandType.StoredProcedure);
+        var outcome =
+            transactionConnection.Query<int>("CreateRentalItem", param, commandType: CommandType.StoredProcedure);
 
         return outcome != null;
     }
@@ -183,16 +191,16 @@ public class RentalDAL
             {
                 var item = new RentalItem
                 {
-                    Return_id = newReturnId,
-                    Rental_id = furnitureItem.Rental_id,
-                    Member_id = returnData.Member_id,
-                    Employee_num = returnData.Employee_num,
-                    Start_date = returnData.Start_date,
-                    Furniture_id = furnitureItem.Furniture_id,
+                    ReturnId = newReturnId,
+                    RentalId = furnitureItem.RentalId,
+                    MemberId = returnData.MemberId,
+                    EmployeeNum = returnData.EmployeeNum,
+                    StartDate = returnData.StartDate,
+                    FurnitureId = furnitureItem.FurnitureId,
                     Quantity = furnitureItem.Quantity
                 };
 
-                RentalDAL.CreateReturnItem(item, connection);
+                CreateReturnItem(item, connection);
             }
 
             transaction.Commit();
@@ -208,16 +216,16 @@ public class RentalDAL
     }
 
     /// <summary>
-    /// create return in the database
+    ///     create return in the database
     /// </summary>
     /// <param name="rental"></param>
     /// <returns></returns>
     public static int CreateReturn(RentalItem rental, MySqlConnection transactionConnection)
     {
         var param = new DynamicParameters();
-        param.Add("memberId", rental.Member_id);
-        param.Add("employeeNum", rental.Employee_num);
-        param.Add("returnDate", rental.Start_date);
+        param.Add("memberId", rental.MemberId);
+        param.Add("employeeNum", rental.EmployeeNum);
+        param.Add("returnDate", rental.StartDate);
         param.Add("returnId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
         transactionConnection.Query<int>("CreateReturn", param, commandType: CommandType.StoredProcedure);
@@ -225,26 +233,28 @@ public class RentalDAL
 
         return newId;
     }
+
     /// <summary>
-    /// create return item in the database
+    ///     create return item in the database
     /// </summary>
     /// <param name="rentalItem"></param>
     /// <returns></returns>
     public static bool CreateReturnItem(RentalItem rentalItem, MySqlConnection transactionConnection)
     {
         var param = new DynamicParameters();
-        param.Add("rentalId", rentalItem.Rental_id);
-        param.Add("returnId", rentalItem.Return_id);
-        param.Add("furnitureId", rentalItem.Furniture_id);
+        param.Add("rentalId", rentalItem.RentalId);
+        param.Add("returnId", rentalItem.ReturnId);
+        param.Add("furnitureId", rentalItem.FurnitureId);
         param.Add("returnedQuantity", rentalItem.Quantity);
 
-        var outcome = transactionConnection.Query<int>("CreateReturnItem", param, commandType: CommandType.StoredProcedure);
+        var outcome =
+            transactionConnection.Query<int>("CreateReturnItem", param, commandType: CommandType.StoredProcedure);
 
         return outcome != null;
     }
 
     /// <summary>
-    /// get return items
+    ///     get return items
     /// </summary>
     /// <param name="returnId"></param>
     /// <returns></returns>
@@ -257,8 +267,9 @@ public class RentalDAL
 
         return results.ToList();
     }
+
     /// <summary>
-    /// get return total
+    ///     get return total
     /// </summary>
     /// <param name="returnId"></param>
     /// <returns></returns>
@@ -278,4 +289,6 @@ public class RentalDAL
             return 0;
         }
     }
+
+    #endregion
 }

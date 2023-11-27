@@ -1,17 +1,18 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
-using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
+
 /// <summary>
-/// FurnitureDAL is responsible for handling all database operations for the Furniture class
+///     FurnitureDAL is responsible for handling all database operations for the Furniture class
 /// </summary>
-public class FurnitureDAL
+public class FurnitureDal
 {
     #region Methods
+
     /// <summary>
-    /// Get all furniture from the database
+    ///     Get all furniture from the database
     /// </summary>
     /// <returns></returns>
     public static IList<Furniture> GetFurniture()
@@ -21,8 +22,9 @@ public class FurnitureDAL
         var result = connection.Query<Furniture>(QueryStrings.GetFurniture);
         return result.ToList();
     }
+
     /// <summary>
-    /// Get all rentable furniture from the database
+    ///     Get all rentable furniture from the database
     /// </summary>
     /// <returns></returns>
     public static IList<Furniture> GetRentableFurniture()
@@ -32,8 +34,9 @@ public class FurnitureDAL
         var result = connection.Query<Furniture>(QueryStrings.GetRentableFurniture);
         return result.ToList();
     }
+
     /// <summary>
-    /// get all furniture by id from the database
+    ///     get all furniture by id from the database
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -44,8 +47,9 @@ public class FurnitureDAL
         var result = connection.Query<Furniture>(QueryStrings.GetFurnitureById, new { id });
         return result.ToList();
     }
+
     /// <summary>
-    /// Get all furniture by category from the database
+    ///     Get all furniture by category from the database
     /// </summary>
     /// <param name="category"></param>
     /// <returns></returns>
@@ -56,8 +60,9 @@ public class FurnitureDAL
         var result = connection.Query<Furniture>(QueryStrings.GetFurnitureByCategory, new { category });
         return result.ToList();
     }
+
     /// <summary>
-    /// Get all furniture by style from the database
+    ///     Get all furniture by style from the database
     /// </summary>
     /// <param name="style"></param>
     /// <returns></returns>
@@ -68,8 +73,9 @@ public class FurnitureDAL
         var result = connection.Query<Furniture>(QueryStrings.GetFurnitureByStyle, new { style });
         return result.ToList();
     }
+
     /// <summary>
-    /// Get all rentable furniture by id from the database
+    ///     Get all rentable furniture by id from the database
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -80,8 +86,9 @@ public class FurnitureDAL
         var result = connection.Query<Furniture>(QueryStrings.GetRentableFurnitureById, new { id });
         return result.ToList();
     }
+
     /// <summary>
-    /// get all rentable furniture by category from the database
+    ///     get all rentable furniture by category from the database
     /// </summary>
     /// <param name="category"></param>
     /// <returns></returns>
@@ -92,8 +99,9 @@ public class FurnitureDAL
         var result = connection.Query<Furniture>(QueryStrings.GetRentableFurnitureByCategory, new { category });
         return result.ToList();
     }
+
     /// <summary>
-    /// get rentable furniture by style from the database
+    ///     get rentable furniture by style from the database
     /// </summary>
     /// <param name="style"></param>
     /// <returns></returns>
@@ -105,8 +113,9 @@ public class FurnitureDAL
         var result = connection.Query<Furniture>(QueryStrings.GetRentableFurnitureByStyle, new { style });
         return result.ToList();
     }
+
     /// <summary>
-    /// get all furniture by rental item from the database
+    ///     get all furniture by rental item from the database
     /// </summary>
     /// <param name="selectedRental"></param>
     /// <returns></returns>
@@ -118,8 +127,9 @@ public class FurnitureDAL
         var result = connection.Query<Furniture>(QueryStrings.GetFurnitureByRental, selectedRental);
         return result.ToList();
     }
+
     /// <summary>
-    /// create furniture in the database
+    ///     create furniture in the database
     /// </summary>
     /// <param name="furniture"></param>
     /// <returns></returns>
@@ -138,8 +148,9 @@ public class FurnitureDAL
             return false;
         }
     }
+
     /// <summary>
-    /// delete a furniture from the database
+    ///     delete a furniture from the database
     /// </summary>
     /// <param name="furniture"></param>
     /// <returns></returns>
@@ -152,8 +163,9 @@ public class FurnitureDAL
 
         return affected > 0;
     }
+
     /// <summary>
-    /// Update a furniture in the database
+    ///     Update a furniture in the database
     /// </summary>
     /// <param name="furniture"></param>
     /// <returns></returns>

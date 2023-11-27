@@ -1,30 +1,33 @@
 ﻿using System.ComponentModel;
 using System.Text.RegularExpressions;
 using RentMeFurnitureRentalSystem.DAL;
-using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 
-namespace RentMeFurnitureRentalSystem.view;
+namespace RentMeFurnitureRentalSystem.View;
+
 /// <summary>
-/// The form that allows the user to add a new user to the database
+///     The form that allows the user to add a new user to the database
 /// </summary>
-public partial class addUserForm : Form
+public partial class AddUserForm : Form
 {
     #region Data members
-    /// <summary>
-    /// Email regex
-    /// </summary>
-    public const string EMAILREGEX = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
-    /// <summary>
-    /// Phone number regex
-    /// </summary>
-    public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
-    /// <summary>
-    /// Zipcode regex
-    /// </summary>
-    public const string ZIPREGEX = @"^[0-9]{5}(?:-[0-9]{4})?$";
 
-    private static readonly string[] stateOptions =
+    /// <summary>
+    ///     Email regex
+    /// </summary>
+    public const string Emailregex = @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$";
+
+    /// <summary>
+    ///     Phone number regex
+    /// </summary>
+    public const string Phoneregexnodash = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
+
+    /// <summary>
+    ///     Zipcode regex
+    /// </summary>
+    public const string Zipregex = @"^[0-9]{5}(?:-[0-9]{4})?$";
+
+    private static readonly string[] StateOptions =
     {
         "Alabama", "Alaska", "Arizona", "Arkansas", "California",
         "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
@@ -38,24 +41,25 @@ public partial class addUserForm : Form
         "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
     };
 
-    private static readonly string[] genderOptions = { "O", "M", "F" };
+    private static readonly string[] GenderOptions = { "O", "M", "F" };
 
     private string[]? roleOptions;
 
     private bool isEmployee;
     private bool isPrepopulated;
 
-    private Employee GivenEmployee;
-    private Customer GivenCustomer;
+    private Employee givenEmployee;
+    private Customer givenCustomer;
 
     #endregion
 
     #region Constructors
+
     /// <summary>
-    /// Creates a new addUserForm and checks if the user is an employee or adminsitrator
+    ///     Creates a new addUserForm and checks if the user is an employee or adminsitrator
     /// </summary>
     /// <param name="employee"></param>
-    public addUserForm(bool employee)
+    public AddUserForm(bool employee)
     {
         this.initializeDisplay();
 
@@ -69,7 +73,7 @@ public partial class addUserForm : Form
         }
     }
 
-    public addUserForm(Customer customer)
+    public AddUserForm(Customer customer)
     {
         this.initializeDisplay();
         this.displayCustomerData();
@@ -81,7 +85,7 @@ public partial class addUserForm : Form
         this.cancelButton.Text = "Close";
     }
 
-    public addUserForm(Employee employee)
+    public AddUserForm(Employee employee)
     {
         this.initializeDisplay();
         this.displayEmployeeData();
@@ -110,7 +114,7 @@ public partial class addUserForm : Form
         this.cityInput.Text = customer.City;
         this.stateComboBox.Text = customer.State;
 
-        this.GivenCustomer = customer;
+        this.givenCustomer = customer;
 
         this.fillDialog();
     }
@@ -129,9 +133,9 @@ public partial class addUserForm : Form
         this.zipcodeInput.Text = employee.Zip;
         this.cityInput.Text = employee.City;
         this.stateComboBox.Text = employee.State;
-        this.roleComboBox.Text = employee.Role_name;
+        this.roleComboBox.Text = employee.RoleName;
 
-        this.GivenEmployee = employee;
+        this.givenEmployee = employee;
 
         this.fillDialog();
     }
@@ -240,8 +244,8 @@ public partial class addUserForm : Form
 
         if (this.isPrepopulated)
         {
-            customer.Member_id = this.GivenCustomer.Member_id;
-            customer.Register_date = this.GivenCustomer.Register_date;
+            customer.MemberId = this.givenCustomer.MemberId;
+            customer.RegisterDate = this.givenCustomer.RegisterDate;
 
             if (!CustomerDal.UpdateCustomer(customer))
             {
@@ -286,12 +290,12 @@ public partial class addUserForm : Form
             City = this.cityInput.Text,
             State = this.stateComboBox.Text,
             Zip = this.zipcodeInput.Text,
-            Role_name = this.roleComboBox.Text
+            RoleName = this.roleComboBox.Text
         };
 
         if (this.isPrepopulated)
         {
-            employee.Employee_num = this.GivenEmployee.Employee_num;
+            employee.EmployeeNum = this.givenEmployee.EmployeeNum;
             if (!EmployeeDal.UpdateEmployee(employee))
             {
                 MessageBox.Show("Error Updating Employee");
@@ -322,13 +326,13 @@ public partial class addUserForm : Form
     private void populateGenderComboBox()
     {
         this.genderComboBox.Items.Clear();
-        this.genderComboBox.DataSource = genderOptions;
+        this.genderComboBox.DataSource = GenderOptions;
     }
 
     private void populateStateComboBox()
     {
         this.stateComboBox.Items.Clear();
-        this.stateComboBox.DataSource = stateOptions;
+        this.stateComboBox.DataSource = StateOptions;
     }
 
     private void textInput_Validating(object? sender, CancelEventArgs e)
@@ -351,7 +355,7 @@ public partial class addUserForm : Form
     {
         var value = this.emailInput.Text;
 
-        if (!Regex.IsMatch(value, EMAILREGEX))
+        if (!Regex.IsMatch(value, Emailregex))
         {
             e.Cancel = true;
             this.addUserError.SetError(this.emailInput, "Email should match format of 'test@example.com'.");
@@ -368,7 +372,7 @@ public partial class addUserForm : Form
         var value = this.phoneInput.Text;
         value = value.Replace("-", "");
 
-        if (!Regex.IsMatch(value, PHONEREGEXNODASH))
+        if (!Regex.IsMatch(value, Phoneregexnodash))
         {
             e.Cancel = true;
             this.addUserError.SetError(this.phoneInput,
@@ -389,7 +393,7 @@ public partial class addUserForm : Form
 
     private void genderComboBox_Validating(object sender, CancelEventArgs e)
     {
-        if (!genderOptions.Contains(this.genderComboBox.Text))
+        if (!GenderOptions.Contains(this.genderComboBox.Text))
         {
             e.Cancel = true;
             this.addUserError.SetError(this.genderComboBox, "Gender must match one of the given options.");
@@ -403,7 +407,7 @@ public partial class addUserForm : Form
 
     private void stateComboBox_Validating(object sender, CancelEventArgs e)
     {
-        if (!stateOptions.Contains(this.stateComboBox.Text))
+        if (!StateOptions.Contains(this.stateComboBox.Text))
         {
             e.Cancel = true;
             this.addUserError.SetError(this.stateComboBox, "State must match one of the given options.");
@@ -434,7 +438,7 @@ public partial class addUserForm : Form
     {
         var zip = this.zipcodeInput.Text;
 
-        if (!Regex.IsMatch(zip, ZIPREGEX))
+        if (!Regex.IsMatch(zip, Zipregex))
         {
             e.Cancel = true;
             this.addUserError.SetError(this.zipcodeInput,

@@ -1,31 +1,47 @@
-﻿namespace RentMeFurnitureRentalSystem.model;
+﻿namespace RentMeFurnitureRentalSystem.Model;
+
 /// <summary>
-/// Style class that represents a style in the database
+///     Style class that represents a style in the database
 /// </summary>
 public class Style
 {
+    #region Properties
+
     #region properties
 
     public string Name { get; set; }
 
     #endregion
 
+    #endregion
+
     #region methods
+
     /// <summary>
-    /// Returns the name of the style
+    ///     Returns the name of the style
     /// </summary>
     /// <returns></returns>
     public override string ToString()
     {
-        return Name;
+        return this.Name;
     }
 
     public override bool Equals(object? obj)
     {
-        if (obj == null) return false;
-        if (obj == this) return true;
-        if (obj.GetType() != typeof(Style))
+        if (obj == null)
+        {
             return false;
+        }
+
+        if (obj == this)
+        {
+            return true;
+        }
+
+        if (obj.GetType() != typeof(Style))
+        {
+            return false;
+        }
 
         return this.Name.Equals(((Style)obj).Name);
     }

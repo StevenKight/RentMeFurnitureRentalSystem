@@ -1,6 +1,7 @@
 ﻿namespace RentMeFurnitureRentalSystem.Model;
+
 /// <summary>
-/// Customer class which represents a customer
+///     Customer class which represents a customer
 /// </summary>
 public class Customer
 {
@@ -8,7 +9,7 @@ public class Customer
 
     public string Fullname => this.Fname + " " + this.Lname;
 
-    public int Member_id { get; set; }
+    public int MemberId { get; set; }
     public string Fname { get; set; }
     public string Lname { get; set; }
     public DateTime Dob { get; set; }
@@ -19,7 +20,7 @@ public class Customer
     public string City { get; set; }
     public string State { get; set; }
     public string Zip { get; set; }
-    public DateTime Register_date { get; set; }
+    public DateTime RegisterDate { get; set; }
 
     #endregion
 }

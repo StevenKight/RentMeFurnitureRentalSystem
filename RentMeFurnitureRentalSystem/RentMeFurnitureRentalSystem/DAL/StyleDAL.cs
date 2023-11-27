@@ -1,16 +1,20 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
-using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
+
 /// <summary>
-/// StyleDAL is responsible for handling all database access for the Style class
+///     StyleDAL is responsible for handling all database access for the Style class
 /// </summary>
-public class StyleDAL
+public class StyleDal
 {
+    #region Methods
+
     #region methods
+
     /// <summary>
-    /// Get all styles from the database
+    ///     Get all styles from the database
     /// </summary>
     /// <returns></returns>
     public static IList<Style> GetStyles()
@@ -21,10 +25,15 @@ public class StyleDAL
 
         var result = connection.Query<Style>(QueryStrings.GetStyles);
 
-        foreach (var style in result) styles.Add(style);
+        foreach (var style in result)
+        {
+            styles.Add(style);
+        }
 
         return styles;
     }
+
+    #endregion
 
     #endregion
 }

@@ -1,4 +1,6 @@
-﻿namespace RentMeFurnitureRentalSystem.view
+﻿using RentMeFurnitureRentalSystem.Model;
+
+namespace RentMeFurnitureRentalSystem.View
 {
     partial class ReturnForm
     {
@@ -13,9 +15,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -202,7 +204,7 @@
             // 
             // furnitureBindingSource
             // 
-            this.furnitureBindingSource.DataSource = typeof(RentMeFurnitureRentalSystem.model.Furniture);
+            this.furnitureBindingSource.DataSource = typeof(Furniture);
             // 
             // textBox2
             // 
@@ -318,7 +320,7 @@
             // 
             // rentalItemBindingSource
             // 
-            this.rentalItemBindingSource.DataSource = typeof(RentMeFurnitureRentalSystem.model.RentalItem);
+            this.rentalItemBindingSource.DataSource = typeof(RentalItem);
             // 
             // textBox1
             // 

@@ -1,13 +1,14 @@
-﻿namespace RentMeFurnitureRentalSystem.model;
+﻿namespace RentMeFurnitureRentalSystem.Model;
+
 /// <summary>
-/// Employee class that represents an employee in the database
+///     Employee class that represents an employee in the database
 /// </summary>
 public class Employee
 {
     #region Properties
 
     public string Fullname => this.Fname + " " + this.Lname;
-    public int Employee_num { get; set; }
+    public int EmployeeNum { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
     public string Fname { get; set; }
@@ -20,7 +21,7 @@ public class Employee
     public string State { get; set; }
     public string Zip { get; set; }
     public string Email { get; set; }
-    public string Role_name { get; set; }
+    public string RoleName { get; set; }
 
     #endregion
 }

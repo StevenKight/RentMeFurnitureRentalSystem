@@ -1,3 +1,5 @@
+using RentMeFurnitureRentalSystem.View;
+
 namespace RentMeFurnitureRentalSystem;
 
 internal static class Program

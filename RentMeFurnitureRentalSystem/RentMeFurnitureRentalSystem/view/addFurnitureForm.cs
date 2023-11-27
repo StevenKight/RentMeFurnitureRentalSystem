@@ -1,156 +1,167 @@
 ﻿using System.ComponentModel;
 using System.Text.RegularExpressions;
 using RentMeFurnitureRentalSystem.DAL;
-using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.Model;
 
-namespace RentMeFurnitureRentalSystem.view;
+namespace RentMeFurnitureRentalSystem.View;
+
 /// <summary>
-/// The form for adding furniture
+///     The form for adding furniture
 /// </summary>
-public partial class addFurnitureForm : Form
+public partial class AddFurnitureForm : Form
 {
     #region Data members
+
     /// <summary>
-    /// Regex for validating rental and fine rates
+    ///     Regex for validating rental and fine rates
     /// </summary>
-    public const string RENTALANDFINERATEREGEX =
+    public const string Rentalandfinerateregex =
         @"(?:^[1-9]([0-9]+)?(?:\.[0-9]{1,2})?$)|(?:^(?:0)$)|(?:^[0-9]\.[0-9](?:[0-9])?$)";
 
-    private readonly Furniture Furniture;
+    private readonly Furniture furniture;
 
     #endregion
+
+    #region Constructors
+
     /// <summary>
-    /// Creates a new instance of the add furniture form
+    ///     Creates a new instance of the add furniture form
     /// </summary>
-    public addFurnitureForm()
+    public AddFurnitureForm()
     {
-        InitializeComponent();
+        this.InitializeComponent();
         AutoValidate = AutoValidate.EnableAllowFocusChange;
-        populateStyleComboBox();
-        populateCategoryComboBox();
-        setValidation();
+        this.populateStyleComboBox();
+        this.populateCategoryComboBox();
+        this.setValidation();
     }
+
     /// <summary>
-    /// Creates a new instance of the add furniture form
+    ///     Creates a new instance of the add furniture form
     /// </summary>
     /// <param name="furniture">The furniture to update</param>
-    public addFurnitureForm(Furniture furniture)
+    public AddFurnitureForm(Furniture furniture)
     {
-        this.Furniture = furniture;
+        this.furniture = furniture;
 
-        InitializeComponent();
+        this.InitializeComponent();
         AutoValidate = AutoValidate.EnableAllowFocusChange;
 
-        populateStyleComboBox();
-        populateCategoryComboBox();
-        setValidation();
+        this.populateStyleComboBox();
+        this.populateCategoryComboBox();
+        this.setValidation();
 
-        fillForm();
+        this.fillForm();
     }
+
+    #endregion
+
+    #region Methods
 
     private void populateStyleComboBox()
     {
-        styleComboBox.Items.Clear();
-        var styleList = StyleDAL.GetStyles();
-        styleComboBox.DataSource = styleList;
+        this.styleComboBox.Items.Clear();
+        var styleList = StyleDal.GetStyles();
+        this.styleComboBox.DataSource = styleList;
     }
 
     private void populateCategoryComboBox()
     {
-        categoryComboBox.Items.Clear();
-        var CategoryList = CategoryDAL.GetCategories();
-        categoryComboBox.DataSource = CategoryList;
+        this.categoryComboBox.Items.Clear();
+        var categoryList = CategoryDal.GetCategories();
+        this.categoryComboBox.DataSource = categoryList;
     }
 
     private void setValidation()
     {
-        rentalRateTextBox.Validating += rentalRate_Validating;
-        fineRateTextBox.Validating += fineRate_Validating;
-        nameTextBox.Validating += nameTextbox_Validating;
-        descriptionTextArea.Validating += descriptionTextArea_Validating;
+        this.rentalRateTextBox.Validating += this.rentalRate_Validating;
+        this.fineRateTextBox.Validating += this.fineRate_Validating;
+        this.nameTextBox.Validating += this.nameTextbox_Validating;
+        this.descriptionTextArea.Validating += this.descriptionTextArea_Validating;
     }
 
     private void fillForm()
     {
         this.addButton.Text = "Update";
 
-        rentalRateTextBox.Text = this.Furniture.Rental_rate.ToString();
-        fineRateTextBox.Text = this.Furniture.Fine_rate.ToString();
-        nameTextBox.Text = this.Furniture.Name;
-        descriptionTextArea.Text = this.Furniture.Description;
-        quantiyNumber.Value = this.Furniture.Quantity;
+        this.rentalRateTextBox.Text = this.furniture.RentalRate.ToString();
+        this.fineRateTextBox.Text = this.furniture.FineRate.ToString();
+        this.nameTextBox.Text = this.furniture.Name;
+        this.descriptionTextArea.Text = this.furniture.Description;
+        this.quantiyNumber.Value = this.furniture.Quantity;
 
-        var styles = styleComboBox.Items.Cast<Style>().ToList();
-        var categories = categoryComboBox.Items.Cast<Category>().ToList();
+        var styles = this.styleComboBox.Items.Cast<Style>().ToList();
+        var categories = this.categoryComboBox.Items.Cast<Category>().ToList();
 
-        var style = styles.FirstOrDefault(x => this.Furniture.Style_name.Equals(x.Name));
-        var category = categories.FirstOrDefault(x => this.Furniture.Category_name.Equals(x.Name));
+        var style = styles.FirstOrDefault(x => this.furniture.StyleName.Equals(x.Name));
+        var category = categories.FirstOrDefault(x => this.furniture.CategoryName.Equals(x.Name));
 
         var styleIndex = styles.IndexOf(style ?? styles[0]);
         var categoryIndex = categories.IndexOf(category ?? categories[0]);
 
-        styleComboBox.SelectedIndex = styleIndex;
-        categoryComboBox.SelectedIndex = categoryIndex;
+        this.styleComboBox.SelectedIndex = styleIndex;
+        this.categoryComboBox.SelectedIndex = categoryIndex;
     }
 
     private void rentalRate_Validating(object sender, CancelEventArgs e)
     {
-        var value = rentalRateTextBox.Text;
-        if (!Regex.IsMatch(value, RENTALANDFINERATEREGEX))
+        var value = this.rentalRateTextBox.Text;
+        if (!Regex.IsMatch(value, Rentalandfinerateregex))
         {
             e.Cancel = true;
-            addFurnitureError.SetError(rentalRateTextBox, "Rental rate must be a positive decimal or integer");
+            this.addFurnitureError.SetError(this.rentalRateTextBox,
+                "Rental rate must be a positive decimal or integer");
         }
         else
         {
             e.Cancel = false;
-            addFurnitureError.SetError(rentalRateTextBox, "");
+            this.addFurnitureError.SetError(this.rentalRateTextBox, "");
         }
     }
 
     private void fineRate_Validating(object sender, CancelEventArgs e)
     {
-        var value = fineRateTextBox.Text;
+        var value = this.fineRateTextBox.Text;
 
-        if (!Regex.IsMatch(value, RENTALANDFINERATEREGEX))
+        if (!Regex.IsMatch(value, Rentalandfinerateregex))
         {
             e.Cancel = true;
-            addFurnitureError.SetError(fineRateTextBox, "Fine rate must be a positive decimal or integer");
+            this.addFurnitureError.SetError(this.fineRateTextBox, "Fine rate must be a positive decimal or integer");
         }
         else
         {
             e.Cancel = false;
-            addFurnitureError.SetError(fineRateTextBox, "");
+            this.addFurnitureError.SetError(this.fineRateTextBox, "");
         }
     }
 
     private void nameTextbox_Validating(object sender, CancelEventArgs e)
     {
-        var value = nameTextBox.Text;
+        var value = this.nameTextBox.Text;
         if (string.IsNullOrWhiteSpace(value))
         {
             e.Cancel = true;
-            addFurnitureError.SetError(nameTextBox, "Name cannot be empty");
+            this.addFurnitureError.SetError(this.nameTextBox, "Name cannot be empty");
         }
         else
         {
             e.Cancel = false;
-            addFurnitureError.SetError(nameTextBox, "");
+            this.addFurnitureError.SetError(this.nameTextBox, "");
         }
     }
 
     private void descriptionTextArea_Validating(object sender, CancelEventArgs e)
     {
-        var value = descriptionTextArea.Text;
+        var value = this.descriptionTextArea.Text;
         if (string.IsNullOrWhiteSpace(value))
         {
             e.Cancel = true;
-            addFurnitureError.SetError(descriptionTextArea, "Name cannot be empty");
+            this.addFurnitureError.SetError(this.descriptionTextArea, "Name cannot be empty");
         }
         else
         {
             e.Cancel = false;
-            addFurnitureError.SetError(descriptionTextArea, "");
+            this.addFurnitureError.SetError(this.descriptionTextArea, "");
         }
     }
 
@@ -158,12 +169,10 @@ public partial class addFurnitureForm : Form
     {
         AutoValidate = AutoValidate.Disable;
         Close();
-
     }
 
     private void addButton_Click(object sender, EventArgs e)
     {
-
         if (!ValidateChildren(ValidationConstraints.Enabled))
         {
             MessageBox.Show("Please fix errors before submitting");
@@ -172,18 +181,18 @@ public partial class addFurnitureForm : Form
 
         var furniture = new Furniture
         {
-            Name = nameTextBox.Text,
-            Description = descriptionTextArea.Text,
-            Category_name = categoryComboBox.Text,
-            Style_name = styleComboBox.Text,
-            Rental_rate = decimal.Parse(rentalRateTextBox.Text),
-            Fine_rate = decimal.Parse(fineRateTextBox.Text),
-            Quantity = int.Parse(quantiyNumber.Text)
+            Name = this.nameTextBox.Text,
+            Description = this.descriptionTextArea.Text,
+            CategoryName = this.categoryComboBox.Text,
+            StyleName = this.styleComboBox.Text,
+            RentalRate = decimal.Parse(this.rentalRateTextBox.Text),
+            FineRate = decimal.Parse(this.fineRateTextBox.Text),
+            Quantity = int.Parse(this.quantiyNumber.Text)
         };
 
-        if (this.Furniture == null) // Add new furniture
+        if (this.furniture == null) // Add new furniture
         {
-            if (!FurnitureDAL.CreateFurniture(furniture))
+            if (!FurnitureDal.CreateFurniture(furniture))
             {
                 MessageBox.Show("Error creating furniture");
             }
@@ -194,9 +203,9 @@ public partial class addFurnitureForm : Form
         }
         else // Update existing furniture
         {
-            furniture.Furniture_id = this.Furniture.Furniture_id;
+            furniture.FurnitureId = this.furniture.FurnitureId;
 
-            if (!FurnitureDAL.UpdateFurniture(furniture))
+            if (!FurnitureDal.UpdateFurniture(furniture))
             {
                 MessageBox.Show("Error updating furniture");
             }
@@ -206,6 +215,8 @@ public partial class addFurnitureForm : Form
             }
         }
 
-        this.Close();
+        Close();
     }
+
+    #endregion
 }

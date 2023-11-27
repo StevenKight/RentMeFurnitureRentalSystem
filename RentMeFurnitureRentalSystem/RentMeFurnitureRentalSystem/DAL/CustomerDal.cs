@@ -3,14 +3,16 @@ using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
+
 /// <summary>
-///  The DAL for the Customer class
+///     The DAL for the Customer class
 /// </summary>
 public class CustomerDal
 {
     #region Methods
+
     /// <summary>
-    /// Gets all customers from the database
+    ///     Gets all customers from the database
     /// </summary>
     /// <returns>list of customers</returns>
     public static List<Customer> GetAllCustomers()
@@ -21,21 +23,23 @@ public class CustomerDal
 
         return results.ToList();
     }
+
     /// <summary>
-    /// Gets a customer by their id
+    ///     Gets a customer by their id
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
-    public static IList<Customer> GetCustomerByMemberID(int id)
+    public static IList<Customer> GetCustomerByMemberId(int id)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
-        var results = connection.Query<Customer>(QueryStrings.GetCustomerByMemberId,new {id = id});
+        var results = connection.Query<Customer>(QueryStrings.GetCustomerByMemberId, new { id });
 
         return results.ToList();
     }
+
     /// <summary>
-    ///  Get a customer by their phone number
+    ///     Get a customer by their phone number
     /// </summary>
     /// <param name="phone"></param>
     /// <returns></returns>
@@ -43,12 +47,13 @@ public class CustomerDal
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
-        var results = connection.Query<Customer>(QueryStrings.GetCustomerByPhone, new { phone = phone });
+        var results = connection.Query<Customer>(QueryStrings.GetCustomerByPhone, new { phone });
 
         return results.ToList();
     }
+
     /// <summary>
-    /// Get a customer by their name
+    ///     Get a customer by their name
     /// </summary>
     /// <param name="firstName"></param>
     /// <param name="lastName"></param>
@@ -57,12 +62,14 @@ public class CustomerDal
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
 
-        var results = connection.Query<Customer>(QueryStrings.GetCustomerByName, new { fname = firstName, lname = lastName });
+        var results =
+            connection.Query<Customer>(QueryStrings.GetCustomerByName, new { fname = firstName, lname = lastName });
 
         return results.ToList();
     }
+
     /// <summary>
-    /// Create a new customer in the database
+    ///     Create a new customer in the database
     /// </summary>
     /// <param name="newCustomer"></param>
     /// <returns></returns>
@@ -83,8 +90,9 @@ public class CustomerDal
             return false;
         }
     }
+
     /// <summary>
-    /// delete a customer from the database
+    ///     delete a customer from the database
     /// </summary>
     /// <param name="customer"></param>
     /// <returns></returns>
@@ -97,8 +105,9 @@ public class CustomerDal
 
         return affected > 0;
     }
+
     /// <summary>
-    /// Update a customer in the database
+    ///     Update a customer in the database
     /// </summary>
     /// <param name="customer"></param>
     /// <returns></returns>
