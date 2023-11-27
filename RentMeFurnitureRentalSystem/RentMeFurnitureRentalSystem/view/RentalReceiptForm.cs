@@ -42,6 +42,8 @@ public partial class RentalReceiptForm : Form
 
         this.totalTextBox.Text = this.totalTextBox.Text.Replace("<TOTAL>", rentalTotal.ToString());
 
+        this.dueDateTextBox.Text = this.dueDateTextBox.Text.Replace("<DUE_DATE>", rental.Due_date.ToString());
+
         this.furnitureGridView.DataSource = this.Furniture;
 
         var itemCount = this.Furniture.Sum(x => x.Quantity);

@@ -33,7 +33,7 @@ public partial class ReturnForm : Form
 
         this.InitializeComponent();
         
-        this.titleTextBox.Text = "Rent to " + this.customer.Fullname;
+        this.titleTextBox.Text = "Return from " + this.customer.Fullname;
 
         this.loadData();
     }
