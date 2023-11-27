@@ -1,0 +1,33 @@
+1)
+
+SELECT 
+    furniture.`name`,furniture.style_name,furniture.category_name,rental.rental_id,rental.start_date,rental.due_date,`return`.return_id,`return`.return_date,Concat(rental_employee.fname,' ', rental_employee.lname) as rental_employee,Concat(employee.fname , ' ' , employee.lname) as employee_name
+FROM
+customer join
+    rental on rental.member_id = customer.member_id
+        JOIN
+    rental_item ON rental.rental_id = rental_item.rental_id
+    join employee as rental_employee on rental_employee.employee_num = rental.employee_num
+		JOIN
+    `return` on `return`.member_id = rental.member_id
+    join furniture on furniture.furniture_id = rental_item.furniture_id
+    join employee on employee.employee_num = `return`.employee_num
+    where customer.member_id = 12
+	
+	
+2)
+	SELECT 
+    customer.member_id,
+    CONCAT(customer.fname, ' ', customer.lname) AS customer_fullname,
+    rental.start_date,
+    SUM(rental_item.quantity) AS total_amount 
+FROM 
+    customer 
+JOIN 
+    rental ON rental.member_id = customer.member_id 
+JOIN 
+    rental_item ON rental_item.rental_id = rental.rental_id 
+GROUP BY 
+    customer.member_id, customer_fullname, rental.start_date
+HAVING 
+    SUM(rental_item.quantity) > 2;
