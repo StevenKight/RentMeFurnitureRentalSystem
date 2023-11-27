@@ -120,6 +120,18 @@ public static class QueryStrings
     public const string CreateFurniture =
         "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category_name,@Style_name,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
 
+    public const string DeleteFurniture = "DELETE FROM furniture WHERE furniture_id=@Furniture_id";
+
+    public const string UpdateFurniture = "UPDATE furniture " +
+                                            "SET `category_name` = @CCategory_name, " +
+                                                "`style_name` = @Style_name, " +
+                                                "`name` = @Name, " +
+                                                "`description` = @Description, " +
+                                                "`rental_rate` = @Rental_rate, " +
+                                                "`fine_rate` = @Fine_rate, " +
+                                                "`quantity` = @Quantity " +
+                                            "WHERE `furniture_id` = @Furniture_id";
+
     #endregion
 
     #region Rental

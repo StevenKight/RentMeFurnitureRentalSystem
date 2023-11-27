@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
 /// <summary>
@@ -136,6 +137,34 @@ public class FurnitureDAL
             MessageBox.Show(ex.Message);
             return false;
         }
+    }
+    /// <summary>
+    /// delete a furniture from the database
+    /// </summary>
+    /// <param name="furniture"></param>
+    /// <returns></returns>
+    public static bool DeleteFurniture(Furniture furniture)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var affected = connection.Execute(QueryStrings.DeleteFurniture, furniture);
+
+        return affected > 0;
+    }
+    /// <summary>
+    /// Update a furniture in the database
+    /// </summary>
+    /// <param name="furniture"></param>
+    /// <returns></returns>
+    public static bool UpdateFurniture(Furniture furniture)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+        connection.Open();
+
+        var affected = connection.Execute(QueryStrings.UpdateFurniture, furniture);
+
+        return affected > 0;
     }
 
     #endregion

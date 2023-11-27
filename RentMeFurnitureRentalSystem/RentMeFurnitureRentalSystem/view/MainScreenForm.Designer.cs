@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             addEmployeeButton = new Button();
             label1 = new Label();
             addCustomerButton = new Button();
@@ -84,6 +84,7 @@
             zipDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             registerdateDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             furnitureTabpage = new TabPage();
+            deleteFurnitureButton = new Button();
             resetButton = new Button();
             categoryRadioButton = new RadioButton();
             StyleRadioButton = new RadioButton();
@@ -122,7 +123,7 @@
             // 
             addEmployeeButton.Location = new Point(6, 6);
             addEmployeeButton.Name = "addEmployeeButton";
-            addEmployeeButton.Size = new Size(134, 23);
+            addEmployeeButton.Size = new Size(135, 25);
             addEmployeeButton.TabIndex = 0;
             addEmployeeButton.Text = "Add Employee ";
             addEmployeeButton.UseVisualStyleBackColor = true;
@@ -142,7 +143,7 @@
             // 
             addCustomerButton.Location = new Point(6, 6);
             addCustomerButton.Name = "addCustomerButton";
-            addCustomerButton.Size = new Size(134, 23);
+            addCustomerButton.Size = new Size(135, 25);
             addCustomerButton.TabIndex = 2;
             addCustomerButton.Text = "Add Customer";
             addCustomerButton.UseVisualStyleBackColor = true;
@@ -476,9 +477,9 @@
             // 
             // returnButton
             // 
-            returnButton.Location = new Point(6, 95);
+            returnButton.Location = new Point(6, 101);
             returnButton.Name = "returnButton";
-            returnButton.Size = new Size(134, 23);
+            returnButton.Size = new Size(135, 25);
             returnButton.TabIndex = 22;
             returnButton.Text = "Return Furniture";
             returnButton.UseVisualStyleBackColor = true;
@@ -486,9 +487,9 @@
             // 
             // rentButton
             // 
-            rentButton.Location = new Point(6, 66);
+            rentButton.Location = new Point(6, 70);
             rentButton.Name = "rentButton";
-            rentButton.Size = new Size(134, 23);
+            rentButton.Size = new Size(135, 25);
             rentButton.TabIndex = 13;
             rentButton.Text = "Rent Furniture";
             rentButton.UseVisualStyleBackColor = true;
@@ -506,10 +507,10 @@
             // 
             // deleteCustomerButton
             // 
-            deleteCustomerButton.Location = new Point(6, 36);
+            deleteCustomerButton.Location = new Point(6, 38);
             deleteCustomerButton.Margin = new Padding(3, 4, 3, 4);
             deleteCustomerButton.Name = "deleteCustomerButton";
-            deleteCustomerButton.Size = new Size(134, 23);
+            deleteCustomerButton.Size = new Size(135, 25);
             deleteCustomerButton.TabIndex = 11;
             deleteCustomerButton.Text = "Delete Customer";
             deleteCustomerButton.UseVisualStyleBackColor = true;
@@ -657,9 +658,9 @@
             // 
             registerdateDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             registerdateDataGridViewTextBoxColumn.DataPropertyName = "Register_date";
-            dataGridViewCellStyle2.Format = "d";
-            dataGridViewCellStyle2.NullValue = null;
-            registerdateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "d";
+            dataGridViewCellStyle1.NullValue = null;
+            registerdateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             registerdateDataGridViewTextBoxColumn.HeaderText = "Register Date";
             registerdateDataGridViewTextBoxColumn.MinimumWidth = 6;
             registerdateDataGridViewTextBoxColumn.Name = "registerdateDataGridViewTextBoxColumn";
@@ -667,6 +668,7 @@
             // 
             // furnitureTabpage
             // 
+            furnitureTabpage.Controls.Add(deleteFurnitureButton);
             furnitureTabpage.Controls.Add(resetButton);
             furnitureTabpage.Controls.Add(categoryRadioButton);
             furnitureTabpage.Controls.Add(StyleRadioButton);
@@ -683,6 +685,17 @@
             furnitureTabpage.TabIndex = 2;
             furnitureTabpage.Text = "Furniture";
             furnitureTabpage.UseVisualStyleBackColor = true;
+            // 
+            // deleteFurnitureButton
+            // 
+            deleteFurnitureButton.Location = new Point(6, 38);
+            deleteFurnitureButton.Margin = new Padding(3, 4, 3, 4);
+            deleteFurnitureButton.Name = "deleteFurnitureButton";
+            deleteFurnitureButton.Size = new Size(135, 25);
+            deleteFurnitureButton.TabIndex = 12;
+            deleteFurnitureButton.Text = "Delete Furniture";
+            deleteFurnitureButton.UseVisualStyleBackColor = true;
+            deleteFurnitureButton.Click += deleteFurnitureButton_Click;
             // 
             // resetButton
             // 
@@ -765,7 +778,7 @@
             // 
             addFurnitureButton.Location = new Point(6, 6);
             addFurnitureButton.Name = "addFurnitureButton";
-            addFurnitureButton.Size = new Size(134, 23);
+            addFurnitureButton.Size = new Size(135, 25);
             addFurnitureButton.TabIndex = 1;
             addFurnitureButton.Text = "Add Furniture";
             addFurnitureButton.UseVisualStyleBackColor = true;
@@ -787,6 +800,7 @@
             furnitureGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             furnitureGridView.Size = new Size(614, 289);
             furnitureGridView.TabIndex = 0;
+            furnitureGridView.RowStateChanged += furnitureGridView_RowStateChanged;
             // 
             // furnitureidDataGridViewTextBoxColumn
             // 
@@ -887,9 +901,9 @@
             // 
             // deleteEmployeeButton
             // 
-            deleteEmployeeButton.Location = new Point(6, 35);
+            deleteEmployeeButton.Location = new Point(6, 37);
             deleteEmployeeButton.Name = "deleteEmployeeButton";
-            deleteEmployeeButton.Size = new Size(134, 26);
+            deleteEmployeeButton.Size = new Size(135, 25);
             deleteEmployeeButton.TabIndex = 12;
             deleteEmployeeButton.Text = "Delete Employee ";
             deleteEmployeeButton.UseVisualStyleBackColor = true;
@@ -1014,5 +1028,6 @@
         private DataGridViewTextBoxColumn rentalrateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn finerateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
+        private Button deleteFurnitureButton;
     }
 }

@@ -38,6 +38,10 @@ public partial class MainScreenForm : Form
     /// </summary>
     public Customer SelectedCustomer { get; set; }
     /// <summary>
+    /// selected furniture
+    /// </summary>
+    public Furniture SelectedFurniture { get; set; }
+    /// <summary>
     /// regex for phone number
     /// </summary>
     public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
@@ -187,11 +191,50 @@ public partial class MainScreenForm : Form
         getData();
     }
 
+    private void deleteFurnitureButton_Click(object sender, EventArgs e)
+    {
+        if (this.SelectedFurniture == null)
+        {
+            MessageBox.Show(@"Please select a piece of furniture to delete");
+            return;
+        }
+
+
+        var result = MessageBox.Show($"Are you sure you want to delete all ({this.SelectedFurniture.Quantity}) {this.SelectedFurniture.Name}?", @"Delete Furniture",
+            MessageBoxButtons.YesNo);
+
+        if (result == DialogResult.Yes)
+        {
+            MessageBox.Show(FurnitureDAL.DeleteFurniture(this.SelectedFurniture)
+                ? @"Furniture deleted"
+                : @"Furniture could not be deleted");
+
+            this.getData();
+        }
+    }
+
     private void logoutButton_Click(object sender, EventArgs e)
     {
         this.LoggedInEmployee = null;
         DialogResult = DialogResult.Continue;
         Close();
+    }
+
+    private void employeeGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+    {
+        if (e.StateChanged != DataGridViewElementStates.Selected)
+        {
+            this.deleteEmployeeButton.Enabled = false;
+            return;
+        }
+
+        this.deleteEmployeeButton.Enabled = true;
+
+        var selectedRows = this.employeeGridView.SelectedRows;
+        if (selectedRows.Count > 0)
+        {
+            this.SelectedEmployee = selectedRows[0].DataBoundItem as Employee;
+        }
     }
 
     private void customerGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
@@ -215,20 +258,20 @@ public partial class MainScreenForm : Form
         }
     }
 
-    private void employeeGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+    private void furnitureGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
     {
         if (e.StateChanged != DataGridViewElementStates.Selected)
         {
-            this.deleteEmployeeButton.Enabled = false;
+            this.deleteFurnitureButton.Enabled = false;
             return;
         }
 
-        this.deleteEmployeeButton.Enabled = true;
+        this.deleteFurnitureButton.Enabled = true;
 
-        var selectedRows = this.employeeGridView.SelectedRows;
+        var selectedRows = this.furnitureGridView.SelectedRows;
         if (selectedRows.Count > 0)
         {
-            this.SelectedEmployee = selectedRows[0].DataBoundItem as Employee;
+            this.SelectedFurniture = selectedRows[0].DataBoundItem as Furniture;
         }
     }
 
@@ -363,10 +406,17 @@ public partial class MainScreenForm : Form
 
         if (selectedTab == this.employeesTab)
         {
+            this.furnitureGridView.ClearSelection();
             this.customerGridView.ClearSelection();
+        }
+        else if (selectedTab == this.customersTab)
+        {
+            this.furnitureGridView.ClearSelection();
+            this.employeeGridView.ClearSelection();
         }
         else
         {
+            this.customerGridView.ClearSelection();
             this.employeeGridView.ClearSelection();
         }
     }
