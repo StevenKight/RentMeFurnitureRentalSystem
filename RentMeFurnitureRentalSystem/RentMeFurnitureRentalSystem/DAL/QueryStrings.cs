@@ -93,6 +93,12 @@ public static class QueryStrings
                                          "`role_name` = @Role_name " +
                                          "WHERE `employee_num` = @Employee_num;";
 
+    public const string GetEmployeeByEmployeeNum = "select * from Employee where employee_num=@id";
+
+    public const string GetEmployeeByPhone = "select * from Employee where phone=@phone";
+
+    public const string GetEmployeeByName = "select * from Employee where fname=@fname and lname=@lname";
+
     #endregion
 
     #region Furniture

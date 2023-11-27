@@ -400,6 +400,65 @@ public partial class MainScreenForm : Form
         this.Customers = CustomerDal.GetAllCustomers();
         this.populateGridViews();
     }
+
+    private void employeeSearchButton_Click(object sender, EventArgs e)
+    {
+        if (this.employeeNumRadioButton.Checked)
+        {
+            try
+            {
+                var employeeNum = int.Parse(this.employeeNumTextBox.Text);
+                var employees = EmployeeDal.GetEmployeeByEmployeeNum(employeeNum);
+                this.Employees.Clear();
+                this.Employees = employees.ToList();
+                this.populateGridViews();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Enter a postive number");
+            }
+
+        }
+        else if (this.employeePhoneRadioButton.Checked)
+        {
+            var phoneValue = this.employeePhoneTextBox.Text;
+            var value = phoneValue.Replace("-", "");
+            try
+            {
+                var areaCode = value.Substring(0, 3);
+                var next = value.Substring(3, 3);
+                var last = value.Substring(6, 4);
+                var validPhone = areaCode + "-" + next + "-" + last;
+                var employee = EmployeeDal.GetEmployeeByPhone(validPhone);
+                this.Employees.Clear();
+                this.Employees = employee.ToList();
+                this.populateGridViews();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Enter a valid number without - ");
+            }
+        }
+        else
+        {
+            var firstName = this.employeeFnameTextBox.Text;
+            var lastName = this.employeeLnameTextBox.Text;
+
+            var employee = EmployeeDal.GetEmployeeByName(firstName, lastName);
+
+            this.Employees.Clear();
+            this.Employees = employee.ToList();
+            this.populateGridViews();
+
+        }
+    }
+    private void resetEmployeeButton_Click(object sender, EventArgs e)
+    {
+        this.Employees.Clear();
+        this.Employees = EmployeeDal.GetAllEmployees();
+        this.populateGridViews();
+    }
+
     private void dashboardTabs_SelectedIndexChanged(object sender, EventArgs e)
     {
         var selectedTab = this.dashboardTabs.SelectedTab;

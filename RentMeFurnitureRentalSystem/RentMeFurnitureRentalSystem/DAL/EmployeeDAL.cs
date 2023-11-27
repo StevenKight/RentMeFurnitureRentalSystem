@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
 using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.Model;
 using System.Data.Common;
 using System.Transactions;
 
@@ -91,6 +92,46 @@ public class EmployeeDal
         var result = connection.Query<Employee>(QueryStrings.GetByEmployeeUsername, new { username });
         var employee = result.First();
         return employee;
+    }
+    /// <summary>
+    /// Gets a employee by their id
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns></returns>
+    public static IList<Employee> GetEmployeeByEmployeeNum(int id)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var results = connection.Query<Employee>(QueryStrings.GetEmployeeByEmployeeNum, new { id });
+
+        return results.ToList();
+    }
+    /// <summary>
+    ///  Get a employee by their phone number
+    /// </summary>
+    /// <param name="phone"></param>
+    /// <returns></returns>
+    public static IList<Employee> GetEmployeeByPhone(string phone)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var results = connection.Query<Employee>(QueryStrings.GetEmployeeByPhone, new { phone });
+
+        return results.ToList();
+    }
+    /// <summary>
+    /// Get a employee by their name
+    /// </summary>
+    /// <param name="firstName"></param>
+    /// <param name="lastName"></param>
+    /// <returns></returns>
+    public static IList<Employee> GetEmployeeByName(string firstName, string lastName)
+    {
+        using var connection = new MySqlConnection(Connection.ConnectionString);
+
+        var results = connection.Query<Employee>(QueryStrings.GetEmployeeByName, new { fname = firstName, lname = lastName });
+
+        return results.ToList();
     }
     /// <summary>
     /// Updates an employee in the database

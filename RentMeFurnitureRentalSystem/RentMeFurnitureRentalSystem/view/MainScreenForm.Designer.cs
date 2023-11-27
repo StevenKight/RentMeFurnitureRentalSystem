@@ -105,6 +105,17 @@
             quantityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             furnitureBindingSource = new BindingSource(components);
             employeesTab = new TabPage();
+            button1 = new Button();
+            button2 = new Button();
+            label4 = new Label();
+            label5 = new Label();
+            employeeLnameTextBox = new TextBox();
+            employeeNameRadioButton = new RadioButton();
+            employeeFnameTextBox = new TextBox();
+            employeePhoneRadioButton = new RadioButton();
+            employeePhoneTextBox = new TextBox();
+            employeeNumTextBox = new TextBox();
+            employeeNumRadioButton = new RadioButton();
             deleteEmployeeButton = new Button();
             adminTableButton = new Button();
             ((System.ComponentModel.ISupportInitialize)customerBindingSource).BeginInit();
@@ -177,7 +188,7 @@
             // 
             // customerSearchButton
             // 
-            customerSearchButton.Location = new Point(587, 8);
+            customerSearchButton.Location = new Point(593, 8);
             customerSearchButton.Name = "customerSearchButton";
             customerSearchButton.Size = new Size(75, 23);
             customerSearchButton.TabIndex = 20;
@@ -188,7 +199,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(444, 41);
+            label3.Location = new Point(450, 41);
             label3.Name = "label3";
             label3.Size = new Size(66, 15);
             label3.TabIndex = 19;
@@ -197,7 +208,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(209, 41);
+            label2.Location = new Point(215, 41);
             label2.Name = "label2";
             label2.Size = new Size(67, 15);
             label2.TabIndex = 18;
@@ -205,7 +216,7 @@
             // 
             // lastNameSearchTextBox
             // 
-            lastNameSearchTextBox.Location = new Point(516, 38);
+            lastNameSearchTextBox.Location = new Point(522, 38);
             lastNameSearchTextBox.Name = "lastNameSearchTextBox";
             lastNameSearchTextBox.Size = new Size(159, 23);
             lastNameSearchTextBox.TabIndex = 17;
@@ -213,7 +224,7 @@
             // nameRadioButton
             // 
             nameRadioButton.AutoSize = true;
-            nameRadioButton.Location = new Point(146, 39);
+            nameRadioButton.Location = new Point(152, 39);
             nameRadioButton.Name = "nameRadioButton";
             nameRadioButton.Size = new Size(57, 19);
             nameRadioButton.TabIndex = 16;
@@ -222,7 +233,7 @@
             // 
             // firstNameSearchTextBox
             // 
-            firstNameSearchTextBox.Location = new Point(282, 38);
+            firstNameSearchTextBox.Location = new Point(288, 38);
             firstNameSearchTextBox.Name = "firstNameSearchTextBox";
             firstNameSearchTextBox.Size = new Size(156, 23);
             firstNameSearchTextBox.TabIndex = 15;
@@ -230,7 +241,7 @@
             // phoneNumberRadioButton
             // 
             phoneNumberRadioButton.AutoSize = true;
-            phoneNumberRadioButton.Location = new Point(329, 10);
+            phoneNumberRadioButton.Location = new Point(335, 10);
             phoneNumberRadioButton.Name = "phoneNumberRadioButton";
             phoneNumberRadioButton.Size = new Size(109, 19);
             phoneNumberRadioButton.TabIndex = 14;
@@ -239,14 +250,14 @@
             // 
             // phoneNumberTextBox
             // 
-            phoneNumberTextBox.Location = new Point(444, 8);
+            phoneNumberTextBox.Location = new Point(450, 8);
             phoneNumberTextBox.Name = "phoneNumberTextBox";
             phoneNumberTextBox.Size = new Size(137, 23);
             phoneNumberTextBox.TabIndex = 13;
             // 
             // memberIdTextBox
             // 
-            memberIdTextBox.Location = new Point(239, 8);
+            memberIdTextBox.Location = new Point(245, 8);
             memberIdTextBox.Name = "memberIdTextBox";
             memberIdTextBox.Size = new Size(84, 23);
             memberIdTextBox.TabIndex = 12;
@@ -255,7 +266,7 @@
             // 
             memberIDRadioButton.AutoSize = true;
             memberIDRadioButton.Checked = true;
-            memberIDRadioButton.Location = new Point(146, 10);
+            memberIDRadioButton.Location = new Point(152, 10);
             memberIDRadioButton.Name = "memberIDRadioButton";
             memberIDRadioButton.Size = new Size(86, 19);
             memberIDRadioButton.TabIndex = 11;
@@ -269,7 +280,7 @@
             employeeGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             employeeGridView.Columns.AddRange(new DataGridViewColumn[] { Employee_num, fullnameDataGridViewTextBoxColumn1, usernameDataGridViewTextBoxColumn, passwordDataGridViewTextBoxColumn, fnameDataGridViewTextBoxColumn1, lnameDataGridViewTextBoxColumn1, dobDataGridViewTextBoxColumn1, genderDataGridViewTextBoxColumn1, phoneDataGridViewTextBoxColumn1, addressDataGridViewTextBoxColumn1, cityDataGridViewTextBoxColumn1, stateDataGridViewTextBoxColumn1, zipDataGridViewTextBoxColumn1, emailDataGridViewTextBoxColumn1, rolenameDataGridViewTextBoxColumn });
             employeeGridView.DataSource = employeeBindingSource;
-            employeeGridView.Location = new Point(146, 6);
+            employeeGridView.Location = new Point(143, 67);
             employeeGridView.Margin = new Padding(3, 4, 3, 4);
             employeeGridView.MultiSelect = false;
             employeeGridView.Name = "employeeGridView";
@@ -278,7 +289,7 @@
             employeeGridView.RowHeadersWidth = 51;
             employeeGridView.RowTemplate.Height = 25;
             employeeGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            employeeGridView.Size = new Size(614, 320);
+            employeeGridView.Size = new Size(617, 259);
             employeeGridView.TabIndex = 11;
             employeeGridView.RowStateChanged += employeeGridView_RowStateChanged;
             employeeGridView.MouseDoubleClick += employeeGridView_MouseDoubleClick;
@@ -497,7 +508,7 @@
             // 
             // resetCustomerButton
             // 
-            resetCustomerButton.Location = new Point(668, 8);
+            resetCustomerButton.Location = new Point(674, 8);
             resetCustomerButton.Name = "resetCustomerButton";
             resetCustomerButton.Size = new Size(75, 23);
             resetCustomerButton.TabIndex = 21;
@@ -699,7 +710,7 @@
             // 
             // resetButton
             // 
-            resetButton.Location = new Point(710, 6);
+            resetButton.Location = new Point(710, 7);
             resetButton.Name = "resetButton";
             resetButton.Size = new Size(49, 23);
             resetButton.TabIndex = 9;
@@ -710,7 +721,7 @@
             // categoryRadioButton
             // 
             categoryRadioButton.AutoSize = true;
-            categoryRadioButton.Location = new Point(464, 8);
+            categoryRadioButton.Location = new Point(464, 9);
             categoryRadioButton.Name = "categoryRadioButton";
             categoryRadioButton.Size = new Size(73, 19);
             categoryRadioButton.TabIndex = 8;
@@ -720,7 +731,7 @@
             // StyleRadioButton
             // 
             StyleRadioButton.AutoSize = true;
-            StyleRadioButton.Location = new Point(308, 8);
+            StyleRadioButton.Location = new Point(308, 9);
             StyleRadioButton.Name = "StyleRadioButton";
             StyleRadioButton.Size = new Size(50, 19);
             StyleRadioButton.TabIndex = 7;
@@ -731,7 +742,7 @@
             // 
             categoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             categoryComboBox.FormattingEnabled = true;
-            categoryComboBox.Location = new Point(542, 7);
+            categoryComboBox.Location = new Point(542, 8);
             categoryComboBox.Name = "categoryComboBox";
             categoryComboBox.Size = new Size(106, 23);
             categoryComboBox.TabIndex = 6;
@@ -740,7 +751,7 @@
             // 
             styleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             styleComboBox.FormattingEnabled = true;
-            styleComboBox.Location = new Point(363, 7);
+            styleComboBox.Location = new Point(363, 8);
             styleComboBox.Name = "styleComboBox";
             styleComboBox.Size = new Size(95, 23);
             styleComboBox.TabIndex = 5;
@@ -749,7 +760,7 @@
             // 
             IdRadioButton.AutoSize = true;
             IdRadioButton.Checked = true;
-            IdRadioButton.Location = new Point(145, 8);
+            IdRadioButton.Location = new Point(145, 9);
             IdRadioButton.Name = "IdRadioButton";
             IdRadioButton.Size = new Size(86, 19);
             IdRadioButton.TabIndex = 4;
@@ -759,14 +770,14 @@
             // 
             // furnitureSearchTextBox
             // 
-            furnitureSearchTextBox.Location = new Point(236, 7);
+            furnitureSearchTextBox.Location = new Point(236, 8);
             furnitureSearchTextBox.Name = "furnitureSearchTextBox";
             furnitureSearchTextBox.Size = new Size(66, 23);
             furnitureSearchTextBox.TabIndex = 3;
             // 
             // furnitureSearchButton
             // 
-            furnitureSearchButton.Location = new Point(653, 6);
+            furnitureSearchButton.Location = new Point(653, 7);
             furnitureSearchButton.Name = "furnitureSearchButton";
             furnitureSearchButton.Size = new Size(57, 23);
             furnitureSearchButton.TabIndex = 2;
@@ -887,6 +898,17 @@
             // 
             // employeesTab
             // 
+            employeesTab.Controls.Add(button1);
+            employeesTab.Controls.Add(button2);
+            employeesTab.Controls.Add(label4);
+            employeesTab.Controls.Add(label5);
+            employeesTab.Controls.Add(employeeLnameTextBox);
+            employeesTab.Controls.Add(employeeNameRadioButton);
+            employeesTab.Controls.Add(employeeFnameTextBox);
+            employeesTab.Controls.Add(employeePhoneRadioButton);
+            employeesTab.Controls.Add(employeePhoneTextBox);
+            employeesTab.Controls.Add(employeeNumTextBox);
+            employeesTab.Controls.Add(employeeNumRadioButton);
             employeesTab.Controls.Add(deleteEmployeeButton);
             employeesTab.Controls.Add(employeeGridView);
             employeesTab.Controls.Add(addEmployeeButton);
@@ -898,6 +920,104 @@
             employeesTab.TabIndex = 1;
             employeesTab.Text = "Employees";
             employeesTab.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(679, 8);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 32;
+            button1.Text = "Reset";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += resetEmployeeButton_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(598, 8);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 31;
+            button2.Text = "Search";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += employeeSearchButton_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(450, 41);
+            label4.Name = "label4";
+            label4.Size = new Size(66, 15);
+            label4.TabIndex = 30;
+            label4.Text = "Last Name:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(215, 41);
+            label5.Name = "label5";
+            label5.Size = new Size(67, 15);
+            label5.TabIndex = 29;
+            label5.Text = "First Name:";
+            // 
+            // employeeLnameTextBox
+            // 
+            employeeLnameTextBox.Location = new Point(522, 38);
+            employeeLnameTextBox.Name = "employeeLnameTextBox";
+            employeeLnameTextBox.Size = new Size(159, 23);
+            employeeLnameTextBox.TabIndex = 28;
+            // 
+            // employeeNameRadioButton
+            // 
+            employeeNameRadioButton.AutoSize = true;
+            employeeNameRadioButton.Location = new Point(152, 39);
+            employeeNameRadioButton.Name = "employeeNameRadioButton";
+            employeeNameRadioButton.Size = new Size(57, 19);
+            employeeNameRadioButton.TabIndex = 27;
+            employeeNameRadioButton.Text = "Name";
+            employeeNameRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // employeeFnameTextBox
+            // 
+            employeeFnameTextBox.Location = new Point(288, 38);
+            employeeFnameTextBox.Name = "employeeFnameTextBox";
+            employeeFnameTextBox.Size = new Size(156, 23);
+            employeeFnameTextBox.TabIndex = 26;
+            // 
+            // employeePhoneRadioButton
+            // 
+            employeePhoneRadioButton.AutoSize = true;
+            employeePhoneRadioButton.Location = new Point(348, 10);
+            employeePhoneRadioButton.Name = "employeePhoneRadioButton";
+            employeePhoneRadioButton.Size = new Size(109, 19);
+            employeePhoneRadioButton.TabIndex = 25;
+            employeePhoneRadioButton.Text = "Phone Number:";
+            employeePhoneRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // employeePhoneTextBox
+            // 
+            employeePhoneTextBox.Location = new Point(457, 8);
+            employeePhoneTextBox.Name = "employeePhoneTextBox";
+            employeePhoneTextBox.Size = new Size(137, 23);
+            employeePhoneTextBox.TabIndex = 24;
+            // 
+            // employeeNumTextBox
+            // 
+            employeeNumTextBox.Location = new Point(258, 8);
+            employeeNumTextBox.Name = "employeeNumTextBox";
+            employeeNumTextBox.Size = new Size(84, 23);
+            employeeNumTextBox.TabIndex = 23;
+            // 
+            // employeeNumRadioButton
+            // 
+            employeeNumRadioButton.AutoSize = true;
+            employeeNumRadioButton.Checked = true;
+            employeeNumRadioButton.Location = new Point(152, 10);
+            employeeNumRadioButton.Name = "employeeNumRadioButton";
+            employeeNumRadioButton.Size = new Size(108, 19);
+            employeeNumRadioButton.TabIndex = 22;
+            employeeNumRadioButton.TabStop = true;
+            employeeNumRadioButton.Text = "Employee num:";
+            employeeNumRadioButton.UseVisualStyleBackColor = true;
             // 
             // deleteEmployeeButton
             // 
@@ -945,6 +1065,7 @@
             ((System.ComponentModel.ISupportInitialize)furnitureGridView).EndInit();
             ((System.ComponentModel.ISupportInitialize)furnitureBindingSource).EndInit();
             employeesTab.ResumeLayout(false);
+            employeesTab.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1029,5 +1150,16 @@
         private DataGridViewTextBoxColumn finerateDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn quantityDataGridViewTextBoxColumn;
         private Button deleteFurnitureButton;
+        private Button button1;
+        private Button button2;
+        private Label label4;
+        private Label label5;
+        private TextBox employeeLnameTextBox;
+        private RadioButton employeeNameRadioButton;
+        private TextBox employeeFnameTextBox;
+        private RadioButton employeePhoneRadioButton;
+        private TextBox employeePhoneTextBox;
+        private TextBox employeeNumTextBox;
+        private RadioButton employeeNumRadioButton;
     }
 }
