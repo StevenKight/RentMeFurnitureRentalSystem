@@ -19,21 +19,21 @@ public class Furniture
             return false;
         }
 
-        return this.FurnitureId == ((Furniture)obj).FurnitureId;
+        return this.Furniture_id == ((Furniture)obj).Furniture_id;
     }
 
     #endregion
 
     #region properties
 
-    public int FurnitureId { get; set; }
+    public int Furniture_id { get; set; }
     public int RentalId { get; set; }
     public string Name { get; set; }
-    public string CategoryName { get; set; }
-    public string StyleName { get; set; }
+    public string Category_name { get; set; }
+    public string Style_name { get; set; }
     public string Description { get; set; }
-    public decimal RentalRate { get; set; }
-    public decimal FineRate { get; set; }
+    public decimal Rental_rate { get; set; }
+    public decimal Fine_rate { get; set; }
     public int Quantity { get; set; }
     public int DisplayQuantity { get; set; }
 

@@ -7,13 +7,13 @@ public class RentalItem
 {
     #region Properties
 
-    public int RentalId { get; set; }
-    public int ReturnId { get; set; }
-    public int MemberId { get; set; }
-    public int EmployeeNum { get; set; }
-    public DateTime StartDate { get; set; }
-    public DateTime DueDate { get; set; }
-    public int FurnitureId { get; set; }
+    public int Rental_id { get; set; }
+    public int Return_id { get; set; }
+    public int Member_id { get; set; }
+    public int Employee_num { get; set; }
+    public DateTime Start_date { get; set; }
+    public DateTime Due_date { get; set; }
+    public int Furniture_id { get; set; }
     public int Quantity { get; set; }
 
     #endregion

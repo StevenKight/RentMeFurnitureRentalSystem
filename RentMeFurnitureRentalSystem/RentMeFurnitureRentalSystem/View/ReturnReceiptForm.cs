@@ -34,7 +34,7 @@ public partial class ReturnReceiptForm : Form
     private void loadData(int returnId)
     {
         var receiptReturn = RentalDal.GetReturnById(returnId);
-        var customer = CustomerDal.GetCustomerByMemberId(receiptReturn.MemberId).ElementAt(0);
+        var customer = CustomerDal.GetCustomerByMemberId(receiptReturn.Member_id).ElementAt(0);
         var returnItems = RentalDal.GetReturnItems(returnId);
         var returnTotal = RentalDal.GetReturnTotal(returnId);
         this.furniture = returnItems;

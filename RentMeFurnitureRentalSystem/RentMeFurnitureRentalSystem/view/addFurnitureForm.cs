@@ -84,8 +84,8 @@ public partial class AddFurnitureForm : Form
     {
         this.addButton.Text = "Update";
 
-        this.rentalRateTextBox.Text = this.furniture.RentalRate.ToString();
-        this.fineRateTextBox.Text = this.furniture.FineRate.ToString();
+        this.rentalRateTextBox.Text = this.furniture.Rental_rate.ToString();
+        this.fineRateTextBox.Text = this.furniture.Fine_rate.ToString();
         this.nameTextBox.Text = this.furniture.Name;
         this.descriptionTextArea.Text = this.furniture.Description;
         this.quantiyNumber.Value = this.furniture.Quantity;
@@ -93,8 +93,8 @@ public partial class AddFurnitureForm : Form
         var styles = this.styleComboBox.Items.Cast<Style>().ToList();
         var categories = this.categoryComboBox.Items.Cast<Category>().ToList();
 
-        var style = styles.FirstOrDefault(x => this.furniture.StyleName.Equals(x.Name));
-        var category = categories.FirstOrDefault(x => this.furniture.CategoryName.Equals(x.Name));
+        var style = styles.FirstOrDefault(x => this.furniture.Style_name.Equals(x.Name));
+        var category = categories.FirstOrDefault(x => this.furniture.Category_name.Equals(x.Name));
 
         var styleIndex = styles.IndexOf(style ?? styles[0]);
         var categoryIndex = categories.IndexOf(category ?? categories[0]);
@@ -183,10 +183,10 @@ public partial class AddFurnitureForm : Form
         {
             Name = this.nameTextBox.Text,
             Description = this.descriptionTextArea.Text,
-            CategoryName = this.categoryComboBox.Text,
-            StyleName = this.styleComboBox.Text,
-            RentalRate = decimal.Parse(this.rentalRateTextBox.Text),
-            FineRate = decimal.Parse(this.fineRateTextBox.Text),
+            Category_name = this.categoryComboBox.Text,
+            Style_name = this.styleComboBox.Text,
+            Rental_rate = decimal.Parse(this.rentalRateTextBox.Text),
+            Fine_rate = decimal.Parse(this.fineRateTextBox.Text),
             Quantity = int.Parse(this.quantiyNumber.Text)
         };
 
@@ -203,7 +203,7 @@ public partial class AddFurnitureForm : Form
         }
         else // Update existing furniture
         {
-            furniture.FurnitureId = this.furniture.FurnitureId;
+            furniture.Furniture_id = this.furniture.Furniture_id;
 
             if (!FurnitureDal.UpdateFurniture(furniture))
             {

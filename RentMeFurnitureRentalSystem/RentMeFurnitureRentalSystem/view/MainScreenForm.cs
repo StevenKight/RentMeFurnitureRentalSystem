@@ -27,7 +27,7 @@ public partial class MainScreenForm : Form
         Location = new Point(x, y);
 
         this.LoggedInEmployee = employee;
-        this.employeeDisplay.Text = employee.EmployeeNum + " " + employee.Username + @": " +
+        this.employeeDisplay.Text = employee.Employee_num + " " + employee.Username + @": " +
                                     employee.Fname + " " + employee.Lname;
         this.checkIfAdmin();
 
@@ -57,7 +57,7 @@ public partial class MainScreenForm : Form
 
     private void checkIfAdmin()
     {
-        if (this.LoggedInEmployee.RoleName.Equals("administrator"))
+        if (this.LoggedInEmployee.Role_name.Equals("administrator"))
         {
             return;
         }

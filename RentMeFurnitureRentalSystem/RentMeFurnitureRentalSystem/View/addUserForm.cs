@@ -133,7 +133,7 @@ public partial class AddUserForm : Form
         this.zipcodeInput.Text = employee.Zip;
         this.cityInput.Text = employee.City;
         this.stateComboBox.Text = employee.State;
-        this.roleComboBox.Text = employee.RoleName;
+        this.roleComboBox.Text = employee.Role_name;
 
         this.givenEmployee = employee;
 
@@ -244,8 +244,8 @@ public partial class AddUserForm : Form
 
         if (this.isPrepopulated)
         {
-            customer.MemberId = this.givenCustomer.MemberId;
-            customer.RegisterDate = this.givenCustomer.RegisterDate;
+            customer.Member_id = this.givenCustomer.Member_id;
+            customer.Register_date = this.givenCustomer.Register_date;
 
             if (!CustomerDal.UpdateCustomer(customer))
             {
@@ -290,12 +290,12 @@ public partial class AddUserForm : Form
             City = this.cityInput.Text,
             State = this.stateComboBox.Text,
             Zip = this.zipcodeInput.Text,
-            RoleName = this.roleComboBox.Text
+            Role_name = this.roleComboBox.Text
         };
 
         if (this.isPrepopulated)
         {
-            employee.EmployeeNum = this.givenEmployee.EmployeeNum;
+            employee.Employee_num = this.givenEmployee.Employee_num;
             if (!EmployeeDal.UpdateEmployee(employee))
             {
                 MessageBox.Show("Error Updating Employee");

@@ -108,12 +108,12 @@ public class RentalDal
             {
                 var item = new RentalItem
                 {
-                    RentalId = newRentalId,
-                    MemberId = rental.MemberId,
-                    EmployeeNum = rental.EmployeeNum,
-                    StartDate = rental.StartDate,
-                    DueDate = rental.DueDate,
-                    FurnitureId = furnitureItem.FurnitureId,
+                    Rental_id = newRentalId,
+                    Member_id = rental.Member_id,
+                    Employee_num = rental.Employee_num,
+                    Start_date = rental.Start_date,
+                    Due_date = rental.Due_date,
+                    Furniture_id = furnitureItem.Furniture_id,
                     Quantity = furnitureItem.Quantity
                 };
 
@@ -140,10 +140,10 @@ public class RentalDal
     public static int CreateRental(RentalItem rental, MySqlConnection transactionConnection)
     {
         var param = new DynamicParameters();
-        param.Add("memberId", rental.MemberId);
-        param.Add("employeeNum", rental.EmployeeNum);
-        param.Add("startDate", rental.StartDate);
-        param.Add("dueDate", rental.DueDate);
+        param.Add("memberId", rental.Member_id);
+        param.Add("employeeNum", rental.Employee_num);
+        param.Add("startDate", rental.Start_date);
+        param.Add("dueDate", rental.Due_date);
         param.Add("rentalId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
         transactionConnection.Query<int>("CreateRental", param, commandType: CommandType.StoredProcedure);
@@ -160,8 +160,8 @@ public class RentalDal
     public static bool CreateRentalItem(RentalItem rentalItem, MySqlConnection transactionConnection)
     {
         var param = new DynamicParameters();
-        param.Add("rentalId", rentalItem.RentalId);
-        param.Add("furnitureId", rentalItem.FurnitureId);
+        param.Add("rentalId", rentalItem.Rental_id);
+        param.Add("furnitureId", rentalItem.Furniture_id);
         param.Add("rentedQuantity", rentalItem.Quantity);
 
         var outcome =
@@ -191,12 +191,12 @@ public class RentalDal
             {
                 var item = new RentalItem
                 {
-                    ReturnId = newReturnId,
-                    RentalId = furnitureItem.RentalId,
-                    MemberId = returnData.MemberId,
-                    EmployeeNum = returnData.EmployeeNum,
-                    StartDate = returnData.StartDate,
-                    FurnitureId = furnitureItem.FurnitureId,
+                    Return_id = newReturnId,
+                    Rental_id = furnitureItem.RentalId,
+                    Member_id = returnData.Member_id,
+                    Employee_num = returnData.Employee_num,
+                    Start_date = returnData.Start_date,
+                    Furniture_id = furnitureItem.Furniture_id,
                     Quantity = furnitureItem.Quantity
                 };
 
@@ -223,9 +223,9 @@ public class RentalDal
     public static int CreateReturn(RentalItem rental, MySqlConnection transactionConnection)
     {
         var param = new DynamicParameters();
-        param.Add("memberId", rental.MemberId);
-        param.Add("employeeNum", rental.EmployeeNum);
-        param.Add("returnDate", rental.StartDate);
+        param.Add("memberId", rental.Member_id);
+        param.Add("employeeNum", rental.Employee_num);
+        param.Add("returnDate", rental.Start_date);
         param.Add("returnId", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
         transactionConnection.Query<int>("CreateReturn", param, commandType: CommandType.StoredProcedure);
@@ -242,9 +242,9 @@ public class RentalDal
     public static bool CreateReturnItem(RentalItem rentalItem, MySqlConnection transactionConnection)
     {
         var param = new DynamicParameters();
-        param.Add("rentalId", rentalItem.RentalId);
-        param.Add("returnId", rentalItem.ReturnId);
-        param.Add("furnitureId", rentalItem.FurnitureId);
+        param.Add("rentalId", rentalItem.Rental_id);
+        param.Add("returnId", rentalItem.Return_id);
+        param.Add("furnitureId", rentalItem.Furniture_id);
         param.Add("returnedQuantity", rentalItem.Quantity);
 
         var outcome =

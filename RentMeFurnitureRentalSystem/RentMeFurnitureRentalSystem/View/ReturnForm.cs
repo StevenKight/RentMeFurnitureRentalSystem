@@ -33,8 +33,8 @@ public partial class ReturnForm : Form
         this.customer = customer;
 
         this.InitializeComponent();
-
-        this.titleTextBox.Text = "Rent to " + this.customer.Fullname;
+        
+        this.titleTextBox.Text = "Return from " + this.customer.Fullname;
 
         this.loadData();
     }
@@ -89,7 +89,7 @@ public partial class ReturnForm : Form
                     return;
                 }
 
-                x.RentalId = selectedRental.RentalId;
+                x.RentalId = selectedRental.Rental_id;
                 if (!this.furniture.Contains(x))
                 {
                     this.furniture.Add(x);
@@ -109,7 +109,7 @@ public partial class ReturnForm : Form
 
                 if (this.furniture.Contains(x))
                 {
-                    var displayed = this.furniture.FirstOrDefault(y => y.FurnitureId == x.FurnitureId);
+                    var displayed = this.furniture.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
                     x.Quantity = displayed.Quantity;
                 }
             });
@@ -144,7 +144,7 @@ public partial class ReturnForm : Form
             }
 
             var selectedRental = (RentalItem)this.rentalsDataGridView.SelectedRows[0].DataBoundItem;
-            x.RentalId = selectedRental.RentalId;
+            x.RentalId = selectedRental.Rental_id;
             if (!this.furniture.Contains(x))
             {
                 this.furniture.Add(x);
@@ -166,9 +166,9 @@ public partial class ReturnForm : Form
 
         var newReturn = new RentalItem
         {
-            MemberId = this.customer.MemberId,
-            EmployeeNum = this.employee.EmployeeNum,
-            StartDate = DateTime.Now.Date
+            Member_id = this.customer.Member_id,
+            Employee_num = this.employee.Employee_num,
+            Start_date = DateTime.Now.Date
         };
 
         var confirmation = MessageBox.Show("Are you sure you want to return the selected furniture?", "Confirm Return",

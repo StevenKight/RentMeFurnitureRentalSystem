@@ -5,13 +5,9 @@
 /// </summary>
 public class Style
 {
-    #region Properties
-
     #region properties
 
     public string Name { get; set; }
-
-    #endregion
 
     #endregion
 

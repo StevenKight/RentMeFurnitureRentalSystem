@@ -8,7 +8,7 @@ public class Employee
     #region Properties
 
     public string Fullname => this.Fname + " " + this.Lname;
-    public int EmployeeNum { get; set; }
+    public int Employee_num { get; set; }
     public string Username { get; set; }
     public string Password { get; set; }
     public string Fname { get; set; }
@@ -21,7 +21,7 @@ public class Employee
     public string State { get; set; }
     public string Zip { get; set; }
     public string Email { get; set; }
-    public string RoleName { get; set; }
+    public string Role_name { get; set; }
 
     #endregion
 }

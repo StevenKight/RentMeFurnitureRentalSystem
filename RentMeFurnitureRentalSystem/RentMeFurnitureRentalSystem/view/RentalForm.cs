@@ -71,7 +71,7 @@ public partial class RentalForm : Form
         {
             if (this.display.Contains(x))
             {
-                var displayed = this.display.FirstOrDefault(y => y.FurnitureId == x.FurnitureId);
+                var displayed = this.display.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
                 x.Quantity = displayed.Quantity;
             }
         });
@@ -80,7 +80,7 @@ public partial class RentalForm : Form
         {
             if (this.furniture.Contains(x))
             {
-                var displayed = this.furniture.FirstOrDefault(y => y.FurnitureId == x.FurnitureId);
+                var displayed = this.furniture.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
                 x.Quantity = displayed.Quantity;
             }
         });
@@ -158,10 +158,10 @@ public partial class RentalForm : Form
 
         var rental = new RentalItem
         {
-            MemberId = this.customer.MemberId,
-            EmployeeNum = this.employee.EmployeeNum,
-            StartDate = DateTime.Now.Date,
-            DueDate = this.dueDateDateTimePicker.Value.Date
+            Member_id = this.customer.Member_id,
+            Employee_num = this.employee.Employee_num,
+            Start_date = DateTime.Now.Date,
+            Due_date = this.dueDateDateTimePicker.Value.Date
         };
 
         var confirmation = MessageBox.Show("Are you sure you want to rent the selected furniture?", "Confirm Rental",

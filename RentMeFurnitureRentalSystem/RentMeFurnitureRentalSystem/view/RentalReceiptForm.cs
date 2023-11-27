@@ -34,7 +34,7 @@ public partial class RentalReceiptForm : Form
     private void loadData(int rentalId)
     {
         var rental = RentalDal.GetRentalById(rentalId);
-        var customer = CustomerDal.GetCustomerByMemberId(rental.MemberId).ElementAt(0);
+        var customer = CustomerDal.GetCustomerByMemberId(rental.Member_id).ElementAt(0);
         var rentalItems = RentalDal.GetRentalItems(rentalId);
         var rentalTotal = RentalDal.GetRentalTotal(rentalId);
         this.furniture = rentalItems;
@@ -43,6 +43,8 @@ public partial class RentalReceiptForm : Form
         this.titleTextBox.Text = this.titleTextBox.Text.Replace("<USER>", customer.Fullname);
 
         this.totalTextBox.Text = this.totalTextBox.Text.Replace("<TOTAL>", rentalTotal.ToString());
+
+        this.dueDateTextBox.Text = this.dueDateTextBox.Text.Replace("<DUE_DATE>", rental.Due_date.ToString());
 
         this.furnitureGridView.DataSource = this.furniture;
 
