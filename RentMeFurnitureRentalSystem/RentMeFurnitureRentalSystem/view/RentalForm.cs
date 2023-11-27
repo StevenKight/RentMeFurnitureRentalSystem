@@ -1,17 +1,17 @@
 ﻿using RentMeFurnitureRentalSystem.DAL;
-using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 
-namespace RentMeFurnitureRentalSystem.view;
+namespace RentMeFurnitureRentalSystem.View;
+
 /// <summary>
-/// The form that handles the rental of furniture
+///     The form that handles the rental of furniture
 /// </summary>
 public partial class RentalForm : Form
 {
     #region Data members
 
-    private List<Furniture> Furniture;
-    private List<Furniture> Display;
+    private List<Furniture> furniture;
+    private List<Furniture> display;
 
     private readonly Employee employee;
     private readonly Customer customer;
@@ -19,8 +19,9 @@ public partial class RentalForm : Form
     #endregion
 
     #region Constructors
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="RentalForm"/> class.
+    ///     Initializes a new instance of the <see cref="RentalForm" /> class.
     /// </summary>
     /// <param name="employee"></param>
     /// <param name="customer"></param>
@@ -43,8 +44,8 @@ public partial class RentalForm : Form
 
     private void populateStyleAndCategoryComboBoxes()
     {
-        var categories = CategoryDAL.GetCategories();
-        var styles = StyleDAL.GetStyles();
+        var categories = CategoryDal.GetCategories();
+        var styles = StyleDal.GetStyles();
 
         this.categoryComboBox.DataSource = categories.ToList();
         this.styleComboBox.DataSource = styles.ToList();
@@ -52,41 +53,41 @@ public partial class RentalForm : Form
 
     private void loadData()
     {
-        this.Furniture = FurnitureDAL.GetRentableFurniture().ToList();
-        this.Furniture.ForEach(x =>
+        this.furniture = FurnitureDal.GetRentableFurniture().ToList();
+        this.furniture.ForEach(x =>
         {
             x.DisplayQuantity = x.Quantity;
             x.Quantity = 0;
         });
 
-        this.Display = this.Furniture;
+        this.display = this.furniture;
 
-        this.displayData(this.Display);
+        this.displayData(this.display);
     }
 
     private void displayData(List<Furniture> furniture)
     {
-        this.Furniture.ForEach(x =>
+        this.furniture.ForEach(x =>
         {
-            if (this.Display.Contains(x))
+            if (this.display.Contains(x))
             {
-                var displayed = this.Display.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
+                var displayed = this.display.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
                 x.Quantity = displayed.Quantity;
             }
         });
 
         furniture.ForEach(x =>
         {
-            if (this.Furniture.Contains(x))
+            if (this.furniture.Contains(x))
             {
-                var displayed = this.Furniture.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
+                var displayed = this.furniture.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
                 x.Quantity = displayed.Quantity;
             }
         });
 
-        this.Display = furniture;
+        this.display = furniture;
 
-        this.furnitureGridView.DataSource = this.Display;
+        this.furnitureGridView.DataSource = this.display;
     }
 
     private void furnitureDataGridView_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -107,13 +108,13 @@ public partial class RentalForm : Form
 
     private void searchButton_Click(object sender, EventArgs e)
     {
-        var filteredFurniture = this.Furniture;
+        var filteredFurniture = this.furniture;
         if (this.IdRadioButton.Checked)
         {
             try
             {
                 var id = int.Parse(this.furnitureSearchTextBox.Text);
-                filteredFurniture = FurnitureDAL.GetRentableFurnitureById(id).ToList();
+                filteredFurniture = FurnitureDal.GetRentableFurnitureById(id).ToList();
             }
             catch (Exception exception)
             {
@@ -123,12 +124,12 @@ public partial class RentalForm : Form
         else if (this.categoryRadioButton.Checked)
         {
             var category = this.categoryComboBox.Text;
-            filteredFurniture = FurnitureDAL.GetRentableFurnitureByCategory(category).ToList();
+            filteredFurniture = FurnitureDal.GetRentableFurnitureByCategory(category).ToList();
         }
         else
         {
             var style = this.styleComboBox.Text;
-            filteredFurniture = FurnitureDAL.GetRentableFurnitureByStyle(style).ToList();
+            filteredFurniture = FurnitureDal.GetRentableFurnitureByStyle(style).ToList();
         }
 
         filteredFurniture.ForEach(x => x.DisplayQuantity = x.Quantity);
@@ -137,7 +138,7 @@ public partial class RentalForm : Form
 
     private void resetButton_Click(object sender, EventArgs e)
     {
-        this.displayData(this.Furniture);
+        this.displayData(this.furniture);
     }
 
     private void cancelButton_Click(object sender, EventArgs e)
@@ -147,7 +148,7 @@ public partial class RentalForm : Form
 
     private void submitButton_Click(object sender, EventArgs e)
     {
-        var selectedFurniture = this.Furniture.Where(x => x.Quantity > 0).ToList();
+        var selectedFurniture = this.furniture.Where(x => x.Quantity > 0).ToList();
 
         if (selectedFurniture.Count <= 0)
         {
@@ -171,7 +172,7 @@ public partial class RentalForm : Form
             return;
         }
 
-        var newRentalId = RentalDAL.RentFurniture(rental, selectedFurniture);
+        var newRentalId = RentalDal.RentFurniture(rental, selectedFurniture);
         if (newRentalId == -1)
         {
             MessageBox.Show("Error creating rental for user.");

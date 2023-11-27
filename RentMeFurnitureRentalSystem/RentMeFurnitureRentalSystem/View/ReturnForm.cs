@@ -1,19 +1,19 @@
 ﻿using RentMeFurnitureRentalSystem.DAL;
-using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
 
-namespace RentMeFurnitureRentalSystem.view;
+namespace RentMeFurnitureRentalSystem.View;
+
 /// <summary>
-/// Returns the furniture to the store
+///     Returns the furniture to the store
 /// </summary>
 public partial class ReturnForm : Form
 {
     #region Data members
 
-    private List<RentalItem> Rentals;
+    private List<RentalItem> rentals;
 
-    private List<Furniture> Furniture;
-    private List<Furniture> Display;
+    private List<Furniture> furniture;
+    private List<Furniture> display;
 
     private readonly Employee employee;
     private readonly Customer customer;
@@ -21,8 +21,9 @@ public partial class ReturnForm : Form
     #endregion
 
     #region Constructors
+
     /// <summary>
-    /// instantiates the return form with the employee and customer
+    ///     instantiates the return form with the employee and customer
     /// </summary>
     /// <param name="employee"></param>
     /// <param name="customer"></param>
@@ -44,12 +45,12 @@ public partial class ReturnForm : Form
 
     private void loadData()
     {
-        this.Rentals = RentalDAL.GetRentalsByCustomer(this.customer);
-        this.Display = new List<Furniture>();
-        this.Furniture = new List<Furniture>();
+        this.rentals = RentalDal.GetRentalsByCustomer(this.customer);
+        this.display = new List<Furniture>();
+        this.furniture = new List<Furniture>();
 
-        this.rentalsDataGridView.DataSource = this.Rentals;
-        this.furnitureDataGridView.DataSource = this.Display;
+        this.rentalsDataGridView.DataSource = this.rentals;
+        this.furnitureDataGridView.DataSource = this.display;
 
         this.rentalsDataGridView.ClearSelection();
         this.furnitureDataGridView.ClearSelection();
@@ -81,47 +82,47 @@ public partial class ReturnForm : Form
         var selectedRental = (RentalItem)e.Row.DataBoundItem;
         if (selectedRental != null)
         {
-            this.Display.ForEach((x) =>
+            this.display.ForEach(x =>
             {
                 if (x.Quantity == 0)
                 {
                     return;
                 }
 
-                x.Rental_id = selectedRental.Rental_id;
-                if (!this.Furniture.Contains(x))
+                x.RentalId = selectedRental.Rental_id;
+                if (!this.furniture.Contains(x))
                 {
-                    this.Furniture.Add(x);
+                    this.furniture.Add(x);
                 }
                 else
                 {
-                    var index = this.Furniture.IndexOf(x);
-                    this.Furniture[index].Quantity = x.Quantity;
+                    var index = this.furniture.IndexOf(x);
+                    this.furniture[index].Quantity = x.Quantity;
                 }
             });
 
-            var rentalFurniture = FurnitureDAL.GetFurnitureByRental(selectedRental);
+            var rentalFurniture = FurnitureDal.GetFurnitureByRental(selectedRental);
             rentalFurniture.ForEach(x =>
             {
                 x.DisplayQuantity = x.Quantity;
                 x.Quantity = 0;
 
-                if (this.Furniture.Contains(x))
+                if (this.furniture.Contains(x))
                 {
-                    var displayed = this.Furniture.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
+                    var displayed = this.furniture.FirstOrDefault(y => y.Furniture_id == x.Furniture_id);
                     x.Quantity = displayed.Quantity;
                 }
             });
 
-            this.Display = rentalFurniture;
+            this.display = rentalFurniture;
 
-            this.furnitureDataGridView.DataSource = this.Display;
+            this.furnitureDataGridView.DataSource = this.display;
         }
     }
 
     private void ReturnForm_Shown(object sender, EventArgs e)
     {
-        if (this.Rentals.Count <= 0)
+        if (this.rentals.Count <= 0)
         {
             MessageBox.Show("No rentals found for the selected user.", "No Rentals", MessageBoxButtons.OK);
             Close();
@@ -135,7 +136,7 @@ public partial class ReturnForm : Form
 
     private void submitButton_Click(object sender, EventArgs e)
     {
-        this.Display.ForEach((x) =>
+        this.display.ForEach(x =>
         {
             if (x.Quantity == 0)
             {
@@ -143,19 +144,19 @@ public partial class ReturnForm : Form
             }
 
             var selectedRental = (RentalItem)this.rentalsDataGridView.SelectedRows[0].DataBoundItem;
-            x.Rental_id = selectedRental.Rental_id;
-            if (!this.Furniture.Contains(x))
+            x.RentalId = selectedRental.Rental_id;
+            if (!this.furniture.Contains(x))
             {
-                this.Furniture.Add(x);
+                this.furniture.Add(x);
             }
             else
             {
-                var index = this.Furniture.IndexOf(x);
-                this.Furniture[index].Quantity = x.Quantity;
+                var index = this.furniture.IndexOf(x);
+                this.furniture[index].Quantity = x.Quantity;
             }
         });
 
-        var selectedFurniture = this.Furniture.Where(x => x.Quantity > 0).ToList();
+        var selectedFurniture = this.furniture.Where(x => x.Quantity > 0).ToList();
 
         if (selectedFurniture.Count <= 0)
         {
@@ -178,7 +179,7 @@ public partial class ReturnForm : Form
             return;
         }
 
-        var newReturnId = RentalDAL.ReturnFurniture(newReturn, selectedFurniture);
+        var newReturnId = RentalDal.ReturnFurniture(newReturn, selectedFurniture);
         if (newReturnId == -1)
         {
             MessageBox.Show("Error creating return for user.");

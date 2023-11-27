@@ -1,6 +1,7 @@
-﻿namespace RentMeFurnitureRentalSystem.model;
+﻿namespace RentMeFurnitureRentalSystem.Model;
+
 /// <summary>
-/// Employee class that represents an employee in the database
+///     Employee class that represents an employee in the database
 /// </summary>
 public class Employee
 {

@@ -1,9 +1,12 @@
 ﻿namespace RentMeFurnitureRentalSystem.DAL;
+
 /// <summary>
-/// Query strings for all the queries used in the application
+///     Query strings for all the queries used in the application
 /// </summary>
 public static class QueryStrings
 {
+    #region Data members
+
     #region Roles
 
     public const string GetRoles = "select * from role";
@@ -19,6 +22,8 @@ public static class QueryStrings
     #region Category
 
     public const string GetCategories = "select * from category";
+
+    #endregion
 
     #endregion
 
@@ -93,6 +98,12 @@ public static class QueryStrings
                                          "`role_name` = @Role_name " +
                                          "WHERE `employee_num` = @Employee_num;";
 
+    public const string GetEmployeeByEmployeeNum = "select * from Employee where employee_num=@id";
+
+    public const string GetEmployeeByPhone = "select * from Employee where phone=@phone";
+
+    public const string GetEmployeeByName = "select * from Employee where fname=@fname and lname=@lname";
+
     #endregion
 
     #region Furniture
@@ -119,6 +130,18 @@ public static class QueryStrings
 
     public const string CreateFurniture =
         "insert into furniture(category_name,style_name,`name`,`description`,rental_rate,fine_rate,quantity) values(@Category_name,@Style_name,@Name,@Description,@Rental_rate,@Fine_rate,@Quantity)";
+
+    public const string DeleteFurniture = "DELETE FROM furniture WHERE furniture_id=@Furniture_id";
+
+    public const string UpdateFurniture = "UPDATE furniture " +
+                                          "SET `category_name` = @Category_name, " +
+                                          "`style_name` = @Style_name, " +
+                                          "`name` = @Name, " +
+                                          "`description` = @Description, " +
+                                          "`rental_rate` = @Rental_rate, " +
+                                          "`fine_rate` = @Fine_rate, " +
+                                          "`quantity` = @Quantity " +
+                                          "WHERE `furniture_id` = @Furniture_id";
 
     #endregion
 
@@ -148,23 +171,25 @@ public static class QueryStrings
                                          "where `return_item`.furniture_id=`furniture`.furniture_id " +
                                          "AND `return_item`.return_id=@Id";
 
-    public const string GetReturnFineTotal = "SELECT SUM(`furniture`.rental_rate * `return_item`.quantity) AS fine_total " +
-                                            "FROM `return_item`, `furniture`, `rental` " +
-                                            "WHERE `return_item`.furniture_id=`furniture`.furniture_id " +
-                                            "AND `return_item`.rental_id=`rental`.rental_id " +
-                                            "AND `return_item`.return_id = @Id " +
-                                            "AND `rental`.due_date < NOW() " +
-                                            "GROUP BY `return_item`.return_id";
+    public const string GetReturnFineTotal =
+        "SELECT SUM(`furniture`.rental_rate * `return_item`.quantity) AS fine_total " +
+        "FROM `return_item`, `furniture`, `rental` " +
+        "WHERE `return_item`.furniture_id=`furniture`.furniture_id " +
+        "AND `return_item`.rental_id=`rental`.rental_id " +
+        "AND `return_item`.return_id = @Id " +
+        "AND `rental`.due_date < NOW() " +
+        "GROUP BY `return_item`.return_id";
 
     #endregion
 
     #region Report
 
-    public const string GetReturnReport = "SELECT * FROM `return` WHERE `return`.return_date BETWEEN @fromDate AND @toDate";
+    public const string GetReturnReport =
+        "SELECT * FROM `return` WHERE `return`.return_date BETWEEN @fromDate AND @toDate";
 
     public const string GetRentalReport = "SELECT * FROM rental WHERE start_date BETWEEN @fromDate AND @toDate";
 
-    public const string GetRentalReportBySelected =@"
+    public const string GetRentalReportBySelected = @"
    SELECT 
         rental_item.furniture_id, rental_item.quantity, furniture.`name`
     FROM
@@ -176,7 +201,8 @@ public static class QueryStrings
     WHERE
         rental.rental_id = @rentalId";
 
-    public const string GetReturnReportBySelected = "select `return_item`.furniture_id, `return_item`.quantity, furniture.`name` from `return` inner join `return_item` on `return`.return_id = `return_item`.return_id inner join furniture ON furniture.furniture_id = `return_item`.furniture_id where `return`.return_id=@returnID";
+    public const string GetReturnReportBySelected =
+        "select `return_item`.furniture_id, `return_item`.quantity, furniture.`name` from `return` inner join `return_item` on `return`.return_id = `return_item`.return_id inner join furniture ON furniture.furniture_id = `return_item`.furniture_id where `return`.return_id=@returnID";
 
     #endregion
 }

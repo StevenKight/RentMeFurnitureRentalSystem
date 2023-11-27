@@ -1,18 +1,19 @@
 using Microsoft.AspNetCore.Identity;
 using RentMeFurnitureRentalSystem.DAL;
-using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.Model;
 using RentMeFurnitureRentalSystem.Utils;
-using RentMeFurnitureRentalSystem.view;
 
-namespace RentMeFurnitureRentalSystem;
+namespace RentMeFurnitureRentalSystem.View;
+
 /// <summary>
-/// Form for the login screen
+///     Form for the login screen
 /// </summary>
 public partial class Form1 : Form
 {
     #region Constructors
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="Form1"/> class.
+    ///     Initializes a new instance of the <see cref="Form1" /> class.
     /// </summary>
     public Form1()
     {
@@ -92,7 +93,8 @@ public partial class Form1 : Form
 
         var loginInfo = LoginDal.CheckLogin(username);
 
-        if (username.Equals(loginInfo.Username) && PasswordHasher.CheckHashedPassword(loginInfo.Password,password) == PasswordVerificationResult.Success)
+        if (username.Equals(loginInfo.Username) && PasswordHasher.CheckHashedPassword(loginInfo.Password, password) ==
+            PasswordVerificationResult.Success)
         {
             return true;
         }
@@ -101,12 +103,12 @@ public partial class Form1 : Form
         this.loginErrorProvider.SetError(this.passwordInput, "Username and/or Password is incorrect.");
         return false;
     }
+
     private void forgotPasswordButton_Click(object sender, EventArgs e)
     {
         var changepasswordForm = new ChangePasswordForm();
         changepasswordForm.ShowDialog();
     }
+
     #endregion
-
-
 }

@@ -1,21 +1,23 @@
 ﻿using RentMeFurnitureRentalSystem.DAL;
-using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.Model;
 
-namespace RentMeFurnitureRentalSystem.view;
+namespace RentMeFurnitureRentalSystem.View;
+
 /// <summary>
-/// Rental receipt form
+///     Rental receipt form
 /// </summary>
 public partial class RentalReceiptForm : Form
 {
     #region Data members
 
-    private List<Furniture> Furniture;
+    private List<Furniture> furniture;
 
     #endregion
 
     #region Constructors
+
     /// <summary>
-    /// Constructor for the rental receipt form
+    ///     Constructor for the rental receipt form
     /// </summary>
     /// <param name="rentalId"></param>
     public RentalReceiptForm(int rentalId)
@@ -31,11 +33,11 @@ public partial class RentalReceiptForm : Form
 
     private void loadData(int rentalId)
     {
-        var rental = RentalDAL.GetRentalById(rentalId);
-        var customer = CustomerDal.GetCustomerByMemberID(rental.Member_id).ElementAt(0);
-        var rentalItems = RentalDAL.GetRentalItems(rentalId);
-        var rentalTotal = RentalDAL.GetRentalTotal(rentalId);
-        this.Furniture = rentalItems;
+        var rental = RentalDal.GetRentalById(rentalId);
+        var customer = CustomerDal.GetCustomerByMemberId(rental.Member_id).ElementAt(0);
+        var rentalItems = RentalDal.GetRentalItems(rentalId);
+        var rentalTotal = RentalDal.GetRentalTotal(rentalId);
+        this.furniture = rentalItems;
 
         this.titleTextBox.Text = this.titleTextBox.Text.Replace("<ID>", rentalId.ToString());
         this.titleTextBox.Text = this.titleTextBox.Text.Replace("<USER>", customer.Fullname);
@@ -44,13 +46,13 @@ public partial class RentalReceiptForm : Form
 
         this.dueDateTextBox.Text = this.dueDateTextBox.Text.Replace("<DUE_DATE>", rental.Due_date.ToString());
 
-        this.furnitureGridView.DataSource = this.Furniture;
+        this.furnitureGridView.DataSource = this.furniture;
 
-        var itemCount = this.Furniture.Sum(x => x.Quantity);
+        var itemCount = this.furniture.Sum(x => x.Quantity);
         this.itemCountTextBox.Text = this.itemCountTextBox.Text.Replace("<ITEM_COUNT>", itemCount.ToString());
     }
 
-        private void closeButton_Click(object sender, EventArgs e)
+    private void closeButton_Click(object sender, EventArgs e)
     {
         Close();
     }

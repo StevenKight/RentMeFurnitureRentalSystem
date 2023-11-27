@@ -1,15 +1,18 @@
 ﻿using Dapper;
 using MySql.Data.MySqlClient;
-using RentMeFurnitureRentalSystem.model;
+using RentMeFurnitureRentalSystem.Model;
 
 namespace RentMeFurnitureRentalSystem.DAL;
+
 /// <summary>
-/// The CategoryDAL class
+///     The CategoryDAL class
 /// </summary>
-public class CategoryDAL
+public class CategoryDal
 {
+    #region Methods
+
     /// <summary>
-    /// Gets the categories from the database
+    ///     Gets the categories from the database
     /// </summary>
     /// <returns>List of Categories</returns>
     public static IList<Category> GetCategories()
@@ -19,7 +22,13 @@ public class CategoryDAL
 
         var results = connection.Query<Category>(QueryStrings.GetCategories);
 
-        foreach (var item in results) list.Add(item);
+        foreach (var item in results)
+        {
+            list.Add(item);
+        }
+
         return list;
     }
+
+    #endregion
 }

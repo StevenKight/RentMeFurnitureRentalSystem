@@ -1,17 +1,19 @@
-﻿using Dapper;
+﻿using System.Data;
+using Dapper;
 using MySql.Data.MySqlClient;
-using RentMeFurnitureRentalSystem.model;
 using RentMeFurnitureRentalSystem.Model;
-using System.Data;
 
 namespace RentMeFurnitureRentalSystem.DAL;
+
 /// <summary>
-/// Rental DAL class that handles all database interactions for rentals
+///     Rental DAL class that handles all database interactions for rentals
 /// </summary>
-public class RentalDAL
+public class RentalDal
 {
+    #region Methods
+
     /// <summary>
-    /// Get all rentals from the database by id
+    ///     Get all rentals from the database by id
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -24,8 +26,9 @@ public class RentalDAL
 
         return results.ElementAt(0);
     }
+
     /// <summary>
-    /// get return by id
+    ///     get return by id
     /// </summary>
     /// <param name="id"></param>
     /// <returns></returns>
@@ -38,8 +41,9 @@ public class RentalDAL
 
         return results.ElementAt(0);
     }
+
     /// <summary>
-    /// get all rentals
+    ///     get all rentals
     /// </summary>
     /// <param name="rentalId"></param>
     /// <returns></returns>
@@ -52,12 +56,13 @@ public class RentalDAL
 
         return results.ToList();
     }
+
     /// <summary>
-    /// get rental total
+    ///     get rental total
     /// </summary>
     /// <param name="rentalId"></param>
     /// <returns></returns>
-    public static decimal GetRentalTotal(int rentalId) 
+    public static decimal GetRentalTotal(int rentalId)
     {
         using var connection = new MySqlConnection(Connection.ConnectionString);
         connection.Open();
@@ -66,8 +71,9 @@ public class RentalDAL
 
         return results;
     }
+
     /// <summary>
-    /// get rental by customer
+    ///     get rental by customer
     /// </summary>
     /// <param name="customer"></param>
     /// <returns></returns>
@@ -111,7 +117,7 @@ public class RentalDAL
                     Quantity = furnitureItem.Quantity
                 };
 
-                RentalDAL.CreateRentalItem(item, connection);
+                CreateRentalItem(item, connection);
             }
 
             transaction.Commit();
@@ -121,13 +127,13 @@ public class RentalDAL
         catch (Exception ex)
         {
             transaction.Rollback();
-            
+
             return -1;
         }
     }
 
     /// <summary>
-    /// create rental in the database
+    ///     create rental in the database
     /// </summary>
     /// <param name="rental"></param>
     /// <returns></returns>
@@ -145,8 +151,9 @@ public class RentalDAL
 
         return newId;
     }
+
     /// <summary>
-    /// create rental item in the database
+    ///     create rental item in the database
     /// </summary>
     /// <param name="rentalItem"></param>
     /// <returns></returns>
@@ -157,7 +164,8 @@ public class RentalDAL
         param.Add("furnitureId", rentalItem.Furniture_id);
         param.Add("rentedQuantity", rentalItem.Quantity);
 
-        var outcome = transactionConnection.Query<int>("CreateRentalItem", param, commandType: CommandType.StoredProcedure);
+        var outcome =
+            transactionConnection.Query<int>("CreateRentalItem", param, commandType: CommandType.StoredProcedure);
 
         return outcome != null;
     }
@@ -184,7 +192,7 @@ public class RentalDAL
                 var item = new RentalItem
                 {
                     Return_id = newReturnId,
-                    Rental_id = furnitureItem.Rental_id,
+                    Rental_id = furnitureItem.RentalId,
                     Member_id = returnData.Member_id,
                     Employee_num = returnData.Employee_num,
                     Start_date = returnData.Start_date,
@@ -192,7 +200,7 @@ public class RentalDAL
                     Quantity = furnitureItem.Quantity
                 };
 
-                RentalDAL.CreateReturnItem(item, connection);
+                CreateReturnItem(item, connection);
             }
 
             transaction.Commit();
@@ -208,7 +216,7 @@ public class RentalDAL
     }
 
     /// <summary>
-    /// create return in the database
+    ///     create return in the database
     /// </summary>
     /// <param name="rental"></param>
     /// <returns></returns>
@@ -225,8 +233,9 @@ public class RentalDAL
 
         return newId;
     }
+
     /// <summary>
-    /// create return item in the database
+    ///     create return item in the database
     /// </summary>
     /// <param name="rentalItem"></param>
     /// <returns></returns>
@@ -238,13 +247,14 @@ public class RentalDAL
         param.Add("furnitureId", rentalItem.Furniture_id);
         param.Add("returnedQuantity", rentalItem.Quantity);
 
-        var outcome = transactionConnection.Query<int>("CreateReturnItem", param, commandType: CommandType.StoredProcedure);
+        var outcome =
+            transactionConnection.Query<int>("CreateReturnItem", param, commandType: CommandType.StoredProcedure);
 
         return outcome != null;
     }
 
     /// <summary>
-    /// get return items
+    ///     get return items
     /// </summary>
     /// <param name="returnId"></param>
     /// <returns></returns>
@@ -257,8 +267,9 @@ public class RentalDAL
 
         return results.ToList();
     }
+
     /// <summary>
-    /// get return total
+    ///     get return total
     /// </summary>
     /// <param name="returnId"></param>
     /// <returns></returns>
@@ -278,4 +289,6 @@ public class RentalDAL
             return 0;
         }
     }
+
+    #endregion
 }

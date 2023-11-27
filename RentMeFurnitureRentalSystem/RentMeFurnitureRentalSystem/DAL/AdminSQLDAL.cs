@@ -1,47 +1,42 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 using Dapper;
-using MySqlX.XDevAPI.Common;
+using MySql.Data.MySqlClient;
 
-namespace RentMeFurnitureRentalSystem.DAL
+namespace RentMeFurnitureRentalSystem.DAL;
+
+/// <summary>
+///     The DAL for the admin table page
+/// </summary>
+public class AdminSqldal
 {
+    #region Methods
+
     /// <summary>
-    /// The DAL for the admin table page
+    ///     Executes a SQL statement that returns the results of the query
     /// </summary>
-    public class AdminSQLDAL
+    /// <param name="sql"></param>
+    /// <returns></returns>
+    public static DataTable ReadStatement(string sql)
     {
-        /// <summary>
-        /// Executes a SQL statement that returns the results of the query
-        /// </summary>
-        /// <param name="sql"></param>
-        /// <returns></returns>
-        public static DataTable ReadStatement(string sql)
+        try
         {
-            try
-            {
-                using var connection = new MySqlConnection(Connection.ConnectionString);
-                connection.Open();
+            using var connection = new MySqlConnection(Connection.ConnectionString);
+            connection.Open();
 
-                var dataTable = new DataTable();
-                using (var reader = connection.ExecuteReader(sql))
-                {
-                    dataTable.Load(reader);
-                }
-
-                return dataTable;
-            }
-            catch (Exception ex)
+            var dataTable = new DataTable();
+            using (var reader = connection.ExecuteReader(sql))
             {
-                MessageBox.Show("Error executing SQL: " + ex.Message);
-                return null;
+                dataTable.Load(reader);
             }
+
+            return dataTable;
         }
-
-
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error executing SQL: " + ex.Message);
+            return null;
+        }
     }
+
+    #endregion
 }

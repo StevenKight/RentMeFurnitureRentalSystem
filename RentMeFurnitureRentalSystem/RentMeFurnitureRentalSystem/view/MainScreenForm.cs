@@ -1,52 +1,17 @@
-﻿using System.Text.RegularExpressions;
-using Google.Protobuf.WellKnownTypes;
-using RentMeFurnitureRentalSystem.DAL;
-using RentMeFurnitureRentalSystem.model;
+﻿using RentMeFurnitureRentalSystem.DAL;
 using RentMeFurnitureRentalSystem.Model;
-using RentMeFurnitureRentalSystem.view;
 
-namespace RentMeFurnitureRentalSystem;
+namespace RentMeFurnitureRentalSystem.View;
+
 /// <summary>
-/// Main screen form that displays all the data for the user to see
+///     Main screen form that displays all the data for the user to see
 /// </summary>
 public partial class MainScreenForm : Form
 {
-
-    #region Data Members
-    /// <summary>
-    /// Logged in employee
-    /// </summary>
-    public Employee LoggedInEmployee { get; set; }
-    /// <summary>
-    /// list of employees
-    /// </summary>
-    public List<Employee> Employees { get; set; }
-    /// <summary>
-    /// list of customers
-    /// </summary>
-    public List<Customer> Customers { get; set; }
-    /// <summary>
-    /// list of furniture
-    /// </summary>
-    public List<Furniture> Furniture { get; set; }
-    /// <summary>
-    /// selected employee
-    /// </summary>
-    public Employee SelectedEmployee { get; set; }
-    /// <summary>
-    /// selected customer
-    /// </summary>
-    public Customer SelectedCustomer { get; set; }
-    /// <summary>
-    /// regex for phone number
-    /// </summary>
-    public const string PHONEREGEXNODASH = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
-
-    #endregion
-
     #region Constructors
+
     /// <summary>
-    /// Initializes a new instance of the <see cref="MainScreenForm"/> class.
+    ///     Initializes a new instance of the <see cref="MainScreenForm" /> class.
     /// </summary>
     /// <param name="employee"></param>
     public MainScreenForm(Employee employee)
@@ -66,7 +31,7 @@ public partial class MainScreenForm : Form
                                     employee.Fname + " " + employee.Lname;
         this.checkIfAdmin();
 
-        getData();
+        this.getData();
     }
 
     #endregion
@@ -75,18 +40,18 @@ public partial class MainScreenForm : Form
 
     private void getData()
     {
-        Employees = EmployeeDal.GetAllEmployees();
-        Customers = CustomerDal.GetAllCustomers();
-        Furniture = FurnitureDAL.GetFurniture().ToList();
-        
-        populateGridViews();
+        this.Employees = EmployeeDal.GetAllEmployees();
+        this.Customers = CustomerDal.GetAllCustomers();
+        this.Furniture = FurnitureDal.GetFurniture().ToList();
+
+        this.populateGridViews();
         this.populateStyleAndCategoryComboBoxes();
     }
 
     private void populateGridViews()
     {
-        customerGridView.DataSource = this.Customers;
-        employeeGridView.DataSource = this.Employees;
+        this.customerGridView.DataSource = this.Customers;
+        this.employeeGridView.DataSource = this.Employees;
         this.furnitureGridView.DataSource = this.Furniture;
     }
 
@@ -96,6 +61,7 @@ public partial class MainScreenForm : Form
         {
             return;
         }
+
         this.adminTableButton.Enabled = false;
         this.adminTableButton.Visible = false;
         this.dashboardTabs.TabPages.Remove(this.employeesTab);
@@ -103,17 +69,16 @@ public partial class MainScreenForm : Form
 
     private void populateStyleAndCategoryComboBoxes()
     {
-        var categories = CategoryDAL.GetCategories();
-        var styles = StyleDAL.GetStyles();
+        var categories = CategoryDal.GetCategories();
+        var styles = StyleDal.GetStyles();
 
         this.categoryComboBox.DataSource = categories.ToList();
         this.styleComboBox.DataSource = styles.ToList();
     }
 
-
     private void addEmployeeButton_Click(object sender, EventArgs e)
     {
-        var addEmployeeForm = new addUserForm(true);
+        var addEmployeeForm = new AddUserForm(true);
         addEmployeeForm.StartPosition = FormStartPosition.Manual;
         addEmployeeForm.Left = Left + (Width - addEmployeeForm.Width) / 2;
         addEmployeeForm.Top = Top + (Height - addEmployeeForm.Height) / 2;
@@ -145,7 +110,7 @@ public partial class MainScreenForm : Form
 
     private void addCustomerButton_Click(object sender, EventArgs e)
     {
-        var addCustomerForm = new addUserForm(false);
+        var addCustomerForm = new AddUserForm(false);
         addCustomerForm.StartPosition = FormStartPosition.Manual;
         addCustomerForm.Left = Left + (Width - addCustomerForm.Width) / 2;
         addCustomerForm.Top = Top + (Height - addCustomerForm.Height) / 2;
@@ -178,13 +143,36 @@ public partial class MainScreenForm : Form
 
     private void addFurnitureButton_Click(object sender, EventArgs e)
     {
-        var addFurnitureForm = new addFurnitureForm();
+        var addFurnitureForm = new AddFurnitureForm();
         addFurnitureForm.StartPosition = FormStartPosition.Manual;
         addFurnitureForm.Left = Left + (Width - addFurnitureForm.Width) / 2;
         addFurnitureForm.Top = Top + (Height - addFurnitureForm.Height) / 2;
 
         addFurnitureForm.ShowDialog();
-        getData();
+        this.getData();
+    }
+
+    private void deleteFurnitureButton_Click(object sender, EventArgs e)
+    {
+        if (this.SelectedFurniture == null)
+        {
+            MessageBox.Show(@"Please select a piece of furniture to delete");
+            return;
+        }
+
+        var result = MessageBox.Show(
+            $"Are you sure you want to delete all ({this.SelectedFurniture.Quantity}) {this.SelectedFurniture.Name}?",
+            @"Delete Furniture",
+            MessageBoxButtons.YesNo);
+
+        if (result == DialogResult.Yes)
+        {
+            MessageBox.Show(FurnitureDal.DeleteFurniture(this.SelectedFurniture)
+                ? @"Furniture deleted"
+                : @"Furniture could not be deleted");
+
+            this.getData();
+        }
     }
 
     private void logoutButton_Click(object sender, EventArgs e)
@@ -192,6 +180,23 @@ public partial class MainScreenForm : Form
         this.LoggedInEmployee = null;
         DialogResult = DialogResult.Continue;
         Close();
+    }
+
+    private void employeeGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+    {
+        if (e.StateChanged != DataGridViewElementStates.Selected)
+        {
+            this.deleteEmployeeButton.Enabled = false;
+            return;
+        }
+
+        this.deleteEmployeeButton.Enabled = true;
+
+        var selectedRows = this.employeeGridView.SelectedRows;
+        if (selectedRows.Count > 0)
+        {
+            this.SelectedEmployee = selectedRows[0].DataBoundItem as Employee;
+        }
     }
 
     private void customerGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
@@ -215,26 +220,26 @@ public partial class MainScreenForm : Form
         }
     }
 
-    private void employeeGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
+    private void furnitureGridView_RowStateChanged(object sender, DataGridViewRowStateChangedEventArgs e)
     {
         if (e.StateChanged != DataGridViewElementStates.Selected)
         {
-            this.deleteEmployeeButton.Enabled = false;
+            this.deleteFurnitureButton.Enabled = false;
             return;
         }
 
-        this.deleteEmployeeButton.Enabled = true;
+        this.deleteFurnitureButton.Enabled = true;
 
-        var selectedRows = this.employeeGridView.SelectedRows;
+        var selectedRows = this.furnitureGridView.SelectedRows;
         if (selectedRows.Count > 0)
         {
-            this.SelectedEmployee = selectedRows[0].DataBoundItem as Employee;
+            this.SelectedFurniture = selectedRows[0].DataBoundItem as Furniture;
         }
     }
 
     private void customerGridView_MouseDoubleClick(object sender, MouseEventArgs e)
     {
-        var customerDisplayForm = new addUserForm(this.SelectedCustomer);
+        var customerDisplayForm = new AddUserForm(this.SelectedCustomer);
         customerDisplayForm.StartPosition = FormStartPosition.Manual;
         customerDisplayForm.Left = Left + (Width - customerDisplayForm.Width) / 2;
         customerDisplayForm.Top = Top + (Height - customerDisplayForm.Height) / 2;
@@ -245,12 +250,23 @@ public partial class MainScreenForm : Form
 
     private void employeeGridView_MouseDoubleClick(object sender, MouseEventArgs e)
     {
-        var employeeDisplayForm = new addUserForm(this.SelectedEmployee);
+        var employeeDisplayForm = new AddUserForm(this.SelectedEmployee);
         employeeDisplayForm.StartPosition = FormStartPosition.Manual;
         employeeDisplayForm.Left = Left + (Width - employeeDisplayForm.Width) / 2;
         employeeDisplayForm.Top = Top + (Height - employeeDisplayForm.Height) / 2;
 
         employeeDisplayForm.ShowDialog();
+        this.getData();
+    }
+
+    private void furnitureGridView_MouseDoubleClick(object sender, MouseEventArgs e)
+    {
+        var furnitureDisplayForm = new AddFurnitureForm(this.SelectedFurniture);
+        furnitureDisplayForm.StartPosition = FormStartPosition.Manual;
+        furnitureDisplayForm.Left = Left + (Width - furnitureDisplayForm.Width) / 2;
+        furnitureDisplayForm.Top = Top + (Height - furnitureDisplayForm.Height) / 2;
+
+        furnitureDisplayForm.ShowDialog();
         this.getData();
     }
 
@@ -261,7 +277,7 @@ public partial class MainScreenForm : Form
             try
             {
                 var id = int.Parse(this.furnitureSearchTextBox.Text);
-                var furniture = FurnitureDAL.GetFurnitureById(id);
+                var furniture = FurnitureDal.GetFurnitureById(id);
 
                 this.Furniture.Clear();
 
@@ -272,21 +288,19 @@ public partial class MainScreenForm : Form
             {
                 MessageBox.Show("Please enter a postive number");
             }
-
         }
         else if (this.categoryRadioButton.Checked)
         {
             var category = this.categoryComboBox.Text;
-            var furniture = FurnitureDAL.GetFurnitureByCategory(category);
+            var furniture = FurnitureDal.GetFurnitureByCategory(category);
             this.Furniture.Clear();
             this.Furniture = furniture.ToList();
             this.populateGridViews();
-
         }
         else
         {
             var style = this.styleComboBox.Text;
-            var furniture = FurnitureDAL.GetFurnitureByStyle(style);
+            var furniture = FurnitureDal.GetFurnitureByStyle(style);
             this.Furniture.Clear();
             this.Furniture = furniture.ToList();
             this.populateGridViews();
@@ -296,7 +310,7 @@ public partial class MainScreenForm : Form
     private void resetButton_Click(object sender, EventArgs e)
     {
         this.Furniture.Clear();
-        this.Furniture = FurnitureDAL.GetFurniture().ToList();
+        this.Furniture = FurnitureDal.GetFurniture().ToList();
         this.populateGridViews();
     }
 
@@ -307,7 +321,7 @@ public partial class MainScreenForm : Form
             try
             {
                 var memberId = int.Parse(this.memberIdTextBox.Text);
-                var customers = CustomerDal.GetCustomerByMemberID(memberId);
+                var customers = CustomerDal.GetCustomerByMemberId(memberId);
                 this.Customers.Clear();
                 this.Customers = customers.ToList();
                 this.populateGridViews();
@@ -316,7 +330,6 @@ public partial class MainScreenForm : Form
             {
                 MessageBox.Show("Enter a postive number");
             }
-
         }
         else if (this.phoneNumberRadioButton.Checked)
         {
@@ -348,25 +361,90 @@ public partial class MainScreenForm : Form
             this.Customers.Clear();
             this.Customers = customer.ToList();
             this.populateGridViews();
-
         }
     }
+
     private void resetCustomerButton_Click(object sender, EventArgs e)
     {
         this.Customers.Clear();
         this.Customers = CustomerDal.GetAllCustomers();
         this.populateGridViews();
     }
+
+    private void employeeSearchButton_Click(object sender, EventArgs e)
+    {
+        if (this.employeeNumRadioButton.Checked)
+        {
+            try
+            {
+                var employeeNum = int.Parse(this.employeeNumTextBox.Text);
+                var employees = EmployeeDal.GetEmployeeByEmployeeNum(employeeNum);
+                this.Employees.Clear();
+                this.Employees = employees.ToList();
+                this.populateGridViews();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Enter a postive number");
+            }
+        }
+        else if (this.employeePhoneRadioButton.Checked)
+        {
+            var phoneValue = this.employeePhoneTextBox.Text;
+            var value = phoneValue.Replace("-", "");
+            try
+            {
+                var areaCode = value.Substring(0, 3);
+                var next = value.Substring(3, 3);
+                var last = value.Substring(6, 4);
+                var validPhone = areaCode + "-" + next + "-" + last;
+                var employee = EmployeeDal.GetEmployeeByPhone(validPhone);
+                this.Employees.Clear();
+                this.Employees = employee.ToList();
+                this.populateGridViews();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Enter a valid number without - ");
+            }
+        }
+        else
+        {
+            var firstName = this.employeeFnameTextBox.Text;
+            var lastName = this.employeeLnameTextBox.Text;
+
+            var employee = EmployeeDal.GetEmployeeByName(firstName, lastName);
+
+            this.Employees.Clear();
+            this.Employees = employee.ToList();
+            this.populateGridViews();
+        }
+    }
+
+    private void resetEmployeeButton_Click(object sender, EventArgs e)
+    {
+        this.Employees.Clear();
+        this.Employees = EmployeeDal.GetAllEmployees();
+        this.populateGridViews();
+    }
+
     private void dashboardTabs_SelectedIndexChanged(object sender, EventArgs e)
     {
         var selectedTab = this.dashboardTabs.SelectedTab;
 
         if (selectedTab == this.employeesTab)
         {
+            this.furnitureGridView.ClearSelection();
             this.customerGridView.ClearSelection();
+        }
+        else if (selectedTab == this.customersTab)
+        {
+            this.furnitureGridView.ClearSelection();
+            this.employeeGridView.ClearSelection();
         }
         else
         {
+            this.customerGridView.ClearSelection();
             this.employeeGridView.ClearSelection();
         }
     }
@@ -405,7 +483,50 @@ public partial class MainScreenForm : Form
         toolSelectorForm.Top = Top + (Height - toolSelectorForm.Height) / 2;
         toolSelectorForm.ShowDialog();
     }
+
     #endregion
 
+    #region Data Members
 
+    /// <summary>
+    ///     Logged in employee
+    /// </summary>
+    public Employee LoggedInEmployee { get; set; }
+
+    /// <summary>
+    ///     list of employees
+    /// </summary>
+    public List<Employee> Employees { get; set; }
+
+    /// <summary>
+    ///     list of customers
+    /// </summary>
+    public List<Customer> Customers { get; set; }
+
+    /// <summary>
+    ///     list of furniture
+    /// </summary>
+    public List<Furniture> Furniture { get; set; }
+
+    /// <summary>
+    ///     selected employee
+    /// </summary>
+    public Employee SelectedEmployee { get; set; }
+
+    /// <summary>
+    ///     selected customer
+    /// </summary>
+    public Customer SelectedCustomer { get; set; }
+
+    /// <summary>
+    ///     selected furniture
+    /// </summary>
+    public Furniture SelectedFurniture { get; set; }
+
+    /// <summary>
+    ///     regex for phone number
+    /// </summary>
+    public const string Phoneregexnodash = @"^[0-9]{3}[0-9]{3}[0-9]{4}$";
+
+    #endregion
 }

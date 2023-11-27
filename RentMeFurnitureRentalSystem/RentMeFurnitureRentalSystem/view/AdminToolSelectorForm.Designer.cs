@@ -1,4 +1,4 @@
-﻿namespace RentMeFurnitureRentalSystem.view
+﻿namespace RentMeFurnitureRentalSystem.View
 {
     partial class AdminToolSelectorForm
     {
@@ -13,9 +13,9 @@
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
+            if (disposing && (this.components != null))
             {
-                components.Dispose();
+                this.components.Dispose();
             }
             base.Dispose(disposing);
         }
@@ -28,49 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            adminSQLTableButton = new Button();
-            dateReportButton = new Button();
+            this.label1 = new Label();
+            this.adminSQLTableButton = new Button();
+            this.dateReportButton = new Button();
             SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(52, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(241, 54);
-            label1.TabIndex = 0;
-            label1.Text = "Admin Tools";
+            this.label1.AutoSize = true;
+            this.label1.Font = new Font("Segoe UI", 30F, FontStyle.Regular, GraphicsUnit.Point);
+            this.label1.Location = new Point(52, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new Size(241, 54);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Admin Tools";
             // 
             // adminSQLTableButton
             // 
-            adminSQLTableButton.Location = new Point(110, 155);
-            adminSQLTableButton.Name = "adminSQLTableButton";
-            adminSQLTableButton.Size = new Size(118, 23);
-            adminSQLTableButton.TabIndex = 1;
-            adminSQLTableButton.Text = "Admin SQL Table";
-            adminSQLTableButton.UseVisualStyleBackColor = true;
-            adminSQLTableButton.Click += adminSQLTableButton_Click;
+            this.adminSQLTableButton.Location = new Point(110, 155);
+            this.adminSQLTableButton.Name = "adminSQLTableButton";
+            this.adminSQLTableButton.Size = new Size(118, 23);
+            this.adminSQLTableButton.TabIndex = 1;
+            this.adminSQLTableButton.Text = "Admin SQL Table";
+            this.adminSQLTableButton.UseVisualStyleBackColor = true;
+            this.adminSQLTableButton.Click += this.adminSQLTableButton_Click;
             // 
             // dateReportButton
             // 
-            dateReportButton.Location = new Point(110, 210);
-            dateReportButton.Name = "dateReportButton";
-            dateReportButton.Size = new Size(118, 23);
-            dateReportButton.TabIndex = 2;
-            dateReportButton.Text = "View Report";
-            dateReportButton.UseVisualStyleBackColor = true;
-            dateReportButton.Click += dateReportButton_Click;
+            this.dateReportButton.Location = new Point(110, 210);
+            this.dateReportButton.Name = "dateReportButton";
+            this.dateReportButton.Size = new Size(118, 23);
+            this.dateReportButton.TabIndex = 2;
+            this.dateReportButton.Text = "View Report";
+            this.dateReportButton.UseVisualStyleBackColor = true;
+            this.dateReportButton.Click += this.dateReportButton_Click;
             // 
             // AdminToolSelectorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(347, 345);
-            Controls.Add(dateReportButton);
-            Controls.Add(adminSQLTableButton);
-            Controls.Add(label1);
+            Controls.Add(this.dateReportButton);
+            Controls.Add(this.adminSQLTableButton);
+            Controls.Add(this.label1);
             Name = "AdminToolSelectorForm";
             Text = "AdminToolSelectorForm";
             ResumeLayout(false);
