@@ -35,25 +35,14 @@ public partial class RentalReceiptForm : Form
         var customer = CustomerDal.GetCustomerByMemberID(rental.Member_id).ElementAt(0);
         var rentalItems = RentalDAL.GetRentalItems(rentalId);
         var rentalTotal = RentalDAL.GetRentalTotal(rentalId);
-        this.Furniture = FurnitureDAL.GetFurniture().Where(piece => piece.Quantity > 0).ToList();
+        this.Furniture = rentalItems;
 
         this.titleTextBox.Text = this.titleTextBox.Text.Replace("<ID>", rentalId.ToString());
         this.titleTextBox.Text = this.titleTextBox.Text.Replace("<USER>", customer.Fullname);
 
         this.totalTextBox.Text = this.totalTextBox.Text.Replace("<TOTAL>", rentalTotal.ToString());
 
-        this.dueDateTextBox.Text = this.dueDateTextBox.Text.Replace("<DUE_DATE>", rental.Due_date.ToShortDateString());
-        this.Furniture = this.Furniture.Where(x =>
-        {
-            if (rentalItems.Any(y => y.Furniture_id == x.Furniture_id))
-            {
-                var rentalItem = rentalItems.Find(y => y.Furniture_id == x.Furniture_id);
-                x.Quantity = rentalItem.Quantity;
-                return true;
-            }
-
-            return false;
-        }).ToList();
+        this.dueDateTextBox.Text = this.dueDateTextBox.Text.Replace("<DUE_DATE>", rental.Due_date.ToString());
 
         this.furnitureGridView.DataSource = this.Furniture;
 
@@ -61,7 +50,7 @@ public partial class RentalReceiptForm : Form
         this.itemCountTextBox.Text = this.itemCountTextBox.Text.Replace("<ITEM_COUNT>", itemCount.ToString());
     }
 
-    private void closeButton_Click(object sender, EventArgs e)
+        private void closeButton_Click(object sender, EventArgs e)
     {
         Close();
     }

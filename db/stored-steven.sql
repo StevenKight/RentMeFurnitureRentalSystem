@@ -44,4 +44,22 @@ BEGIN
     SELECT LAST_INSERT_ID() AS new_rental_id INTO rentalId;
 END$
 
+CREATE PROCEDURE GetReturnableItems(rentalId INT, memberId INT)
+BEGIN
+    SELECT furniture.furniture_id, furniture.category_name, furniture.style_name, furniture.`name`, 
+			furniture.`description`, furniture.rental_rate, rental_item.rental_id, rental_item.quantity
+		FROM furniture, rental_item
+		WHERE furniture.furniture_id=rental_item.furniture_id
+			AND rental_item.rental_id=rentalId
+			AND rental_item.furniture_id NOT IN (SELECT DISTINCT return_item.furniture_id
+										FROM rental_item, return_item, `rental`, `return`
+										WHERE return_item.furniture_id=rental_item.furniture_id
+											AND return_item.return_id=`return`.return_id
+											AND rental_item.rental_id=`rental`.rental_id
+											AND `return`.member_id=`rental`.member_id
+											AND return_item.rental_id = rentalId
+											AND `rental`.member_id = memberId
+											AND rental_item.quantity <= return_item.quantity);
+END$
+
 DELIMITER ;

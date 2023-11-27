@@ -105,13 +105,7 @@ public static class QueryStrings
 
     public const string GetFurnitureByCategory = "select * from furniture where category_name=@category";
 
-    public const string GetFurnitureByRental =
-        "select * from furniture " +
-        "where furniture_id in (select furniture_id from rental_item where rental_id=@Id)" +
-        "AND furniture_id not in (select furniture_id " +
-        "from return_item, `return` " +
-        "where return_item.return_id=`return`.return_id " +
-        "AND `return`.member_id=@Member_id)";
+    public const string GetFurnitureByRental = "CALL GetReturnableItems(@Rental_id, @Member_id)";
 
     public const string GetFurnitureByStyle = "select * from furniture where style_name=@style";
 
@@ -134,7 +128,11 @@ public static class QueryStrings
 
     public const string GetReturnById = "select * from `return` where return_id=@Id";
 
-    public const string GetRentalItems = "select * from `rental_item` where rental_id=@Id";
+    public const string GetRentalItems = "select furniture.furniture_id, furniture.category_name, furniture.style_name, furniture.`name`, " +
+                                         "furniture.`description`, furniture.rental_rate, rental_item.rental_id, rental_item.quantity " +
+                                         "from `rental_item`,`furniture` " +
+                                         "where `rental_item`.furniture_id=`furniture`.furniture_id " +
+                                         "AND `rental_item`.rental_id=@Id";
 
     public const string GetRentalTotal = "SELECT SUM(`furniture`.rental_rate * `rental_item`.quantity) " +
                                          "FROM `rental_item`, `furniture` " +
@@ -144,7 +142,9 @@ public static class QueryStrings
 
     public const string GetRentalByMember = "select * from `rental` where member_id=@Member_id";
 
-    public const string GetReturnItems = "select * from `return_item`,`furniture` " +
+    public const string GetReturnItems = "select furniture.furniture_id, furniture.category_name, furniture.style_name, furniture.`name`, " +
+                                         "furniture.`description`, furniture.rental_rate, return_item.return_id, return_item.quantity " +
+                                         "from `return_item`,`furniture` " +
                                          "where `return_item`.furniture_id=`furniture`.furniture_id " +
                                          "AND `return_item`.return_id=@Id";
 

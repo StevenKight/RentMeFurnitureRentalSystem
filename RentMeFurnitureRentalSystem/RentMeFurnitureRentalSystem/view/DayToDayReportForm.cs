@@ -6,15 +6,21 @@ namespace RentMeFurnitureRentalSystem.view
     public partial class DayToDayReportForm : Form
     {
         #region Properties
-        
+
         public DataGridViewCell SelectedCell { get; set; }
+
         #endregion
+
+        /// <summary>
+        ///     Initializes a DayToDayReportForm object
+        /// </summary>
         public DayToDayReportForm()
         {
             InitializeComponent();
         }
+
         /// <summary>
-        /// This method returns the user to the admin tool selector form
+        ///     This method returns the user to the admin tool selector form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -25,8 +31,9 @@ namespace RentMeFurnitureRentalSystem.view
             Close();
 
         }
+
         /// <summary>
-        /// This method submits the report and displays the results in the data grid view
+        ///     This method submits the report and displays the results in the data grid view
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -58,14 +65,20 @@ namespace RentMeFurnitureRentalSystem.view
                 this.rentalsDataGridView.RowHeadersVisible = false;
             }
 
+            this.rentalsDataGridView.ClearSelection();
+            this.returnsDataGridView.ClearSelection();
+
         }
+
         /// <summary>
-        /// displays the rental items in the data grid view when the user double clicks on a row
+        ///     Sets the selected cell to the cell that the user clicks on
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void rentalsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void rentalsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.SelectedCell = this.rentalsDataGridView.CurrentCell;
+
             var rental_id = this.rentalsDataGridView.Rows[e.RowIndex].Cells["Rental_id"].Value;
             var rentalItems = ReportDAL.GetRentalReportBySelectedRow((int)rental_id);
             this.itemsDataGridView.DataSource = rentalItems;
@@ -78,34 +91,17 @@ namespace RentMeFurnitureRentalSystem.view
             this.selectedRentalIdTextbox.Text = rental_id.ToString();
 
             this.selectedLabel.Text = "Rental Id:";
-
         }
-        /// <summary>
-        /// sets the selected cell to the cell that the user clicks on
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void rentalsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            this.SelectedCell = this.rentalsDataGridView.CurrentCell;
 
-        }
         /// <summary>
-        ///  sets the selected cell to the cell that the user clicks on
+        ///     Sets the selected cell to the cell that the user clicks on
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void returnsDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             this.SelectedCell = this.returnsDataGridView.CurrentCell;
-        }
-        /// <summary>
-        /// displays the return items in the data grid view when the user double clicks on a row
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void returnsDataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
+
             var return_id = this.returnsDataGridView.Rows[e.RowIndex].Cells["Return_id"].Value;
             var rentalItems = ReportDAL.GetReturnReportBySelectedRow((int)return_id);
             this.itemsDataGridView.DataSource = rentalItems;
@@ -118,6 +114,22 @@ namespace RentMeFurnitureRentalSystem.view
             this.selectedRentalIdTextbox.Text = return_id.ToString();
 
             this.selectedLabel.Text = "Return Id:";
+        }
+
+        /// <summary>
+        ///     When tab is changed, clear selections and text.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void reportTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            this.rentalsDataGridView.ClearSelection();
+            this.returnsDataGridView.ClearSelection();
+
+            this.selectedLabel.Text = "Please select a item on the left...";
+
+            this.itemsDataGridView.DataSource = null;
+            this.itemsDataGridView.Rows.Clear();
         }
     }
 }
